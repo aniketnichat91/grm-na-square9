@@ -63,7 +63,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1526,4993</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1526,5054</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_FA_Status_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -133,10 +133,9 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add Data to Queue" sap:VirtualizedContainerService.HintSize="1536,4788" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add Data to Queue" sap:VirtualizedContainerService.HintSize="1536,4889" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_month" />
       <Variable x:TypeArguments="x:String" Name="var_year" />
@@ -153,7 +152,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1494,4696" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1494,4797" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -161,7 +160,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="1456,4469" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="1456,4570" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="rowcount" />
             <Variable x:TypeArguments="x:String" Name="var_query" />
@@ -193,6 +192,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1414,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="Adding Data to Queue" />
           <Assign sap:VirtualizedContainerService.HintSize="1414,60" sap2010:WorkflowViewState.IdRef="Assign_33">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[var_query]</OutArgument>
@@ -732,84 +732,34 @@
                   <TryCatch.Try>
                     <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queue_name]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status]">
                       <ui:AddQueueItem.ItemInformation>
-                        <InArgument x:TypeArguments="x:String" x:Key="PDF_Invoice_Date">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pdf_invoice_date" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Invoice_Num">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_inv_num" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="MediaLookup">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MediaLookup" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="C">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_C" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="P">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_P" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="E">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_E" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="PDF_MOS">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PDF_MOS" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="PDF_Amount">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pdf_amount" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Status">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_bucketstatus" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="PUBLICATION_CODE">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pub_code" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Invoice_Name_Link">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_inv_name_link" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Agency">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Agency" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="IS_NRA">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_IS_NRA" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Doc_Link">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Doc_Link" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="FA Status">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_fa_status" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Month">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_month" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Year">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_year" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="FilePath">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varfilpath" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Local_File_Path">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Local_File_Path" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="FA Name">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_FA_Name" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="CLIENT_NAME">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_cn" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="JOB_TYPE">
-                          <Literal x:TypeArguments="x:String">CREATE_MANIFEST</Literal>
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Batch">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_agcode+&quot;-BOT-&quot;+in_queuebatchtime" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="PUBLICATION_NAME">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pubname" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="PDF_Invoice_Date">[in_pdf_invoice_date]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Invoice_Num">[in_inv_num]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="MediaLookup">[in_MediaLookup]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="C">[in_C]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="P">[in_P]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="E">[in_E]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="PDF_MOS">[in_PDF_MOS]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="PDF_Amount">[in_pdf_amount]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Status">[in_bucketstatus]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="PUBLICATION_CODE">[in_pub_code]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Invoice_Name_Link">[in_inv_name_link]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Agency">[in_Agency]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="IS_NRA">[in_IS_NRA]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Doc_Link">[in_Doc_Link]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="FA Status">[in_fa_status]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Month">[var_month]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Year">[var_year]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="FilePath">[varfilpath]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Local_File_Path">[in_Local_File_Path]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="FA Name">[in_FA_Name]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="CLIENT_NAME">[var_cn]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="JOB_TYPE">CREATE_MANIFEST</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Batch">[var_agcode+"-BOT-"+in_queuebatchtime]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="PUBLICATION_NAME">[in_pubname]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="Code_Date">
                           <Literal x:TypeArguments="x:String" Value="" />
                         </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="Tag Status">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_tag_status" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Tag Status">[in_tag_status]</InArgument>
                       </ui:AddQueueItem.ItemInformation>
                     </ui:AddQueueItem>
                   </TryCatch.Try>
