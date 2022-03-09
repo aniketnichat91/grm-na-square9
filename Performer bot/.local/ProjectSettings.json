@@ -1,1 +1,1 @@
-{"ProjectWatches":"{\"Value\":[]}","ProjectBreakpoints":"{\"Value\":{}}","OpenedDocuments":"[\"Process.xaml\",\"Stamp PDF.xaml\",\"Create Manifest.xaml\",\"Main.xaml\"]"}
+{"ProjectWatches":"{\"Value\":[]}","ProjectBreakpoints":"{\"Value\":{\"Main.xaml\":[{\"ConditionalExpression\":null,\"ActionExpression\":null,\"ExpectedHitCounter\":null,\"ShouldContinueAfterAction\":false,\"IsEnabled\":true,\"ActivityIdRef\":\"InvokeWorkflowFile_26\",\"ActivityId\":\"1.112\",\"ActivityName\":\"Invoke temp_Create Zip workflow\"}]}}","OpenedDocuments":"[\"Main.xaml\"]"}

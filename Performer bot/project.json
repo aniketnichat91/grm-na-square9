@@ -8,7 +8,8 @@
     "UiPath.Mail.Activities": "[1.10.5]",
     "UiPath.System.Activities": "[21.6.1-preview]",
     "UiPath.UIAutomation.Activities": "[21.6.1-preview]",
-    "UiPathTeam.PDF.Extensions.Activities": "[2.4.0]"
+    "UiPathTeam.PDF.Extensions.Activities": "[2.4.0]",
+    "UiPathTeam.SharePoint.Activities": "[1.7.0]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -52,6 +53,5 @@
   ],
   "isTemplate": false,
   "templateProjectData": {},
-  "publishData": {},
-  "targetFramework": "Legacy"
+  "publishData": {}
 }
