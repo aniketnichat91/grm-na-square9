@@ -1,0 +1,676 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(snm:MailMessage)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="process_dbconnect" Type="InOutArgument(ui:DatabaseConnection)" />
+    <x:Property Name="processfilecounter" Type="InOutArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>2278,5320</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="34">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>Microsoft.Exchange.WebServices.Data</x:String>
+      <x:String>UiPath.Mail.Exchange</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="2288,5155" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="varopmedialookup" />
+      <Variable x:TypeArguments="x:String" Name="varopclientcode" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="notpdfattachmentlist" />
+      <Variable x:TypeArguments="x:String" Name="alldataquery" />
+      <Variable x:TypeArguments="s:DateTime" Name="varemaildate" />
+      <Variable x:TypeArguments="x:String" Name="tempdate" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[in_TransactionItem.Attachments.Count&gt;0]" DisplayName="If email has attachment" sap:VirtualizedContainerService.HintSize="2246,4896" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="1296,4748" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="varopperiod" />
+            <Variable x:TypeArguments="x:String" Name="varopstation" />
+            <Variable x:TypeArguments="x:String" Name="varopinvnumber" />
+            <Variable x:TypeArguments="x:String" Name="varoptotal" />
+            <Variable x:TypeArguments="x:String" Name="varopprd" />
+            <Variable x:TypeArguments="x:String" Name="varopest" />
+            <Variable x:TypeArguments="x:String" Name="varclient_name" />
+            <Variable x:TypeArguments="x:String" Name="var_prdname" />
+            <Variable x:TypeArguments="x:String" Name="varattachmentname" />
+            <Variable x:TypeArguments="x:Int32" Name="varpagecount" />
+            <Variable x:TypeArguments="x:String" Name="varmonth" />
+            <Variable x:TypeArguments="x:String" Name="varyear" />
+            <Variable x:TypeArguments="x:String" Name="var_invdate" />
+            <Variable x:TypeArguments="x:String" Name="var_reporttype" />
+            <Variable x:TypeArguments="x:String" Name="varinvoiceflename" />
+            <Variable x:TypeArguments="x:String" Name="varprdname" />
+            <Variable x:TypeArguments="x:String" Name="var_fa_name" />
+            <Variable x:TypeArguments="x:String" Name="varmediadetails" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="loop through each attachment" sap:VirtualizedContainerService.HintSize="1254,4656" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="1212,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[notpdfattachmentlist]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[new list (of String)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEach x:TypeArguments="snm:Attachment" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1212,1717" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[in_TransactionItem.Attachments]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="snm:Attachment">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="snm:Attachment" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="608,1583" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="566,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[item.Name]" />
+                    <If Condition="[item.Name.Contains(&quot;.pdf&quot;) or item.Name.Contains(&quot;.Pdf&quot;) or item.name.Contains(&quot;.PDF&quot;)]" sap:VirtualizedContainerService.HintSize="566,1289" sap2010:WorkflowViewState.IdRef="If_3">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="421,1141" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:Boolean" Name="varpdfscanned" />
+                            <Variable x:TypeArguments="x:String" Name="varmaildate" />
+                            <Variable x:TypeArguments="x:String" Name="varstrmaildate" />
+                            <Variable x:TypeArguments="x:String" Name="varmailuid" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <AddToCollection x:TypeArguments="x:String" Collection="[notpdfattachmentlist]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="379,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="not null" />
+                          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="379,61" sap2010:WorkflowViewState.IdRef="WriteLine_13" Text="[notpdfattachmentlist.Count.ToString]" />
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will download pdf attachments from Email" DisplayName="Invoke Download Attachments from email workflow" sap:VirtualizedContainerService.HintSize="379,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\Download Attachments from email.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_Email">[in_TransactionItem]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_mailsubject" />
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_mailfrom">[var_fa_name]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_mailsenddate" />
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_FA_Folder" />
+                              <InArgument x:TypeArguments="x:String" x:Key="in_saveattachmentpath">[in_Config("FAFolderPath").ToString.Trim]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_attachmentname">[varattachmentname]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_invoicefilename">[varinvoiceflename]</OutArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="downloadfilecounter">[processfilecounter]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InvokeWorkflowFile>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will exttract all required daa from email body. This data will get added into orchestrator Queue." DisplayName="Invoke Extract Required Data From Mail Body workflow" sap:VirtualizedContainerService.HintSize="379,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\Extract Required Data From Mail Body.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_mailbodydata" />
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_medialookup">[varopmedialookup]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_clientcode">[varopclientcode]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_period">[varopperiod]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_station">[varopstation]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_invnumber">[varopinvnumber]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_total">[varoptotal]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_prd">[varopprd]</OutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_subject" />
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_est">[varopest]</OutArgument>
+                              <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_Email">[in_TransactionItem]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_clientname">[varclient_name]</OutArgument>
+                              <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="innerdbconnnect">[process_dbconnect]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_prdname">[varprdname]</OutArgument>
+                              <OutArgument x:TypeArguments="x:Int32" x:Key="out_pagecount">[varpagecount]</OutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_pdffilename">[varattachmentname]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_Month">[varmonth]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_year">[varyear]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_invdate">[var_invdate]</OutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_username">[in_Config("Username").ToString.Trim]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_password">[in_Config("Password").ToString.Trim]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_invoicename">[varinvoiceflename]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_media_details">[varmediadetails]</OutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_mailuser">[in_Config("Username").ToString.Trim]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_mailpassword">[in_Config("Password").ToString.Trim]</InArgument>
+                              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_scanned">[varpdfscanned]</OutArgument>
+                              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_mail_date" />
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_str_date">[varstrmaildate]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_mailid">[varmailuid]</OutArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InvokeWorkflowFile>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will apply manifest rules" DisplayName="Invoke manifestcsv_rules workflow" sap:VirtualizedContainerService.HintSize="379,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\manifestcsv_rules.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_medialookup">[varopmedialookup]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_manifestfolder">[var_reporttype]</OutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ClientCodeFrom">CORE</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_attachmentname">[varinvoiceflename]</InArgument>
+                              <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbconnect">[process_dbconnect]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_prdcode">[varopprd]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_clientcode">[varopclientcode]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ccode">[varopclientcode]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_pcode">[varopprd]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_est">[varopest]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_invnumber">[varopinvnumber]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InvokeWorkflowFile>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will add extracted data into Queue" DisplayName="Invoke Add data to Queue workflow" sap:VirtualizedContainerService.HintSize="379,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\Add data to Queue.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_QueueName">[in_Config("QueueName").ToString.Trim]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_invnumber">[varopinvnumber]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Clientcode">[varopclientcode]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_productcode">[varopprd]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_est">[varopest]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_reporttype">[var_reporttype]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_station">[varopstation]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_MediaType">[varopmedialookup]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ClientName">[varclient_name]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Prodname">[varprdname]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Month">[varmonth]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Amount">[varoptotal]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Inv_date">[var_invdate]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_pagecount">[varpagecount.ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_year">[varyear]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_stampfilelocation">[varattachmentname]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_pdfname">[varinvoiceflename]</InArgument>
+                              <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbconnnection">[process_dbconnect]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_period">[varopperiod]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">[var_fa_name]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_mediadetails">[varmediadetails]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_manifestpath">[var_reporttype]</InArgument>
+                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_isscanned">[varpdfscanned]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_mail_date">[varstrmaildate]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_mailid">[varmailuid]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InvokeWorkflowFile>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will move email to Processed folder" DisplayName="Invoke Move Mails workflow" sap:VirtualizedContainerService.HintSize="379,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\Move Mails.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mail">[in_TransactionItem]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_email">[in_Config("Username").ToString.Trim]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_password">[in_Config("Password").ToString.Trim]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InvokeWorkflowFile>
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="566,61" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="[notpdfattachmentlist.Count.ToString]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+            <If Condition="[notpdfattachmentlist.Count&lt;1]" sap:VirtualizedContainerService.HintSize="1212,2707" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="905,2559" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="innerlogquery" />
+                    <Variable x:TypeArguments="x:String" Name="varmail_id" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[&quot;list count is &quot;+notpdfattachmentlist.Count.ToString]" />
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="**mail does not have any pdf attachment" />
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[in_TransactionItem.Sender.ToString]" />
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[in_TransactionItem.From.ToString]" />
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[in_TransactionItem.Subject.ToString]" />
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[in_TransactionItem.Body.ToString]" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="863,51" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[in_TransactionItem.Body.ToString+Environment.NewLine+Environment.NewLine+&quot;If you feel this response is in error, or want to discuss further, post in this Teams channel https://teams.microsoft.com/l/channel/19%3af93d8a1788ee47848695c3f3d98bb6c1%40thread.tacv2/USA%2520-%2520Broadcast%2520S9?groupId=889582f9-0a00-4a06-a593-4e6470aa612b&amp;tenantId=86cbe1bb-213f-4271-b174-bd59d03c87a3&quot;]" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendExchangeMail_1" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;This Record cannot be automatically Uploaded to mDocs/Square9 as mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment&quot;]" To="[in_TransactionItem.Sender.ToString]" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="s:DateTime">[varemaildate]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="s:DateTime">[CDate(in_TransactionItem.Headers("Date"))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[tempdate]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[varemaildate.ToString("yyyy-MM-dd")]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[in_TransactionItem.Sender.Address.ToString.Contains(&quot;brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;lawrence&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Lawrence&quot;)]" sap:VirtualizedContainerService.HintSize="863,444" sap2010:WorkflowViewState.IdRef="If_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="sandip.kore@groupm.com" Body="[in_TransactionItem.Body.ToString]" Cc="kasia.rusek@groupm.com" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendExchangeMail_7" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[in_TransactionItem.Sender.Address.ToString]" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:SendExchangeMail>
+                    </If.Then>
+                    <If.Else>
+                      <If Condition="[in_TransactionItem.Sender.Address.ToString.Contains(&quot;janice&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;kenny&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;luis&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;baitao&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Janice&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Kenny&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Luis&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Baitao&quot;)]" sap:VirtualizedContainerService.HintSize="484,296" sap2010:WorkflowViewState.IdRef="If_7">
+                        <If.Then>
+                          <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="sandip.kore@groupm.com" Body="[in_TransactionItem.Body.ToString]" Cc="dawn.romano@groupm.com" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendExchangeMail_8" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[in_TransactionItem.Sender.Address.ToString]" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:SendExchangeMail>
+                        </If.Then>
+                      </If>
+                    </If.Else>
+                  </If>
+                  <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[in_TransactionItem.Body.ToString]" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="863,148" sap2010:WorkflowViewState.IdRef="SendExchangeMail_3" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please upload this record manually&quot;]" To="sandip.kore@groupm.com" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:SendExchangeMail>
+                  <ui:MoveMessageToFolder ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" SecurePassword="{x:Null}" SharedMailbox="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Move Message To Folder" Domain="AD" ExchangeVersion="Exchange2013_SP1" sap:VirtualizedContainerService.HintSize="863,89" sap2010:WorkflowViewState.IdRef="MoveMessageToFolder_1" MailFolder="No attachment" MailMessage="[in_TransactionItem]" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" Server="https://outlook.office365.com" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:MoveMessageToFolder>
+                  <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="scg:List(x:String)">[notpdfattachmentlist]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="scg:List(x:String)">[Nothing]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[varmail_id]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_TransactionItem.Headers("UID").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[innerlogquery]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">["insert into brodcast_squarenine_log (FA,inv_num,inv_filename,verified_date,status,MEDIA,C_Code,P_Code,errorinfo,Email_Send_Date) values ('"+in_TransactionItem.Sender.DisplayName+"','','','"+System.DateTime.Now.ToString("yyyy-MM-dd")+"','Not Uploaded','','','','No Attachment Pesent','"+tempdate+"')"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[process_dbconnect]" sap:VirtualizedContainerService.HintSize="863,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[innerlogquery]">
+                    <ui:ExecuteQuery.Parameters>
+                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                    </ui:ExecuteQuery.Parameters>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExecuteQuery>
+                  <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[alldataquery]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">["insert into brodcast_all_data (FA,inv_num,inv_filename,verified_date,status,MEDIA,Client_Code,Product_Code,errorinfo,Email_Send_Date,EmailID) values ('"+in_TransactionItem.Sender.DisplayName+"','','','"+System.DateTime.Now.ToString("yyyy-MM-dd")+"','Not Uploaded','','','','No Attachment Pesent','"+tempdate+"','"+varmail_id+"')"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[process_dbconnect]" sap:VirtualizedContainerService.HintSize="863,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[alldataquery]">
+                    <ui:ExecuteQuery.Parameters>
+                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                    </ui:ExecuteQuery.Parameters>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExecuteQuery>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="863,51" sap2010:WorkflowViewState.IdRef="CommentOut_23">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[boolnoattachment]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <Throw Exception="[new BusinessRuleException(&quot;Mail does not have any pdf attachment&quot;)]" sap:VirtualizedContainerService.HintSize="863,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="scg:List(x:String)">[notpdfattachmentlist]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="scg:List(x:String)">[Nothing]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Else>
+            </If>
+          </Sequence>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="905,2156" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="innerlogquery" />
+            <Variable x:TypeArguments="x:String" Name="strmaildate" />
+            <Variable x:TypeArguments="x:String" Name="varmail_id" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="Mail does not contain any attachment" />
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="863,51" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="273,153" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="231,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[in_TransactionItem.Attachments(0).Name]" />
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[in_TransactionItem.Sender.DisplayName]" />
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="863,61" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[in_TransactionItem.Sender.Address.ToString]" />
+          <If Condition="[in_TransactionItem.Sender.Address.ToString.Contains(&quot;brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;lawrence&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Lawrence&quot;)]" sap:VirtualizedContainerService.HintSize="863,444" sap2010:WorkflowViewState.IdRef="If_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="sandip.kore@groupm.com" Body="[in_TransactionItem.Body.ToString]" Cc="kasia.rusek@groupm.com" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendExchangeMail_6" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[in_TransactionItem.Sender.Address.ToString]" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:SendExchangeMail>
+            </If.Then>
+            <If.Else>
+              <If Condition="[in_TransactionItem.Sender.Address.ToString.Contains(&quot;janice&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;kenny&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;luis&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;baitao&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Janice&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Kenny&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Luis&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Baitao&quot;)]" sap:VirtualizedContainerService.HintSize="484,296" sap2010:WorkflowViewState.IdRef="If_5">
+                <If.Then>
+                  <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="sandip.kore@groupm.com" Body="[in_TransactionItem.Body.ToString]" Cc="dawn.romano@groupm.com" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendExchangeMail_5" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[in_TransactionItem.Sender.Address.ToString]" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:SendExchangeMail>
+                </If.Then>
+              </If>
+            </If.Else>
+          </If>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="863,51" sap2010:WorkflowViewState.IdRef="CommentOut_17">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[in_TransactionItem.Body.ToString]" Cc="kasia.rusek@groupm.com" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendExchangeMail_4" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[in_TransactionItem.Sender.Address.ToString]" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:SendExchangeMail>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:DateTime">[varemaildate]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:DateTime">[CDate(in_TransactionItem.Headers("Date"))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[tempdate]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[varemaildate.ToString("yyyy-MM-dd")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:MoveMessageToFolder ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" SecurePassword="{x:Null}" SharedMailbox="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Move Message To Folder" Domain="AD" ExchangeVersion="Exchange2013_SP1" sap:VirtualizedContainerService.HintSize="863,89" sap2010:WorkflowViewState.IdRef="MoveMessageToFolder_2" MailFolder="No attachment" MailMessage="[in_TransactionItem]" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" Server="https://outlook.office365.com" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MoveMessageToFolder>
+          <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[in_TransactionItem.Body.ToString]" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="_nycgrm.printbot@insidemedia.onmicrosoft.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="863,148" sap2010:WorkflowViewState.IdRef="SendExchangeMail_2" IsBodyHtml="False" IsDraft="False" Password="[in_Config(&quot;Password&quot;).ToString.Trim]" SaveCopy="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment&quot;+Environment.NewLine+Environment.NewLine+&quot;If you feel this response is in error, or want to discuss further, post in this Teams channel  https://teams.microsoft.com/l/channel/19%3af93d8a1788ee47848695c3f3d98bb6c1%40thread.tacv2/USA%2520-%2520Broadcast%2520S9?groupId=889582f9-0a00-4a06-a593-4e6470aa612b&amp;tenantId=86cbe1bb-213f-4271-b174-bd59d03c87a3&quot;]" To="sandip.kore@groupm.com" User="[in_Config(&quot;Username&quot;).ToString.Trim]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendExchangeMail>
+          <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[varmail_id]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.Headers("UID").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[innerlogquery]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["insert into brodcast_squarenine_log (FA,inv_num,inv_filename,verified_date,status,MEDIA,C_Code,P_Code,errorinfo,Email_Send_Date,EmailID) values ('"+in_TransactionItem.Sender.DisplayName+"','','','"+System.DateTime.Now.ToString("yyyy-MM-dd")+"','Not Uploaded','','','','No Attachment Pesent','"+tempdate+"','"+varmail_id+"')"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[process_dbconnect]" sap:VirtualizedContainerService.HintSize="863,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[innerlogquery]">
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ExecuteQuery>
+          <Assign sap:VirtualizedContainerService.HintSize="863,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[alldataquery]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["insert into brodcast_all_data (FA,inv_num,inv_filename,verified_date,status,MEDIA,Client_Code,Product_Code,errorinfo,Email_Send_Date,EmailID) values ('"+in_TransactionItem.Sender.DisplayName+"','','','"+System.DateTime.Now.ToString("yyyy-MM-dd")+"','Not Uploaded','','','','No Attachment Pesent','"+tempdate+"','"+varmail_id+"')"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[process_dbconnect]" sap:VirtualizedContainerService.HintSize="863,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[alldataquery]">
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ExecuteQuery>
+          <Throw Exception="[new BusinessRuleException(&quot;Mail does not contain any attachment&quot;)]" sap:VirtualizedContainerService.HintSize="863,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="2246,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+  </Sequence>
+</Activity>
