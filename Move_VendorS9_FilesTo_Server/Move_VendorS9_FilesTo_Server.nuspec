@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Move_VendorS9_FilesTo_Server</id>
+    <version>1.0.3</version>
+    <title>Move_VendorS9_FilesTo_Server</title>
+    <authors>Sandip.Kore</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Blank Process</description>
+    <tags>VisualBasic VB UiPathStudioProcess</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="UiPath.Excel.Activities" version="[2.10.4]" />
+        <dependency id="UiPath.Mail.Activities" version="[1.10.5]" />
+        <dependency id="UiPath.System.Activities" version="[21.4.1]" />
+        <dependency id="UiPath.UIAutomation.Activities" version="[21.4.4]" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
