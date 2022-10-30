@@ -1,0 +1,357 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Stamp_pdf" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_trans" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="out_stampfilepath" Type="InArgument(x:String)" />
+    <x:Property Name="in_folderpath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1403,2766</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Stamp_pdf_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="26">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Stamp_pdf" sap:VirtualizedContainerService.HintSize="1413,2701" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="var_pubcode" />
+      <Variable x:TypeArguments="x:String" Name="var_compilefile" />
+      <Variable x:TypeArguments="x:String" Name="var_repcode" />
+      <Variable x:TypeArguments="x:String" Name="var_mcode" />
+      <Variable x:TypeArguments="x:String" Name="var_e" />
+      <Variable x:TypeArguments="x:String" Name="var_c" />
+      <Variable x:TypeArguments="x:String" Name="varp" />
+      <Variable x:TypeArguments="x:String" Name="var_filename" />
+      <Variable x:TypeArguments="x:String" Name="currentdate" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolmanifestfolderexist" />
+      <Variable x:TypeArguments="x:Boolean" Name="boolmagzinemanifestfolderexist" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1371,379" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_pubcode]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("PUBCODE").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_c]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("C").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[varp]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("P").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_compilefile]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("COMPILEFILEPATH").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_repcode]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("REPCODE").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_mcode]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("MCODE").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_e]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("EST").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_repcode]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("REPCODE").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[var_filename]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("FILENAME").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[currentdate]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:PathExists DisplayName="Path Exists" Exists="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="1371,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_folderpath+&quot;\newspapermanifest\&quot;+currentdate]" PathType="File" />
+    <If Condition="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="1371,319" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,171" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_folderpath+&quot;\newspapermanifest\&quot;+currentdate]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:PathExists DisplayName="Path Exists" Exists="[boolmagzinemanifestfolderexist]" sap:VirtualizedContainerService.HintSize="1371,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_folderpath+&quot;\magzinemanifest\&quot;+currentdate]" PathType="File" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1371,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_folderpath]" />
+    <If Condition="[boolmagzinemanifestfolderexist]" sap:VirtualizedContainerService.HintSize="1371,319" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,171" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[in_folderpath+&quot;\magzinemanifest\&quot;+currentdate]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[var_mcode.ToLower.Contains(&quot;n&quot;)]" sap:VirtualizedContainerService.HintSize="1371,941" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="663,793" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Boolean" Name="varfailtostamp" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;'Dim Top as Integer = 100&#xA;Dim watermarkC As String =Watermarkclientcode&#xA;Dim watermarkP As String = Watermarkproductcode&#xA;Dim watermarkE As String = WatermarkEST&#xA;Dim watermarkM As String = WatermarkMediacode&#xA;Dim watermarkpub As String = Watermarkpubcode&#xA;Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = watermarkC+watermarkP+watermarkE+watermarkM&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;gfx.DrawString(watermarkC,font,brush,New PdfSharp.Drawing.XPoint(170,3),format)&#xA;gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(200,3),format)&#xA;gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(240,3),format)&#xA;gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(280,3),format)&#xA;gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(330,3),format)&#xA;gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(425,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch&#xA;arg_failtostamp = True&#xA;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;'Dim sw As StreamWriter&#xA;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="621,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="OutputPdfFilePath">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_folderpath+&quot;newspapermanifest\&quot;+currentdate+&quot;\&quot;+var_filename" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InputPdfFilePath">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_compilefile" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WatermarkClientcode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C: &quot;+var_c" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Watermarkproductcode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;P: &quot;+varp" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WatermarkEST">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;E: &quot;+var_e" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WatermarkMediacode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;M: &quot;+var_mcode" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Watermarkpubcode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Pub: &quot;+var_pubcode" />
+              </InArgument>
+              <InOutArgument x:TypeArguments="x:Boolean" x:Key="arg_failtostamp">
+                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="varfailtostamp" />
+              </InOutArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="count" />
+              <InArgument x:TypeArguments="x:String" x:Key="Watermarkmos">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Rep Code: &quot;+var_repcode" />
+              </InArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+          <If Condition="[varfailtostamp = True]" sap:VirtualizedContainerService.HintSize="621,497" sap2010:WorkflowViewState.IdRef="If_4">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="476,349" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_folderpath+&quot;newspapermanifest\&quot;+currentdate+&quot;\&quot;+var_filename]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="[var_compilefile]" />
+                <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[varfailtostamp]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+          </If>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="663,793" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Boolean" Name="varfailtostamp" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;'Dim Top as Integer = 100&#xA;Dim watermarkC As String =Watermarkclientcode&#xA;Dim watermarkP As String = Watermarkproductcode&#xA;Dim watermarkE As String = WatermarkEST&#xA;Dim watermarkM As String = WatermarkMediacode&#xA;Dim watermarkpub As String = Watermarkpubcode&#xA;Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = watermarkC+watermarkP+watermarkE+watermarkM&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;gfx.DrawString(watermarkC,font,brush,New PdfSharp.Drawing.XPoint(170,3),format)&#xA;gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(200,3),format)&#xA;gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(240,3),format)&#xA;gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(280,3),format)&#xA;gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(330,3),format)&#xA;gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(425,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch&#xA;arg_failtostamp = True&#xA;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;'Dim sw As StreamWriter&#xA;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="621,164" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="OutputPdfFilePath">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_folderpath+&quot;magzinemanifest\&quot;+currentdate+&quot;\&quot;+var_filename" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InputPdfFilePath">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_compilefile" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WatermarkClientcode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C: &quot;+var_c" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Watermarkproductcode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;P: &quot;+varp" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WatermarkEST">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;E: &quot;+var_e" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="WatermarkMediacode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;M: &quot;+var_mcode" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Watermarkpubcode">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Pub: &quot;+var_pubcode" />
+              </InArgument>
+              <InOutArgument x:TypeArguments="x:Boolean" x:Key="arg_failtostamp">
+                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="varfailtostamp" />
+              </InOutArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="count" />
+              <InArgument x:TypeArguments="x:String" x:Key="Watermarkmos">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;Rep Code: &quot;+var_repcode" />
+              </InArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+          <If Condition="[varfailtostamp = True]" sap:VirtualizedContainerService.HintSize="621,497" sap2010:WorkflowViewState.IdRef="If_5">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="476,349" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_folderpath+&quot;magzinemanifest\&quot;+currentdate+&quot;\&quot;+var_filename]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="False" Path="[var_compilefile]" />
+                <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Boolean">[varfailtostamp]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:AppendLine DisplayName="Append Line" FileName="C:\Users\NTMGRM.RPA1\Desktop\Performer data.txt" sap:VirtualizedContainerService.HintSize="1371,132" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[in_folderpath+&quot;newspapermanifest\&quot;+currentdate+&quot;\&quot;+var_filename+&quot;,&quot;+var_filename+Environment.NewLine]" UseDefaultEncoding="False" />
+  </Sequence>
+</Activity>

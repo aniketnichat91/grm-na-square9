@@ -1,0 +1,188 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_processtrans" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_dbc" Type="InArgument(ui:DatabaseConnection)" />
+  </x:Members>
+  <this:Process.in_processtrans>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Process.in_processtrans>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1178,986</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Database</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="376,921" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="var_outpdffilepath" />
+      <Variable x:TypeArguments="x:String" Name="strExactFileNameForQueue" />
+      <Variable x:TypeArguments="x:String" Name="varonlyfilename" />
+      <Variable x:TypeArguments="x:String" Name="var_compilefilepath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="334,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will download pdf attachments from SP" DisplayName="Invoke Download attachment from SP workflow" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Download attachment from SP.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtdb" />
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_transnumber">[in_processtrans]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_downloadfilepath">[in_Config("PDF_Download_Path").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_downloadpdfpath">[var_outpdffilepath]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spfilelocation">[in_TransactionItem("Log_SP_FilePath").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spurl">[in_Config("SPURL").ToString.Trim]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will compile all pdf attachments into one file " DisplayName="Invoke Compile pdf workflow" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Compile pdf.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_folderpath">[var_outpdffilepath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">[in_Config("PDF_Download_Path").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">[var_compilefilepath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">[varonlyfilename]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strExactFileName">[strExactFileNameForQueue]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_trans">[in_processtrans]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will validate, transform and add data into queue and DB" DisplayName="Invoke Add data to queue workflow" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Tests\Add data to queue.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_c">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_C&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_p">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_P&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pname">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Product_Name&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_batch" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_mediacode" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_invoicedate">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Date&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_invoicenumber">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Number&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_est">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_E&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_cname">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Client_Name&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_amount">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Amount&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_repcode" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_month" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_year" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Code&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubname">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Name&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_filepath" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_compilefilepath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_compilefilepath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_onlyfilename">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varonlyfilename" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queuename">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;QUEUE&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbcon">
+          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_dbc" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ID">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_ID&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MOS" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_stamp" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Processed row" />
+  </Sequence>
+</Activity>
