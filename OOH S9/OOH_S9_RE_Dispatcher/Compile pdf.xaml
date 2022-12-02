@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1957,4299</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1957,4409</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_pdf_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -88,12 +88,11 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1967,4134" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1967,4344" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="containscover" />
       <Variable x:TypeArguments="x:Int32" Name="var_coverindex" />
@@ -394,7 +393,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <If Condition="[arr_downloadfolders.Count=1]" sap:VirtualizedContainerService.HintSize="1925,1332" sap2010:WorkflowViewState.IdRef="If_6">
+    <If Condition="[arr_downloadfolders.Count=1]" sap:VirtualizedContainerService.HintSize="1925,1542" sap2010:WorkflowViewState.IdRef="If_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -448,7 +447,7 @@
                         <OutArgument x:TypeArguments="x:String">[out_compilepath]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[in_localfolderpath+"Compilefile\"+System.DateTime.now.ToString("yyyy-MM-dd")+"\"+compilefilename+".pdf"]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[in_localfolderpath+"Compilefile\"+System.DateTime.now.ToString("yyyy-MM-dd")+"\"+compilefilename]</InArgument>
                       </Assign.Value>
                     </Assign>
                     <ui:MoveFile ContinueOnError="{x:Null}" Destination="[out_compilepath]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="False" Path="[arrfile]" />
@@ -460,13 +459,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="1334,1184" sap2010:WorkflowViewState.IdRef="Sequence_25">
+        <Sequence sap:VirtualizedContainerService.HintSize="1334,1394" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[containscover = True]" sap:VirtualizedContainerService.HintSize="1292,1092" sap2010:WorkflowViewState.IdRef="If_8">
+          <If Condition="[containscover = True]" sap:VirtualizedContainerService.HintSize="1292,1302" sap2010:WorkflowViewState.IdRef="If_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -474,7 +473,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="480,944" sap2010:WorkflowViewState.IdRef="Sequence_20">
+              <Sequence sap:VirtualizedContainerService.HintSize="480,1154" sap2010:WorkflowViewState.IdRef="Sequence_20">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -487,7 +486,7 @@
                   <InArgument x:TypeArguments="x:Int32">0</InArgument>
                   <InArgument x:TypeArguments="x:Int32">[arr_downloadfolders.Length]</InArgument>
                 </InvokeMethod>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="438,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="438,261" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_35">
                       <sap:WorkflowViewStateService.ViewState>

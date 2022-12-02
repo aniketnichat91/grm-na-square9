@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1399,4962</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1252,5426</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Validate_Data_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="45">
@@ -58,7 +58,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="41">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Validate_Data" sap:VirtualizedContainerService.HintSize="1409,4897" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Validate_Data" sap:VirtualizedContainerService.HintSize="1119,4881" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="updatemaserlogquery" />
       <Variable x:TypeArguments="x:String" Name="var_c" />
@@ -116,7 +116,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Fetch data from SQL" sap:VirtualizedContainerService.HintSize="1367,4805" sap2010:WorkflowViewState.IdRef="Sequence_13">
+    <Sequence DisplayName="Fetch data from SQL" sap:VirtualizedContainerService.HintSize="1077,4789" sap2010:WorkflowViewState.IdRef="Sequence_13">
       <Sequence.Variables>
         <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbconnect" />
         <Variable x:TypeArguments="x:String" Name="rundate" />
@@ -134,8 +134,8 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Vendor Master File Cred" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="1325,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[var_user]" />
-      <Assign sap:VirtualizedContainerService.HintSize="1325,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Vendor Master File Cred" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="1035,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[var_user]" />
+      <Assign sap:VirtualizedContainerService.HintSize="1035,60" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[rundate]</OutArgument>
         </Assign.To>
@@ -143,7 +143,7 @@
           <InArgument x:TypeArguments="x:String">[System.DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="1325,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+      <Assign sap:VirtualizedContainerService.HintSize="1035,60" sap2010:WorkflowViewState.IdRef="Assign_21">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[var_validatedate]</OutArgument>
         </Assign.To>
@@ -151,7 +151,7 @@
           <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:DatabaseConnect sap2010:Annotation.AnnotationText="Create DB Connection" DatabaseConnection="[dbconnect]" DisplayName="Connect" sap:VirtualizedContainerService.HintSize="1325,90" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=eussqsvgrmusafinance01.database.windows.net;Initial Catalog=eussqdbgrmusaapoohdev01;Persist Security Info=True;User ID=NA_sqlusr_AP_OOH_DEV_01;Password=JFcRxniU2hETyEgCQxM3">
+      <ui:DatabaseConnect sap2010:Annotation.AnnotationText="Create DB Connection" DatabaseConnection="[dbconnect]" DisplayName="Connect" sap:VirtualizedContainerService.HintSize="1035,90" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=eussqsvgrmusafinance01.database.windows.net;Initial Catalog=eussqdbgrmusaapoohdev01;Persist Security Info=True;User ID=NA_sqlusr_AP_OOH_DEV_01;Password=JFcRxniU2hETyEgCQxM3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -160,7 +160,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:DatabaseConnect>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1325,229" sap2010:WorkflowViewState.IdRef="CommentOut_31">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1035,229" sap2010:WorkflowViewState.IdRef="CommentOut_31">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_84">
             <sap:WorkflowViewStateService.ViewState>
@@ -172,27 +172,27 @@
           </Sequence>
         </ui:CommentOut.Body>
       </ui:CommentOut>
-      <Assign sap:VirtualizedContainerService.HintSize="1325,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+      <Assign sap:VirtualizedContainerService.HintSize="1035,60" sap2010:WorkflowViewState.IdRef="Assign_18">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[selectquery]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">["select Log_Publication_Code,log_invoice_number,Log_ID from OOH_Log_Txn where log_id in ( select S9_Log_ID from OOH_S9_Txn where Log_S9_Status like 'On Alex Server')"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["select Log_Publication_Code,log_invoice_number,Log_ID from OOH_Log_Txn where log_id in ( select S9_Log_ID from OOH_S9_Txn where Log_S9_Status like 'On Alex Server') and Log_Invoice_Number not like '%#%'"]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[opquery]" DisplayName="Execute Query" ExistingDbConnection="[dbconnect]" sap:VirtualizedContainerService.HintSize="1325,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[selectquery]">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[opquery]" DisplayName="Execute Query" ExistingDbConnection="[dbconnect]" sap:VirtualizedContainerService.HintSize="1035,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[selectquery]">
         <ui:ExecuteQuery.Parameters>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>
       </ui:ExecuteQuery>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1325,61" sap2010:WorkflowViewState.IdRef="WriteLine_21" Text="[opquery.Rows.Count.ToString]" />
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[opquery]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1325,3723" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1035,61" sap2010:WorkflowViewState.IdRef="WriteLine_21" Text="[opquery.Rows.Count.ToString]" />
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[opquery]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1035,3707" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1291,3603" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1001,3587" sap2010:WorkflowViewState.IdRef="Sequence_12">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="varpub_code" />
                 <Variable x:TypeArguments="x:String" Name="var_invnum" />
@@ -214,9 +214,9 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_10">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,158" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="346,158" sap2010:WorkflowViewState.IdRef="Sequence_27">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -263,7 +263,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_25">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_25">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="346,158" sap2010:WorkflowViewState.IdRef="Sequence_75">
                     <sap:WorkflowViewStateService.ViewState>
@@ -336,7 +336,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <Assign sap:VirtualizedContainerService.HintSize="1249,60" sap2010:WorkflowViewState.IdRef="Assign_74">
+              <Assign sap:VirtualizedContainerService.HintSize="959,60" sap2010:WorkflowViewState.IdRef="Assign_74">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[var_vendorcode]</OutArgument>
                 </Assign.To>
@@ -344,7 +344,7 @@
                   <InArgument x:TypeArguments="x:String">[CurrentRow("Log_Publication_Code").ToString.Trim]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="1249,60" sap2010:WorkflowViewState.IdRef="Assign_75">
+              <Assign sap:VirtualizedContainerService.HintSize="959,60" sap2010:WorkflowViewState.IdRef="Assign_75">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[var_invnum]</OutArgument>
                 </Assign.To>
@@ -352,7 +352,7 @@
                   <InArgument x:TypeArguments="x:String">[CurrentRow("log_invoice_number").ToString.Trim]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="1249,60" sap2010:WorkflowViewState.IdRef="Assign_76">
+              <Assign sap:VirtualizedContainerService.HintSize="959,60" sap2010:WorkflowViewState.IdRef="Assign_76">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[var_logid]</OutArgument>
                 </Assign.To>
@@ -360,9 +360,9 @@
                   <InArgument x:TypeArguments="x:String">[CurrentRow("Log_ID").ToString.Trim]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,503" sap2010:WorkflowViewState.IdRef="CommentOut_32">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_32">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,425" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="478,843" sap2010:WorkflowViewState.IdRef="Sequence_85">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -448,14 +448,14 @@
                 </ui:CommentOut.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <g:GetLicense DisplayName="Get license" sap:VirtualizedContainerService.HintSize="1249,22" sap2010:WorkflowViewState.IdRef="GetLicense_1" Result="[responcejson]" StatusCode="[varstatuscode]" defaultWebPath="https://groupm.mysquare9.com/square9api/api/licenses?format={json|xml}" password="[in_password]" username="[in_username]" />
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1249,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Here Import Ge License" />
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <g:GetLicense DisplayName="Get license" sap:VirtualizedContainerService.HintSize="959,22" sap2010:WorkflowViewState.IdRef="GetLicense_1" Result="[responcejson]" StatusCode="[varstatuscode]" defaultWebPath="https://groupm.mysquare9.com/square9api/api/licenses?format={json|xml}" password="[in_password]" username="[in_username]" />
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="959,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Here Import Ge License" />
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
@@ -489,8 +489,8 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1249,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[responcejson]" />
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="959,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[responcejson]" />
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,353" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
@@ -524,7 +524,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <Sequence sap:VirtualizedContainerService.HintSize="1249,1767" sap2010:WorkflowViewState.IdRef="Sequence_73">
+              <Sequence sap:VirtualizedContainerService.HintSize="959,2203" sap2010:WorkflowViewState.IdRef="Sequence_73">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="updatebrodcastalltable" />
                   <Variable x:TypeArguments="s:String[]" Default="[{&quot;steven.mandell@groupm.com&quot;,&quot;claire.tilelli@groupm.com&quot;}]" Name="arrccid" />
@@ -535,7 +535,11 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap:VirtualizedContainerService.HintSize="1207,1083" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                <Sequence sap:VirtualizedContainerService.HintSize="917,1519" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="varHeaders" />
+                    <Variable x:TypeArguments="x:String" Name="varJsonResponse" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -550,6 +554,52 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </g:GetSecureId>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="875,396" sap2010:WorkflowViewState.IdRef="CommentOut_33">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,318" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" ResourcePath="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" AcceptFormat="JSON" BodyFormat="application/xml" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="Get Secure Id" EndPoint="[&quot;https://groupm.mysquare9.com/square9api/api/dbs/1/searches/154?token=&quot;+responcejson+&quot;&amp;format=json&quot;]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" Password="[in_password]" ResponseHeaders="[varHeaders]" Result="[varJsonResponse]" StatusCode="[varstatuscode]" TimeoutMS="6000" Username="[in_username]">
+                          <ui:HttpClient.Attachments>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                          </ui:HttpClient.Attachments>
+                          <ui:HttpClient.Cookies>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                          </ui:HttpClient.Cookies>
+                          <ui:HttpClient.Headers>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                          </ui:HttpClient.Headers>
+                          <ui:HttpClient.Parameters>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                          </ui:HttpClient.Parameters>
+                          <ui:HttpClient.UrlSegments>
+                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                          </ui:HttpClient.UrlSegments>
+                        </ui:HttpClient>
+                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="varJsonResponse = varJsonResponse.Substring(1,varJsonResponse.Length-2);&#xA;var objects = Newtonsoft.Json.Linq.JObject.Parse(varJsonResponse);&#xA;varSecureId = objects[&quot;Hash&quot;].ToString();&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+                          <ui:InvokeCode.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="varJsonResponse">[varJsonResponse]</InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="varSecureId">[hashop]</OutArgument>
+                          </ui:InvokeCode.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeCode>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
                   <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="875,61" sap2010:WorkflowViewState.IdRef="WriteLine_19" Text="Here import Get Secure ID" />
                   <g:GetDocumentStatusAP DisplayName="Get document status AP" sap:VirtualizedContainerService.HintSize="875,22" sap2010:WorkflowViewState.IdRef="GetDocumentStatusAP_1" Result="[vardocument]" StatusCode="[varstatuscode]" archiveId="154" clientCodeSearchId="[Nothing]" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" invoiceDateSearchId="[Nothing]" invoiceMonthSearchId="[Nothing]" invoiceNumber="[var_invnum]" invoiceNumberSearchId="5220" invoiceYearSearchId="[Nothing]" jobNumberSearchId="[Nothing]" license="[responcejson]" password="[in_password]" productCodeSearchId="[Nothing]" searchId="154" secureId="[hashop]" username="[in_username]" vendorCode="[var_vendorcode]" vendorCodeSearchId="5219">
                     <g:GetDocumentStatusAP.clientCode>
@@ -639,7 +689,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_30">
                             <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,143" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_83">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -759,7 +809,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1207,51" sap2010:WorkflowViewState.IdRef="CommentOut_22">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="917,51" sap2010:WorkflowViewState.IdRef="CommentOut_22">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="529,506" sap2010:WorkflowViewState.IdRef="Sequence_71">
                       <sap:WorkflowViewStateService.ViewState>
@@ -924,7 +974,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1207,51" sap2010:WorkflowViewState.IdRef="CommentOut_23">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="917,51" sap2010:WorkflowViewState.IdRef="CommentOut_23">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_72">
                       <sap:WorkflowViewStateService.ViewState>
@@ -949,7 +999,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <Assign sap:VirtualizedContainerService.HintSize="1207,60" sap2010:WorkflowViewState.IdRef="Assign_72">
+                <Assign sap:VirtualizedContainerService.HintSize="917,60" sap2010:WorkflowViewState.IdRef="Assign_72">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[updatequery]</OutArgument>
                   </Assign.To>
@@ -957,7 +1007,7 @@
                     <InArgument x:TypeArguments="x:String">["Update OOH_S9_Txn set Log_S9_Status = '"+vardocument+"' where S9_Log_ID = '"+var_logid+"'"]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1207,51" sap2010:WorkflowViewState.IdRef="CommentOut_27">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="917,51" sap2010:WorkflowViewState.IdRef="CommentOut_27">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,280" sap2010:WorkflowViewState.IdRef="Sequence_77">
                       <sap:WorkflowViewStateService.ViewState>
@@ -987,14 +1037,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[dbconnect]" sap:VirtualizedContainerService.HintSize="1207,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_12" Sql="[updatequery]">
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[dbconnect]" sap:VirtualizedContainerService.HintSize="917,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_12" Sql="[updatequery]">
                   <ui:ExecuteQuery.Parameters>
                     <scg:Dictionary x:TypeArguments="x:String, Argument" />
                   </ui:ExecuteQuery.Parameters>
                 </ui:ExecuteQuery>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1207,51" sap2010:WorkflowViewState.IdRef="CommentOut_28">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="917,51" sap2010:WorkflowViewState.IdRef="CommentOut_28">
                   <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_80">
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,143" sap2010:WorkflowViewState.IdRef="Sequence_80">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1018,7 +1068,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
               </Sequence>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_24">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_24">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="3965,4120" sap2010:WorkflowViewState.IdRef="Sequence_74">
                     <sap:WorkflowViewStateService.ViewState>
@@ -2470,7 +2520,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_21">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_21">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="272,153" sap2010:WorkflowViewState.IdRef="Sequence_64">
                     <sap:WorkflowViewStateService.ViewState>
@@ -2488,7 +2538,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="959,51" sap2010:WorkflowViewState.IdRef="CommentOut_6">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,443" sap2010:WorkflowViewState.IdRef="Sequence_11">
                     <sap:WorkflowViewStateService.ViewState>
