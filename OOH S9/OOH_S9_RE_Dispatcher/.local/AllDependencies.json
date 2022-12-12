@@ -5711,8 +5711,8 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "OOH_S9_NR_RE_Dispatcher",
-      "projectName": "OOH_S9_NR_RE_Dispatcher",
+      "projectUniqueName": "OOH_S9_RE_Dispatcher",
+      "projectName": "OOH_S9_RE_Dispatcher",
       "projectPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\OOH_S9\\OOH_S9_RE_Dispatcher\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\OOH_S9\\OOH_S9_RE_Dispatcher\\.local"

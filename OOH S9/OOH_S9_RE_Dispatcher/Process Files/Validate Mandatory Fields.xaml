@@ -24,7 +24,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,2467</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>771,3673</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Validate_Mandatory_Fields_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -121,6 +121,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -128,7 +129,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Validate_Mandatory_Fields" sap:VirtualizedContainerService.HintSize="526,2362" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Validate_Mandatory_Fields" sap:VirtualizedContainerService.HintSize="781,3608" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="errorlist" />
       <Variable x:TypeArguments="x:String" Name="logdate" />
@@ -141,8 +142,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Validation Started For Invoice# : &quot;+in_inv_num]" />
-    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_39">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="739,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Validation Started For Invoice# : &quot;+in_inv_num]" />
+    <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_39">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[logdate]</OutArgument>
       </Assign.To>
@@ -150,7 +151,7 @@
         <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+    <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_37">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[errorlist]</OutArgument>
       </Assign.To>
@@ -158,8 +159,8 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[new List(Of String)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="484,93" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Validations Added: Is field Null or whiteSpace or FFM, If satisfy above conditions trigger mail to FA" />
-    <If Condition="[string.IsNullOrWhiteSpace(io_pdf_Date) or io_pdf_Date.Contains(&quot;FFM&quot;)]" DisplayName="Validate- PDF Date" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_17">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="739,93" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Validations Added: Is field Null or whiteSpace or FFM, If satisfy above conditions trigger mail to FA" />
+    <If Condition="[string.IsNullOrWhiteSpace(io_pdf_Date) or io_pdf_Date.Contains(&quot;FFM&quot;)]" DisplayName="Validate- PDF Date" sap:VirtualizedContainerService.HintSize="739,51" sap2010:WorkflowViewState.IdRef="If_17">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -212,7 +213,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <Sequence DisplayName="Validate- Invoice Number" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_25">
+    <Sequence DisplayName="Validate- Invoice Number" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_25">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -273,14 +274,14 @@
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Validate-MOS" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_34">
+    <Sequence DisplayName="Validate-MOS" sap:VirtualizedContainerService.HintSize="739,1024" sap2010:WorkflowViewState.IdRef="Sequence_34">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[string.IsNullOrWhiteSpace(in_MOS) or in_MOS.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="697,933" sap2010:WorkflowViewState.IdRef="If_23">
+      <If Condition="[string.IsNullOrWhiteSpace(in_MOS) or in_MOS.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="697,932" sap2010:WorkflowViewState.IdRef="If_23">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -288,25 +289,25 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="552,785" sap2010:WorkflowViewState.IdRef="Sequence_33">
+          <Sequence sap:VirtualizedContainerService.HintSize="552,784" sap2010:WorkflowViewState.IdRef="Sequence_33">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,631" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_3" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
+            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,630" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_3" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
               <uma:Office365ApplicationScope.Body>
                 <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,545" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,544" sap2010:WorkflowViewState.IdRef="Sequence_52">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of MOS is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" Cc="[arr_CC]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="433.6,352.8" sap2010:WorkflowViewState.IdRef="SendMail_3" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid &quot;]" To="[arr_To]">
+                    <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of MOS is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" Cc="[arr_CC]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_3" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid &quot;]" To="[arr_To]">
                       <umam:SendMail.Attachments>
                         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                       </umam:SendMail.Attachments>
@@ -334,14 +335,14 @@
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Validate-PDF Amount" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_36">
+    <Sequence DisplayName="Validate-PDF Amount" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_36">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[string.IsNullOrWhiteSpace(in_PDF_Amount) or in_PDF_Amount.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="696,934" sap2010:WorkflowViewState.IdRef="If_24">
+      <If Condition="[string.IsNullOrWhiteSpace(in_PDF_Amount) or in_PDF_Amount.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="697,932" sap2010:WorkflowViewState.IdRef="If_24">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -349,25 +350,25 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="551,786" sap2010:WorkflowViewState.IdRef="Sequence_35">
+          <Sequence sap:VirtualizedContainerService.HintSize="552,784" sap2010:WorkflowViewState.IdRef="Sequence_35">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="508.8,632" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_4" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
+            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,630" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_4" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
               <uma:Office365ApplicationScope.Body>
                 <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,545.6" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,544" sap2010:WorkflowViewState.IdRef="Sequence_54">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of PDF Amount is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" Cc="[arr_CC]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="433.6,352.8" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  PDF_Amount is blank or not valid &quot;]" To="[arr_To]">
+                    <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of PDF Amount is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" Cc="[arr_CC]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  PDF_Amount is blank or not valid &quot;]" To="[arr_To]">
                       <umam:SendMail.Attachments>
                         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                       </umam:SendMail.Attachments>
@@ -395,14 +396,14 @@
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Validate-Client Code" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_28">
+    <Sequence DisplayName="Validate-Client Code" sap:VirtualizedContainerService.HintSize="526,354" sap2010:WorkflowViewState.IdRef="Sequence_28">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[string.IsNullOrWhiteSpace(in_C) or in_C.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="483.2,264.8" sap2010:WorkflowViewState.IdRef="If_19">
+      <If Condition="[string.IsNullOrWhiteSpace(in_C) or in_C.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="484,262" sap2010:WorkflowViewState.IdRef="If_19">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -410,18 +411,18 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="241.6,115.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
+          <Sequence sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_26">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <AddToCollection x:TypeArguments="x:String" Collection="[errorlist]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="C_Code" />
+            <AddToCollection x:TypeArguments="x:String" Collection="[errorlist]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="C_Code" />
           </Sequence>
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Validate-Product Code" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_30">
+    <Sequence DisplayName="Validate-Product Code" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_30">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -447,7 +448,7 @@
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Validate-E number" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_32">
+    <Sequence DisplayName="Validate-E number" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_32">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -473,8 +474,8 @@
         </If.Then>
       </If>
     </Sequence>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="Comment_1" Text="For Client Name and Product Name, we use C code and P code respectively to pull data from OOH PAID MASTER and OOH UNPAID REF tables" />
-    <Sequence DisplayName="Set and Validate- Client Name" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_60">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="739,112" sap2010:WorkflowViewState.IdRef="Comment_1" Text="For Client Name and Product Name, we use C code and P code respectively to pull data from OOH PAID MASTER and OOH UNPAID REF tables" />
+    <Sequence DisplayName="Set and Validate- Client Name" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_60">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="varclientname" />
         <Variable x:TypeArguments="sd:DataTable" Name="clientnamedt" />
@@ -719,7 +720,7 @@
         </If>
       </Sequence>
     </Sequence>
-    <Sequence DisplayName="Set and Validate Product Name" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_90">
+    <Sequence DisplayName="Set and Validate Product Name" sap:VirtualizedContainerService.HintSize="376,534" sap2010:WorkflowViewState.IdRef="Sequence_90">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="varclientname" />
         <Variable x:TypeArguments="sd:DataTable" Name="clientnamedt" />
@@ -745,7 +746,7 @@
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>
       </ui:ExecuteQuery>
-      <If sap2010:Annotation.AnnotationText="If Product Name Not Found in OOH Paid Master, check In OOH Unpaid Ref" Condition="[dt_ProductName.Rows.Count&gt;0]" sap:VirtualizedContainerService.HintSize="334,108" sap2010:WorkflowViewState.IdRef="If_38">
+      <If sap2010:Annotation.AnnotationText="If Product Name Not Found in OOH Paid Master, check In OOH Unpaid Ref" Condition="[dt_ProductName.Rows.Count&gt;0]" sap:VirtualizedContainerService.HintSize="487,322" sap2010:WorkflowViewState.IdRef="If_38">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -827,14 +828,14 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_86">
+          <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="960,868" sap2010:WorkflowViewState.IdRef="Sequence_86">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_71">
+            <Assign sap:VirtualizedContainerService.HintSize="918,60" sap2010:WorkflowViewState.IdRef="Assign_71">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[var_productName]</OutArgument>
               </Assign.To>
@@ -842,16 +843,16 @@
                 <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select Distinct Paid_Master_Product_Name as Product_Name from  OOH_Paid_Master Where Paid_Master_Product_Code Like '"+in_P+"' and Paid_Master_Product_Name not like '' and Paid_Master_Product_Name is not NULL UNION Select Distinct Unpaid_Ref_Product_Name as Product_Name from OOH_Unpaid_Ref where Unpaid_Ref_Product_Code like '"+in_P+"' and Unpaid_Ref_Product_Name not like '' and Unpaid_Ref_Product_Name is not NULL"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_ProductName]" DisplayName="Execute Query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_6" Sql="[var_productName]">
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_ProductName]" DisplayName="Execute Query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="918,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_6" Sql="[var_productName]">
               <ui:ExecuteQuery.Parameters>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:ExecuteQuery.Parameters>
             </ui:ExecuteQuery>
-            <If Condition="[dt_ProductName.Rows.Count&gt;0]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_37">
+            <If Condition="[dt_ProductName.Rows.Count&gt;0]" sap:VirtualizedContainerService.HintSize="918,548" sap2010:WorkflowViewState.IdRef="If_37">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
@@ -871,7 +872,7 @@
                       <OutArgument x:TypeArguments="x:String">[var_pn]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[clientnamedt(0)("Product_Name").tostring]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[dt_ProductName(0)("Product_Name").tostring]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <If Condition="[var_pn.Contains(&quot;,&quot;)]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_36">
@@ -980,7 +981,7 @@
         </If>
       </Sequence>
     </Sequence>
-    <If sap2010:Annotation.AnnotationText="If Error List Contains an Error then trigger email." Condition="[errorlist.Count&gt;0]" sap:VirtualizedContainerService.HintSize="484,584" sap2010:WorkflowViewState.IdRef="If_27">
+    <If sap2010:Annotation.AnnotationText="If Error List Contains an Error then trigger email." Condition="[errorlist.Count&gt;0]" sap:VirtualizedContainerService.HintSize="739,584" sap2010:WorkflowViewState.IdRef="If_27">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1063,7 +1064,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Validation Finished&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="739,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Validation Finished&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

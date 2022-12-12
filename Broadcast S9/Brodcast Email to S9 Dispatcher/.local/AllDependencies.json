@@ -6784,9 +6784,9 @@
     "restore": {
       "projectUniqueName": "Brodcast Email to S9 Dispatcher",
       "projectName": "Brodcast Email to S9 Dispatcher",
-      "projectPath": "C:\\Users\\NTMGRM.RPA1\\Downloads\\Brodcast Email to S9 Dispatcher_NPAY\\Brodcast Email to S9 Dispatcher\\.local",
+      "projectPath": "C:\\1Files\\UPProjects\\grm-na-square9\\Broadcast S9\\Brodcast Email to S9 Dispatcher\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTMGRM.RPA1\\Downloads\\Brodcast Email to S9 Dispatcher_NPAY\\Brodcast Email to S9 Dispatcher\\.local"
+      "outputPath": "C:\\1Files\\UPProjects\\grm-na-square9\\Broadcast S9\\Brodcast Email to S9 Dispatcher\\.local"
     },
     "frameworks": {
       "net461": {
@@ -6850,22 +6850,8 @@
       "code": "NU3034",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'CsvHelper 15.0.5' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "CsvHelper"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'NETStandard.Library 2.0.0' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "NETStandard.Library"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'MailKit 2.10.0' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "MailKit"
+      "message": "Package 'Syncfusion.Compression.Net.Core 19.4.0.43' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
+      "libraryId": "Syncfusion.Compression.Net.Core"
     },
     {
       "code": "NU3034",
@@ -6878,8 +6864,15 @@
       "code": "NU3034",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Syncfusion.Compression.Net.Core 19.4.0.43' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "Syncfusion.Compression.Net.Core"
+      "message": "Package 'Syncfusion.Pdf.Net.Core 19.4.0.43' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
+      "libraryId": "Syncfusion.Pdf.Net.Core"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NETStandard.Library 2.0.0' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
+      "libraryId": "NETStandard.Library"
     },
     {
       "code": "NU3034",
@@ -6887,13 +6880,6 @@
       "warningLevel": 1,
       "message": "Package 'System.Text.Encoding.CodePages 4.4.0' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
       "libraryId": "System.Text.Encoding.CodePages"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Syncfusion.Pdf.Net.Core 19.4.0.43' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "Syncfusion.Pdf.Net.Core"
     }
   ]
 }

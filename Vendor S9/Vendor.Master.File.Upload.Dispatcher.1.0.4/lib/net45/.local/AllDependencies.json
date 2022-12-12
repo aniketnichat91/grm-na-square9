@@ -6895,9 +6895,9 @@
     "restore": {
       "projectUniqueName": "Vendor Master File Upload  Dispatcher",
       "projectName": "Vendor Master File Upload  Dispatcher",
-      "projectPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Vendor S9\\Vendor.Master.File.Upload.Dispatcher_latest\\Vendor.Master.File.Upload.Dispatcher.1.0.4\\lib\\net45\\.local",
+      "projectPath": "C:\\1Files\\UPProjects\\grm-na-square9\\Vendor S9\\Vendor.Master.File.Upload.Dispatcher.1.0.4\\lib\\net45\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Vendor S9\\Vendor.Master.File.Upload.Dispatcher_latest\\Vendor.Master.File.Upload.Dispatcher.1.0.4\\lib\\net45\\.local"
+      "outputPath": "C:\\1Files\\UPProjects\\grm-na-square9\\Vendor S9\\Vendor.Master.File.Upload.Dispatcher.1.0.4\\lib\\net45\\.local"
     },
     "frameworks": {
       "net461": {
@@ -6950,56 +6950,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json 5.0.2' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
-      "libraryId": "System.Text.Json"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UiPath.System.Activities 21.10.4' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
-      "libraryId": "UiPath.System.Activities"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UiPath 21.10.34.30369' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
-      "libraryId": "UiPath"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Encodings.Web 5.0.1' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "System.Text.Encodings.Web"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Runtime.CompilerServices.Unsafe 5.0.0' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
-      "libraryId": "System.Runtime.CompilerServices.Unsafe"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UiPath.UIAutomation.Activities 21.10.5' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
-      "libraryId": "UiPath.UIAutomation.Activities"
-    },
-    {
-      "code": "NU3034",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'UiPath.Testing.Activities 1.4.6' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
-      "libraryId": "UiPath.Testing.Activities"
-    }
-  ]
+  }
 }
