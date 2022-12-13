@@ -3444,9 +3444,9 @@
     "restore": {
       "projectUniqueName": "Move_Manifest_FilesTo_Server",
       "projectName": "Move_Manifest_FilesTo_Server",
-      "projectPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Broadcast\\Move_FilesTo_Server\\Move_FilesTo_Server\\.local",
+      "projectPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Move_FilesTo_Server\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Broadcast\\Move_FilesTo_Server\\Move_FilesTo_Server\\.local"
+      "outputPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Move_FilesTo_Server\\.local"
     },
     "frameworks": {
       "net461": {

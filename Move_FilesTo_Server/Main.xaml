@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1178,559" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="807,775" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -71,14 +71,17 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Move Manifest to Server workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Move Manifest to Server.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_movefilepath">
-          <Literal x:TypeArguments="x:String">C:\Users\NTMGRM.RPA1\Documents\UPProjects\Broadcast\Brodcast to S9 data\</Literal>
+        <InArgument x:TypeArguments="x:String" x:Key="BroadcastFilePath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;BroadcastFilesPath&quot;).ToString" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointPass&quot;).ToString.Trim" />
+        <InArgument x:TypeArguments="x:String" x:Key="PrintFilePath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;PrintFilePath&quot;).ToString" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointUser&quot;).ToString.Trim" />
+        <InArgument x:TypeArguments="x:String" x:Key="OOHFilePath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OOHFilePath&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="VendorFilePath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;VendorFilePath&quot;).ToString" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
