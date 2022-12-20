@@ -26,6 +26,7 @@
     <x:Property Name="in_SpUsername" Type="InArgument(x:String)" />
     <x:Property Name="in_SpPassword" Type="InArgument(x:String)" />
     <x:Property Name="in_FaEmailAddress" Type="InArgument(x:String)" />
+    <x:Property Name="in_StampComment" Type="InArgument(x:String)" />
   </x:Members>
   <this:Add_data_to_queue.in_dbcon>
     <InArgument x:TypeArguments="ui:DatabaseConnection" />
@@ -89,7 +90,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="76">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -593,7 +594,7 @@
         <AddToCollection x:TypeArguments="x:String" Collection="[errorlist]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_11" Item="Amount" />
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence-Formatting Amount" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Sequence-Formatting Amount" sap:VirtualizedContainerService.HintSize="549,537" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="vardecamount" />
           </Sequence.Variables>
@@ -851,29 +852,70 @@
       </Sequence>
       <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_queuename]">
         <ui:AddQueueItem.ItemInformation>
-          <InArgument x:TypeArguments="x:String" x:Key="PUBCODE">[in_pubcode]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="INVOICEDATE">[in_invoicedate]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="INVOICENUMBER">[in_invoicenumber]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="EST">[in_est]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="CNAME">[in_cname]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="PNAME">[in_pname]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="C">[in_c]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="P">[in_p]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="AMOUNT">[in_amount]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="MONTH">[in_month]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="YEAR">[in_year]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="PUBNAME">[in_pubname]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="BATCH">[in_batch]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="CODE">[String.Empty]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="FILEPATH">[in_filepath]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="COMPILEFILEPATH">[in_compilefilepath]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="FILENAME">[in_onlyfilename]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="STAMP">[in_stamp]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="S9_LOG_ID">[in_ID]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="PUBCODE">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pubcode" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="INVOICEDATE">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_invoicedate" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="INVOICENUMBER">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_invoicenumber" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="EST">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_est" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="CNAME">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_cname" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="PNAME">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pname" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="C">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_c" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="P">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_p" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="AMOUNT">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_amount" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="MONTH">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_month" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="YEAR">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_year" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="PUBNAME">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pubname" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="BATCH">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_batch" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="CODE">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Empty" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="FILEPATH">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_filepath" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="COMPILEFILEPATH">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_compilefilepath" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="FILENAME">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_onlyfilename" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="STAMP">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_stamp" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="S9_LOG_ID">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ID" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="STAMPCOMMENT">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StampComment.Trim" />
+          </InArgument>
         </ui:AddQueueItem.ItemInformation>
       </ui:AddQueueItem>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="376,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Data Added to Queue: &quot;+in_onlyfilename]" />
-      <Sequence sap2010:Annotation.AnnotationText="Insert the data in OOH S9 TXN table, Flag as Initial&#xD;&#xA;I = Intial&#xD;&#xA;C= Change from FAI &#xD;&#xA;E= Error " DisplayName="Sequence-Retry Count And Insert into OOH S9 TXN" sap:VirtualizedContainerService.HintSize="376,580" sap2010:WorkflowViewState.IdRef="Sequence_67">
+      <Sequence sap2010:Annotation.AnnotationText="Insert the data in OOH S9 TXN table, Flag as Initial&#xA;I = Intial&#xA;C= Change from FAI &#xA;E= Error " DisplayName="Sequence-Retry Count And Insert into OOH S9 TXN" sap:VirtualizedContainerService.HintSize="376,580" sap2010:WorkflowViewState.IdRef="Sequence_67">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Name="dt_S9Rety" />
           <Variable x:TypeArguments="x:String" Name="str_RetryCount" />

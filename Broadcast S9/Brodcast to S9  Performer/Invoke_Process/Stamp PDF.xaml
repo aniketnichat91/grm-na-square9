@@ -1535,15 +1535,15 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3288,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3326,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="989,158" sap2010:WorkflowViewState.IdRef="Sequence_36">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="330,158" sap2010:WorkflowViewState.IdRef="Sequence_36">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Send email to FA if process is not able to stamp any of the pdf" sap:VirtualizedContainerService.HintSize="288,66" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence DisplayName="Send email to FA if process is not able to stamp any of the pdf" sap:VirtualizedContainerService.HintSize="1086,775" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="strpagecount" />
               </Sequence.Variables>
@@ -1553,7 +1553,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[var_failtostamp = True]" sap:VirtualizedContainerService.HintSize="905,715" sap2010:WorkflowViewState.IdRef="If_12">
+              <If Condition="[var_failtostamp = True]" sap:VirtualizedContainerService.HintSize="1044,683" sap2010:WorkflowViewState.IdRef="If_12">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1561,22 +1561,33 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="376,365" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <Sequence sap:VirtualizedContainerService.HintSize="478,535" sap2010:WorkflowViewState.IdRef="Sequence_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbexistigconnnection]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;delete from&quot; +in_tablename+ &quot; where invoice_date = '&quot; +var_PDF_Invoice_Date+&quot;' and invoice_num = '&quot;+var_Invoice_Num+&quot;' and media_type = '&quot;+var_MediaLookUp+&quot;' and client_code = '&quot;+var_C+&quot;' and pdf_MOS = '&quot;+var_MOS+&quot;' and publication_code = '&quot;+var_PUBLICATON_CODE+&quot;' &quot;]">
+                    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbexistigconnnection]" sap:VirtualizedContainerService.HintSize="436,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;delete from&quot; +in_tablename+ &quot; where invoice_date = '&quot; +var_PDF_Invoice_Date+&quot;' and invoice_num = '&quot;+var_Invoice_Num+&quot;' and media_type = '&quot;+var_MediaLookUp+&quot;' and client_code = '&quot;+var_C+&quot;' and pdf_MOS = '&quot;+var_MOS+&quot;' and publication_code = '&quot;+var_PUBLICATON_CODE+&quot;' &quot;]">
                       <ui:ExecuteQuery.Parameters>
                         <scg:Dictionary x:TypeArguments="x:String, Argument" />
                       </ui:ExecuteQuery.Parameters>
                     </ui:ExecuteQuery>
-                    <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[&quot;This invoice &quot;+ var_Doc_Link +&quot; cannot be stamped. This cannot be automatically Tagged or Uploaded to mDocs/Square9.&quot; +Environment.NewLine+&quot;Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="nycgrm.invoicebot@groupm.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendExchangeMail_1" IsBodyHtml="False" IsDraft="False" Password="[in_SPPass]" SaveCopy="False" Subject="[var_Invoice_Num+&quot; Invoice can not be stamped&quot;]" To="skore@cybage.com" User="[in_SPUser]" />
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,315" sap2010:WorkflowViewState.IdRef="CommentOut_17">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" DirectoryId="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[&quot;This invoice &quot;+ var_Doc_Link +&quot; cannot be stamped. This cannot be automatically Tagged or Uploaded to mDocs/Square9.&quot; +Environment.NewLine+&quot;Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Exchange Mail Message" Domain="AD" EmailAutodiscover="nycgrm.invoicebot@groupm.com" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendExchangeMail_1" IsBodyHtml="False" IsDraft="False" Password="[in_SPPass]" SaveCopy="False" Subject="[var_Invoice_Num+&quot; Invoice can not be stamped&quot;]" To="skore@cybage.com" User="[in_SPUser]" />
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <If Condition="[var_pagecount&gt;0]" sap:VirtualizedContainerService.HintSize="484,557" sap2010:WorkflowViewState.IdRef="If_17">
+                  <If Condition="[var_pagecount&gt;0]" sap:VirtualizedContainerService.HintSize="521,528" sap2010:WorkflowViewState.IdRef="If_17">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

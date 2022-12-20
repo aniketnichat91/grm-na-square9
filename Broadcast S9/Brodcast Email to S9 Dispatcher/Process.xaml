@@ -166,10 +166,18 @@
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Compile pdf workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\Compile pdf.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="s:String[]" x:Key="in_arrfilepath" />
-                <InArgument x:TypeArguments="x:String" x:Key="in_downloadfilepath">[var_pdffilefolderpath]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_compilepath">[in_Config("CompileFilePath").ToString.Trim]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">[varinvoiceflename]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">[varattachmentname]</OutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_downloadfilepath">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_pdffilefolderpath" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_compilepath">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;CompileFilePath&quot;).ToString.Trim" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varinvoiceflename" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varattachmentname" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will exttract all required daa from email body. This data will get added into orchestrator Queue." DisplayName="Invoke Extract Required Data From Mail Body workflow" sap:VirtualizedContainerService.HintSize="379,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\Extract Required Data From Mail Body.xaml">
@@ -232,32 +240,84 @@
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will add extracted data into Queue" DisplayName="Invoke Add data to Queue workflow" sap:VirtualizedContainerService.HintSize="379,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Files to invoke\Add data to Queue.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_QueueName">[in_Config("QueueName").ToString.Trim]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_invnumber">[varopinvnumber]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Clientcode">[varopclientcode]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_productcode">[varopprd]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_est">[varopest]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_reporttype">[var_reporttype]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_station">[varopstation]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_MediaType">[varopmedialookup]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_ClientName">[varclient_name]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Prodname">[varprdname]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Month">[varmonth]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Amount">[varoptotal]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Inv_date">[var_invdate]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_pagecount">[varpagecount.ToString]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_year">[varyear]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_stampfilelocation">[varattachmentname]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_pdfname">[varinvoiceflename]</InArgument>
-                <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbconnnection">[process_dbconnect]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_period">[varopperiod]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">[var_fa_name]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_mediadetails">[varmediadetails]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_manifestpath">[var_reporttype]</InArgument>
-                <InArgument x:TypeArguments="x:Boolean" x:Key="in_isscanned">[varpdfscanned]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_mail_date">[varstrmaildate]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_mailid">[varmailuid]</InArgument>
-                <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_email">[in_TransactionItem]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_QueueName">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;QueueName&quot;).ToString.Trim" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_invnumber">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varopinvnumber" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Clientcode">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varopclientcode" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_productcode">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varopprd" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_est">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varopest" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_reporttype">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_reporttype" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_station">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varopstation" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_MediaType">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varopmedialookup" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ClientName">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varclient_name" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Prodname">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varprdname" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Month">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varmonth" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Amount">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varoptotal" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Inv_date">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_invdate" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_pagecount">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varpagecount.ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_year">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varyear" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_stampfilelocation">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varattachmentname" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_pdfname">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varinvoiceflename" />
+                </InArgument>
+                <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbconnnection">
+                  <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="process_dbconnect" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_period">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varopperiod" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_fa_name" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_mediadetails">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varmediadetails" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_manifestpath">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_reporttype" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="in_isscanned">
+                  <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="varpdfscanned" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_mail_date">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varstrmaildate" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_mailid">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varmailuid" />
+                </InArgument>
+                <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_email">
+                  <mva:VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="in_TransactionItem" />
+                </InArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -299,7 +359,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1412,2184" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1268,2184" sap2010:WorkflowViewState.IdRef="Sequence_42">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="varmail_id" />
                       <Variable x:TypeArguments="x:String" Name="innerlogquery" />
@@ -310,7 +370,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[in_TransactionItem.Sender.Address.ToString.Contains(&quot;brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;lawrence&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Lawrence&quot;)]" sap:VirtualizedContainerService.HintSize="1446,1143" sap2010:WorkflowViewState.IdRef="If_10">
+                    <If Condition="[in_TransactionItem.Sender.Address.ToString.Contains(&quot;brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;lawrence&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Brandon&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Nilsa&quot;) or in_TransactionItem.Sender.Address.ToString.Contains(&quot;Lawrence&quot;)]" sap:VirtualizedContainerService.HintSize="1226,1183" sap2010:WorkflowViewState.IdRef="If_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -318,41 +378,19 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="520,759" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,498" sap2010:WorkflowViewState.IdRef="Sequence_37">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence sap:VirtualizedContainerService.HintSize="478,404" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                          <Sequence sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="Sequence_35">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,221" sap2010:WorkflowViewState.IdRef="CommentOut_30">
-                              <ui:CommentOut.Body>
-                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_48">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <umam:SendMail AttachmentsCollection="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="_nycgrm.apbroadcast@groupm.com" Bcc="[{&quot;skore@cybage.com&quot;}]" Body="[in_TransactionItem.Body.ToString]" Cc="[{&quot;kasia.rusek@groupm.com&quot;}]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[{in_TransactionItem.Sender.Address.ToString}]">
-                                    <umam:SendMail.Attachments>
-                                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                                    </umam:SendMail.Attachments>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </umam:SendMail>
-                                </Sequence>
-                              </ui:CommentOut.Body>
-                            </ui:CommentOut>
-                            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="_nycgrm.apbroadcast@groupm.com" Body="[in_TransactionItem.Body.ToString]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="SendMail_3" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[{&quot;skore@cybage.com&quot;}]">
+                            <umam:SendMail AttachmentsCollection="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="_nycgrm.apbroadcast@groupm.com" Bcc="[{&quot;skore@cybage.com&quot;}]" Body="[in_TransactionItem.Body.ToString]" Cc="[{&quot;kasia.rusek@groupm.com&quot;}]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[{in_TransactionItem.Sender.Address.ToString}]">
                               <umam:SendMail.Attachments>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </umam:SendMail.Attachments>
@@ -430,46 +468,24 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
-                                <Sequence sap:VirtualizedContainerService.HintSize="478,576" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                                <Sequence sap:VirtualizedContainerService.HintSize="476,614" sap2010:WorkflowViewState.IdRef="Sequence_45">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,221" sap2010:WorkflowViewState.IdRef="CommentOut_31">
-                                    <ui:CommentOut.Body>
-                                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_49">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <umam:SendMail AttachmentsCollection="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="_nycgrm.apbroadcast@groupm.com" Bcc="[{&quot;skore@cybage.com&quot;}]" Body="[in_TransactionItem.Body.ToString]" Cc="[{&quot;dawn.romano@groupm.com&quot;}]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendMail_2" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[{in_TransactionItem.Sender.Address.ToString}]">
-                                          <umam:SendMail.Attachments>
-                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                                          </umam:SendMail.Attachments>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </umam:SendMail>
-                                      </Sequence>
-                                    </ui:CommentOut.Body>
-                                  </ui:CommentOut>
-                                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="_nycgrm.apbroadcast@groupm.com" Body="[in_TransactionItem.Body.ToString]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[{&quot;skore@cybage.com&quot;}]">
+                                  <umam:SendMail AttachmentsCollection="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="_nycgrm.apbroadcast@groupm.com" Bcc="[{&quot;skore@cybage.com&quot;}]" Body="[in_TransactionItem.Body.ToString]" Cc="[{&quot;dawn.romano@groupm.com&quot;}]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,350" sap2010:WorkflowViewState.IdRef="SendMail_2" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[&quot;Mail &quot;+in_TransactionItem.Subject.ToString+&quot; does not have any pdf attachment. Please resend a fresh mail with attachment and email body&quot;]" To="[{in_TransactionItem.Sender.Address.ToString}]">
                                     <umam:SendMail.Attachments>
                                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                     </umam:SendMail.Attachments>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </umam:SendMail>
-                                  <umam:MoveMail Account="_nycgrm.apbroadcast@groupm.com" DestinationFolderName="No Attachment" DisplayName="Move Mail" sap:VirtualizedContainerService.HintSize="436,132" sap2010:WorkflowViewState.IdRef="MoveMail_1" Message="[CType( in_TransactionItem,Office365Message)]" />
+                                  <umam:MoveMail Account="_nycgrm.apbroadcast@groupm.com" DestinationFolderName="No Attachment" DisplayName="Move Mail" sap:VirtualizedContainerService.HintSize="434,132" sap2010:WorkflowViewState.IdRef="MoveMail_1" Message="[CType( in_TransactionItem,Office365Message)]" />
                                 </Sequence>
                               </If.Then>
                               <If.Else>

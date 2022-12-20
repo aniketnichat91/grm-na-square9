@@ -7,7 +7,7 @@
     "UiPath.Database.Activities": "[1.4.0]",
     "UiPath.Excel.Activities": "[2.10.4]",
     "UiPath.Mail.Activities": "[1.12.2]",
-    "UiPath.MicrosoftOffice365.Activities": "[1.9.0]",
+    "UiPath.MicrosoftOffice365.Activities": "[1.14.1]",
     "UiPath.PDF.Activities": "[3.4.0]",
     "UiPath.System.Activities": "[21.4.1]",
     "UiPath.UIAutomation.Activities": "[21.4.4]",
@@ -18,7 +18,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.4.4.0",
-  "projectVersion": "2022.8.16",
+  "projectVersion": "2022.12.20",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,

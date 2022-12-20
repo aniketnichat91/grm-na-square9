@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1286,3320</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1286,3360</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_pdf_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -70,11 +70,11 @@
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1296,3255" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -175,7 +175,7 @@
                         <InArgument x:TypeArguments="x:String">[path.GetFileNameWithoutExtension(fileitem)]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <If Condition="[tempcompilefilename.Length&gt;40]" sap:VirtualizedContainerService.HintSize="549,300" sap2010:WorkflowViewState.IdRef="If_4">
+                    <If Condition="[tempcompilefilename.Length&gt;50]" sap:VirtualizedContainerService.HintSize="549,300" sap2010:WorkflowViewState.IdRef="If_4">
                       <If.Then>
                         <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_12">
                           <sap:WorkflowViewStateService.ViewState>
@@ -188,7 +188,7 @@
                               <OutArgument x:TypeArguments="x:String">[tempcompilefilename]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">[Left(tempcompilefilename,40)]</InArgument>
+                              <InArgument x:TypeArguments="x:String">[Left(tempcompilefilename,46)]</InArgument>
                             </Assign.Value>
                           </Assign>
                         </Sequence>

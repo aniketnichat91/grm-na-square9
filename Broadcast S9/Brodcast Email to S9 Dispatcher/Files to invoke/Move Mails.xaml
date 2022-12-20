@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1178,721</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1178,761</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Move_Mails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
@@ -121,7 +121,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <umam:MoveMail Account="[out_user]" DestinationFolderName="Processed_27" DisplayName="Move Mail" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="MoveMail_1" Message="[CType( in_mail,Office365Message)]" />
+            <umam:MoveMail Account="_nycgrm.apbroadcast@groupm.com" DestinationFolderName="Processed_27" DisplayName="Move Mail" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="MoveMail_1" Message="[CType( in_mail,Office365Message)]" />
           </Sequence>
         </ActivityAction>
       </uma:Office365ApplicationScope.Body>

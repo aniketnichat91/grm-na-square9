@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>689,672</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>850,767</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -74,10 +74,14 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="376,602" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="376,702" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="getdataquery" />
       <Variable x:TypeArguments="x:String" Name="startdate" />
@@ -126,7 +130,7 @@
         <OutArgument x:TypeArguments="x:String">[getdataquery]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["Select * From ooh_log_txn Where Log_ID Not In (Select S9_Log_ID From OOH_S9_Txn Where Log_S9_ReProcessed Not Like '%C%') And Log_Validated_E Is Not null And Log_Validated_C Is Not null And Log_Validated_P Is Not null And (Log_FA_Action_Status Like '%MANUAL - S9%' or Log_FA_Action_Status like '%NR%' or Log_FA_Action_Status like '%TAG%')"]</InArgument>
+        <InArgument x:TypeArguments="x:String">Select * From ooh_log_txn A Left Join OOH_PBT_Txn B On A.log_id = B.PBT_Log_ID Where A.Log_ID Not In (Select S9_Log_ID From OOH_S9_Txn Where Log_S9_ReProcessed Not Like '%C%') And A.Log_Validated_E Is Not null And A.Log_Validated_C Is Not null And A.Log_Validated_P Is Not null And (A.Log_FA_Action_Status Like '%MANUAL - S9%' or A.Log_FA_Action_Status like '%NR%' or (A.Log_FA_Action_Status like 'TAG' and B.PBT_Tagged = 1))</InArgument>
       </Assign.Value>
     </Assign>
     <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[opdbdt]" DisplayName="Execute Query" ExistingDbConnection="[in_dbconnection]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[getdataquery]">
@@ -134,5 +138,13 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
+    <Assign DisplayName="Assign - remove duplicate rows with same PBT_Log_ID as they are same invoices" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[opdbdt]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[opdbdt.AsEnumerable().GroupBy(Function(i) i.Field(Of Integer)(“Log_ID”)).Select(Function(g) g.First).CopyToDataTable]</InArgument>
+      </Assign.Value>
+    </Assign>
   </Sequence>
 </Activity>
