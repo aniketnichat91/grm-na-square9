@@ -5080,9 +5080,9 @@
     "restore": {
       "projectUniqueName": "USA Print S9 Performer",
       "projectName": "USA Print S9 Performer",
-      "projectPath": "C:\\1Files\\UPProjects\\grm-na-square9\\Print S9\\USA Print S9 Performer\\.local",
+      "projectPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Print S9\\USA Print S9 Performer\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
-      "outputPath": "C:\\1Files\\UPProjects\\grm-na-square9\\Print S9\\USA Print S9 Performer\\.local"
+      "outputPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Print S9\\USA Print S9 Performer\\.local"
     },
     "frameworks": {
       "net461": {
@@ -5120,5 +5120,70 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Rest.ClientRuntime.Azure 3.3.18' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "Microsoft.Rest.ClientRuntime.Azure"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath.UIAutomation.Activities 22.4.5' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath.UIAutomation.Activities"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Azure.CognitiveServices.Vision.ComputerVision 7.0.1' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "Microsoft.Azure.CognitiveServices.Vision.ComputerVision"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath.Platform 22.4.1' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath.Platform"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath.OCR.Contracts 2.11.0' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath.OCR.Contracts"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath.ImageProcessing 22.4.1' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath.ImageProcessing"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath 22.4.38.42025' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath.Vision 3.3.0' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath.Vision"
+    },
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath.OCR.Activities 3.6.2' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath.OCR.Activities"
+    }
+  ]
 }
