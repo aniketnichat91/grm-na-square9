@@ -7741,9 +7741,9 @@
     "restore": {
       "projectUniqueName": "S9 Add Data to Queue Dispatcher NR",
       "projectName": "S9 Add Data to Queue Dispatcher NR",
-      "projectPath": "C:\\1Files\\UPProjects\\Squarenine\\Dispatcher\\Latest-July\\Add  data to Queue Dispatcher_NR\\.local",
+      "projectPath": "C:\\1Files\\UPProjects\\AP Digital Squarenine\\Dispatcher\\Latest-July\\Add  data to Queue Dispatcher_NR\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
-      "outputPath": "C:\\1Files\\UPProjects\\Squarenine\\Dispatcher\\Latest-July\\Add  data to Queue Dispatcher_NR\\.local"
+      "outputPath": "C:\\1Files\\UPProjects\\AP Digital Squarenine\\Dispatcher\\Latest-July\\Add  data to Queue Dispatcher_NR\\.local"
     },
     "frameworks": {
       "net461": {

@@ -2,6 +2,28 @@
   "Packages": [
     {
       "Package": {
+        "Id": "ActivitiesReadEmailToPdf",
+        "Version": "1.0.0.9"
+      },
+      "Assemblies": [
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf/1.0.0.9\\lib/Interop.ADODB.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf/1.0.0.9\\lib/Interop.CDO.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf/1.0.0.9\\lib/MailActivities.dll"
+      ],
+      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf\\1.0.0.9"
+    },
+    {
+      "Package": {
+        "Id": "ExceltoPDFConversion.Activities",
+        "Version": "1.1.7"
+      },
+      "Assemblies": [
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\exceltopdfconversion.activities/1.1.7\\lib/ExceltoPDFConversion.dll"
+      ],
+      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\exceltopdfconversion.activities\\1.1.7"
+    },
+    {
+      "Package": {
         "Id": "UiPath.Database.Activities",
         "Version": "1.4.0"
       },
@@ -117,6 +139,37 @@
     },
     {
       "Package": {
+        "Id": "UiPath.PDF.Activities",
+        "Version": "3.6.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\bitmiracle.docotic.pdf/7.5.11645\\lib/net46/BitMiracle.Docotic.Pdf.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\bitmiracle.libtiff.net/2.4.649\\lib/net40/BitMiracle.LibTiff.NET.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\ntextcat/0.3.65\\lib/netstandard2.0/NTextCat.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.buffers/4.5.1\\lib/net461/System.Buffers.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.collections.immutable/5.0.0\\lib/net461/System.Collections.Immutable.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.drawing.common/5.0.2\\lib/net461/System.Drawing.Common.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.drawing.primitives/4.3.0\\lib/net45/System.Drawing.Primitives.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.io.abstractions/3.0.10\\lib/net40/System.IO.Abstractions.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.memory/4.5.4\\lib/net461/System.Memory.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.numerics.vectors/4.5.0\\lib/net46/System.Numerics.Vectors.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.runtime.compilerservices.unsafe/4.7.1\\lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.threading.tasks.dataflow/5.0.0\\lib/net461/System.Threading.Tasks.Dataflow.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.valuetuple/4.5.0\\lib/net461/System.ValueTuple.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.documentprocessing.contracts/1.14.0\\lib/net461/UiPath.DocumentProcessing.Contracts.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.documentunderstanding.digitizer/2.0.0\\lib/net461/UiPath.DocumentUnderstanding.Digitizer.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.ocr.contracts/2.11.0\\lib/net461/UiPath.OCR.Contracts.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.Activities.Design.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.Activities.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.Telemetry.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.telemetry.client/1.5.3\\lib/net461/TelemetryClient.dll"
+      ],
+      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities\\3.6.0"
+    },
+    {
+      "Package": {
         "Id": "UiPath.System.Activities",
         "Version": "21.6.1-preview"
       },
@@ -212,56 +265,22 @@
     },
     {
       "Package": {
-        "Id": "UiPath.PDF.Activities",
-        "Version": "3.6.0"
+        "Id": "UiPath.Word.Activities",
+        "Version": "1.10.1"
       },
       "Assemblies": [
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\bitmiracle.docotic.pdf/7.5.11645\\lib/net46/BitMiracle.Docotic.Pdf.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\bitmiracle.libtiff.net/2.4.649\\lib/net40/BitMiracle.LibTiff.NET.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\ntextcat/0.3.65\\lib/netstandard2.0/NTextCat.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.buffers/4.5.1\\lib/net461/System.Buffers.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.collections.immutable/5.0.0\\lib/net461/System.Collections.Immutable.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.drawing.common/5.0.2\\lib/net461/System.Drawing.Common.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.drawing.primitives/4.3.0\\lib/net45/System.Drawing.Primitives.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.io.abstractions/3.0.10\\lib/net40/System.IO.Abstractions.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.memory/4.5.4\\lib/net461/System.Memory.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.numerics.vectors/4.5.0\\lib/net46/System.Numerics.Vectors.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.runtime.compilerservices.unsafe/4.7.1\\lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.threading.tasks.dataflow/5.0.0\\lib/net461/System.Threading.Tasks.Dataflow.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\system.valuetuple/4.5.0\\lib/net461/System.ValueTuple.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.documentprocessing.contracts/1.14.0\\lib/net461/UiPath.DocumentProcessing.Contracts.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.documentunderstanding.digitizer/2.0.0\\lib/net461/UiPath.DocumentUnderstanding.Digitizer.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.ocr.contracts/2.11.0\\lib/net461/UiPath.OCR.Contracts.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.Activities.Design.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.Activities.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.Telemetry.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities/3.6.0\\lib/net461/UiPath.PDF.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.telemetry.client/1.5.3\\lib/net461/TelemetryClient.dll"
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Interop.Domino.UiPath.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Microsoft.Office.Interop.Word.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Office.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Design.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Package.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.document.net/2.0.21359.11160\\lib/net40/Xceed.Document.NET.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.pdf/2.0.21359.11160\\lib/net40/Xceed.Pdf.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.words.net/2.0.21359.11160\\lib/net40/Xceed.Words.NET.dll"
       ],
-      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.pdf.activities\\3.6.0"
-    },
-    {
-      "Package": {
-        "Id": "ActivitiesReadEmailToPdf",
-        "Version": "1.0.0.9"
-      },
-      "Assemblies": [
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf/1.0.0.9\\lib/Interop.ADODB.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf/1.0.0.9\\lib/Interop.CDO.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf/1.0.0.9\\lib/MailActivities.dll"
-      ],
-      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\activitiesreademailtopdf\\1.0.0.9"
-    },
-    {
-      "Package": {
-        "Id": "ExceltoPDFConversion.Activities",
-        "Version": "1.1.7"
-      },
-      "Assemblies": [
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\exceltopdfconversion.activities/1.1.7\\lib/ExceltoPDFConversion.dll"
-      ],
-      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\exceltopdfconversion.activities\\1.1.7"
+      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1"
     },
     {
       "Package": {
@@ -320,25 +339,6 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\windowsazure.storage/7.0.0\\lib/net40/Microsoft.WindowsAzure.Storage.dll"
       ],
       "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipathteam.sharepoint.activities\\1.7.0"
-    },
-    {
-      "Package": {
-        "Id": "UiPath.Word.Activities",
-        "Version": "1.10.1"
-      },
-      "Assemblies": [
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Interop.Domino.UiPath.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Microsoft.Office.Interop.Word.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Office.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Design.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Package.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.document.net/2.0.21359.11160\\lib/net40/Xceed.Document.NET.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.pdf/2.0.21359.11160\\lib/net40/Xceed.Pdf.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.words.net/2.0.21359.11160\\lib/net40/Xceed.Words.NET.dll"
-      ],
-      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1"
     }
   ],
   "Conflicts": [],
@@ -3458,8 +3458,8 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\Microsoft.Office.Interop.Word.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\Office.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.Design.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.Package.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.dll"
       ],
       "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1"

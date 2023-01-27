@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>689,672</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1154,775</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -125,7 +125,7 @@
         <OutArgument x:TypeArguments="x:String">[getdataquery]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["select * from print_s9_data_staging where ps_isbotprocessed is null and ps_insertion_date &gt; convert(date,dateadd(day,-5,getdate()))"]</InArgument>
+        <InArgument x:TypeArguments="x:String">["select * from print_s9_data_staging where ps_isbotprocessed is null and ps_insertion_date &gt; convert(date,dateadd(day,-30,getdate()))"]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[opdbdt]" DisplayName="Execute Query" ExistingDbConnection="[in_dbconnection]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[getdataquery]">

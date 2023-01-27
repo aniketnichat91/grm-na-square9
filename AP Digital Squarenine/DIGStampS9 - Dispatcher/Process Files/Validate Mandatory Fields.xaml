@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Validate_Mandatory_Fields" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Validate_Mandatory_Fields" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_inv_num" Type="InArgument(x:String)" />
     <x:Property Name="in_C" Type="InArgument(x:String)" />
@@ -25,10 +25,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1314,11990</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1066,12891</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Validate_Mandatory_Fields_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="92">
+    <scg:List x:TypeArguments="x:String" Capacity="47">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -79,7 +79,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="86">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -123,16 +123,15 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="823,11845" sap2010:WorkflowViewState.IdRef="Sequence_62">
+  <Sequence sap:VirtualizedContainerService.HintSize="859,12826" sap2010:WorkflowViewState.IdRef="Sequence_62">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Validate_Mandatory_Fields" sap:VirtualizedContainerService.HintSize="781,11753" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence DisplayName="Validate_Mandatory_Fields" sap:VirtualizedContainerService.HintSize="817,12734" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:List(x:String)" Name="errorlist" />
         <Variable x:TypeArguments="x:String" Name="logdate" />
@@ -144,6 +143,7 @@
         <Variable x:TypeArguments="x:String" Name="var_user" />
         <Variable x:TypeArguments="ss:SecureString" Name="var_pass" />
         <Variable x:TypeArguments="x:String" Name="str_var_pass" />
+        <Variable x:TypeArguments="x:String" Name="mailrecieddate" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -151,9 +151,9 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="USA Print S9 Credentials" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="739,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[var_user]" />
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="739,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Validting data for invoice number  &quot;+in_inv_num]" />
-      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_53">
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="USA Print S9 Credentials" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="775,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[var_user]" />
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="775,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Validting data for invoice number  &quot;+in_inv_num]" />
+      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_53">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[str_var_pass]</OutArgument>
         </Assign.To>
@@ -161,7 +161,7 @@
           <InArgument x:TypeArguments="x:String">[new System.Net.NetworkCredential(string.Empty, var_pass).Password]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_39">
+      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_39">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[logdate]</OutArgument>
         </Assign.To>
@@ -169,7 +169,7 @@
           <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_37">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:List(x:String)">[errorlist]</OutArgument>
         </Assign.To>
@@ -177,8 +177,8 @@
           <InArgument x:TypeArguments="scg:List(x:String)">[new List(Of String)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:Matches sap:VirtualizedContainerService.HintSize="739,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_fa_name]" IsBuilderTabModified="False" Pattern="\&lt;(.*?)\&gt;" RegexOption="IgnoreCase, Compiled" Result="[arrOut]" />
-      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_51">
+      <ui:Matches sap:VirtualizedContainerService.HintSize="775,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_fa_name]" IsBuilderTabModified="False" Pattern="\&lt;(.*?)\&gt;" RegexOption="IgnoreCase, Compiled" Result="[arrOut]" />
+      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_51">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strEmailAddress]</OutArgument>
         </Assign.To>
@@ -186,7 +186,7 @@
           <InArgument x:TypeArguments="x:String">[arrOut(0).tostring]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_54">
+      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_54">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strEmailAddress]</OutArgument>
         </Assign.To>
@@ -194,7 +194,7 @@
           <InArgument x:TypeArguments="x:String">[strEmailAddress.Replace("&lt;","")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_55">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strEmailAddress]</OutArgument>
         </Assign.To>
@@ -202,8 +202,8 @@
           <InArgument x:TypeArguments="x:String">[strEmailAddress.Replace("&gt;","")]</InArgument>
         </Assign.Value>
       </Assign>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="739,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[strEmailAddress]" />
-      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_52">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="775,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[strEmailAddress]" />
+      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_52">
         <Assign.To>
           <OutArgument x:TypeArguments="umm:Office365Message">[mailMessage]</OutArgument>
         </Assign.To>
@@ -211,7 +211,7 @@
           <InArgument x:TypeArguments="umm:Office365Message">[CType(in_TransactionItem,Office365Message)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="739,51" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="775,51" sap2010:WorkflowViewState.IdRef="CommentOut_16">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="1473,2658" sap2010:WorkflowViewState.IdRef="Sequence_60">
             <sap:WorkflowViewStateService.ViewState>
@@ -510,7 +510,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <Sequence DisplayName="Vaidate Invoice Number" sap:VirtualizedContainerService.HintSize="739,1108" sap2010:WorkflowViewState.IdRef="Sequence_25">
+      <Sequence DisplayName="Vaidate Invoice Number" sap:VirtualizedContainerService.HintSize="775,1108" sap2010:WorkflowViewState.IdRef="Sequence_25">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -623,7 +623,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xD;&#xA;The Invoice Num was not in an expected input. It is either blank or contains unexpected characters ( , : )&#xD;&#xA;Please reshare with all the details in a new mail thread.&#xD;&#xA;The invoice was not uploaded to Global Search&#xD;&#xA;&#xD;&#xA;Regards,&#xD;&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_12" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Invoice Num was not in an expected input. It is either blank or contains unexpected characters ( , : )&#xA;Please reshare with all the details in a new mail thread.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_12" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
@@ -643,7 +643,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Media Code" sap:VirtualizedContainerService.HintSize="739,1108" sap2010:WorkflowViewState.IdRef="Sequence_92">
+      <Sequence DisplayName="Vaidate Media Code" sap:VirtualizedContainerService.HintSize="775,1108" sap2010:WorkflowViewState.IdRef="Sequence_92">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -769,7 +769,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate MOS" sap:VirtualizedContainerService.HintSize="739,1108" sap2010:WorkflowViewState.IdRef="Sequence_34">
+      <Sequence DisplayName="Vaidate MOS" sap:VirtualizedContainerService.HintSize="775,1108" sap2010:WorkflowViewState.IdRef="Sequence_34">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -895,7 +895,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate PDF Amount" sap:VirtualizedContainerService.HintSize="739,536" sap2010:WorkflowViewState.IdRef="Sequence_36">
+      <Sequence DisplayName="Vaidate PDF Amount" sap:VirtualizedContainerService.HintSize="775,536" sap2010:WorkflowViewState.IdRef="Sequence_36">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1000,7 +1000,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Client Code" sap:VirtualizedContainerService.HintSize="739,536" sap2010:WorkflowViewState.IdRef="Sequence_28">
+      <Sequence DisplayName="Vaidate Client Code" sap:VirtualizedContainerService.HintSize="775,536" sap2010:WorkflowViewState.IdRef="Sequence_28">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1062,7 +1062,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Product Code" sap:VirtualizedContainerService.HintSize="739,536" sap2010:WorkflowViewState.IdRef="Sequence_30">
+      <Sequence DisplayName="Vaidate Product Code" sap:VirtualizedContainerService.HintSize="775,536" sap2010:WorkflowViewState.IdRef="Sequence_30">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1124,9 +1124,9 @@
           </If.Then>
         </If>
       </Sequence>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="739,51" sap2010:WorkflowViewState.IdRef="CommentOut_31">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="775,51" sap2010:WorkflowViewState.IdRef="CommentOut_31">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,158" sap2010:WorkflowViewState.IdRef="Sequence_85">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="781,158" sap2010:WorkflowViewState.IdRef="Sequence_85">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1232,7 +1232,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <Sequence DisplayName="Vaidate Client name" sap:VirtualizedContainerService.HintSize="739,1170" sap2010:WorkflowViewState.IdRef="Sequence_73">
+      <Sequence DisplayName="Vaidate Client name" sap:VirtualizedContainerService.HintSize="775,1170" sap2010:WorkflowViewState.IdRef="Sequence_73">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1323,7 +1323,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate E number" sap:VirtualizedContainerService.HintSize="739,684" sap2010:WorkflowViewState.IdRef="Sequence_32">
+      <Sequence DisplayName="Vaidate E number" sap:VirtualizedContainerService.HintSize="775,684" sap2010:WorkflowViewState.IdRef="Sequence_32">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1389,7 +1389,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Publication Name" sap:VirtualizedContainerService.HintSize="739,1170" sap2010:WorkflowViewState.IdRef="Sequence_77">
+      <Sequence DisplayName="Vaidate Publication Name" sap:VirtualizedContainerService.HintSize="775,1170" sap2010:WorkflowViewState.IdRef="Sequence_77">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1479,7 +1479,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <If Condition="[in_FA_Status.ToLower.Contains(&quot;nr&quot;)]" sap:VirtualizedContainerService.HintSize="739,208" sap2010:WorkflowViewState.IdRef="If_28">
+      <If Condition="[in_FA_Status.ToLower.Contains(&quot;nr&quot;)]" sap:VirtualizedContainerService.HintSize="775,208" sap2010:WorkflowViewState.IdRef="If_28">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1507,7 +1507,7 @@
           </Assign>
         </If.Else>
       </If>
-      <If Condition="[errorlist.Count&gt;0]" sap:VirtualizedContainerService.HintSize="739,1694" sap2010:WorkflowViewState.IdRef="If_27">
+      <If Condition="[errorlist.Count&gt;0]" sap:VirtualizedContainerService.HintSize="775,2273" sap2010:WorkflowViewState.IdRef="If_27">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1515,7 +1515,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="478,1546" sap2010:WorkflowViewState.IdRef="Sequence_45">
+          <Sequence sap:VirtualizedContainerService.HintSize="630,2125" sap2010:WorkflowViewState.IdRef="Sequence_45">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="inserterror" />
               <Variable x:TypeArguments="x:String" Name="errortext" />
@@ -1526,8 +1526,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="436,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=sqlsv-automation-us-dev.database.windows.net;Initial Catalog=testdatabase;User ID=Wmusdevautomation;Password=jJFtZiyIr2nS$jvj#4C^" DatabaseConnection="[in_db]" />
-            <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_40">
+            <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="588,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=sqlsv-automation-us-dev.database.windows.net;Initial Catalog=testdatabase;User ID=Wmusdevautomation;Password=jJFtZiyIr2nS$jvj#4C^" DatabaseConnection="[in_db]" />
+            <Assign sap:VirtualizedContainerService.HintSize="588,60" sap2010:WorkflowViewState.IdRef="Assign_40">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[errortext]</OutArgument>
               </Assign.To>
@@ -1535,15 +1535,15 @@
                 <InArgument x:TypeArguments="x:String">[String.Join(",",errorlist)+" is blank"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,221" sap2010:WorkflowViewState.IdRef="CommentOut_18">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,800" sap2010:WorkflowViewState.IdRef="CommentOut_18">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,722" sap2010:WorkflowViewState.IdRef="Sequence_63">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
+                  <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,630" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
                     <uma:Office365ApplicationScope.Body>
                       <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                         <ActivityAction.Argument>
@@ -1576,7 +1576,7 @@
                     </uma:Office365ApplicationScope.Body>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -1584,7 +1584,7 @@
                 </Sequence>
               </ui:CommentOut.Body>
             </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,51" sap2010:WorkflowViewState.IdRef="CommentOut_10">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_51">
                   <sap:WorkflowViewStateService.ViewState>
@@ -1602,7 +1602,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_47">
                   <sap:WorkflowViewStateService.ViewState>
@@ -1620,7 +1620,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_41">
+            <Assign sap:VirtualizedContainerService.HintSize="588,60" sap2010:WorkflowViewState.IdRef="Assign_41">
               <Assign.To>
                 <OutArgument x:TypeArguments="scg:List(x:String)">[errorlist]</OutArgument>
               </Assign.To>
@@ -1628,7 +1628,7 @@
                 <InArgument x:TypeArguments="scg:List(x:String)">[Nothing]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_38">
+            <Assign sap:VirtualizedContainerService.HintSize="588,60" sap2010:WorkflowViewState.IdRef="Assign_38">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[inserterror]</OutArgument>
               </Assign.To>
@@ -1636,7 +1636,7 @@
                 <InArgument x:TypeArguments="x:String">["insert into usa_squarenine_log (FA, Inv_Filename,PDF_Amount,Doc_Link,Date,Description,Inv_Num,Pub_Code,Status,agency,bucket) values ('"+in_fa_name+"','','"+in_PDF_Amount+"','','"+logdate+"','"+errortext+"','"+in_inv_num+"','"+in_pubcode+"','Not Uploaded','','"+var_status+"')"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,230" sap2010:WorkflowViewState.IdRef="CommentOut_23">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,230" sap2010:WorkflowViewState.IdRef="CommentOut_23">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_68">
                   <sap:WorkflowViewStateService.ViewState>
@@ -1655,13 +1655,13 @@
                 </Sequence>
               </ui:CommentOut.Body>
             </ui:CommentOut>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[inserterror]" />
-            <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="436,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[inserterror]">
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="588,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[inserterror]" />
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="588,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[inserterror]">
               <ui:ExecuteQuery.Parameters>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:ExecuteQuery.Parameters>
             </ui:ExecuteQuery>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_24">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,51" sap2010:WorkflowViewState.IdRef="CommentOut_24">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_69">
                   <sap:WorkflowViewStateService.ViewState>
@@ -1683,10 +1683,110 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <Throw Exception="[new BusinessRuleException(errortext)]" sap:VirtualizedContainerService.HintSize="436,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
+            <Throw Exception="[new BusinessRuleException(errortext)]" sap:VirtualizedContainerService.HintSize="588,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
           </Sequence>
         </If.Then>
       </If>
+      <Sequence DisplayName="Sequence Update NR to Manual S9" sap:VirtualizedContainerService.HintSize="775,271" sap2010:WorkflowViewState.IdRef="Sequence_96">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="dt_NR" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_NR]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[&quot;select * from master_log where C = '&quot;+in_C+&quot;' and P = '&quot;+in_P+&quot;' and E = '&quot;+in_E+&quot;' and invoice_Num = '&quot;+in_inv_num+&quot;' and vendor like '%&quot;+in_pubcode+&quot;%'  and pdf_mos = '&quot;+in_MOS+&quot;' and vendor like '%&quot;+in_Pub_Name+&quot;%' and FA_Status='NR'&quot;]">
+          <ui:ExecuteQuery.Parameters>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:ExecuteQuery.Parameters>
+        </ui:ExecuteQuery>
+        <If Condition="[dt_NR.Rows.Count&gt;0]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_33">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence sap:VirtualizedContainerService.HintSize="552,1054" sap2010:WorkflowViewState.IdRef="Sequence_95">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="VarQuery" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_57">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[VarQuery]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["update master_log set FA_Status = 'Manual - S9' where C = '"+in_C+"' and P = '"+in_P+"' and E = '"+in_E+"' and invoice_Num = '"+in_inv_num+"' and vendor like '%"+in_pubcode+"%'  and pdf_mos = '"+in_MOS+"' and vendor like '%"+in_Pub_Name+"%' and FA_Status='NR'"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[VarQuery]" />
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="510,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" ProviderName="System.Data.SqlClient" Sql="[VarQuery]">
+                <ui:ExecuteQuery.Parameters>
+                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                </ui:ExecuteQuery.Parameters>
+              </ui:ExecuteQuery>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[strEmailAddress]" />
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_13" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+                <uma:Office365ApplicationScope.Body>
+                  <ActivityAction x:TypeArguments="mg:GraphServiceClient">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;We find this Record marked as NR against Invoice number mentioned above&#xA;so we have Updated this To Manual - S9.&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_13" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Update NR to Manual S9 for Invoice Number - &quot; +in_inv_num]" To="[{in_fa_name}]">
+                        <umam:SendMail.Attachments>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                        </umam:SendMail.Attachments>
+                      </umam:SendMail>
+                    </Sequence>
+                  </ActivityAction>
+                </uma:Office365ApplicationScope.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uma:Office365ApplicationScope>
+            </Sequence>
+          </If.Then>
+        </If>
+      </Sequence>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="775,51" sap2010:WorkflowViewState.IdRef="CommentOut_34">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_97">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" ConnectionString="Data Source=eussqsvgrmusafinance01.database.windows.net;Initial Catalog=eussqdbgrmusaapdigital01_dev;User ID=NA_sqlusr_AOC_PRD_01;Password=85QeWU*aApXZ" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" ProviderName="System.Data.SqlClient" Sql="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date) values ('&quot;+pdf_info+&quot;','&quot;+paid_unpaid+&quot;','&quot;+pdf_invoice_date+&quot;','&quot;+log_date+&quot;','&quot;+vendor+&quot;','&quot;+inv_filename+&quot;','&quot;+invoice_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+medialookup+&quot;','&quot;+c+&quot;','&quot;+p+&quot;','&quot;+e+&quot;','&quot;+pdf_mos+&quot;','&quot;+fa_status+&quot;','&quot;+insertion_month+&quot;','&quot;+pdf_amount+&quot;','&quot;+buy_amount+&quot;','&quot;+pdf_tax_amount+&quot;','&quot;+campaign_id+&quot;','&quot;+insertion_order+&quot;','&quot;+uuid+&quot;','&quot;+client_name+&quot;','&quot;+publication_name+&quot;','&quot;+publication_code+&quot;','&quot;+product_name+&quot;','&quot;+from_email+&quot;','&quot;+from_name+&quot;','&quot;+email_send_date+&quot;','&quot;+agency+&quot;','&quot;+finance_associates+&quot;','&quot;+doc_link+&quot;','&quot;+invoice_name_link+&quot;','&quot;+vm_doc_link+&quot;','&quot;+iszipped+&quot;','&quot;+compilation_status+&quot;','&quot;+in_folder+&quot;','&quot;+emailguid+&quot;','&quot;+updateddate+&quot;','&quot;+updatedby+&quot;','&quot;+createdby+&quot;','&quot;+pagecount+&quot;','&quot;+is_matched+&quot;','&quot;+record_status+&quot;','&quot;+label+&quot;','&quot;+tag_status+&quot;','&quot;+tag_date+&quot;','&quot;+invoice_comment+&quot;','&quot;+extracted_tax+&quot;','&quot;+extracted_subtotal+&quot;','&quot;+multiinvoice_status+&quot;','&quot;+stamp_comment+&quot;','&quot;+remittance_pdf+&quot;','&quot;+remittance_pass+&quot;','&quot;+inbounddateasint+&quot;','&quot;+confidence_score+&quot;','&quot;+fa_interface_ready+&quot;','&quot;+extracted_total+&quot;','&quot;+buy_tax+&quot;','&quot;+pbt_bot_screenshot_link+&quot;','&quot;+record_status_updated+&quot;','&quot;+p_desc_nr+&quot;','&quot;+fa_interface_log_status+&quot;','&quot;+is_duplicate+&quot;','&quot;+embargo_record+&quot;','&quot;+stamp_comment_s9+&quot;','&quot;+created_date+&quot;','&quot;+modified_date+&quot;')&quot;]">
+              <ui:ExecuteQuery.Parameters>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:ExecuteQuery.Parameters>
+            </ui:ExecuteQuery>
+          </Sequence>
+        </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:CommentOut>
     </Sequence>
   </Sequence>
 </Activity>

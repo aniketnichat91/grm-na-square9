@@ -9269,9 +9269,9 @@
     "restore": {
       "projectUniqueName": "DIG Stamping S9 Dispatcher",
       "projectName": "DIG Stamping S9 Dispatcher",
-      "projectPath": "C:\\1Files\\UPProjects\\Squarenine\\DIGStampS9 - Dispatcher\\.local",
+      "projectPath": "C:\\1Files\\UPProjects\\AP Digital Squarenine\\DIGStampS9 - Dispatcher\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
-      "outputPath": "C:\\1Files\\UPProjects\\Squarenine\\DIGStampS9 - Dispatcher\\.local"
+      "outputPath": "C:\\1Files\\UPProjects\\AP Digital Squarenine\\DIGStampS9 - Dispatcher\\.local"
     },
     "frameworks": {
       "net461": {

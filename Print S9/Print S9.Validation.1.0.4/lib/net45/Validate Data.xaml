@@ -183,7 +183,7 @@
           <OutArgument x:TypeArguments="x:String">[selectquery]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">["select * from Print_S9_Data_Staging where PS_IsCnfSquare is NULL and PS_IsBotProcessed = 1"]</InArgument>
+          <InArgument x:TypeArguments="x:String" xml:space="preserve">["select * from Print_S9_Data_Staging where (PS_IsCnfSquare is NULL or PS_IsCnfSquare = 0)  and PS_IsBotProcessed = 1"]</InArgument>
         </Assign.Value>
       </Assign>
       <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[opquery]" DisplayName="Execute Query" ExistingDbConnection="[dbconnect]" sap:VirtualizedContainerService.HintSize="2081,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[selectquery]">
@@ -384,9 +384,9 @@
                   <InArgument x:TypeArguments="x:String">[CurrentRow("PS_Media").ToString.Trim]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_32">
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="2005,51" sap2010:WorkflowViewState.IdRef="CommentOut_32">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,425" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="478,425" sap2010:WorkflowViewState.IdRef="Sequence_85">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -477,9 +477,9 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <g:GetLicense DisplayName="Get license" sap:VirtualizedContainerService.HintSize="1249,22" sap2010:WorkflowViewState.IdRef="GetLicense_1" Result="[responcejson]" StatusCode="[varstatuscode]" defaultWebPath="https://groupm.mysquare9.com/square9api/api/licenses?format={json|xml}" password="[in_password]" username="[in_username]" />
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1249,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Here Import Ge License" />
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <g:GetLicense DisplayName="Get license" sap:VirtualizedContainerService.HintSize="2005,22" sap2010:WorkflowViewState.IdRef="GetLicense_1" Result="[responcejson]" StatusCode="[varstatuscode]" defaultWebPath="https://groupm.mysquare9.com/square9api/api/licenses?format={json|xml}" password="[in_password]" username="[in_username]" />
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2005,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Here Import Ge License" />
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="2005,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
@@ -513,8 +513,8 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1249,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[responcejson]" />
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1249,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2005,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[responcejson]" />
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="2005,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,353" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
@@ -650,7 +650,7 @@
                                 </sap:WorkflowViewStateService.ViewState>
                                 <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_30">
                                   <ui:CommentOut.Body>
-                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,143" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,143" sap2010:WorkflowViewState.IdRef="Sequence_83">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -801,7 +801,7 @@
                           <OutArgument x:TypeArguments="x:String">[updatequery]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">["Update Print_S9_Data_Staging set PS_IsCnfSquare = '"+vardocument+"' where PS_Invoice_Number = '"+var_invnum+"'"]</InArgument>
+                          <InArgument x:TypeArguments="x:String">["Update Print_S9_Data_Staging set PS_IsCnfSquare = '"+vardocument+"', PS_CnfSquare_Processed_Date = '"+System.DateTime.Now.ToString+"' where PS_Invoice_Number = '"+var_invnum+"'"]</InArgument>
                         </Assign.Value>
                       </Assign>
                       <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[dbconnect]" sap:VirtualizedContainerService.HintSize="917,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_12" Sql="[updatequery]">
@@ -901,7 +901,7 @@
                                 </sap:WorkflowViewStateService.ViewState>
                                 <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_35">
                                   <ui:CommentOut.Body>
-                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,143" sap2010:WorkflowViewState.IdRef="Sequence_90">
+                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,143" sap2010:WorkflowViewState.IdRef="Sequence_90">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -913,7 +913,7 @@
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,343" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,642" sap2010:WorkflowViewState.IdRef="Sequence_89">
                                               <Sequence.Variables>
                                                 <Variable x:TypeArguments="umm:Office365Message[]" Name="tempmaillist" />
                                                 <Variable x:TypeArguments="s:String[]" Name="arrtolist" />
@@ -1052,7 +1052,7 @@
                           <OutArgument x:TypeArguments="x:String">[updatequery]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">["Update Print_S9_Data_Staging set PS_IsCnfSquare = '"+vardocument+"' where PS_Invoice_Number = '"+var_invnum+"'"]</InArgument>
+                          <InArgument x:TypeArguments="x:String" xml:space="preserve">["Update Print_S9_Data_Staging set PS_IsCnfSquare = '"+vardocument+"', PS_CnfSquare_Processed_Date = '"+System.DateTime.Now.ToString+"'  where PS_Invoice_Number = '"+var_invnum+"'"]</InArgument>
                         </Assign.Value>
                       </Assign>
                       <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[dbconnect]" sap:VirtualizedContainerService.HintSize="917,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_14" Sql="[updatequery]">
@@ -1071,7 +1071,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[var_bucket.Contains(&quot;PAID&quot;)]" sap:VirtualizedContainerService.HintSize="1120,414" sap2010:WorkflowViewState.IdRef="If_45">
+                      <If Condition="[var_bucket.Contains(&quot;PAID&quot;)]" sap:VirtualizedContainerService.HintSize="487,414" sap2010:WorkflowViewState.IdRef="If_45">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

@@ -346,6 +346,25 @@
     },
     {
       "Package": {
+        "Id": "UiPath.Word.Activities",
+        "Version": "1.10.1"
+      },
+      "Assemblies": [
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Interop.Domino.UiPath.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Microsoft.Office.Interop.Word.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Office.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Design.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Package.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.document.net/2.0.21359.11160\\lib/net40/Xceed.Document.NET.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.pdf/2.0.21359.11160\\lib/net40/Xceed.Pdf.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.words.net/2.0.21359.11160\\lib/net40/Xceed.Words.NET.dll"
+      ],
+      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1"
+    },
+    {
+      "Package": {
         "Id": "UiPathTeam.SharePoint.Activities",
         "Version": "1.7.0"
       },
@@ -414,25 +433,6 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipathteam.unzipfile.activities/1.4.0\\lib/net461/UiPathTeam.UnZipFile.dll"
       ],
       "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipathteam.unzipfile.activities\\1.4.0"
-    },
-    {
-      "Package": {
-        "Id": "UiPath.Word.Activities",
-        "Version": "1.10.1"
-      },
-      "Assemblies": [
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Interop.Domino.UiPath.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Microsoft.Office.Interop.Word.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/Office.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Design.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.Activities.Package.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities/1.10.1\\lib/net461/UiPath.Word.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.document.net/2.0.21359.11160\\lib/net40/Xceed.Document.NET.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.pdf/2.0.21359.11160\\lib/net40/Xceed.Pdf.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\xceed.words.net/2.0.21359.11160\\lib/net40/Xceed.Words.NET.dll"
-      ],
-      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1"
     }
   ],
   "Conflicts": [],
@@ -3823,8 +3823,8 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\Microsoft.Office.Interop.Word.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\Office.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.Design.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.Package.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.Activities.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1\\lib\\net461\\UiPath.Word.dll"
       ],
       "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.word.activities\\1.10.1"

@@ -21,7 +21,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1314,6712</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1118,6812</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Extract_Data_from_Mail_Body_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -118,10 +118,9 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Extract_Data_from_Mail_Body" sap:VirtualizedContainerService.HintSize="1128,6647" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Extract_Data_from_Mail_Body" sap:VirtualizedContainerService.HintSize="1128,6747" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailList" />
       <Variable x:TypeArguments="umm:Office365Message[]" Name="MAIL" />
@@ -140,7 +139,7 @@
         <InArgument x:TypeArguments="x:String">[argMailBody]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence sap:VirtualizedContainerService.HintSize="1086,6455" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="1086,6555" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="arrOutput" />
         <Variable x:TypeArguments="s:String[]" Name="arrMailBody" />
@@ -212,7 +211,7 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="518,856" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="518,960" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                       <TryCatch.Try>
                         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
                           <Assign.To>
@@ -587,14 +586,14 @@
           </Assign.Value>
         </Assign>
       </Sequence>
-      <Sequence DisplayName="Sequence - Amount" sap:VirtualizedContainerService.HintSize="1044,351" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence DisplayName="Sequence - Amount" sap:VirtualizedContainerService.HintSize="1044,451" sap2010:WorkflowViewState.IdRef="Sequence_8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:Matches DisplayName="Matches - Extract Amount" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[argMailBody]" IsBuilderTabModified="False" Pattern="((?&lt;=Amount).*)|((?&lt;=Amt).*)|((?&lt;=AMT).*)" RegexOption="IgnoreCase, Compiled" Result="[arrOutput]" />
+        <ui:Matches DisplayName="Matches - Extract Amount" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Matches_4" Input="[argMailBody]" IsBuilderTabModified="False" Pattern="((?&lt;=Amount).*)|((?&lt;=Amt).*)|((?&lt;=AMT).*)|((?&lt;=Total).*)" RegexOption="IgnoreCase, Compiled" Result="[arrOutput]" />
         <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_16">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[outAmount]</OutArgument>
@@ -609,6 +608,14 @@
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(outAmount,"[\/\\*:;\?\@\^\-\%\$\!\#$&amp;"+Chr(34)+"&gt;&lt;|]","").Trim]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_65">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[outAmount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[outAmount.Replace(",","")]</InArgument>
           </Assign.Value>
         </Assign>
       </Sequence>
