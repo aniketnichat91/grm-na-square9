@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1314,986</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1488,986</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -108,11 +108,27 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will compile all pdf attachments into one file " DisplayName="Invoke Compile pdf workflow" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Compile pdf.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_folderpath">[var_outpdffilepath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">[in_Config("PDF_Download_Path").ToString.Trim]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">[var_compilefilepath]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">[varonlyfilename]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_strExactFileName">[strExactFileNameForQueue]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_folderpath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_outpdffilepath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PDF_Download_Path&quot;).ToString.Trim" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_compilefilepath" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varonlyfilename" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strExactFileName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strExactFileNameForQueue" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_ID">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;PS_ID&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbcon">
+          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_dbc" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

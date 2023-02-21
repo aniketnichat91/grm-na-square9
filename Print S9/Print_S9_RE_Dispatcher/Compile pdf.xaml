@@ -5,14 +5,16 @@
     <x:Property Name="out_compilepath" Type="OutArgument(x:String)" />
     <x:Property Name="out_onlyfilename" Type="OutArgument(x:String)" />
     <x:Property Name="out_strExactFileName" Type="OutArgument(x:String)" />
+    <x:Property Name="In_ID" Type="InArgument(x:String)" />
+    <x:Property Name="in_dbcon" Type="InArgument(ui:DatabaseConnection)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1957,3868</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1957,5666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_pdf_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="35">
+    <scg:List x:TypeArguments="x:String" Capacity="40">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -48,10 +50,15 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Database.Activities</x:String>
+      <x:String>Microsoft.Graph</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="39">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -86,10 +93,14 @@
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1967,3803" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1967,4681" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="containscover" />
       <Variable x:TypeArguments="x:Int32" Name="var_coverindex" />
@@ -111,7 +122,7 @@
         <OutArgument x:TypeArguments="s:String[]">[arr_downloadfolders]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(in_folderpath,"*.pdf")]</InArgument>
+        <InArgument x:TypeArguments="s:String[]">[System.IO.DIrectory.Getfiles(in_folderpath,"*.pdf")]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:PathExists DisplayName="Path Exists" Exists="[boolcompilefolderexist]" sap:VirtualizedContainerService.HintSize="1925,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_localfolderpath+&quot;Compilefile\&quot;+System.DateTime.now.ToString(&quot;yyyy-MM-dd&quot;)]" PathType="File" />
@@ -136,18 +147,26 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1925,1459" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[arr_downloadfolders]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1925,1707" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[arr_downloadfolders]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="fileitem" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1269,1325" sap2010:WorkflowViewState.IdRef="Sequence_19">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1269,1573" sap2010:WorkflowViewState.IdRef="Sequence_19">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="pdftext" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[new System.IO.FileInfo(fileitem).Length &gt; 10]" sap:VirtualizedContainerService.HintSize="1227,208" sap2010:WorkflowViewState.IdRef="If_12">
+              <If.Else>
+                <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[fileitem]" />
+              </If.Else>
+            </If>
             <If Condition="[fileitem.ToLower.ToString.Contains(&quot;inv&quot;)]" sap:VirtualizedContainerService.HintSize="1227,1233" sap2010:WorkflowViewState.IdRef="If_5">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="591,1085" sap2010:WorkflowViewState.IdRef="Sequence_17">
@@ -390,6 +409,42 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
+    <Assign sap:VirtualizedContainerService.HintSize="1925,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:String[]">[arr_downloadfolders]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:String[]">[System.IO.DIrectory.Getfiles(in_folderpath,"*.pdf")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[arr_downloadfolders.Count=0]" sap:VirtualizedContainerService.HintSize="1925,490" sap2010:WorkflowViewState.IdRef="If_13">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,342" sap2010:WorkflowViewState.IdRef="Sequence_36">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="query" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_56">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[query]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["update print_s9_data_staging set PS_IsCnfSquare=0,PS_IsBotProcessed=0,PS_BOT_Processed_Date ='"+System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")+"', PS_ErrorDescription = 'Corupt Invoice File in the Mail Attachment'  where PS_ID = '"+in_ID+"' "]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" ExistingDbConnection="[in_dbcon]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[query]">
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+          </ui:ExecuteQuery>
+          <Throw Exception="[new BusinessRuleException (&quot;Corupt Invoice File in the Mail Attachment&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Then>
+    </If>
     <If Condition="[arr_downloadfolders.Count=1]" sap:VirtualizedContainerService.HintSize="1925,1332" sap2010:WorkflowViewState.IdRef="If_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -640,7 +695,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="340,1256" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_list_folders]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_list_folders]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>

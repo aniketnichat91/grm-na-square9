@@ -42,7 +42,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>3886,10843</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>4537,15110</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Extract_Required_Data_From_Mail_Body_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="47">
@@ -96,7 +96,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="78">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -145,7 +145,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Extract_Required_Data_From_Mail_Body" sap:VirtualizedContainerService.HintSize="3896,10778" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Extract_Required_Data_From_Mail_Body" sap:VirtualizedContainerService.HintSize="4547,15045" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="enritcheddata" />
       <Variable x:TypeArguments="x:String" Name="varsubject" />
@@ -187,8 +187,8 @@
         <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="3854,61" sap2010:WorkflowViewState.IdRef="WriteLine_35" Text="Extracting Data from email body" />
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_372">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="4505,61" sap2010:WorkflowViewState.IdRef="WriteLine_35" Text="Extracting Data from email body" />
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_372">
       <Assign.To>
         <OutArgument x:TypeArguments="umm:Office365Message">[tempmaildata]</OutArgument>
       </Assign.To>
@@ -196,7 +196,7 @@
         <InArgument x:TypeArguments="umm:Office365Message">[CType(in_Email,Office365Message)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_216">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_216">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_str_date]</OutArgument>
       </Assign.To>
@@ -204,7 +204,7 @@
         <InArgument x:TypeArguments="x:String">[tempmaildata.ReceivedDateTime.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_370">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_370">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_str_date]</OutArgument>
       </Assign.To>
@@ -212,7 +212,7 @@
         <InArgument x:TypeArguments="x:String">[convert.ToDateTime(out_str_date).ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3854,51" sap2010:WorkflowViewState.IdRef="CommentOut_182">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="4505,51" sap2010:WorkflowViewState.IdRef="CommentOut_182">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_526">
           <Assign sap:VirtualizedContainerService.HintSize="1389,60" sap2010:WorkflowViewState.IdRef="Assign_371">
@@ -226,7 +226,7 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3854,51" sap2010:WorkflowViewState.IdRef="CommentOut_183">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="4505,51" sap2010:WorkflowViewState.IdRef="CommentOut_183">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_527">
           <Assign sap:VirtualizedContainerService.HintSize="1389,60" sap2010:WorkflowViewState.IdRef="Assign_217">
@@ -240,7 +240,7 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_218">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_218">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_mailid]</OutArgument>
       </Assign.To>
@@ -248,7 +248,7 @@
         <InArgument x:TypeArguments="x:String">[tempmaildata.MessageId.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="3854,61" sap2010:WorkflowViewState.IdRef="WriteLine_54" Text="[out_str_date]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="4505,61" sap2010:WorkflowViewState.IdRef="WriteLine_54" Text="[out_str_date]" />
     <Assign sap2010:Annotation.AnnotationText="This list will contain error infowhich will get stored in errorinfo column of broadcast_s9_log tale" DisplayName="List" sap:VirtualizedContainerService.HintSize="3854,117" sap2010:WorkflowViewState.IdRef="Assign_131">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[notuploadlist]</OutArgument>
@@ -278,7 +278,7 @@
         <InArgument x:TypeArguments="x:String">[in_Email.Body]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_102">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_102">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[in_mailbodydata]</OutArgument>
       </Assign.To>
@@ -286,7 +286,7 @@
         <InArgument x:TypeArguments="x:String">[in_mailbodydata.Replace("End of list - select or hit enter for first","")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_64">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_64">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varmailfrom]</OutArgument>
       </Assign.To>
@@ -294,7 +294,7 @@
         <InArgument x:TypeArguments="x:String">[in_Email.From.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_101">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_101">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varmailfrom]</OutArgument>
       </Assign.To>
@@ -302,7 +302,7 @@
         <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(varmailfrom,"(?&lt;=&lt;).+?(?=&gt;)").Value]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Extract data from email body" sap:VirtualizedContainerService.HintSize="3854,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Extract data from email body" sap:VirtualizedContainerService.HintSize="4505,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -369,7 +369,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_38">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_38">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[in_subject]</OutArgument>
       </Assign.To>
@@ -377,7 +377,7 @@
         <InArgument x:TypeArguments="x:String">[in_Email.Subject]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="3854,60" sap2010:WorkflowViewState.IdRef="Assign_106">
+    <Assign sap:VirtualizedContainerService.HintSize="4505,60" sap2010:WorkflowViewState.IdRef="Assign_106">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[attachmentfilename]</OutArgument>
       </Assign.To>
@@ -385,7 +385,7 @@
         <InArgument x:TypeArguments="x:String">[in_pdffilename]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Get mail subject" sap:VirtualizedContainerService.HintSize="3854,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Get mail subject" sap:VirtualizedContainerService.HintSize="4505,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -475,7 +475,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Sequence DisplayName="Is pdf scanned" sap:VirtualizedContainerService.HintSize="3854,66" sap2010:WorkflowViewState.IdRef="Sequence_329">
+    <Sequence DisplayName="Is pdf scanned" sap:VirtualizedContainerService.HintSize="4505,66" sap2010:WorkflowViewState.IdRef="Sequence_329">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -551,8 +551,13 @@
             </ui:CommentOut>
             <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="CommentOut_146">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_335">
-                  <Throw Exception="[new BusinessRuleException (&quot;PDF is scanned&quot;)]" sap:VirtualizedContainerService.HintSize="231,22" sap2010:WorkflowViewState.IdRef="Throw_22" />
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_335">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw Exception="[new BusinessRuleException (&quot;PDF is scanned&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_22" />
                 </Sequence>
               </ui:CommentOut.Body>
             </ui:CommentOut>
@@ -611,7 +616,7 @@
         </If.Else>
       </If>
     </Sequence>
-    <If Condition="[enritcheddata.ToString.ToLower.Contains(&quot;invoice&quot;) or enritcheddata.ToString.ToLower.Contains(&quot;client&quot;)]" sap:VirtualizedContainerService.HintSize="3854,4551" sap2010:WorkflowViewState.IdRef="If_15">
+    <If Condition="[enritcheddata.ToString.ToLower.Contains(&quot;invoice&quot;) or enritcheddata.ToString.ToLower.Contains(&quot;client&quot;)]" sap:VirtualizedContainerService.HintSize="4505,8818" sap2010:WorkflowViewState.IdRef="If_15">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -619,14 +624,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="1882,4403" sap2010:WorkflowViewState.IdRef="Sequence_464">
+        <Sequence sap:VirtualizedContainerService.HintSize="2257,8670" sap2010:WorkflowViewState.IdRef="Sequence_464">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[in_Email.Subject.ToString.ToLower.Contains(&quot;npay&quot;)]" sap:VirtualizedContainerService.HintSize="1840,4311" sap2010:WorkflowViewState.IdRef="If_123">
+          <If Condition="[in_Email.Subject.ToString.ToLower.Contains(&quot;npay&quot;)]" sap:VirtualizedContainerService.HintSize="2215,8578" sap2010:WorkflowViewState.IdRef="If_123">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsPinned">True</x:Boolean>
@@ -1520,8 +1525,8 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:IsMatch DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="737,51" sap2010:WorkflowViewState.IdRef="IsMatch_17" Input="[enritcheddata]" IsBuilderTabModified="False" Pattern="((?&lt;=COMMENTS\s+)(.*?)(?=\s+))" RegexOption="IgnoreCase, Compiled" Result="[boolinvnumberexist]" />
-                  <If Condition="[boolinvnumberexist]" sap:VirtualizedContainerService.HintSize="737,920" sap2010:WorkflowViewState.IdRef="If_99">
+                  <ui:IsMatch DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="1266,51" sap2010:WorkflowViewState.IdRef="IsMatch_17" Input="[enritcheddata]" IsBuilderTabModified="False" Pattern="((?&lt;=COMMENTS\s+)(.*?)(?=\s+))" RegexOption="IgnoreCase, Compiled" Result="[boolinvnumberexist]" />
+                  <If Condition="[boolinvnumberexist]" sap:VirtualizedContainerService.HintSize="1266,920" sap2010:WorkflowViewState.IdRef="If_99">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">True</x:Boolean>
@@ -1529,14 +1534,14 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="304,444" sap2010:WorkflowViewState.IdRef="Sequence_382">
+                      <Sequence sap:VirtualizedContainerService.HintSize="833,749" sap2010:WorkflowViewState.IdRef="Sequence_382">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_252">
+                        <Assign sap:VirtualizedContainerService.HintSize="791,60" sap2010:WorkflowViewState.IdRef="Assign_252">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[out_invnumber]</OutArgument>
                           </Assign.To>
@@ -1544,7 +1549,7 @@
                             <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(enritcheddata,"((?&lt;=COMMENTS\s+)(.*?)(?=\s+))",System.Text.RegularExpressions.RegexOptions.IgnoreCase).Value]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_253">
+                        <Assign sap:VirtualizedContainerService.HintSize="791,60" sap2010:WorkflowViewState.IdRef="Assign_253">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[out_invnumber]</OutArgument>
                           </Assign.To>
@@ -1552,12 +1557,12 @@
                             <InArgument x:TypeArguments="x:String">[out_invnumber.ToUpper.Trim]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="WriteLine_63" Text="[&quot;Inv Number is** &quot;+out_invnumber]" />
-                        <If Condition="[out_invnumber.Contains(&quot;DATE&quot;)]" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_94">
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="791,61" sap2010:WorkflowViewState.IdRef="WriteLine_63" Text="[&quot;Inv Number is** &quot;+out_invnumber]" />
+                        <If Condition="[out_invnumber.Contains(&quot;DATE&quot;)]" sap:VirtualizedContainerService.HintSize="791,356" sap2010:WorkflowViewState.IdRef="If_94">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
@@ -3961,14 +3966,14 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="1162,4163" sap2010:WorkflowViewState.IdRef="Sequence_34">
+              <Sequence sap:VirtualizedContainerService.HintSize="1537,8430" sap2010:WorkflowViewState.IdRef="Sequence_34">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Fetch Media lookup" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Fetch Media lookup" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -4256,7 +4261,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Client Code" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Fetch Client Code" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="boolclientcodeexist" />
                   </Sequence.Variables>
@@ -4338,7 +4343,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Validate ClientCode" sap:VirtualizedContainerService.HintSize="1120,306" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                <Sequence DisplayName="Validate ClientCode" sap:VirtualizedContainerService.HintSize="1495,306" sap2010:WorkflowViewState.IdRef="Sequence_43">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="opdtclientcode" />
                   </Sequence.Variables>
@@ -4477,7 +4482,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Client Name" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                <Sequence DisplayName="Fetch Client Name" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_39">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -4588,40 +4593,49 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Period" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Fetch Period" sap:VirtualizedContainerService.HintSize="1495,1479" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="boolperiodexist" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:IsMatch DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="882,51" sap2010:WorkflowViewState.IdRef="IsMatch_3" Input="[enritcheddata]" IsBuilderTabModified="False" Pattern="((?&lt;=(?:Station(.*?)Period\s+))(?:([1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))|((?&lt;=(?:Period\s+))(?:(0[1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))" RegexOption="IgnoreCase, Compiled" Result="[boolperiodexist]" />
-                  <If Condition="[boolperiodexist]" sap:VirtualizedContainerService.HintSize="882,1288" sap2010:WorkflowViewState.IdRef="If_3">
+                  <ui:IsMatch DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="1104,59" sap2010:WorkflowViewState.IdRef="IsMatch_3" Input="[enritcheddata]" IsBuilderTabModified="False" Pattern="((?&lt;=(?:Station(.*?)Period\s+))(?:([1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))|((?&lt;=(?:Period\s+))(?:(0[1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))|((?&lt;=Period\s+)\d+(?=(?:\s+Invoice)))" RegexOption="IgnoreCase, Compiled" Result="[boolperiodexist]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:IsMatch>
+                  <If Condition="[boolperiodexist]" sap:VirtualizedContainerService.HintSize="1104,1288" sap2010:WorkflowViewState.IdRef="If_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsPinned">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="304,453" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence sap:VirtualizedContainerService.HintSize="526,993" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="strdate" />
+                        </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_6">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[out_period]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(enritcheddata,"((?&lt;=(?:Station(.*?)Period\s+))(?:([1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))|((?&lt;=(?:Period\s+))(?:(0[1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))").Value]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(enritcheddata,"((?&lt;=(?:Station(.*?)Period\s+))(?:([1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))|((?&lt;=(?:Period\s+))(?:(0[1-9]|1[012])\/\d{2})(?=(?:\s+Invoice)))|((?&lt;=Period\s+)\d+(?=(?:\s+Invoice)))").Value]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_32">
+                        <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_32">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[out_period]</OutArgument>
                           </Assign.To>
@@ -4629,7 +4643,51 @@
                             <InArgument x:TypeArguments="x:String">[out_period.Trim]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_154">
+                        <If Condition="[not out_period.Contains(&quot;/&quot;)]" sap:VirtualizedContainerService.HintSize="484,500" sap2010:WorkflowViewState.IdRef="If_135">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="304,352" sap2010:WorkflowViewState.IdRef="Sequence_544">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Name="strmonth" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_376">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strdate]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[out_period.Substring(0,2)]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_377">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[strmonth]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[out_period.Substring(2,2)]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_378">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[out_period]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[strdate+"/"+strmonth]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Then>
+                        </If>
+                        <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_154">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[boolperiod]</OutArgument>
                           </Assign.To>
@@ -4637,7 +4695,7 @@
                             <InArgument x:TypeArguments="x:Boolean">False</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[&quot;Period is ** &quot;+out_period]" />
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[&quot;Period is ** &quot;+out_period]" />
                       </Sequence>
                     </If.Then>
                     <If.Else>
@@ -4660,7 +4718,7 @@
                               <OutArgument x:TypeArguments="x:String">[out_period]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(enritcheddata,"(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(\/)(20|21|22)(.*?)").Value]</InArgument>
+                              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(enritcheddata,"(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)(\/)(20|21|22|23)(.*?)").Value]</InArgument>
                             </Assign.Value>
                           </Assign>
                           <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_179">
@@ -4720,7 +4778,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Station" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence DisplayName="Fetch Station" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="boolstationexist" />
                   </Sequence.Variables>
@@ -4795,7 +4853,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Invoice Number" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence DisplayName="Fetch Invoice Number" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="boolinvnumberexist" />
                   </Sequence.Variables>
@@ -5043,7 +5101,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Total" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence DisplayName="Fetch Total" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="booltotalexist" />
                   </Sequence.Variables>
@@ -5201,7 +5259,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <If Condition="[varsubject IsNot Nothing and varsubject.Length&lt;9 and not varsubject.Contains(&quot;KLOS&quot;)]" DisplayName="Fetch P and EST code from subject" sap:VirtualizedContainerService.HintSize="1120,51" sap2010:WorkflowViewState.IdRef="If_16">
+                <If Condition="[varsubject IsNot Nothing and varsubject.Length&lt;9 and not varsubject.Contains(&quot;KLOS&quot;)]" DisplayName="Fetch P and EST code from subject" sap:VirtualizedContainerService.HintSize="1495,51" sap2010:WorkflowViewState.IdRef="If_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -5417,11 +5475,11 @@
                     </Sequence>
                   </If.Else>
                 </If>
-                <Sequence DisplayName="Set Month" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                <Sequence DisplayName="Set Month" sap:VirtualizedContainerService.HintSize="1495,1792" sap2010:WorkflowViewState.IdRef="Sequence_62">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If Condition="[boolperiod= True]" sap:VirtualizedContainerService.HintSize="1453,1700" sap2010:WorkflowViewState.IdRef="If_26">
@@ -5660,7 +5718,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Set Year" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                <Sequence DisplayName="Set Year" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_72">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -5814,7 +5872,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Prd Code" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence DisplayName="Fetch Prd Code" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="booltotalexist" />
                     <Variable x:TypeArguments="x:Boolean" Name="boolprdcodeexist" />
@@ -5941,7 +5999,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Validate PrdCode" sap:VirtualizedContainerService.HintSize="1120,1097" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                <Sequence DisplayName="Validate PrdCode" sap:VirtualizedContainerService.HintSize="1495,1097" sap2010:WorkflowViewState.IdRef="Sequence_56">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="opdtclientcode" />
                   </Sequence.Variables>
@@ -6138,17 +6196,18 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                      <Sequence sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_55">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </Sequence>
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Prd Name" sap:VirtualizedContainerService.HintSize="1120,1225" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                <Sequence DisplayName="Fetch Prd Name" sap:VirtualizedContainerService.HintSize="1495,1225" sap2010:WorkflowViewState.IdRef="Sequence_51">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -6288,7 +6347,7 @@
                     </If>
                   </Sequence>
                 </Sequence>
-                <Sequence DisplayName="Fetch EST code" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                <Sequence DisplayName="Fetch EST code" sap:VirtualizedContainerService.HintSize="1495,66" sap2010:WorkflowViewState.IdRef="Sequence_31">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="booltotalexist" />
                     <Variable x:TypeArguments="x:Boolean" Name="boolprdcodeexist" />
@@ -6402,15 +6461,15 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Invoice Date" sap:VirtualizedContainerService.HintSize="1120,66" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                <Sequence DisplayName="Fetch Invoice Date" sap:VirtualizedContainerService.HintSize="1495,1194" sap2010:WorkflowViewState.IdRef="Sequence_81">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="booltotalexist" />
                     <Variable x:TypeArguments="x:Boolean" Name="boolinvdateexist" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:IsMatch DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="1128,51" sap2010:WorkflowViewState.IdRef="IsMatch_11" Input="[enritcheddata]" IsBuilderTabModified="False" Pattern="(?&lt;=.*?)((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\d{1,2})(\/)(\d{2,4}))(?=.*?)" RegexOption="IgnoreCase, Compiled" Result="[boolinvdateexist]" />
