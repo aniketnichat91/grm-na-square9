@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1314,2039</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,2079</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -111,6 +111,8 @@
       <Variable x:TypeArguments="x:String" Name="varFileName" />
       <Variable x:TypeArguments="x:String" Name="varClientName" />
       <Variable x:TypeArguments="x:String" Name="varAgency" />
+      <Variable x:TypeArguments="x:String" Name="strFilename" />
+      <Variable x:TypeArguments="x:String" Name="str_Pdffile_link" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -202,13 +204,36 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Compile PDF in Attachment workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Process Files\Compile PDF in Attachment.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Path">[in_Config("FA_Log_File").ToString]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">[out_PDFFilePath]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_FaStatus">[varFaStatus]</OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_FileName">[varFileName]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">[in_TransactionItem.From.ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">[varInvNum]</InArgument>
+        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_TransactionItem">
+          <mva:VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="in_TransactionItem" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Path">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FA_Log_File&quot;).ToString" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_PDFFilePath" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_FaStatus">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varFaStatus" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_FileName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varFileName" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.From.ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varInvNum" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharePoint_urls">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Sharepoint_URLS&quot;).ToString" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="in_Pdffile_Link">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_Pdffile_link" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="strFilename">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strFilename" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Set NRA Status workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Set NRA Status.xaml">
@@ -270,6 +295,12 @@
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_M">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varM" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffile_link">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_Pdffile_link" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffile_name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilename" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

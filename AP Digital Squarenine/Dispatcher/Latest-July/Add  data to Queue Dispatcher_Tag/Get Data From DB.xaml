@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1069,4840</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1066,4581</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -82,7 +82,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="656,4775" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="656,4436" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="filedate" />
       <Variable x:TypeArguments="scg:List(s:DateTime)" Name="allDates" />
@@ -215,33 +215,33 @@
               <InArgument x:TypeArguments="x:String">[counterDate.ToString("M/d/yyyy")]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,230" sap2010:WorkflowViewState.IdRef="CommentOut_59">
+          <Assign DisplayName="Assign - original" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From master_log Where (FA_Status Like 'split - s9' or FA_Status like 'Restamp-S9' or FA_Status Like 'attach-s9'  or FA_Status Like 'Append-s9' or (FA_Status like '%tag%' and tag_status like '%Yes%') or fa_status Like '%Manual - S9%') and UpdatedDate like '%"+filedate+"%' And record_status Is null And UpdatedBy Is Not null and Doc_Link is not null "]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,230" sap2010:WorkflowViewState.IdRef="CommentOut_66">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_64">
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_71">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign - original" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign DisplayName="Assign - testing" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_13">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From master_log Where (FA_Status Like 'split - s9' or FA_Status like 'Restamp-S9' or FA_Status Like 'attach-s9'  or FA_Status Like 'Append-s9' or (FA_Status like '%tag%' and tag_status like '%Yes%') or fa_status Like '%Manual - S9%') and UpdatedDate like '%"+filedate+"%' And record_status Is null And UpdatedBy Is Not null and Doc_Link is not null "]</InArgument>
+                    <InArgument x:TypeArguments="x:String">["Select * From master_log Where doc_link Not Like '' and Doc_Link is not null and UpdatedDate like '%"+filedate+"%' and id in (320056)"]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
             </ui:CommentOut.Body>
           </ui:CommentOut>
-          <Assign DisplayName="Assign - testing" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_13">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["Select * From master_log Where doc_link Not Like '' and Doc_Link is not null and Invoice_Num like '420062342' and UpdatedDate like '%"+filedate+"%'"]</InArgument>
-            </Assign.Value>
-          </Assign>
           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[getdatafromdbquery]" />
           <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dtgetdata]" DisplayName="Execute Query" ExistingDbConnection="[tempdbconnect]" sap:VirtualizedContainerService.HintSize="484,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[getdatafromdbquery]">
             <ui:ExecuteQuery.Parameters>
@@ -293,59 +293,37 @@
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="614,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[getdatafromdbquery]" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="614,258" sap2010:WorkflowViewState.IdRef="CommentOut_60">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_65">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dtMultiInvoice1Buy]" DisplayName="Execute Query" ExistingDbConnection="[tempdbconnect]" sap:VirtualizedContainerService.HintSize="614,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[getdatafromdbquery]">
+      <ui:ExecuteQuery.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:ExecuteQuery.Parameters>
+    </ui:ExecuteQuery>
+    <If Condition="[dtMultiInvoice1Buy.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="614,362" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_30">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dtMultiInvoice1Buy]" DisplayName="Execute Query" ExistingDbConnection="[tempdbconnect]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[getdatafromdbquery]">
-            <ui:ExecuteQuery.Parameters>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
-            </ui:ExecuteQuery.Parameters>
-          </ui:ExecuteQuery>
+          <ui:MergeDataTable Destination="[cloneddt]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dtMultiInvoice1Buy]" />
+          <Assign DisplayName="Assign - remove same invoice number rows (if added by query twice)" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[cloneddt]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[cloneddt.AsEnumerable().GroupBy(Function(i) i.Field(Of String)(“Invoice_Num”)).Select(Function(g) g.First).CopyToDataTable]</InArgument>
+            </Assign.Value>
+          </Assign>
         </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="614,531" sap2010:WorkflowViewState.IdRef="CommentOut_61">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,453" sap2010:WorkflowViewState.IdRef="Sequence_66">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[dtMultiInvoice1Buy.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="484,361" sap2010:WorkflowViewState.IdRef="If_2">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:MergeDataTable Destination="[cloneddt]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dtMultiInvoice1Buy]" />
-                <Assign DisplayName="Assign - remove same invoice number rows (if added by query twice)" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_15">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="sd:DataTable">[cloneddt]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="sd:DataTable">[cloneddt.AsEnumerable().GroupBy(Function(i) i.Field(Of String)(“Invoice_Num”)).Select(Function(g) g.First).CopyToDataTable]</InArgument>
-                  </Assign.Value>
-                </Assign>
-              </Sequence>
-            </If.Then>
-          </If>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
+      </If.Then>
+    </If>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="614,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Total records found -&quot;+cloneddt.Rows.Count.ToString]" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="614,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[String.Join(&quot;,&quot;,StrallDates)]" />
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="614,51" sap2010:WorkflowViewState.IdRef="CommentOut_20">

@@ -7,14 +7,17 @@
     <x:Property Name="out_FileName" Type="OutArgument(x:String)" />
     <x:Property Name="in_fa_name" Type="InArgument(x:String)" />
     <x:Property Name="in_inv_num" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharePoint_urls" Type="InArgument(x:String)" />
+    <x:Property Name="in_Pdffile_Link" Type="OutArgument(x:String)" />
+    <x:Property Name="strFilename" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1744,4313</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,5076</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_PDF_in_Attachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="43">
+    <scg:List x:TypeArguments="x:String" Capacity="51">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -58,10 +61,18 @@
       <x:String>UiPath.Word.Activities</x:String>
       <x:String>ExceltoPDFConversion</x:String>
       <x:String>UiPathTeam.MailActivities</x:String>
+      <x:String>UiPathTeam.SharePoint</x:String>
+      <x:String>Microsoft.SharePoint.Client</x:String>
+      <x:String>UiPathTeam.SharePoint.Activities</x:String>
+      <x:String>UiPathTeam.SharePoint.Activities.Libraries</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="45">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="92">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -107,12 +118,13 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>ExceltoPDFConversion</AssemblyReference>
       <AssemblyReference>MailActivities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Compile_PDF_in_Attachment" sap:VirtualizedContainerService.HintSize="1754,4168" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Compile_PDF_in_Attachment" sap:VirtualizedContainerService.HintSize="1754,4971" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arrFilePath" />
-      <Variable x:TypeArguments="x:String" Name="strFilename" />
       <Variable x:TypeArguments="x:String" Name="var_user" />
       <Variable x:TypeArguments="ss:SecureString" Name="var_pass" />
       <Variable x:TypeArguments="x:String" Name="str_var_pass" />
@@ -176,7 +188,7 @@
         <InArgument x:TypeArguments="s:String[]">[System.io.Directory.GetFiles(in_Path+"Compile\DIG_Mail_Attachments\")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1712,51" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrFilePath]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1712,295" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrFilePath]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -194,7 +206,7 @@
       </ui:ForEach.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -208,29 +220,29 @@
         <InArgument x:TypeArguments="s:String[]">[system.io.Directory.GetFiles(in_Path+"Compile\DIG_Mail_Attachments\")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence DisplayName="Sequence - convert to PDF" sap:VirtualizedContainerService.HintSize="1712,903" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <Sequence DisplayName="Sequence - convert to PDF" sap:VirtualizedContainerService.HintSize="1712,1310" sap2010:WorkflowViewState.IdRef="Sequence_12">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,811" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[arrAllFiles]">
+      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="733,1218" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[arrAllFiles]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,687" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="697,1094" sap2010:WorkflowViewState.IdRef="Sequence_11">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[item.ToString.Contains(&quot;.docx&quot;)]" DisplayName="If - convert word to pdf" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_6">
+              <If Condition="[item.ToString.Contains(&quot;.docx&quot;)]" DisplayName="If - convert word to pdf" sap:VirtualizedContainerService.HintSize="655,458" sap2010:WorkflowViewState.IdRef="If_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -254,7 +266,7 @@
                   </p:WordApplicationScope>
                 </If.Then>
               </If>
-              <If Condition="[item.ToString.Contains(&quot;.xls&quot;) or item.ToString.Contains(&quot;.xlsx&quot;)]" DisplayName="If - convert excel to pdf" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_7">
+              <If Condition="[item.ToString.Contains(&quot;.xls&quot;) or item.ToString.Contains(&quot;.xlsx&quot;)]" DisplayName="If - convert excel to pdf" sap:VirtualizedContainerService.HintSize="655,208" sap2010:WorkflowViewState.IdRef="If_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -265,7 +277,7 @@
                   <e:ExcelToPDF Output="{x:Null}" SheetName="{x:Null}" DestinationPath="[in_Path+&quot;Compile\DIG_Mail_Attachments\&quot;+path.GetFileNameWithoutExtension(item.ToString)+&quot;.pdf&quot;]" DisplayName="Excel to PDF" ExcelSourcePath="[item.ToString]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ExcelToPDF_1" RemovePageBreaks="False" />
                 </If.Then>
               </If>
-              <If Condition="[item.ToString.Contains(&quot;.eml&quot;) or item.ToString.Contains(&quot;.msg&quot;)]" DisplayName="If - convert mail to pdf" sap:VirtualizedContainerService.HintSize="484,256" sap2010:WorkflowViewState.IdRef="If_8">
+              <If Condition="[item.ToString.Contains(&quot;.eml&quot;) or item.ToString.Contains(&quot;.msg&quot;)]" DisplayName="If - convert mail to pdf" sap:VirtualizedContainerService.HintSize="655,256" sap2010:WorkflowViewState.IdRef="If_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -289,11 +301,13 @@
         <InArgument x:TypeArguments="s:String[]">[system.io.Directory.GetFiles(in_Path+"Compile\DIG_Mail_Attachments\","*.pdf")]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[arrFilePath.Count &gt; 0]" DisplayName="If - no PDF attachment found" sap:VirtualizedContainerService.HintSize="1712,1794" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[arrFilePath.Count &gt; 0]" DisplayName="If - no PDF attachment found" sap:VirtualizedContainerService.HintSize="1712,1946" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="1115,1646" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="1115,1798" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Boolean" Name="boolpdffolderexist" />
+            <Variable x:TypeArguments="x:String" Name="strUsername" />
+            <Variable x:TypeArguments="ss:SecureString" Name="strPassword" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -313,6 +327,22 @@
               <upap:JoinPDF DisplayName="Join PDF Files" FileList="[arrFilePath]" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="JoinPDF_1" OutputFileName="[in_Path+&quot;Compile\DIG_Mail_Attachments\&quot;+strFilename]" />
             </If.Then>
           </If>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Upload_to_Sharepoint workflow" sap:VirtualizedContainerService.HintSize="1073,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Upload_to_Sharepoint.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SharePoint_urls">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SharePoint_urls" />
+              </InArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="in_Pdffile_Link">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="in_Pdffile_Link" />
+              </InOutArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="in_FileName">
+                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strFilename" />
+              </InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Path">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Path" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <If Condition="[in_TransactionItem.Subject.tolower.Contains(&quot;paid&quot;)]" sap:VirtualizedContainerService.HintSize="1073,1106" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">

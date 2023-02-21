@@ -1,0 +1,184 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Insert_DIG_data" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_fa_name" Type="InArgument(x:String)" />
+    <x:Property Name="in_E" Type="InArgument(x:String)" />
+    <x:Property Name="in_pubcode" Type="InArgument(x:String)" />
+    <x:Property Name="in_C" Type="InArgument(x:String)" />
+    <x:Property Name="in_P" Type="InArgument(x:String)" />
+    <x:Property Name="in_M" Type="InArgument(x:String)" />
+    <x:Property Name="in_Pub_Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_db" Type="InArgument(ui:DatabaseConnection)" />
+    <x:Property Name="in_Agency" Type="InArgument(x:String)" />
+    <x:Property Name="logdate" Type="InArgument(x:String)" />
+    <x:Property Name="in_PDF_Amount" Type="InArgument(x:String)" />
+    <x:Property Name="in_Client_Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_inv_num" Type="InArgument(x:String)" />
+    <x:Property Name="in_MOS" Type="InArgument(x:String)" />
+    <x:Property Name="in_pdffile_link" Type="InArgument(x:String)" />
+    <x:Property Name="in_Filename" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1794,1220</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Insert_DIG_data_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="41">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Insert_DIG_data" sap:VirtualizedContainerService.HintSize="611,1155" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="finance_associates" />
+      <Variable x:TypeArguments="x:String" Name="pdf_cpe" />
+      <Variable x:TypeArguments="x:String" Name="vendor" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="emailid" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_agency" />
+      <Variable x:TypeArguments="x:String" Name="InboundDate" />
+      <Variable x:TypeArguments="x:String" Name="str_Agency" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[vendor]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Pub_Name+" ("+in_pubcode+")"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[pdf_cpe]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_C+"_"+in_P+"_"+in_E]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:Matches sap:VirtualizedContainerService.HintSize="569,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_fa_name]" IsBuilderTabModified="False" Pattern="(?&lt;=&lt;).*(?=&gt;)" RegexOption="IgnoreCase, Compiled" Result="[emailid]" />
+    <ui:Matches sap:VirtualizedContainerService.HintSize="569,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[emailid(0).tostring]" IsBuilderTabModified="False" Pattern="[emailid(0).tostring.Split(&quot;@&quot;c).First]" RegexOption="IgnoreCase, Compiled" Result="[finance_associates]" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_agency]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="569,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;select distinct AgencyName from [dbo].[AgencyNameLookup] where Office_Codes='&quot;+in_Agency.ToString.Trim+&quot;'&quot;]">
+      <ui:ExecuteQuery.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:ExecuteQuery.Parameters>
+    </ui:ExecuteQuery>
+    <If Condition="[dt_agency.RowCount&gt;0]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[str_Agency]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[dt_agency.Rows(0)(0).ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+      <If.Else>
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[str_Agency]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">Mindshare</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Else>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[InboundDate]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[logdate.Replace("-","")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="569,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date)values ('New','Not Avaliable','&quot;+logdate+&quot;','&quot;+logdate+&quot;','&quot;+vendor+&quot;','&quot;+in_Filename+&quot;','&quot;+in_inv_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+in_M+&quot;','&quot;+in_C+&quot;','&quot;+in_P+&quot;','&quot;+in_E+&quot;','&quot;+in_MOS+&quot;','MANUAL - S9','','&quot;+in_PDF_Amount+&quot;','','','','','','&quot;+in_Client_Name+&quot;','&quot;+in_Pub_Name+&quot;','&quot;+in_pubcode+&quot;','','Mail to S9','Mail to S9','&quot;+logdate+&quot;','&quot;+str_Agency+&quot;','&quot;+finance_associates(0).ToString+&quot;','&quot;+in_pdffile_link+&quot;','&quot;+in_Filename+&quot;','','','','','','&quot;+logdate+&quot;','&quot;+emailid(0).tostring+&quot;','Mail to S9',Null,'No',Null,'Invoice',Null,Null,Null,'','','','','','','&quot;+InboundDate+&quot;','100','Yes','','','','','','','','','','&quot;+logdate+&quot;','&quot;+logdate+&quot;')&quot;]" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="569,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date)values ('New','Not Avaliable','&quot;+logdate+&quot;','&quot;+logdate+&quot;','&quot;+vendor+&quot;','&quot;+in_Filename+&quot;','&quot;+in_inv_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+in_M+&quot;','&quot;+in_C+&quot;','&quot;+in_P+&quot;','&quot;+in_E+&quot;','&quot;+in_MOS+&quot;','MANUAL - S9','','&quot;+in_PDF_Amount+&quot;','','','','','','&quot;+in_Client_Name+&quot;','&quot;+in_Pub_Name+&quot;','&quot;+in_pubcode+&quot;','','Mail to S9','Mail to S9','&quot;+logdate+&quot;','&quot;+str_Agency+&quot;','&quot;+finance_associates(0).ToString+&quot;','&quot;+in_pdffile_link+&quot;','&quot;+in_Filename+&quot;','','','','','','&quot;+logdate+&quot;','&quot;+emailid(0).tostring+&quot;','Mail to S9',Null,'No',Null,'Invoice',Null,Null,Null,'','','','','','','&quot;+InboundDate+&quot;','100','Yes','','','','','','','','','','&quot;+logdate+&quot;','&quot;+logdate+&quot;')&quot;]">
+      <ui:ExecuteQuery.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:ExecuteQuery.Parameters>
+    </ui:ExecuteQuery>
+  </Sequence>
+</Activity>

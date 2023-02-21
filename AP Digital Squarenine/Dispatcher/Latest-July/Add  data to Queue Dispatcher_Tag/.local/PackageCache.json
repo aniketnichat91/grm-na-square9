@@ -307,7 +307,6 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.Office.Client.Policy.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.Office.Client.TranslationServices.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.Online.SharePoint.Client.Tenant.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.DocumentManagement.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.Publishing.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.Runtime.dll",
@@ -316,6 +315,7 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.Taxonomy.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.UserProfiles.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.WorkflowServices.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom/16.0.4690.1000\\lib/net45/Microsoft.SharePoint.Client.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\newtonsoft.json/11.0.2\\lib/net45/Newtonsoft.Json.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\sharepointpnp.identitymodel.extensions/1.2.4\\lib/net45/SharePointPnP.IdentityModel.Extensions.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\sharepointpnpcore2016/3.12.1908\\lib/net45/Microsoft.Online.SharePoint.Client.Tenant.dll",
@@ -2680,7 +2680,6 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.Office.Client.Policy.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.Office.Client.TranslationServices.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.Online.SharePoint.Client.Tenant.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.DocumentManagement.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.Publishing.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.Runtime.dll",
@@ -2688,7 +2687,8 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.Search.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.Taxonomy.dll",
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.UserProfiles.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.WorkflowServices.dll"
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.WorkflowServices.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000\\lib\\net45\\Microsoft.SharePoint.Client.dll"
       ],
       "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\microsoft.sharepoint2016.csom\\16.0.4690.1000"
     },
