@@ -78,6 +78,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="656,3614" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -141,7 +142,7 @@
           <OutArgument x:TypeArguments="s:DateTime">[pastDate]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="s:DateTime">[todaysDate.AddDays(-50)]</InArgument>
+          <InArgument x:TypeArguments="s:DateTime">[todaysDate.AddDays(-100)]</InArgument>
         </Assign.Value>
       </Assign>
       <Assign sap:VirtualizedContainerService.HintSize="572,60" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -214,7 +215,7 @@
               <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["select * from master_log where FA_Status like '%NR%' and UpdatedDate like '%"+filedate+"%' and record_status is null and UpdatedBy is not null and doc_link is not null"]</InArgument>
+              <InArgument x:TypeArguments="x:String">["select * from master_log where FA_Status like '%NR%' and UpdatedDate like '%"+filedate+"%' and record_status is null and UpdatedBy is not null and doc_link is not null and from_name not like '%GPC Process%_EDI' "]</InArgument>
             </Assign.Value>
           </Assign>
           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[getdatafromdbquery]" />

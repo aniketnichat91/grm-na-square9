@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1066,4581</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1314,4501</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -160,7 +160,7 @@
           <OutArgument x:TypeArguments="s:DateTime">[pastDate]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="s:DateTime">[todaysDate.AddDays(-50)]</InArgument>
+          <InArgument x:TypeArguments="s:DateTime">[todaysDate.AddDays(-100)]</InArgument>
         </Assign.Value>
       </Assign>
       <Assign sap:VirtualizedContainerService.HintSize="572,60" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -220,7 +220,7 @@
               <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From master_log Where (FA_Status Like 'split - s9' or FA_Status like 'Restamp-S9' or FA_Status Like 'attach-s9'  or FA_Status Like 'Append-s9' or (FA_Status like '%tag%' and tag_status like '%Yes%') or fa_status Like '%Manual - S9%') and UpdatedDate like '%"+filedate+"%' And record_status Is null And UpdatedBy Is Not null and Doc_Link is not null "]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From master_log Where (FA_Status Like 'split - s9' or FA_Status like 'Restamp-S9' or FA_Status Like 'attach-s9'  or FA_Status Like 'Append-s9' or (FA_Status like '%tag%' and tag_status like '%Yes%') or fa_status Like '%Manual - S9%') and UpdatedDate like '%"+filedate+"%' And record_status Is null And UpdatedBy Is Not null and Doc_Link is not null and from_name not like '%GPC Process%_EDI' "]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,230" sap2010:WorkflowViewState.IdRef="CommentOut_66">
