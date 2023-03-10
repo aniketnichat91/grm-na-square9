@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794,5076</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1744,5076</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_PDF_in_Attachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
@@ -119,6 +119,7 @@
       <AssemblyReference>ExceltoPDFConversion</AssemblyReference>
       <AssemblyReference>MailActivities</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
@@ -227,7 +228,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="733,1218" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[arrAllFiles]">
+      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="733,1218" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[arrAllFiles]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -329,18 +330,10 @@
           </If>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Upload_to_Sharepoint workflow" sap:VirtualizedContainerService.HintSize="1073,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Upload_to_Sharepoint.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SharePoint_urls">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SharePoint_urls" />
-              </InArgument>
-              <InOutArgument x:TypeArguments="x:String" x:Key="in_Pdffile_Link">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="in_Pdffile_Link" />
-              </InOutArgument>
-              <InOutArgument x:TypeArguments="x:String" x:Key="in_FileName">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strFilename" />
-              </InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Path">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Path" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SharePoint_urls">[in_SharePoint_urls]</InArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="in_Pdffile_Link">[in_Pdffile_Link]</InOutArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="in_FileName">[strFilename]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Path">[in_Path]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <If Condition="[in_TransactionItem.Subject.tolower.Contains(&quot;paid&quot;)]" sap:VirtualizedContainerService.HintSize="1073,1106" sap2010:WorkflowViewState.IdRef="If_3">
@@ -520,26 +513,26 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="552,939" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="552,937" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Mail Found with No PDF Attachment" />
-          <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+          <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
             <uma:Office365ApplicationScope.Body>
               <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;No attachment found in the mail.&#xA;Please re-share the details in a new mail.&#xA;Please ignore if already done&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
+                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;No attachment found in the mail.&#xA;Please re-share the details in a new mail.&#xA;Please ignore if already done&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
                     <umam:SendMail.Attachments>
                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                     </umam:SendMail.Attachments>
