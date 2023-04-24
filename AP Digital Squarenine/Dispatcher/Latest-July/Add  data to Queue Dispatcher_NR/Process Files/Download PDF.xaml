@@ -21,7 +21,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1634,2671</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1634,2772</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Download_PDF_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
@@ -108,10 +108,9 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Download_PDF" sap:VirtualizedContainerService.HintSize="1644,2606" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Download_PDF" sap:VirtualizedContainerService.HintSize="1644,2707" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolpdffolderexist" />
       <Variable x:TypeArguments="x:String" Name="currentdate" />
@@ -151,6 +150,7 @@
         <InArgument x:TypeArguments="x:String">[in_pdffilepath+currentdate+"\downloadedpdf\"+in_pdffilename]</InArgument>
       </Assign.Value>
     </Assign>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1602,61" sap2010:WorkflowViewState.IdRef="WriteLine_20" Text="[io_local_pdffilepath]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Check File Exists with same name workflow" sap:VirtualizedContainerService.HintSize="1602,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Check File Exists with same name.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="FilePath">[io_local_pdffilepath]</InArgument>
@@ -165,7 +165,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <usa:SharepointApplicationScope ClientContext="{x:Null}" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="1564,1325" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" Password="[in_sppass]" QueryGrouping="False" SharePointInstanceType="Online" URL="[in_SPURL]" UserName="[in_spuser]">
+        <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="1564,1325" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" Password="[in_sppass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPURL]" UserName="[in_spuser]">
           <usa:SharepointApplicationScope.Body>
             <ActivityAction x:TypeArguments="us:SharePointContextInfo">
               <ActivityAction.Argument>
@@ -218,7 +218,7 @@
                               </Assign.Value>
                             </Assign>
                             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[in_Doc_Link1]" />
-                            <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_2" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                            <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_2" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                           </Sequence>
                         </TryCatch.Try>
                         <TryCatch.Catches>
@@ -250,7 +250,7 @@
                                       </Assign.Value>
                                     </Assign>
                                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[in_Doc_Link2]" />
-                                    <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_3" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                    <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_3" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                   </Sequence>
                                 </TryCatch.Try>
                                 <TryCatch.Catches>
@@ -282,7 +282,7 @@
                                               </Assign.Value>
                                             </Assign>
                                             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[in_Doc_Link3]" />
-                                            <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_4" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link3]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                            <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_4" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link3]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                           </Sequence>
                                         </TryCatch.Try>
                                         <TryCatch.Catches>
@@ -312,7 +312,7 @@
                                                   </Assign.Value>
                                                 </Assign>
                                                 <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[in_Doc_Link4]" />
-                                                <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_5" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link4]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                                <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_5" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link4]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                               </Sequence>
                                             </ActivityAction>
                                           </Catch>
@@ -360,7 +360,7 @@
                                   </Assign.Value>
                                 </Assign>
                                 <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_Doc_Link1]" />
-                                <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_1" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_1" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                               </Sequence>
                             </TryCatch.Try>
                             <TryCatch.Catches>
@@ -390,7 +390,7 @@
                                       </Assign.Value>
                                     </Assign>
                                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[in_Doc_Link2]" />
-                                    <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_6" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                    <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_6" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                   </Sequence>
                                 </ActivityAction>
                               </Catch>
@@ -415,7 +415,7 @@
                                   </Assign.Value>
                                 </Assign>
                                 <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[in_Doc_Link]" />
-                                <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_7" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_7" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                               </Sequence>
                             </TryCatch.Try>
                             <TryCatch.Catches>
@@ -445,7 +445,7 @@
                                       </Assign.Value>
                                     </Assign>
                                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[in_Doc_Link2]" />
-                                    <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_8" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                    <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_8" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                   </Sequence>
                                 </ActivityAction>
                               </Catch>
@@ -493,7 +493,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <usa:SharepointApplicationScope ClientContext="{x:Null}" DisplayName="Sharepoint application scope - only for GPC invoices, same as above flow" sap:VirtualizedContainerService.HintSize="434,364" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" Password="[in_sppass]" QueryGrouping="False" SharePointInstanceType="Online" URL="[in_SPURL_GPC]" UserName="[in_spuser]">
+            <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope - only for GPC invoices, same as above flow" sap:VirtualizedContainerService.HintSize="434,364" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" Password="[in_sppass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPURL_GPC]" UserName="[in_spuser]">
               <usa:SharepointApplicationScope.Body>
                 <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                   <ActivityAction.Argument>
@@ -546,7 +546,7 @@
                                   </Assign.Value>
                                 </Assign>
                                 <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[in_Doc_Link1]" />
-                                <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_9" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_9" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                               </Sequence>
                             </TryCatch.Try>
                             <TryCatch.Catches>
@@ -578,7 +578,7 @@
                                           </Assign.Value>
                                         </Assign>
                                         <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_13" Text="[in_Doc_Link2]" />
-                                        <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_10" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                        <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_10" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                       </Sequence>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
@@ -610,7 +610,7 @@
                                                   </Assign.Value>
                                                 </Assign>
                                                 <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="[in_Doc_Link3]" />
-                                                <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_11" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link3]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                                <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_11" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link3]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                               </Sequence>
                                             </TryCatch.Try>
                                             <TryCatch.Catches>
@@ -640,7 +640,7 @@
                                                       </Assign.Value>
                                                     </Assign>
                                                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[in_Doc_Link4]" />
-                                                    <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_12" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link4]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                                    <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_12" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link4]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                                   </Sequence>
                                                 </ActivityAction>
                                               </Catch>
@@ -688,7 +688,7 @@
                                       </Assign.Value>
                                     </Assign>
                                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_16" Text="[in_Doc_Link1]" />
-                                    <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_13" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                    <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_13" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link1]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                   </Sequence>
                                 </TryCatch.Try>
                                 <TryCatch.Catches>
@@ -718,7 +718,7 @@
                                           </Assign.Value>
                                         </Assign>
                                         <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_17" Text="[in_Doc_Link2]" />
-                                        <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_14" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                        <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_14" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                       </Sequence>
                                     </ActivityAction>
                                   </Catch>
@@ -743,7 +743,7 @@
                                       </Assign.Value>
                                     </Assign>
                                     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_18" Text="[in_Doc_Link]" />
-                                    <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_15" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                    <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_15" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                   </Sequence>
                                 </TryCatch.Try>
                                 <TryCatch.Catches>
@@ -773,7 +773,7 @@
                                           </Assign.Value>
                                         </Assign>
                                         <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="273,61" sap2010:WorkflowViewState.IdRef="WriteLine_19" Text="[in_Doc_Link2]" />
-                                        <usal:GetFile RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_16" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowCAMLQuery="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+                                        <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_16" LocalPath="[io_local_pdffilepath]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_Doc_Link2]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                                       </Sequence>
                                     </ActivityAction>
                                   </Catch>

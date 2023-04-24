@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992,2119</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1066,2039</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -113,6 +113,7 @@
       <Variable x:TypeArguments="x:String" Name="varAgency" />
       <Variable x:TypeArguments="x:String" Name="strFilename" />
       <Variable x:TypeArguments="x:String" Name="str_Pdffile_link" />
+      <Variable x:TypeArguments="x:String" Name="outID" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -183,60 +184,24 @@
     </Sequence>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process Files\Extract Data from Mail Body.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strMailBody" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outMOS">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varMOS" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outYear">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varYear" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outMonth">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varMonth" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outM">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varM" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outC">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varC" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outP">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varP" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outE">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varE" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outPubCode">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varPubCode" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outInvNum">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varInvNum" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outAmount">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varAmount" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outComment">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varComment" />
-        </OutArgument>
-        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnect">
-          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="dbConnection" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outPublicationName">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varPublicationName" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="argFaName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFinanceAssociateName" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outCName">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varClientName" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="outAgency">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varAgency" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_subject">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.Subject.Trim" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[strMailBody]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outMOS">[varMOS]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outYear">[varYear]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outMonth">[varMonth]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outM">[varM]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outC">[varC]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outP">[varP]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outE">[varE]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outPubCode">[varPubCode]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outInvNum">[varInvNum]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outAmount">[varAmount]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outComment">[varComment]</OutArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnect">[dbConnection]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outPublicationName">[varPublicationName]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argFaName">[strFinanceAssociateName]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outCName">[varClientName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outAgency">[varAgency]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_subject">[in_TransactionItem.Subject.Trim]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Compile PDF in Attachment workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Process Files\Compile PDF in Attachment.xaml">
@@ -251,6 +216,11 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_SharePoint_urls">[in_Config("Sharepoint_URLS").ToString]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="in_Pdffile_Link">[str_Pdffile_link]</OutArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="strFilename">[strFilename]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="argsubject" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argbody" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argfa_email" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argfa_name" />
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db1">[dbConnection]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Set NRA Status workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Set NRA Status.xaml">
@@ -263,26 +233,71 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Validate Mandatory Fields workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Validate Mandatory Fields.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">[varInvNum]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_C">[varC]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_P">[varP]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_E">[varE]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FA_Status">[varFaStatus]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">[varMOS]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">[varAmount]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">[in_TransactionItem.From.ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">[varPubCode]</InArgument>
-        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db">[dbConnection]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Client_Name">[varClientName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Pub_Name">[varPublicationName]</InArgument>
-        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varInvNum" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_C">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varC" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_P">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varP" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_E">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varE" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FA_Status">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varFaStatus" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varMOS" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varAmount" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.From.ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varPubCode" />
+        </InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db">
+          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="dbConnection" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Client_Name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varClientName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Pub_Name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varPublicationName" />
+        </InArgument>
+        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_TransactionItem">
+          <mva:VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="in_TransactionItem" />
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_SPUser" />
         <InArgument x:TypeArguments="x:String" x:Key="in_SPPass" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_Agency">[varAgency]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="mailBody">[in_TransactionItem.Body]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_M">[varM]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pdffile_link">[str_Pdffile_link]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pdffile_name">[strFilename]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Agency">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varAgency" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="mailBody">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.Body" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_M">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varM" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffile_link">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_Pdffile_link" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffile_name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilename" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argument1" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argfa_email" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argbody" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argfa_name" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argsubject" />
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db1" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ID">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="outID" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add Data to Queue workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Add Data to Queue.xaml">
@@ -377,6 +392,9 @@
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_client_Name">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varClientName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="argID">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="outID" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -24,7 +24,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1069,3995</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1066,4250</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -94,10 +94,9 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="917,3890" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="917,4145" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_isnra" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="var_dbconnect" />
@@ -307,17 +306,23 @@
         <OutArgument x:TypeArguments="x:String" x:Key="out_ClientName">[var_ClientName]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_pubname">[in_TransactionItem("Vendor").ToString.Trim]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_DB_Connection_Dev">[in_Config("DBConnection_String_Dev").ToString]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="argsubject" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argbody" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argfa_email" />
+        <OutArgument x:TypeArguments="x:String" x:Key="argfa_name" />
+        <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db1" />
+        <InArgument x:TypeArguments="x:String" x:Key="arg_Log_ID">[in_TransactionItem("ID").ToString.Trim]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="875,51" sap2010:WorkflowViewState.IdRef="CommentOut_6">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_16">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="917,143" sap2010:WorkflowViewState.IdRef="Sequence_16">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[in_TransactionItem(&quot;MultiInvoice_Status&quot;).ToString.Trim.ToLower.Equals(&quot;yes&quot;) and not in_TransactionItem(&quot;IsSegmentBuy&quot;).ToString.Trim.ToLower.Equals(&quot;yes&quot;)]" DisplayName="If - Multi Invoice 1 Buy, add comment for stamping and replace Invoice amount by Total Sum amount" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_7">
+          <If Condition="[in_TransactionItem(&quot;MultiInvoice_Status&quot;).ToString.Trim.ToLower.Equals(&quot;yes&quot;) and not in_TransactionItem(&quot;IsSegmentBuy&quot;).ToString.Trim.ToLower.Equals(&quot;yes&quot;)]" DisplayName="If - Multi Invoice 1 Buy, add comment for stamping and replace Invoice amount by Total Sum amount" sap:VirtualizedContainerService.HintSize="500,51" sap2010:WorkflowViewState.IdRef="If_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -498,23 +503,42 @@
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[in_TransactionItem(&quot;FA_Status&quot;).ToString.ToLower.Contains(&quot;append-s9&quot;)]" sap:VirtualizedContainerService.HintSize="875,260" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[in_TransactionItem(&quot;FA_Status&quot;).ToString.ToLower.Contains(&quot;append-s9&quot;)]" sap:VirtualizedContainerService.HintSize="875,414" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FA_Action_Append_S9 workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\FA_Action_Append_S9.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="ID">[in_TransactionItem("ID").ToString]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">[in_sppass]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">[in_spuser]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="io_pdf_file_name">[in_TransactionItem("Invoice_Name_Link").ToString.Trim]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">[in_TransactionItem("Finance_Associate").ToString.Trim]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="io_local_pdffilepath">[in_Config("FA_Log_File").ToString+"Compile\Append_S9_Attachments\"]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[in_SPURL]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[in_SPURL_GPC]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="Invoice_Name">[in_TransactionItem("Inv_Filename").tostring]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="dbConnectionString">[in_Config("DBConnection_String").tostring]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="dbConnectionString_Dev">[in_Config("DBConnection_String_Dev").tostring]</InArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-        </ui:InvokeWorkflowFile>
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,266" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch.Try>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FA_Action_Append_S9 workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\FA_Action_Append_S9.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="ID">[in_TransactionItem("ID").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">[in_sppass]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">[in_spuser]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="io_pdf_file_name">[in_TransactionItem("Invoice_Name_Link").ToString.Trim]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">[in_TransactionItem("Finance_Associate").ToString.Trim]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="io_local_pdffilepath">[in_Config("FA_Log_File").ToString+"Compile\Append_S9_Attachments\"]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[in_SPURL]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[in_SPURL_GPC]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Invoice_Name">[in_TransactionItem("Inv_Filename").tostring]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="dbConnectionString">[in_Config("DBConnection_String").tostring]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="dbConnectionString_Dev">[in_Config("DBConnection_String_Dev").tostring]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
       </If.Then>
     </If>
     <If Condition="[in_TransactionItem(&quot;FA_Status&quot;).ToString.ToLower.Contains(&quot;attach-s9&quot;)]" sap:VirtualizedContainerService.HintSize="875,260" sap2010:WorkflowViewState.IdRef="If_1">
@@ -558,6 +582,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_db_Connection">[in_Config("DBConnection_String").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="875,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_TransactionItem(&quot;ID&quot;).ToString.Trim]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add Data to Queue workflow" sap:VirtualizedContainerService.HintSize="875,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Add Data to Queue.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_pdf_invoice_date">[var_pdfinsdate]</InArgument>
@@ -589,6 +614,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_pub_code2">[in_TransactionItem("Publication_Code").ToString.Trim]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ClientName">[var_ClientName]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Vendor">[in_TransactionItem("Vendor").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Log_ID">[in_TransactionItem("ID").ToString.Trim]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

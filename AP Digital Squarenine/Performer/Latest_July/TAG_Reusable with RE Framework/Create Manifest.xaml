@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2838,4436</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2838,4000</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>temp_Create_Manifest_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -56,7 +56,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -91,7 +91,7 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="2848,4371" sap2010:WorkflowViewState.IdRef="Sequence_10">
+  <Sequence sap:VirtualizedContainerService.HintSize="2848,3935" sap2010:WorkflowViewState.IdRef="Sequence_10">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_JOB_TYPE" />
     </Sequence.Variables>
@@ -101,7 +101,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2806,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding entry in manifest file&quot;]" />
-    <Sequence sap:VirtualizedContainerService.HintSize="2806,4148" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence sap:VirtualizedContainerService.HintSize="2806,3712" sap2010:WorkflowViewState.IdRef="Sequence_9">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -140,9 +140,9 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <If Condition="[var_JOB_TYPE.Equals(&quot;CREATE_MANIFEST&quot;)]" sap:VirtualizedContainerService.HintSize="2764,3865" sap2010:WorkflowViewState.IdRef="If_4">
+      <If Condition="[var_JOB_TYPE.Equals(&quot;CREATE_MANIFEST&quot;)]" sap:VirtualizedContainerService.HintSize="2764,3429" sap2010:WorkflowViewState.IdRef="If_4">
         <If.Then>
-          <Sequence DisplayName="temp_Create_Manifest" sap:VirtualizedContainerService.HintSize="2619,3717" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="temp_Create_Manifest" sap:VirtualizedContainerService.HintSize="2619,3281" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="var" />
               <Variable x:TypeArguments="x:String" Name="var_PDF_Invoice_Date" />
@@ -168,6 +168,7 @@
               <Variable x:TypeArguments="sd:DataTable" Name="dt1" />
               <Variable x:TypeArguments="x:String" Name="insertquery" />
               <Variable x:TypeArguments="x:String" Name="currentdate" />
+              <Variable x:TypeArguments="x:String" Name="var_log_ID" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -176,7 +177,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2577,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;processing data for invoice num : &quot;+in_transitem.SpecificContent(&quot;Invoice_Num&quot;).ToString.Trim]" />
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="2577,749" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="2577,780" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -355,6 +356,14 @@
                       <InArgument x:TypeArguments="x:String">[in_transitem.SpecificContent("Agency").ToString.Trim]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[var_log_ID]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_transitem.SpecificContent("ID").ToString.Trim]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
               <sap:WorkflowViewStateService.ViewState>
@@ -374,7 +383,7 @@
                 <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
               </Assign.Value>
             </Assign>
-            <Sequence sap:VirtualizedContainerService.HintSize="2577,1076" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence sap:VirtualizedContainerService.HintSize="2577,609" sap2010:WorkflowViewState.IdRef="Sequence_16">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="updatequery" />
                 <Variable x:TypeArguments="x:String" Name="setlogfastatus" />
@@ -385,7 +394,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[updatequery]</OutArgument>
                 </Assign.To>
@@ -393,55 +402,21 @@
                   <InArgument x:TypeArguments="x:String">["update "+in_tablename+ " set bucket = '"+var_Status+"' where invoice_num = '"+var_Invoice_Num+"' and client_code = '"+var_C+"' and pdf_MOS = '"+var_PDF_MOS+"' and publication_code = '"+var_Publication_Code+"'"]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbexistigconnnection]" sap:VirtualizedContainerService.HintSize="436,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[updatequery]">
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbexistigconnnection]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[updatequery]">
                 <ui:ExecuteQuery.Parameters>
                   <scg:Dictionary x:TypeArguments="x:String, Argument" />
                 </ui:ExecuteQuery.Parameters>
               </ui:ExecuteQuery>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,230" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[setlogfastatus]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String" xml:space="preserve">["Update master_log set FA_Status = '"+var_FA_Status+"' where  Invoice_Num = '"+var_Invoice_Num+"' and PUBLICATION_CODE = '"+var_PUBLICATION_CODE+"'"]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </Sequence>
-                </ui:CommentOut.Body>
-              </ui:CommentOut>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,258" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbexistigconnnection]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[setlogfastatus]">
-                      <ui:ExecuteQuery.Parameters>
-                        <scg:Dictionary x:TypeArguments="x:String, Argument" />
-                      </ui:ExecuteQuery.Parameters>
-                    </ui:ExecuteQuery>
-                  </Sequence>
-                </ui:CommentOut.Body>
-              </ui:CommentOut>
-              <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[updatemasterlogquery]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["Update master_log set  Record_Status = 'On Server', FA_Interface_log_status = 'On Server'  where Invoice_Num like '%"+var_Invoice_Num+"%' and Vendor like '%"+var_PUBLICATION_CODE+"%'"]</InArgument>
+                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["Update master_log set  Record_Status = 'On Server', FA_Interface_log_status = 'On Server'  where Invoice_Num like '%"+var_Invoice_Num+"%' and Vendor like '%"+var_PUBLICATION_CODE+"%' and id = '"+var_Log_ID+"' "]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbexistigconnnection]" sap:VirtualizedContainerService.HintSize="436,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[updatemasterlogquery]">
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[updatemasterlogquery]" />
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbexistigconnnection]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[updatemasterlogquery]">
                 <ui:ExecuteQuery.Parameters>
                   <scg:Dictionary x:TypeArguments="x:String, Argument" />
                 </ui:ExecuteQuery.Parameters>

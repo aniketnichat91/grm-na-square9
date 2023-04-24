@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1092,1350</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,1250</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadFileToSharePoint_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -46,7 +46,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="23">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -70,6 +70,15 @@
       <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="UploadFileToSharePoint" sap:VirtualizedContainerService.HintSize="739,1185" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -101,7 +110,7 @@
           <OutArgument x:TypeArguments="s:String[]">[arrzipfile]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(opfolder,"*.zip")]</InArgument>
+          <InArgument x:TypeArguments="s:String[]">[System.IO.Directory.GetFiles(opfolder,"*.zip")]</InArgument>
         </Assign.Value>
       </Assign>
       <If Condition="[arrzipfile.Count&gt;0]" sap:VirtualizedContainerService.HintSize="655,801" sap2010:WorkflowViewState.IdRef="If_1">

@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1314,875</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1066,875</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -106,6 +106,7 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Square9 Dispacher&#xA;This proces will fetch the data from sharepoint and add it into a orchestrator queue, which will be used by square9 performer process to create manifest file.&#xA;Application Involved: Excel, SharePoint, Orchestrator Queue" DisplayName="Square9 Dispatcher" sap:VirtualizedContainerService.HintSize="687,810" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -232,9 +233,9 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231,187" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="612,1252" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
-                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="476,588" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="566,781" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -275,10 +276,10 @@
                     </Sequence>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="442,21" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="532,597" sap2010:WorkflowViewState.IdRef="Catch`1_9">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -286,7 +287,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence sap:VirtualizedContainerService.HintSize="526,525" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                        <Sequence sap:VirtualizedContainerService.HintSize="526,528" sap2010:WorkflowViewState.IdRef="Sequence_42">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="updatequeryforerror" />
                           </Sequence.Variables>
@@ -300,7 +301,7 @@
                               <OutArgument x:TypeArguments="x:String">[updatequeryforerror]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">["update master_log set record_status = 'Error record' where invoice_num like '%"+TransactionItem("Invoice_num").tostring+"%' and vendor like '%"+TransactionItem("Vendor").tostring+"%' and agency like '%"+TransactionItem("Agency").ToString+"%'"]</InArgument>
+                              <InArgument x:TypeArguments="x:String">["update master_log set record_status = 'Error record' where invoice_num like '%"+TransactionItem("Invoice_num").tostring+"%' and vendor like '%"+TransactionItem("Vendor").tostring+"%' and agency like '%"+TransactionItem("Agency").ToString+"%' and id = '"+TransactionItem("ID").ToString+"' "]</InArgument>
                             </Assign.Value>
                           </Assign>
                           <If Condition="[not Exception.Message.ToString.ToLower.Contains(&quot;invoice with same name&quot;)]" sap:VirtualizedContainerService.HintSize="484,236" sap2010:WorkflowViewState.IdRef="If_12">
@@ -323,7 +324,7 @@
                         </Sequence>
                       </ActivityAction>
                     </Catch>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="442,21" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="532,21" sap2010:WorkflowViewState.IdRef="Catch`1_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -334,7 +335,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence sap:VirtualizedContainerService.HintSize="552,724" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                        <Sequence sap:VirtualizedContainerService.HintSize="552,721" sap2010:WorkflowViewState.IdRef="Sequence_44">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -348,19 +349,19 @@
                               <InArgument x:TypeArguments="s:Exception">[Exception]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[var_assetsppass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_assetspuser]">
+                          <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[var_assetsppass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_assetspuser]">
                             <uma:Office365ApplicationScope.Body>
                               <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                                 </ActivityAction.Argument>
-                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_43">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+TransactionItem(&quot;Inv_Filename&quot;).ToString+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9. Error - &quot; +Exception.ToString]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[TransactionItem(&quot;Inv_Filename&quot;).ToString+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid &quot;]" To="[{&quot;souravra@cybage.com&quot;}]">
+                                  <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+TransactionItem(&quot;Inv_Filename&quot;).ToString+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9. Error - &quot; +Exception.ToString]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[TransactionItem(&quot;Inv_Filename&quot;).ToString+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid &quot;]" To="[{&quot;souravra@cybage.com&quot;}]">
                                     <umam:SendMail.Attachments>
                                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                     </umam:SendMail.Attachments>

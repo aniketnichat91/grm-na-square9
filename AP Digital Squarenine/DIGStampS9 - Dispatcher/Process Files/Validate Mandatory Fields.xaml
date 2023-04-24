@@ -20,14 +20,24 @@
     <x:Property Name="in_M" Type="InArgument(x:String)" />
     <x:Property Name="in_pdffile_link" Type="InArgument(x:String)" />
     <x:Property Name="in_pdffile_name" Type="InArgument(x:String)" />
+    <x:Property Name="argument1" Type="InArgument(x:String)" />
+    <x:Property Name="argfa_email" Type="OutArgument(x:String)" />
+    <x:Property Name="argbody" Type="OutArgument(x:String)" />
+    <x:Property Name="argfa_name" Type="OutArgument(x:String)" />
+    <x:Property Name="argsubject" Type="OutArgument(x:String)" />
+    <x:Property Name="in_db1" Type="InArgument(ui:DatabaseConnection)" />
+    <x:Property Name="out_ID" Type="OutArgument(x:String)" />
   </x:Members>
   <this:Validate_Mandatory_Fields.in_db>
     <InArgument x:TypeArguments="ui:DatabaseConnection" />
   </this:Validate_Mandatory_Fields.in_db>
+  <this:Validate_Mandatory_Fields.in_db1>
+    <InArgument x:TypeArguments="ui:DatabaseConnection" />
+  </this:Validate_Mandatory_Fields.in_db1>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794,14234</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1066,6874</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Validate_Mandatory_Fields_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="47">
@@ -128,13 +138,13 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="859,14129" sap2010:WorkflowViewState.IdRef="Sequence_62">
+  <Sequence sap:VirtualizedContainerService.HintSize="823,6809" sap2010:WorkflowViewState.IdRef="Sequence_62">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Validate_Mandatory_Fields" sap:VirtualizedContainerService.HintSize="817,14037" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence DisplayName="Validate_Mandatory_Fields" sap:VirtualizedContainerService.HintSize="781,6717" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:List(x:String)" Name="errorlist" />
         <Variable x:TypeArguments="x:String" Name="logdate" />
@@ -154,9 +164,9 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="USA Print S9 Credentials" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="775,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[var_user]" />
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="775,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Validting data for invoice number  &quot;+in_inv_num]" />
-      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_53">
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="USA Print S9 Credentials" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="739,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[var_user]" />
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="739,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Validting data for invoice number  &quot;+in_inv_num]" />
+      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_53">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[str_var_pass]</OutArgument>
         </Assign.To>
@@ -164,7 +174,7 @@
           <InArgument x:TypeArguments="x:String">[new System.Net.NetworkCredential(string.Empty, var_pass).Password]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_39">
+      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_39">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[logdate]</OutArgument>
         </Assign.To>
@@ -172,7 +182,7 @@
           <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_37">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:List(x:String)">[errorlist]</OutArgument>
         </Assign.To>
@@ -180,8 +190,8 @@
           <InArgument x:TypeArguments="scg:List(x:String)">[new List(Of String)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:Matches sap:VirtualizedContainerService.HintSize="775,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_fa_name]" IsBuilderTabModified="False" Pattern="\&lt;(.*?)\&gt;" RegexOption="IgnoreCase, Compiled" Result="[arrOut]" />
-      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_51">
+      <ui:Matches sap:VirtualizedContainerService.HintSize="739,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_fa_name]" IsBuilderTabModified="False" Pattern="\&lt;(.*?)\&gt;" RegexOption="IgnoreCase, Compiled" Result="[arrOut]" />
+      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_51">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strEmailAddress]</OutArgument>
         </Assign.To>
@@ -189,7 +199,7 @@
           <InArgument x:TypeArguments="x:String">[arrOut(0).tostring]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_54">
+      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_54">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strEmailAddress]</OutArgument>
         </Assign.To>
@@ -197,7 +207,7 @@
           <InArgument x:TypeArguments="x:String">[strEmailAddress.Replace("&lt;","")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_55">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strEmailAddress]</OutArgument>
         </Assign.To>
@@ -205,8 +215,8 @@
           <InArgument x:TypeArguments="x:String">[strEmailAddress.Replace("&gt;","")]</InArgument>
         </Assign.Value>
       </Assign>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="775,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[strEmailAddress]" />
-      <Assign sap:VirtualizedContainerService.HintSize="775,60" sap2010:WorkflowViewState.IdRef="Assign_52">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="739,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[strEmailAddress]" />
+      <Assign sap:VirtualizedContainerService.HintSize="739,60" sap2010:WorkflowViewState.IdRef="Assign_52">
         <Assign.To>
           <OutArgument x:TypeArguments="umm:Office365Message">[mailMessage]</OutArgument>
         </Assign.To>
@@ -214,9 +224,9 @@
           <InArgument x:TypeArguments="umm:Office365Message">[CType(in_TransactionItem,Office365Message)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="775,51" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="739,51" sap2010:WorkflowViewState.IdRef="CommentOut_16">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="1473,2658" sap2010:WorkflowViewState.IdRef="Sequence_60">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="284,235" sap2010:WorkflowViewState.IdRef="Sequence_60">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -513,14 +523,14 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <Sequence DisplayName="Vaidate Invoice Number" sap:VirtualizedContainerService.HintSize="775,1108" sap2010:WorkflowViewState.IdRef="Sequence_25">
+      <Sequence DisplayName="Vaidate Invoice Number" sap:VirtualizedContainerService.HintSize="739,1658" sap2010:WorkflowViewState.IdRef="Sequence_25">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[string.IsNullOrWhiteSpace(in_inv_num) or in_inv_num.Contains(&quot;,&quot;) or in_inv_num.Contains(&quot;:&quot;)]" sap:VirtualizedContainerService.HintSize="697,1016" sap2010:WorkflowViewState.IdRef="If_18">
+        <If Condition="[string.IsNullOrWhiteSpace(in_inv_num) or in_inv_num.Contains(&quot;,&quot;) or in_inv_num.Contains(&quot;:&quot;)]" sap:VirtualizedContainerService.HintSize="697,1566" sap2010:WorkflowViewState.IdRef="If_18">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -528,7 +538,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="552,868" sap2010:WorkflowViewState.IdRef="Sequence_22">
+            <Sequence sap:VirtualizedContainerService.HintSize="552,1418" sap2010:WorkflowViewState.IdRef="Sequence_22">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -614,19 +624,19 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_12" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_12" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
                 <uma:Office365ApplicationScope.Body>
                   <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_93">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Invoice Num was not in an expected input. It is either blank or contains unexpected characters ( , : )&#xA;Please reshare with all the details in a new mail thread.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_12" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Invoice Num was not in an expected input. It is either blank or contains unexpected characters ( , : )&#xA;Please reshare with all the details in a new mail thread.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_12" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
@@ -641,19 +651,61 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uma:Office365ApplicationScope>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_58">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argsubject]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Mail to Stamp S9 Inv# - " +in_inv_num]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_59">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argbody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Hi,The Invoice Num was not in an expected input. It is either blank or contains unexpected characters ( , : ) Please reshare with all the details in a new mail thread. The invoice was not uploaded to Global Search Regards, Bot"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_60">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_email]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strEmailAddress]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_82">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_name]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strConv(Split(argfa_email.ToString,“@”.toCharArray)(0).Replace(“.”," "),vbstrConv.ProperCase)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argBotName">Mail to S9</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
               <Throw Exception="[new BusinessRuleException (&quot;Invoice_Number is blank or in Unexpected Format&quot;)]" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
             </Sequence>
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Media Code" sap:VirtualizedContainerService.HintSize="775,1108" sap2010:WorkflowViewState.IdRef="Sequence_92">
+      <Sequence DisplayName="Vaidate Media Code" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_92">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[not (in_M.Trim.tolower.Equals(&quot;s&quot;) or in_M.Trim.tolower.Equals(&quot;i&quot;) or in_M.Trim.tolower.Equals(&quot;l&quot;))]" sap:VirtualizedContainerService.HintSize="697,1016" sap2010:WorkflowViewState.IdRef="If_32">
+        <If Condition="[not (in_M.Trim.tolower.Equals(&quot;s&quot;) or in_M.Trim.tolower.Equals(&quot;i&quot;) or in_M.Trim.tolower.Equals(&quot;l&quot;))]" sap:VirtualizedContainerService.HintSize="697,1566" sap2010:WorkflowViewState.IdRef="If_32">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -661,7 +713,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="552,868" sap2010:WorkflowViewState.IdRef="Sequence_91">
+            <Sequence sap:VirtualizedContainerService.HintSize="552,1418" sap2010:WorkflowViewState.IdRef="Sequence_91">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -681,7 +733,7 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,543" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,541" sap2010:WorkflowViewState.IdRef="Sequence_87">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="s:String[]" Default="[{in_fa_name+&quot;@groupm.com&quot;}]" Name="arrfaname" />
                             </Sequence.Variables>
@@ -690,7 +742,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of MOS is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_10" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="Cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid " To="[in_fa_name]">
+                            <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of MOS is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,350" sap2010:WorkflowViewState.IdRef="SendMail_10" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="Cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid " To="[in_fa_name]">
                               <umam:SendMail.Attachments>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </umam:SendMail.Attachments>
@@ -722,19 +774,19 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_11" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_11" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
                 <uma:Office365ApplicationScope.Body>
                   <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_89">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Media Code was not a expected input (I,L,S). Please reshare with all the details in a new mail thread.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_11" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Media Code was not a expected input (I,L,S). Please reshare with all the details in a new mail thread.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_11" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
@@ -749,6 +801,48 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uma:Office365ApplicationScope>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_62">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argsubject]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Mail to Stamp S9 Inv# - " +in_inv_num]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_63">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argbody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Hi,The Media Code was not a expected input (I,L,S). Please reshare with all the details in a new mail thread.The invoice was not uploaded to Global Search Regards, Bot"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_64">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_email]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strEmailAddress]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_83">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_name]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strConv(Split(argfa_email.ToString,“@”.toCharArray)(0).Replace(“.”," "),vbstrConv.ProperCase)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argBotName">Mail to S9</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
               <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="CommentOut_33">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_90">
@@ -772,14 +866,14 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate MOS" sap:VirtualizedContainerService.HintSize="775,1108" sap2010:WorkflowViewState.IdRef="Sequence_34">
+      <Sequence DisplayName="Vaidate MOS" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_34">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[string.IsNullOrWhiteSpace(in_MOS) or in_MOS.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="697,1016" sap2010:WorkflowViewState.IdRef="If_23">
+        <If Condition="[string.IsNullOrWhiteSpace(in_MOS) or in_MOS.Contains(&quot;FFM&quot;)]" sap:VirtualizedContainerService.HintSize="697,1566" sap2010:WorkflowViewState.IdRef="If_23">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -787,7 +881,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="552,868" sap2010:WorkflowViewState.IdRef="Sequence_33">
+            <Sequence sap:VirtualizedContainerService.HintSize="552,1418" sap2010:WorkflowViewState.IdRef="Sequence_33">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -807,7 +901,7 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,544" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,541" sap2010:WorkflowViewState.IdRef="Sequence_55">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="s:String[]" Default="[{in_fa_name+&quot;@groupm.com&quot;}]" Name="arrfaname" />
                             </Sequence.Variables>
@@ -816,7 +910,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of MOS is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="Cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid " To="[in_fa_name]">
+                            <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of MOS is blank or not valid.  Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,350" sap2010:WorkflowViewState.IdRef="SendMail_4" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="Cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid " To="[in_fa_name]">
                               <umam:SendMail.Attachments>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </umam:SendMail.Attachments>
@@ -848,19 +942,19 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_9" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_9" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
                 <uma:Office365ApplicationScope.Body>
                   <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_86">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The MOS was not found in expected format (i.e. MM/YY). Please reshare with all the details in a new mail thread.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_9" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The MOS was not found in expected format (i.e. MM/YY). Please reshare with all the details in a new mail thread.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_9" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
@@ -875,6 +969,48 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uma:Office365ApplicationScope>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_66">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argsubject]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Mail to Stamp S9 Inv# - " +in_inv_num]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_67">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argbody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Hi, The MOS was not found in expected format (i.e. MM/YY). Please reshare with all the details in a new mail thread. The invoice was not uploaded to Global Search Regards, Bot"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_68">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_email]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strEmailAddress]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_84">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_name]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strConv(Split(argfa_email.ToString,“@”.toCharArray)(0).Replace(“.”," "),vbstrConv.ProperCase)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argBotName">Mail to S9</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
               <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="CommentOut_13">
                 <ui:CommentOut.Body>
                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_56">
@@ -898,7 +1034,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate PDF Amount" sap:VirtualizedContainerService.HintSize="775,536" sap2010:WorkflowViewState.IdRef="Sequence_36">
+      <Sequence DisplayName="Vaidate PDF Amount" sap:VirtualizedContainerService.HintSize="739,536" sap2010:WorkflowViewState.IdRef="Sequence_36">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1003,7 +1139,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Client Code" sap:VirtualizedContainerService.HintSize="775,536" sap2010:WorkflowViewState.IdRef="Sequence_28">
+      <Sequence DisplayName="Vaidate Client Code" sap:VirtualizedContainerService.HintSize="739,536" sap2010:WorkflowViewState.IdRef="Sequence_28">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1065,7 +1201,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Product Code" sap:VirtualizedContainerService.HintSize="775,536" sap2010:WorkflowViewState.IdRef="Sequence_30">
+      <Sequence DisplayName="Vaidate Product Code" sap:VirtualizedContainerService.HintSize="739,536" sap2010:WorkflowViewState.IdRef="Sequence_30">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1127,7 +1263,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="775,51" sap2010:WorkflowViewState.IdRef="CommentOut_31">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="739,51" sap2010:WorkflowViewState.IdRef="CommentOut_31">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="781,158" sap2010:WorkflowViewState.IdRef="Sequence_85">
             <sap:WorkflowViewStateService.ViewState>
@@ -1235,22 +1371,22 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <Sequence DisplayName="Vaidate Client name" sap:VirtualizedContainerService.HintSize="775,1170" sap2010:WorkflowViewState.IdRef="Sequence_73">
+      <Sequence DisplayName="Vaidate Client name" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_73">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[string.IsNullOrWhiteSpace(in_Client_Name)]" sap:VirtualizedContainerService.HintSize="697,1078" sap2010:WorkflowViewState.IdRef="If_29">
+        <If Condition="[string.IsNullOrWhiteSpace(in_Client_Name)]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_29">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="552,930" sap2010:WorkflowViewState.IdRef="Sequence_72">
+            <Sequence sap:VirtualizedContainerService.HintSize="552,1480" sap2010:WorkflowViewState.IdRef="Sequence_72">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1275,19 +1411,19 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_6" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_6" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
                 <uma:Office365ApplicationScope.Body>
                   <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_78">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Client name was not found in mapping table.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_7" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Client name was not found in mapping table.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_7" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
@@ -1302,6 +1438,48 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uma:Office365ApplicationScope>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_70">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argsubject]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Mail to Stamp S9 Inv# - " +in_inv_num]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_71">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argbody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Hi, The Client name was not found in mapping table. The invoice was not uploaded to Global Search Regards, Bot"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_72">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_email]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strEmailAddress]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_85">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_name]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strConv(Split(argfa_email.ToString,“@”.toCharArray)(0).Replace(“.”," "),vbstrConv.ProperCase)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argBotName">Mail to S9</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
               <AddToCollection x:TypeArguments="x:String" Collection="[errorlist]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="EST#" />
               <Throw Exception="[new BusinessRuleException (&quot;Client Name is blank&quot;)]" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="Throw_9" />
               <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="CommentOut_26">
@@ -1326,7 +1504,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate E number" sap:VirtualizedContainerService.HintSize="775,684" sap2010:WorkflowViewState.IdRef="Sequence_32">
+      <Sequence DisplayName="Vaidate E number" sap:VirtualizedContainerService.HintSize="739,684" sap2010:WorkflowViewState.IdRef="Sequence_32">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1392,14 +1570,14 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Vaidate Publication Name" sap:VirtualizedContainerService.HintSize="775,1170" sap2010:WorkflowViewState.IdRef="Sequence_77">
+      <Sequence DisplayName="Vaidate Publication Name" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_77">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[string.IsNullOrWhiteSpace(in_Pub_Name)]" sap:VirtualizedContainerService.HintSize="697,1078" sap2010:WorkflowViewState.IdRef="If_30">
+        <If Condition="[string.IsNullOrWhiteSpace(in_Pub_Name)]" sap:VirtualizedContainerService.HintSize="697,1628" sap2010:WorkflowViewState.IdRef="If_30">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1407,7 +1585,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="552,930" sap2010:WorkflowViewState.IdRef="Sequence_76">
+            <Sequence sap:VirtualizedContainerService.HintSize="552,1480" sap2010:WorkflowViewState.IdRef="Sequence_76">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1431,19 +1609,19 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:CommentOut>
-              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_7" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_7" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
                 <uma:Office365ApplicationScope.Body>
                   <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_79">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Publication name was not found in mapping table.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_8" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;The Publication name was not found in mapping table.&#xA;The invoice was not uploaded to Global Search&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_8" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Mail to Stamp S9 Inv# - &quot; +in_inv_num]" To="[{strEmailAddress}]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
@@ -1458,6 +1636,48 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uma:Office365ApplicationScope>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_74">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argsubject]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Mail to Stamp S9 Inv# - " +in_inv_num]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_75">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argbody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Hi, The Publication name was not found in mapping table. The invoice was not uploaded to Global Search Regards, Bot"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_76">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_email]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strEmailAddress]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_86">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_name]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strConv(Split(argfa_email.ToString,“@”.toCharArray)(0).Replace(“.”," "),vbstrConv.ProperCase)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argBotName">Mail to S9</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
               <AddToCollection x:TypeArguments="x:String" Collection="[errorlist]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_5" Item="P_Code" />
               <Throw Exception="[new BusinessRuleException (&quot;Publication Name is blank&quot;)]" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="Throw_11" />
               <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="CommentOut_28">
@@ -1482,7 +1702,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <If Condition="[in_FA_Status.ToLower.Contains(&quot;nr&quot;)]" sap:VirtualizedContainerService.HintSize="775,208" sap2010:WorkflowViewState.IdRef="If_28">
+      <If Condition="[in_FA_Status.ToLower.Contains(&quot;nr&quot;)]" sap:VirtualizedContainerService.HintSize="739,208" sap2010:WorkflowViewState.IdRef="If_28">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1510,15 +1730,15 @@
           </Assign>
         </If.Else>
       </If>
-      <If Condition="[errorlist.Count&gt;0]" sap:VirtualizedContainerService.HintSize="775,2273" sap2010:WorkflowViewState.IdRef="If_27">
+      <If Condition="[errorlist.Count&gt;0]" sap:VirtualizedContainerService.HintSize="739,51" sap2010:WorkflowViewState.IdRef="If_27">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="630,2125" sap2010:WorkflowViewState.IdRef="Sequence_45">
+          <Sequence sap:VirtualizedContainerService.HintSize="630,2123" sap2010:WorkflowViewState.IdRef="Sequence_45">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="inserterror" />
               <Variable x:TypeArguments="x:String" Name="errortext" />
@@ -1538,21 +1758,21 @@
                 <InArgument x:TypeArguments="x:String">[String.Join(",",errorlist)+" is blank"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,800" sap2010:WorkflowViewState.IdRef="CommentOut_18">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="588,798" sap2010:WorkflowViewState.IdRef="CommentOut_18">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,722" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,720" sap2010:WorkflowViewState.IdRef="Sequence_63">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,630" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
+                  <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,628" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
                     <uma:Office365ApplicationScope.Body>
                       <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,544" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,542" sap2010:WorkflowViewState.IdRef="Sequence_48">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="s:String[]" Default="[{in_fa_name+&quot;@groupm.com&quot;}]" Name="arrfaname" />
                           </Sequence.Variables>
@@ -1561,7 +1781,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of &quot;+errortext+ &quot;.  Please upload correct data or process the record manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of &quot; +errortext]" To="[in_fa_name]">
+                          <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of &quot;+errortext+ &quot;.  Please upload correct data or process the record manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,350" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of &quot; +errortext]" To="[in_fa_name]">
                             <umam:SendMail.Attachments>
                               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                             </umam:SendMail.Attachments>
@@ -1690,13 +1910,13 @@
           </Sequence>
         </If.Then>
       </If>
-      <Sequence DisplayName="Sequence Update NR to Manual S9" sap:VirtualizedContainerService.HintSize="775,1422" sap2010:WorkflowViewState.IdRef="Sequence_96">
+      <Sequence DisplayName="Sequence Update NR to Manual S9" sap:VirtualizedContainerService.HintSize="739,66" sap2010:WorkflowViewState.IdRef="Sequence_96">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Name="dt_NR" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -1705,7 +1925,7 @@
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:ExecuteQuery.Parameters>
         </ui:ExecuteQuery>
-        <If Condition="[dt_NR.Rows.Count&gt;0]" sap:VirtualizedContainerService.HintSize="697,1202" sap2010:WorkflowViewState.IdRef="If_33">
+        <If Condition="[dt_NR.Rows.Count&gt;0]" sap:VirtualizedContainerService.HintSize="697,1752" sap2010:WorkflowViewState.IdRef="If_33">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1713,7 +1933,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="552,1054" sap2010:WorkflowViewState.IdRef="Sequence_95">
+            <Sequence sap:VirtualizedContainerService.HintSize="552,1604" sap2010:WorkflowViewState.IdRef="Sequence_95">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="VarQuery" />
               </Sequence.Variables>
@@ -1737,19 +1957,19 @@
                 </ui:ExecuteQuery.Parameters>
               </ui:ExecuteQuery>
               <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="510,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[strEmailAddress]" />
-              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,532" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_13" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,530" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_13" OAuthApplication="UiPath" Password="[str_var_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[var_user]">
                 <uma:Office365ApplicationScope.Body>
                   <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,446" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,444" sap2010:WorkflowViewState.IdRef="Sequence_94">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;We find this Record marked as NR against Invoice number mentioned above&#xA;so we have Updated this To Manual - S9.&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_13" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Update NR to Manual S9 for Invoice Number - &quot; +in_inv_num]" To="[{in_fa_name}]">
+                      <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="nycgrm.mdocsbot@groupm.com" Body="Hi,&#xA;We find this Record marked as NR against Invoice number mentioned above&#xA;so we have Updated this To Manual - S9.&#xA;&#xA;Regards,&#xA;Bot" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_13" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot;Update NR to Manual S9 for Invoice Number - &quot; +in_inv_num]" To="[{in_fa_name}]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
@@ -1764,11 +1984,53 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uma:Office365ApplicationScope>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_78">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argsubject]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Update NR to Manual S9 for Invoice Number - " +in_inv_num]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_79">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argbody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Hi, We find this Record marked as NR against Invoice number mentioned above so we have Updated this To Manual - S9. Regards, Bot"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_80">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_email]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strEmailAddress]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_87">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[argfa_name]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[strConv(Split(argfa_email.ToString,“@”.toCharArray)(0).Replace(“.”," "),vbstrConv.ProperCase)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argBotName">Mail to S9</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
             </Sequence>
           </If.Then>
         </If>
       </Sequence>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Insert_DIG_data workflow" sap:VirtualizedContainerService.HintSize="775,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Insert_DIG_data.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Insert_DIG_data workflow" sap:VirtualizedContainerService.HintSize="739,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Insert_DIG_data.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">
             <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_fa_name" />
@@ -1818,9 +2080,12 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_Filename">
             <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pdffile_name" />
           </InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_ID">
+            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_ID" />
+          </OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="775,51" sap2010:WorkflowViewState.IdRef="CommentOut_34">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="739,51" sap2010:WorkflowViewState.IdRef="CommentOut_34">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_97">
             <sap:WorkflowViewStateService.ViewState>

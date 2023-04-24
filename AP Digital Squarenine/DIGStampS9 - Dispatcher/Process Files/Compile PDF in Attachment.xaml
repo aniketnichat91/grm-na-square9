@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Compile_PDF_in_Attachment" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:e="clr-namespace:ExceltoPDFConversion;assembly=ExceltoPDFConversion" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPathTeam.MailActivities;assembly=MailActivities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Compile_PDF_in_Attachment" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:e="clr-namespace:ExceltoPDFConversion;assembly=ExceltoPDFConversion" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPathTeam.MailActivities;assembly=MailActivities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(snm:MailMessage)" />
     <x:Property Name="in_Path" Type="InArgument(x:String)" />
@@ -10,11 +10,19 @@
     <x:Property Name="in_SharePoint_urls" Type="InArgument(x:String)" />
     <x:Property Name="in_Pdffile_Link" Type="OutArgument(x:String)" />
     <x:Property Name="strFilename" Type="OutArgument(x:String)" />
+    <x:Property Name="argsubject" Type="OutArgument(x:String)" />
+    <x:Property Name="argbody" Type="OutArgument(x:String)" />
+    <x:Property Name="argfa_email" Type="OutArgument(x:String)" />
+    <x:Property Name="argfa_name" Type="OutArgument(x:String)" />
+    <x:Property Name="in_db1" Type="InArgument(ui:DatabaseConnection)" />
   </x:Members>
+  <this:Compile_PDF_in_Attachment.in_db1>
+    <InArgument x:TypeArguments="ui:DatabaseConnection" />
+  </this:Compile_PDF_in_Attachment.in_db1>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1744,5076</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1744,5036</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_PDF_in_Attachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
@@ -72,7 +80,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="92">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -513,7 +521,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="552,937" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="552,1489" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -547,6 +555,60 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </uma:Office365ApplicationScope>
+          <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[argsubject]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["Mail to Stamp S9 Inv# - " +in_inv_num]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[argbody]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["Hi, No attachment found in the mail. Please re-share the details in a new mail. Please ignore if already done Regards, Bot"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[argfa_email]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[strEmailAddress]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[argfa_name]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[strConv(Split(argfa_email.ToString,“@”.toCharArray)(0).Replace(“.”," "),vbstrConv.ProperCase)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">
+                <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_db1" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argsubject" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argbody" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argBotName">
+                <Literal x:TypeArguments="x:String">Mail to S9</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argFAName">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_name" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_email" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Move Email workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process Files\Move Email.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mail">[in_TransactionItem]</InArgument>

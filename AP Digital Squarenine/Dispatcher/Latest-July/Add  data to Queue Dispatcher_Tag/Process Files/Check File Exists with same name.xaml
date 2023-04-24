@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1008,651</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1066,651</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Check_File_Exists_with_same_name_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -57,7 +57,7 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Check_File_Exists_with_same_name" sap:VirtualizedContainerService.HintSize="526,483" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Check_File_Exists_with_same_name" sap:VirtualizedContainerService.HintSize="526,545" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isPresent" />
     </Sequence.Variables>
@@ -67,9 +67,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:PathExists DisplayName="Path Exists" Exists="[isPresent]" sap:VirtualizedContainerService.HintSize="484,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[FilePath]" PathType="File" />
-    <If Condition="[isPresent]" sap:VirtualizedContainerService.HintSize="484,262" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[isPresent]" sap:VirtualizedContainerService.HintSize="484,324" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Sequence - skip record for the day" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Sequence - skip record for the day" sap:VirtualizedContainerService.HintSize="242,176" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="s:String[]" Name="arrInvoiceFiles" />
           </Sequence.Variables>
@@ -80,6 +80,11 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Throw Exception="[new BusinessRuleException(&quot;Invoice with same name already exists&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <ui:AddTransactionItem ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" TransactionItem="{x:Null}" DisplayName="Add Transaction Item" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddTransactionItem_1" QueueType="[Nothing]">
+            <ui:AddTransactionItem.TransactionInformation>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+            </ui:AddTransactionItem.TransactionInformation>
+          </ui:AddTransactionItem>
         </Sequence>
       </If.Then>
     </If>
