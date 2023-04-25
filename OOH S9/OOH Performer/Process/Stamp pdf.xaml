@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>660,2856</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1464,2856</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Stamp_pdf_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -286,7 +286,7 @@
           <OutArgument x:TypeArguments="x:String">[str_UpdateQuery]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">["Update OOH_S9_Txn Set Log_S9_ReProcessed='S',Log_S9_HasRun = 1 where S9_ID = '"+str_S9_ID+"'"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["Update OOH_S9_Txn Set Log_S9_Status = 'On Alex Server', Log_S9_ReProcessed='S',Log_S9_HasRun = 1 where S9_ID = '"+str_S9_ID+"'"]</InArgument>
         </Assign.Value>
       </Assign>
       <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[in_DbConnection]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[str_UpdateQuery]">

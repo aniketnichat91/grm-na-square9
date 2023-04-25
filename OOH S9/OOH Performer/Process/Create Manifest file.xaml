@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1178,2221</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1464,1347</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Manifest_file_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -70,10 +70,9 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Create_Manifest_file" sap:VirtualizedContainerService.HintSize="478,2036" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Create_Manifest_file" sap:VirtualizedContainerService.HintSize="473,1282" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="currentdate" />
       <Variable x:TypeArguments="x:Boolean" Name="boolmanifestfolderexist" />
@@ -101,8 +100,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Adding entry to manifest" />
-    <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="431,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Adding entry to manifest" />
+    <Assign sap:VirtualizedContainerService.HintSize="431,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[currentdate]</OutArgument>
       </Assign.To>
@@ -110,7 +109,7 @@
         <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="436,534" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,534" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
@@ -242,10 +241,10 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:AppendLine DisplayName="Append Line" FileName="[in_folderpath+&quot;\manifest\&quot;+currentdate+&quot;\POUT_BOT&quot;+System.DateTime.Now.ToString(&quot;yyyyMMdd&quot;)+&quot;\index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="436,132" sap2010:WorkflowViewState.IdRef="AppendLine_3" Text="[Chr(34)+var_pubcode.ToString.ToUpper.Trim+Chr(34)+&quot;,&quot;+Chr(34)+var_invdate+Chr(34)+&quot;,&quot;+Chr(34)+var_inv_num+Chr(34)+&quot;,&quot;+Chr(34)+varest+Chr(34)+&quot;,&quot;+Chr(34)+varclientname+Chr(34)+&quot;,&quot;+Chr(34)+varprdname+Chr(34)+&quot;,&quot;+Chr(34)+var_c+Chr(34)+&quot;,&quot;+Chr(34)+varp+Chr(34)+&quot;,&quot;+Chr(34)+var_amount+Chr(34)+&quot;,&quot;+Chr(34)+var_month+Chr(34)+&quot;,&quot;+Chr(34)+var_year+Chr(34)+&quot;,&quot;+Chr(34)+var_pubname+Chr(34)+&quot;,&quot;+Chr(34)+var_batch+Chr(34)+&quot;,&quot;+Chr(34)+var_code+Chr(34)+&quot;,&quot;+Chr(34)+var_filepath+Chr(34)]" UseDefaultEncoding="False" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:AppendLine DisplayName="Append Line" FileName="[in_folderpath+&quot;\manifest\&quot;+currentdate+&quot;\POUT_BOT&quot;+System.DateTime.Now.ToString(&quot;yyyyMMdd&quot;)+&quot;\index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="AppendLine_3" Text="[Chr(34)+var_pubcode.ToString.ToUpper.Trim+Chr(34)+&quot;,&quot;+Chr(34)+var_invdate+Chr(34)+&quot;,&quot;+Chr(34)+var_inv_num+Chr(34)+&quot;,&quot;+Chr(34)+varest+Chr(34)+&quot;,&quot;+Chr(34)+varclientname+Chr(34)+&quot;,&quot;+Chr(34)+varprdname+Chr(34)+&quot;,&quot;+Chr(34)+var_c+Chr(34)+&quot;,&quot;+Chr(34)+varp+Chr(34)+&quot;,&quot;+Chr(34)+var_amount+Chr(34)+&quot;,&quot;+Chr(34)+var_month+Chr(34)+&quot;,&quot;+Chr(34)+var_year+Chr(34)+&quot;,&quot;+Chr(34)+var_pubname+Chr(34)+&quot;,&quot;+Chr(34)+var_batch+Chr(34)+&quot;,&quot;+Chr(34)+var_code+Chr(34)+&quot;,&quot;+Chr(34)+var_filepath+Chr(34)]" UseDefaultEncoding="False" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="473,143" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -448,15 +447,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,623" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="431,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,545" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="839,1132" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:PathExists DisplayName="Path Exists" Exists="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_folderpath+&quot;\manifest\&quot;+currentdate+&quot;\index.TXT\&quot;]" PathType="File">
+          <ui:PathExists DisplayName="Path Exists" Exists="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="797,51" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_folderpath+&quot;\manifest\&quot;+currentdate+&quot;\index.TXT\&quot;]" PathType="File">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -464,7 +463,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:PathExists>
-          <If Condition="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="797,51" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -491,11 +490,11 @@
               </Sequence>
             </If.Else>
           </If>
-          <ui:PathExists DisplayName="Path Exists" Exists="[boolmagzinemanifestfolderexist]" sap:VirtualizedContainerService.HintSize="334,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_folderpath+&quot;\magzinemanifest\&quot;+currentdate+&quot;POUT_BOT&quot;+System.DateTime.Now.ToString(&quot;yyyyMMdd&quot;)+&quot;\index.TXT\&quot;]" PathType="File" />
-          <If Condition="[boolmagzinemanifestfolderexist]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_3">
+          <ui:PathExists DisplayName="Path Exists" Exists="[boolmagzinemanifestfolderexist]" sap:VirtualizedContainerService.HintSize="797,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_folderpath+&quot;\magzinemanifest\&quot;+currentdate+&quot;POUT_BOT&quot;+System.DateTime.Now.ToString(&quot;yyyyMMdd&quot;)+&quot;\index.TXT\&quot;]" PathType="File" />
+          <If Condition="[boolmagzinemanifestfolderexist]" sap:VirtualizedContainerService.HintSize="797,318" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -519,10 +518,10 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[var_mediacode.ToLower.Contains(&quot;n&quot;)]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[var_mediacode.ToLower.Contains(&quot;n&quot;)]" sap:VirtualizedContainerService.HintSize="797,371" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -551,64 +550,11 @@
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[updatequery]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["Update Vendor_master_file_data set verified_date = '"+System.DateTime.Now.ToString("yyyyMM-dd")+"', status = 'On Alex server' where vendorcode = '"+var_vendorcode+"' and month = '"+var_month+"' and year = '"+var_year+"' and file_name ='"+var_filename+"' "]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[in_dbmanifest]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[updatequery]">
-            <ui:ExecuteQuery.Parameters>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
-            </ui:ExecuteQuery.Parameters>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:ExecuteQuery>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Row added to manifest file" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="431,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Row added to manifest file" />
   </Sequence>
 </Activity>
