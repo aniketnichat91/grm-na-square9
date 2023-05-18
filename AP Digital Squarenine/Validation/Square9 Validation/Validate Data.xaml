@@ -90,7 +90,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Fetch data from SQL" sap:VirtualizedContainerService.HintSize="3921,66" sap2010:WorkflowViewState.IdRef="Sequence_13">
+    <Sequence DisplayName="Fetch data from SQL" sap:VirtualizedContainerService.HintSize="2053,3752" sap2010:WorkflowViewState.IdRef="Sequence_13">
       <Sequence.Variables>
         <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbconnect" />
         <Variable x:TypeArguments="x:String" Name="rundate" />
@@ -326,7 +326,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </g:GetSecureId>
-                          <g:GetDocumentStatus DisplayName="Get document status" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GetDocumentStatus_4" Result="[vardocument]" StatusCode="[varstatuscode]" archiveId="150" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" invoiceNumber="[var_invnum]" invoiceNumberSearchId="9796" license="[responcejson]" mosSearchId="6317" password="[in_password]" pubNumber="[varpub_code]" pubNumberSearchId="9801" searchId="230" secureId="[hashop]" username="[in_username]">
+                          <g:GetDocumentStatus DisplayName="Get document status" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GetDocumentStatus_4" Result="[vardocument]" StatusCode="[varstatuscode]" archiveId="150" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" invoiceNumber="[var_invnum]" invoiceNumberSearchId="9796" license="[responcejson]" mosSearchId="9803" password="[in_password]" pubNumber="[varpub_code]" pubNumberSearchId="9801" searchId="231" secureId="[hashop]" username="[in_username]">
                             <g:GetDocumentStatus.MOS>
                               <InArgument x:TypeArguments="x:String">
                                 <Literal x:TypeArguments="x:String" Value="" />
@@ -451,7 +451,7 @@
                         </Sequence>
                       </If.Else>
                     </If>
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="487,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="529,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
                       <ui:CommentOut.Body>
                         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_17">
                           <sap:WorkflowViewStateService.ViewState>
@@ -476,7 +476,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <Assign sap:VirtualizedContainerService.HintSize="487,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                    <Assign sap:VirtualizedContainerService.HintSize="529,60" sap2010:WorkflowViewState.IdRef="Assign_20">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[updatequery]</OutArgument>
                       </Assign.To>
@@ -484,7 +484,7 @@
                         <InArgument x:TypeArguments="x:String">["Update USA_Squarenine_Data set Status = '"+vardocument+"', verified_date = '"+var_validatedate+"' where Invoice_Num = '"+var_invnum+"' and PUBLICATION_CODE = '"+varpub_code+"'"]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="487,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+                    <Assign sap:VirtualizedContainerService.HintSize="529,60" sap2010:WorkflowViewState.IdRef="Assign_22">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[updatemaserlogquery]</OutArgument>
                       </Assign.To>
@@ -513,21 +513,21 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <If Condition="[var_bucket.Contains(&quot;PAID&quot;)]" sap:VirtualizedContainerService.HintSize="1277,1005" sap2010:WorkflowViewState.IdRef="If_7">
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="315,460" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <Sequence sap:VirtualizedContainerService.HintSize="314,460" sap2010:WorkflowViewState.IdRef="Sequence_22">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence sap:VirtualizedContainerService.HintSize="273,368" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <Sequence sap:VirtualizedContainerService.HintSize="272,368" sap2010:WorkflowViewState.IdRef="Sequence_21">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <g:GetSecureId DisplayName="Get secure id" sap:VirtualizedContainerService.HintSize="231,22" sap2010:WorkflowViewState.IdRef="GetSecureId_3" Result="[hashop]" StatusCode="[varstatuscode]" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" license="[responcejson]" password="[in_password]" searchId="233" username="[in_username]">
+                            <g:GetSecureId DisplayName="Get secure id" sap:VirtualizedContainerService.HintSize="230,22" sap2010:WorkflowViewState.IdRef="GetSecureId_3" Result="[hashop]" StatusCode="[varstatuscode]" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" license="[responcejson]" password="[in_password]" searchId="233" username="[in_username]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -535,7 +535,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </g:GetSecureId>
-                            <g:GetDocumentStatus DisplayName="Get document status" sap:VirtualizedContainerService.HintSize="231,22" sap2010:WorkflowViewState.IdRef="GetDocumentStatus_3" Result="[vardocument]" StatusCode="[varstatuscode]" archiveId="152" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" invoiceNumber="[var_invnum]" invoiceNumberSearchId="6326" license="[responcejson]" mosSearchId="6118" password="[in_password]" pubNumber="[varpub_code]" pubNumberSearchId="6331" searchId="233" secureId="[hashop]" username="[in_username]">
+                            <g:GetDocumentStatus DisplayName="Get document status" sap:VirtualizedContainerService.HintSize="230,22" sap2010:WorkflowViewState.IdRef="GetDocumentStatus_3" Result="[vardocument]" StatusCode="[varstatuscode]" archiveId="152" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" invoiceNumber="[var_invnum]" invoiceNumberSearchId="6326" license="[responcejson]" mosSearchId="6333" password="[in_password]" pubNumber="[varpub_code]" pubNumberSearchId="6331" searchId="233" secureId="[hashop]" username="[in_username]">
                               <g:GetDocumentStatus.MOS>
                                 <InArgument x:TypeArguments="x:String">
                                   <Literal x:TypeArguments="x:String" Value="" />
@@ -548,8 +548,8 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </g:GetDocumentStatus>
-                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="231,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[&quot;*** vardoument is &quot;+vardocument]" />
-                            <If Condition="[vardocument.Contains(&quot;uploaded&quot;)]" sap:VirtualizedContainerService.HintSize="231,51" sap2010:WorkflowViewState.IdRef="If_9">
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[&quot;*** vardoument is &quot;+vardocument]" />
+                            <If Condition="[vardocument.Contains(&quot;uploaded&quot;)]" sap:VirtualizedContainerService.HintSize="230,51" sap2010:WorkflowViewState.IdRef="If_9">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -614,7 +614,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </g:GetSecureId>
-                            <g:GetDocumentStatus DisplayName="Get document status" sap:VirtualizedContainerService.HintSize="833,22" sap2010:WorkflowViewState.IdRef="GetDocumentStatus_2" Result="[vardocument]" StatusCode="[varstatuscode]" archiveId="152" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" invoiceNumber="[var_invnum]" invoiceNumberSearchId="6342" license="[responcejson]" mosSearchId="6118" password="[in_password]" pubNumber="[varpub_code]" pubNumberSearchId="6347" searchId="232" secureId="[hashop]" username="[in_username]">
+                            <g:GetDocumentStatus DisplayName="Get document status" sap:VirtualizedContainerService.HintSize="833,22" sap2010:WorkflowViewState.IdRef="GetDocumentStatus_2" Result="[vardocument]" StatusCode="[varstatuscode]" archiveId="152" dbsId="1" defaultWebPath="https://groupm.mysquare9.com/square9api/api/" invoiceNumber="[var_invnum]" invoiceNumberSearchId="6342" license="[responcejson]" mosSearchId="6349" password="[in_password]" pubNumber="[varpub_code]" pubNumberSearchId="6347" searchId="232" secureId="[hashop]" username="[in_username]">
                               <g:GetDocumentStatus.MOS>
                                 <InArgument x:TypeArguments="x:String">
                                   <Literal x:TypeArguments="x:String" Value="" />
@@ -932,13 +932,13 @@
               </Assign>
               <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3803,51" sap2010:WorkflowViewState.IdRef="CommentOut_18">
                 <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="273,153" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="272,153" sap2010:WorkflowViewState.IdRef="Sequence_49">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="231,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[varpub_code+&quot; * &quot;+var_invnum]" />
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[varpub_code+&quot; * &quot;+var_invnum]" />
                   </Sequence>
                 </ui:CommentOut.Body>
                 <sap:WorkflowViewStateService.ViewState>

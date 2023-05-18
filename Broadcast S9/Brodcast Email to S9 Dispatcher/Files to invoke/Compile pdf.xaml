@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1286,3360</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1286,3753</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_pdf_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -70,14 +70,15 @@
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1296,3255" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1296,3648" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="currentdate" />
       <Variable x:TypeArguments="x:Boolean" Name="boolcompilefolderexist" />
@@ -92,6 +93,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1254,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Compile_pdf work flow start&quot;]" />
     <Assign sap:VirtualizedContainerService.HintSize="1254,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[currentdate]</OutArgument>
@@ -130,13 +132,13 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1254,1320" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_arrfilepath]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1254,1451" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_arrfilepath]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="fileitem" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="920,1186" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="920,1317" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="filename" />
             </Sequence.Variables>
@@ -153,6 +155,7 @@
                 <InArgument x:TypeArguments="x:String">[path.GetFileNameWithoutExtension(fileitem)]</InArgument>
               </Assign.Value>
             </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="878,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;filename :&quot;+filename]" />
             <If Condition="[filename.Contains(&quot;1_&quot;)and filename.StartsWith(&quot;1_&quot;)]" sap:VirtualizedContainerService.HintSize="878,994" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="633,846" sap2010:WorkflowViewState.IdRef="Sequence_6">
@@ -372,5 +375,6 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1254,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;End compile pdf&quot;]" />
   </Sequence>
 </Activity>
