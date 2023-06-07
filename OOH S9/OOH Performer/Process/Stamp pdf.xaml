@@ -8,10 +8,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1464,2856</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1097,3367</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Stamp_pdf_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <scg:List x:TypeArguments="x:String" Capacity="62">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -43,6 +43,7 @@
       <x:String>System.Security</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Database.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -73,10 +74,11 @@
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Stamp_pdf" sap:VirtualizedContainerService.HintSize="663,2791" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Stamp_pdf" sap:VirtualizedContainerService.HintSize="839,3262" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_pubcode" />
       <Variable x:TypeArguments="x:String" Name="var_compilefile" />
@@ -98,14 +100,17 @@
       <Variable x:TypeArguments="s:String[]" Name="arrStampComment" />
       <Variable x:TypeArguments="x:Int32" Name="intRowCount" />
       <Variable x:TypeArguments="x:String" Name="varException" />
+      <Variable x:TypeArguments="x:String" Name="str_Fa_Action" />
+      <Variable x:TypeArguments="x:String" Name="str_Split_S9_Comment" />
+      <Variable x:TypeArguments="s:String[]" Name="arr_Split_S9_Comment" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="621,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Stamping the PDF" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="621,255" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="797,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Stamping the PDF" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="797,317" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
@@ -156,6 +161,22 @@
               <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("STAMPCOMMENT").ToString.Trim]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_Fa_Action]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("FA_ACTION").ToString.Trim]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[str_Split_S9_Comment]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_trans.SpecificContent("SPLIT_S9_COMMENT").ToString.Trim.Replace("|",":")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
       <sap:WorkflowViewStateService.ViewState>
@@ -165,7 +186,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="621,236" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+    <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:String[]">[arr_Split_S9_Comment]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:String[]">[Split(str_Split_S9_Comment,"\n")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="797,236" sap2010:WorkflowViewState.IdRef="CommentOut_6">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,158" sap2010:WorkflowViewState.IdRef="Sequence_16">
           <sap:WorkflowViewStateService.ViewState>
@@ -211,8 +240,8 @@
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <ui:PathExists DisplayName="Path Exists" Exists="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="621,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_folderpath+&quot;\manifest\&quot;+currentdate+&quot;\POUT_BOT&quot;+System.DateTime.Now.ToString(&quot;yyyyMMdd&quot;)+&quot;\index.TXT\&quot;]" PathType="File" />
-    <If Condition="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="621,319" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:PathExists DisplayName="Path Exists" Exists="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="797,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_folderpath+&quot;\manifest\&quot;+currentdate+&quot;\POUT_BOT&quot;+System.DateTime.Now.ToString(&quot;yyyyMMdd&quot;)+&quot;\index.TXT\&quot;]" PathType="File" />
+    <If Condition="[boolmanifestfolderexist]" sap:VirtualizedContainerService.HintSize="797,319" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -233,23 +262,57 @@
         </Sequence>
       </If.Else>
     </If>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="621,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Stamp file location is &quot;+in_folderpath+&quot;\manifest\&quot;+currentdate]" />
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[var_compilefile]" sap:VirtualizedContainerService.HintSize="621,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[strop]" />
-    <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="621,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;Dim y_cor As Double&#xA;Dim counter As Integer = 0&#xA;'Dim Top as Integer = 100&#xA;Dim stamp1 As String =Stamptext&#xA;'Dim watermarkC As String =WatermarkClientcode&#xA;'Dim watermarkP As String = Watermarkproductcode&#xA;'Dim watermarkE As String = WatermarkEST&#xA;'Dim watermarkM As String = WatermarkMediacode&#xA;'Dim watermarkpub As String = Watermarkpubcode&#xA;'Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = stamp1&#xA;Dim commentrowcount As Integer = introwcount&#xA;Dim arrMultiLineComment () As String = {MultiLineStampComment}&#xA;arrMultiLineComment=MultiLineStampComment.Split(New [Char]() { CChar(&quot;;&quot;) })&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;&#x9;gfx.DrawString(stamp1,font,brush,New PdfSharp.Drawing.XPoint(170,1),format)&#xA;&#x9;If arrMultiLineComment.Count &gt; 0 Then&#xA;&#x9;&#x9;gfx.DrawString(&quot;SEE BACK PAGE&quot;,font,brush,New PdfSharp.Drawing.XPoint(170,10),format)&#xA;&#x9;&#x9;document.AddPage()&#xA;&#x9;&#x9;Dim lastpage As  PdfSharp.Pdf.PdfPage= document.Pages(count)&#xA;&#x9;&#x9;Dim emSize2 As Integer = 14&#xA;&#x9;&#x9;Dim font2 As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize2, PdfSharp.Drawing.XFontStyle.Bold)&#xA;&#x9;&#x9;gfx  = PdfSharp.Drawing.XGraphics.FromPdfPage(lastpage,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;&#x9;&#x9;gfx.DrawString(stamp1,font,brush,New PdfSharp.Drawing.XPoint(170,1),format)&#xA;&#x9;&#x9;For Each item As String In arrMultiLineComment:&#xA;&#x9;&#x9;&#x9;If (counter.Equals(0)) Then&#xA;&#x9;&#x9;&#x9;y_cor = 10&#xA;&#x9;&#x9;&#x9;gfx.DrawString(arrMultiLineComment(counter),font,brush,New PdfSharp.Drawing.XPoint(250,y_cor),format)&#xA;&#x9;&#x9;&#x9;Else&#xA;&#x9;&#x9;&#x9;y_cor = (counter * 10)+10&#xA;&#x9;&#x9;&#x9;gfx.DrawString(arrMultiLineComment(counter),font,brush,New PdfSharp.Drawing.XPoint(250,y_cor),format)&#xA;&#x9;&#x9;&#x9;End If&#xA;&#x9;&#x9;&#x9;counter = counter+1&#xA;&#x9;&#x9;&#x9;Next&#xA;&#x9;End If&#xA;&#x9;&#xA;&#xA;'gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(200,3),format)&#xA;'gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(240,3),format)&#xA;'gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(280,3),format)&#xA;'gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(330,3),format)&#xA;'gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(425,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch e As IO.IOException&#xA;&#x9;arg_failtostamp = True&#xA;&#x9;strException = e.ToString&#xA;&#xA;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;'Dim sw As StreamWriter&#xA;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="621,164" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
-      <ui:InvokeCode.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="OutputPdfFilePath">[in_folderpath+"\manifest\"+currentdate+"\POUT_BOT"+System.DateTime.Now.ToString("yyyyMMdd")+"\"+var_filename]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="InputPdfFilePath">[var_compilefile]</InArgument>
-        <InOutArgument x:TypeArguments="x:Boolean" x:Key="arg_failtostamp">[failtostamp]</InOutArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="count" />
-        <InArgument x:TypeArguments="x:String" x:Key="Stamptext">[stampcomment]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="MultiLineStampComment">[strComment]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="introwcount">0</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="strException">[varException]</OutArgument>
-      </ui:InvokeCode.Arguments>
-    </ui:InvokeCode>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="621,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[varException]" />
-    <Sequence DisplayName="Sequence-Update ReProcess Status to &quot;S&quot;" sap:VirtualizedContainerService.HintSize="621,608" sap2010:WorkflowViewState.IdRef="Sequence_13">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="797,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Stamp file location is &quot;+in_folderpath+&quot;\manifest\&quot;+currentdate]" />
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[var_compilefile]" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[strop]" />
+    <If Condition="[str_Fa_Action=&quot;SPLIT - S9&quot; or str_Fa_Action.Contains(&quot;SPLIT&quot;) or str_Fa_Action.Contains(&quot;split&quot;)]" sap:VirtualizedContainerService.HintSize="797,535" sap2010:WorkflowViewState.IdRef="If_7">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,387" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;FA Action : &quot; + str_Fa_Action]" />
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;Dim y_cor As Double&#xA;Dim counter As Integer = 0&#xA;Dim split_s9_comment_counter = 0&#xA;'Dim Top as Integer = 100&#xA;Dim stamp1 As String =Stamptext&#xA;'Dim watermarkC As String =WatermarkClientcode&#xA;'Dim watermarkP As String = Watermarkproductcode&#xA;'Dim watermarkE As String = WatermarkEST&#xA;'Dim watermarkM As String = WatermarkMediacode&#xA;'Dim watermarkpub As String = Watermarkpubcode&#xA;'Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = stamp1&#xA;Dim commentrowcount As Integer = introwcount&#xA;Dim arrMultiLineComment () As String = {MultiLineStampComment}&#xA;arrMultiLineComment=MultiLineStampComment.Split(New [Char]() { CChar(&quot;;&quot;) })&#xA;Dim emSize As Integer = 8&#xA;Dim newarr_Split_S9_Comment () As String &#xA;newarr_Split_S9_Comment= arr_Split_S9_Comment&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;&#x9;gfx.DrawString(stamp1,font,brush,New PdfSharp.Drawing.XPoint(170,1),format)&#xA;&#x9;If arrMultiLineComment.Count &gt; 0 Then&#xA;&#x9;&#x9;gfx.DrawString(&quot;SEE BACK PAGE&quot;,font,brush,New PdfSharp.Drawing.XPoint(170,10),format)&#xA;&#x9;&#x9;document.AddPage()&#xA;&#x9;&#x9;Dim lastpage As  PdfSharp.Pdf.PdfPage= document.Pages(count)&#xA;&#x9;&#x9;Dim emSize2 As Integer = 14&#xA;&#x9;&#x9;Dim font2 As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize2, PdfSharp.Drawing.XFontStyle.Bold)&#xA;&#x9;&#x9;gfx  = PdfSharp.Drawing.XGraphics.FromPdfPage(lastpage,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;&#x9;&#x9;gfx.DrawString(stamp1,font,brush,New PdfSharp.Drawing.XPoint(170,1),format)&#xA;&#x9;&#x9;For Each item As String In arrMultiLineComment:&#xA;&#x9;&#x9;&#x9;If (counter.Equals(0)) Then&#xA;&#x9;&#x9;&#x9;y_cor = 10&#xA;&#x9;&#x9;&#x9;gfx.DrawString(arrMultiLineComment(counter),font,brush,New PdfSharp.Drawing.XPoint(250,y_cor),format)&#xA;&#x9;&#x9;&#x9;Else&#xA;&#x9;&#x9;&#x9;y_cor = (counter * 10)+10&#xA;&#x9;&#x9;&#x9;gfx.DrawString(arrMultiLineComment(counter),font,brush,New PdfSharp.Drawing.XPoint(250,y_cor),format)&#xA;&#x9;&#x9;&#x9;End If&#xA;&#x9;&#x9;&#x9;counter = counter+1&#xA;&#x9;&#x9;&#x9;Next&#xA;&#x9;End If&#xA;&#xA;For Each item As String In newarr_Split_S9_Comment:&#xA;&#x9;If (split_s9_comment_counter.Equals(0)) Then&#xA;&#x9;&#x9;&#x9;y_cor = y_cor+20&#xA;&#x9;&#x9;&#x9;gfx.DrawString(newarr_Split_S9_Comment(split_s9_comment_counter),font,brush,New PdfSharp.Drawing.XPoint(170,y_cor),format)&#xA;&#x9;&#x9;&#x9;Else&#xA;&#x9;&#x9;&#x9;y_cor = y_cor+20&#xA;&#x9;&#x9;&#x9;gfx.DrawString(newarr_Split_S9_Comment(split_s9_comment_counter),font,brush,New PdfSharp.Drawing.XPoint(170,y_cor),format)&#xA;&#x9;&#x9;&#x9;End If&#xA;&#x9;&#x9;&#x9;split_s9_comment_counter = split_s9_comment_counter+1&#xA;Next&#xA;&#x9;&#xA;&#xA;&#xA;'gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(200,3),format)&#xA;'gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(240,3),format)&#xA;'gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(280,3),format)&#xA;'gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(330,3),format)&#xA;'gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(425,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch e As IO.IOException&#xA;&#x9;arg_failtostamp = True&#xA;&#x9;strException = e.ToString&#xA;&#xA;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;'Dim sw As StreamWriter&#xA;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_6">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="OutputPdfFilePath">[in_folderpath+"\manifest\"+currentdate+"\POUT_BOT"+System.DateTime.Now.ToString("yyyyMMdd")+"\"+var_filename]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InputPdfFilePath">[var_compilefile]</InArgument>
+              <InOutArgument x:TypeArguments="x:Boolean" x:Key="arg_failtostamp">[failtostamp]</InOutArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="count" />
+              <InArgument x:TypeArguments="x:String" x:Key="Stamptext">[stampcomment]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="MultiLineStampComment">[strComment]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="introwcount">0</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="strException">[varException]</OutArgument>
+              <InArgument x:TypeArguments="s:String[]" x:Key="arr_Split_S9_Comment">[arr_Split_S9_Comment]</InArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,387" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;FA Action : &quot; + str_Fa_Action]" />
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;Dim y_cor As Double&#xA;Dim counter As Integer = 0&#xA;'Dim Top as Integer = 100&#xA;Dim stamp1 As String =Stamptext&#xA;'Dim watermarkC As String =WatermarkClientcode&#xA;'Dim watermarkP As String = Watermarkproductcode&#xA;'Dim watermarkE As String = WatermarkEST&#xA;'Dim watermarkM As String = WatermarkMediacode&#xA;'Dim watermarkpub As String = Watermarkpubcode&#xA;'Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = stamp1&#xA;Dim commentrowcount As Integer = introwcount&#xA;Dim arrMultiLineComment () As String = {MultiLineStampComment}&#xA;arrMultiLineComment=MultiLineStampComment.Split(New [Char]() { CChar(&quot;;&quot;) })&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;&#x9;gfx.DrawString(stamp1,font,brush,New PdfSharp.Drawing.XPoint(170,1),format)&#xA;&#x9;If arrMultiLineComment.Count &gt; 0 Then&#xA;&#x9;&#x9;gfx.DrawString(&quot;SEE BACK PAGE&quot;,font,brush,New PdfSharp.Drawing.XPoint(170,10),format)&#xA;&#x9;&#x9;document.AddPage()&#xA;&#x9;&#x9;Dim lastpage As  PdfSharp.Pdf.PdfPage= document.Pages(count)&#xA;&#x9;&#x9;Dim emSize2 As Integer = 14&#xA;&#x9;&#x9;Dim font2 As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize2, PdfSharp.Drawing.XFontStyle.Bold)&#xA;&#x9;&#x9;gfx  = PdfSharp.Drawing.XGraphics.FromPdfPage(lastpage,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;&#x9;&#x9;gfx.DrawString(stamp1,font,brush,New PdfSharp.Drawing.XPoint(170,1),format)&#xA;&#x9;&#x9;For Each item As String In arrMultiLineComment:&#xA;&#x9;&#x9;&#x9;If (counter.Equals(0)) Then&#xA;&#x9;&#x9;&#x9;y_cor = 10&#xA;&#x9;&#x9;&#x9;gfx.DrawString(arrMultiLineComment(counter),font,brush,New PdfSharp.Drawing.XPoint(250,y_cor),format)&#xA;&#x9;&#x9;&#x9;Else&#xA;&#x9;&#x9;&#x9;y_cor = (counter * 10)+10&#xA;&#x9;&#x9;&#x9;gfx.DrawString(arrMultiLineComment(counter),font,brush,New PdfSharp.Drawing.XPoint(250,y_cor),format)&#xA;&#x9;&#x9;&#x9;End If&#xA;&#x9;&#x9;&#x9;counter = counter+1&#xA;&#x9;&#x9;&#x9;Next&#xA;&#x9;End If&#xA;&#x9;&#xA;&#xA;'gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(200,3),format)&#xA;'gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(240,3),format)&#xA;'gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(280,3),format)&#xA;'gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(330,3),format)&#xA;'gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(425,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch e As IO.IOException&#xA;&#x9;arg_failtostamp = True&#xA;&#x9;strException = e.ToString&#xA;&#xA;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;'Dim sw As StreamWriter&#xA;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="OutputPdfFilePath">[in_folderpath+"\manifest\"+currentdate+"\POUT_BOT"+System.DateTime.Now.ToString("yyyyMMdd")+"\"+var_filename]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="InputPdfFilePath">[var_compilefile]</InArgument>
+              <InOutArgument x:TypeArguments="x:Boolean" x:Key="arg_failtostamp">[failtostamp]</InOutArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="count" />
+              <InArgument x:TypeArguments="x:String" x:Key="Stamptext">[stampcomment]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="MultiLineStampComment">[strComment]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="introwcount">0</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="strException">[varException]</OutArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+        </Sequence>
+      </If.Else>
+    </If>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="797,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[varException]" />
+    <Sequence DisplayName="Sequence-Update ReProcess Status to &quot;S&quot;" sap:VirtualizedContainerService.HintSize="797,608" sap2010:WorkflowViewState.IdRef="Sequence_13">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="str_Query" />
         <Variable x:TypeArguments="x:String" Name="str_S9_ID" />
@@ -295,7 +358,7 @@
         </ui:ExecuteNonQuery.Parameters>
       </ui:ExecuteNonQuery>
     </Sequence>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="621,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="797,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,256" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
@@ -321,7 +384,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="621,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="797,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,351" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
@@ -348,7 +411,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="621,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="797,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,256" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
@@ -380,7 +443,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="621,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="797,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,636" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>

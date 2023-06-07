@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>3400,4419</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>3484,4550</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>teamp_Stamp_PDF_Reusable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="70">
@@ -104,9 +104,10 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Stamp_PDF" sap:VirtualizedContainerService.HintSize="3410,4354" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Stamp_PDF" sap:VirtualizedContainerService.HintSize="3494,4485" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="var_pagecount" />
       <Variable x:TypeArguments="x:Boolean" Name="var_failtostamp" />
@@ -119,8 +120,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="3368,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Stamping the PDF&quot;]" />
-    <Sequence sap:VirtualizedContainerService.HintSize="3368,4131" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="3452,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Stamping the PDF&quot;]" />
+    <Sequence sap:VirtualizedContainerService.HintSize="3452,4262" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="var_Status" />
         <Variable x:TypeArguments="x:String" Name="var_MediaLookUp" />
@@ -165,7 +166,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Get data from Queue" sap:VirtualizedContainerService.HintSize="3326,906" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign DisplayName="Get data from Queue" sap:VirtualizedContainerService.HintSize="3410,906" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
@@ -393,7 +394,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
-      <Assign sap:VirtualizedContainerService.HintSize="3326,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign sap:VirtualizedContainerService.HintSize="3410,60" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[currentdate]</OutArgument>
         </Assign.To>
@@ -401,7 +402,7 @@
           <InArgument x:TypeArguments="x:String">[system.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Sequence DisplayName="Stamp PDF" sap:VirtualizedContainerService.HintSize="3326,2710" sap2010:WorkflowViewState.IdRef="Sequence_17">
+      <Sequence DisplayName="Stamp PDF" sap:VirtualizedContainerService.HintSize="3410,2710" sap2010:WorkflowViewState.IdRef="Sequence_17">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Boolean" Name="boolstampTDSPOTfolderexist" />
         </Sequence.Variables>
@@ -410,7 +411,7 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[var_file_location.Contains(&quot;TDSPOTPAK_BOT&quot;)]" sap:VirtualizedContainerService.HintSize="3284,2618" sap2010:WorkflowViewState.IdRef="If_22">
+        <If Condition="[var_file_location.Contains(&quot;TDSPOTPAK_BOT&quot;)]" sap:VirtualizedContainerService.HintSize="3368,2618" sap2010:WorkflowViewState.IdRef="If_22">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -418,20 +419,20 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="663,1358" sap2010:WorkflowViewState.IdRef="Sequence_27">
+            <Sequence sap:VirtualizedContainerService.HintSize="705,1794" sap2010:WorkflowViewState.IdRef="Sequence_27">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="TDSSPOT" sap:VirtualizedContainerService.HintSize="621,66" sap2010:WorkflowViewState.IdRef="Sequence_38">
+              <Sequence DisplayName="TDSSPOT" sap:VirtualizedContainerService.HintSize="663,502" sap2010:WorkflowViewState.IdRef="Sequence_38">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:PathExists DisplayName="Path Exists" Exists="[boolstampTDSPOTfolderexist]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[in_StampPDFFolder+currentdate+&quot;\TDSPOTPAK_BOT\index.TXT\&quot;]" PathType="Folder">
+                <ui:PathExists DisplayName="Path Exists" Exists="[boolstampTDSPOTfolderexist]" sap:VirtualizedContainerService.HintSize="621,51" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[in_StampPDFFolder+currentdate+&quot;\TDSPOTPAK_BOT\index.TXT\&quot;]" PathType="Folder">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -439,10 +440,10 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:PathExists>
-                <If Condition="[boolstampTDSPOTfolderexist]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_18">
+                <If Condition="[boolstampTDSPOTfolderexist]" sap:VirtualizedContainerService.HintSize="621,319" sap2010:WorkflowViewState.IdRef="If_18">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -467,7 +468,7 @@
                   </If.Else>
                 </If>
               </Sequence>
-              <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="VB.net Code to add Text Watermark to PDF Document&#xA;&#xA;Packages Used :  Syncfusion.Pdf.Net.Core and UiPath.System.Activities" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;'Dim Top as Integer = 100&#xA;Dim watermarkC As String =Watermarkclientcode&#xA;Dim watermarkP As String = Watermarkproductcode&#xA;Dim watermarkE As String = WatermarkEST&#xA;Dim watermarkM As String = WatermarkMediacode&#xA;Dim watermarkpub As String = Watermarkpubcode&#xA;Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = watermarkC+watermarkP+watermarkE+watermarkM&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;gfx.DrawString(watermarkC,font,brush,New PdfSharp.Drawing.XPoint(231,3),format)&#xA;gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(266,3),format)&#xA;gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(302,3),format)&#xA;gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(340,3),format)&#xA;gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(390,3),format)&#xA;gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(485,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch&#xA;&#x9;arg_failtostamp = True&#xA;&#x9;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;&#x9;'Dim sw As StreamWriter&#xA;&#x9;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;&#x9;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code - Add Text Watermark to PDF" sap:VirtualizedContainerService.HintSize="621,236" sap2010:WorkflowViewState.IdRef="InvokeCode_10">
+              <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="VB.net Code to add Text Watermark to PDF Document&#xA;&#xA;Packages Used :  Syncfusion.Pdf.Net.Core and UiPath.System.Activities" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;'Dim Top as Integer = 100&#xA;Dim watermarkC As String =Watermarkclientcode&#xA;Dim watermarkP As String = Watermarkproductcode&#xA;Dim watermarkE As String = WatermarkEST&#xA;Dim watermarkM As String = WatermarkMediacode&#xA;Dim watermarkpub As String = Watermarkpubcode&#xA;Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = watermarkC+watermarkP+watermarkE+watermarkM&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;gfx.DrawString(watermarkC,font,brush,New PdfSharp.Drawing.XPoint(231,3),format)&#xA;gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(266,3),format)&#xA;gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(302,3),format)&#xA;gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(340,3),format)&#xA;gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(390,3),format)&#xA;gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(485,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch&#xA;&#x9;arg_failtostamp = True&#xA;&#x9;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;&#x9;'Dim sw As StreamWriter&#xA;&#x9;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;&#x9;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code - Add Text Watermark to PDF" sap:VirtualizedContainerService.HintSize="663,236" sap2010:WorkflowViewState.IdRef="InvokeCode_10">
                 <ui:InvokeCode.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="InputPdfFilePath">[var_Stampfilelocation]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="OutputPdfFilePath">[in_StampPDFFolder+currentdate+"\TDSPOTPAK_BOT\"+var_pdfname]</InArgument>
@@ -488,7 +489,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeCode>
-              <If Condition="[var_isscan.Contains(&quot;true&quot;)]" sap:VirtualizedContainerService.HintSize="621,51" sap2010:WorkflowViewState.IdRef="If_29">
+              <If Condition="[var_isscan.Contains(&quot;true&quot;)]" sap:VirtualizedContainerService.HintSize="663,51" sap2010:WorkflowViewState.IdRef="If_29">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -520,7 +521,7 @@
                   </ui:CommentOut>
                 </If.Then>
               </If>
-              <If Condition="[var_failtostamp = True]" sap:VirtualizedContainerService.HintSize="621,793" sap2010:WorkflowViewState.IdRef="If_28">
+              <If Condition="[var_failtostamp = True]" sap:VirtualizedContainerService.HintSize="663,793" sap2010:WorkflowViewState.IdRef="If_28">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -600,19 +601,19 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence sap:VirtualizedContainerService.HintSize="2576,2470" sap2010:WorkflowViewState.IdRef="Sequence_37">
+            <Sequence sap:VirtualizedContainerService.HintSize="2618,2470" sap2010:WorkflowViewState.IdRef="Sequence_37">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap:VirtualizedContainerService.HintSize="2534,2378" sap2010:WorkflowViewState.IdRef="Sequence_28">
+              <Sequence sap:VirtualizedContainerService.HintSize="2576,2378" sap2010:WorkflowViewState.IdRef="Sequence_28">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[var_file_location.Contains(&quot;SPOTPAK_BOT&quot;) and not var_file_location.Contains(&quot;TDSPOTPAK_BOT&quot;)]" sap:VirtualizedContainerService.HintSize="2492,2286" sap2010:WorkflowViewState.IdRef="If_23">
+                <If Condition="[var_file_location.Contains(&quot;SPOTPAK_BOT&quot;) and not var_file_location.Contains(&quot;TDSPOTPAK_BOT&quot;)]" sap:VirtualizedContainerService.HintSize="2534,2286" sap2010:WorkflowViewState.IdRef="If_23">
                   <If.Then>
                     <Sequence sap:VirtualizedContainerService.HintSize="705,1832" sap2010:WorkflowViewState.IdRef="Sequence_29">
                       <sap:WorkflowViewStateService.ViewState>
@@ -796,28 +797,28 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence sap:VirtualizedContainerService.HintSize="1742,2138" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                    <Sequence sap:VirtualizedContainerService.HintSize="1784,2138" sap2010:WorkflowViewState.IdRef="Sequence_30">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[var_file_location.Contains(&quot;NETPAK_BOT&quot;)]" sap:VirtualizedContainerService.HintSize="1700,2046" sap2010:WorkflowViewState.IdRef="If_24">
+                      <If Condition="[var_file_location.Contains(&quot;NETPAK_BOT&quot;)]" sap:VirtualizedContainerService.HintSize="1742,2046" sap2010:WorkflowViewState.IdRef="If_24">
                         <If.Then>
-                          <Sequence sap:VirtualizedContainerService.HintSize="663,1563" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                          <Sequence sap:VirtualizedContainerService.HintSize="705,1815" sap2010:WorkflowViewState.IdRef="Sequence_31">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence DisplayName="NETPAK" sap:VirtualizedContainerService.HintSize="621,66" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                            <Sequence DisplayName="NETPAK" sap:VirtualizedContainerService.HintSize="663,540" sap2010:WorkflowViewState.IdRef="Sequence_40">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:PathExists DisplayName="Path Exists" Exists="[boolstampNETPAKfolderexist]" sap:VirtualizedContainerService.HintSize="334,89" sap2010:WorkflowViewState.IdRef="PathExists_7" Path="[in_StampPDFFolder+currentdate+&quot;\NETPAK_BOT\index.TXT\&quot;]" PathType="Folder">
+                              <ui:PathExists DisplayName="Path Exists" Exists="[boolstampNETPAKfolderexist]" sap:VirtualizedContainerService.HintSize="621,89" sap2010:WorkflowViewState.IdRef="PathExists_7" Path="[in_StampPDFFolder+currentdate+&quot;\NETPAK_BOT\index.TXT\&quot;]" PathType="Folder">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -825,10 +826,10 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:PathExists>
-                              <If Condition="[boolstampNETPAKfolderexist]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_20">
+                              <If Condition="[boolstampNETPAKfolderexist]" sap:VirtualizedContainerService.HintSize="621,319" sap2010:WorkflowViewState.IdRef="If_20">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -853,7 +854,7 @@
                                 </If.Else>
                               </If>
                             </Sequence>
-                            <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="VB.net Code to add Text Watermark to PDF Document&#xA;&#xA;Packages Used :  Syncfusion.Pdf.Net.Core and UiPath.System.Activities" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;'Dim Top as Integer = 100&#xA;Dim watermarkC As String =Watermarkclientcode&#xA;Dim watermarkP As String = Watermarkproductcode&#xA;Dim watermarkE As String = WatermarkEST&#xA;Dim watermarkM As String = WatermarkMediacode&#xA;Dim watermarkpub As String = Watermarkpubcode&#xA;Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = watermarkC+watermarkP+watermarkE+watermarkM&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;gfx.DrawString(watermarkC,font,brush,New PdfSharp.Drawing.XPoint(231,3),format)&#xA;gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(266,3),format)&#xA;gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(302,3),format)&#xA;gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(340,3),format)&#xA;gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(390,3),format)&#xA;gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(485,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch&#xA;&#x9;arg_failtostamp = True&#xA;&#x9;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;&#x9;'Dim sw As StreamWriter&#xA;&#x9;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;&#x9;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code - Add Text Watermark to PDF" sap:VirtualizedContainerService.HintSize="621,153" sap2010:WorkflowViewState.IdRef="InvokeCode_12">
+                            <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="VB.net Code to add Text Watermark to PDF Document&#xA;&#xA;Packages Used :  Syncfusion.Pdf.Net.Core and UiPath.System.Activities" Code="Try&#xA;Dim Destinationfolder As String = OutputPdfFilePath&#xA;Dim filename As String = InputPdfFilePath&#xA;'Dim Top as Integer = 100&#xA;Dim watermarkC As String =Watermarkclientcode&#xA;Dim watermarkP As String = Watermarkproductcode&#xA;Dim watermarkE As String = WatermarkEST&#xA;Dim watermarkM As String = WatermarkMediacode&#xA;Dim watermarkpub As String = Watermarkpubcode&#xA;Dim watermatkmos As String = Watermarkmos&#xA;Dim watermark As String = watermarkC+watermarkP+watermarkE+watermarkM&#xA;Dim emSize As Integer = 8&#xA;Dim document As PdfSharp.Pdf.PdfDocument =  PdfSharp.Pdf.IO.PdfReader.Open(filename)&#xA;count=document.PageCount&#xA;Dim font As PdfSharp.Drawing.XFont = New PdfSharp.Drawing.XFont(&quot;Times New Roman&quot;, emSize, PdfSharp.Drawing.XFontStyle.Bold)&#xA;If document.Version &lt; 14 Then document.Version = 14&#xA;Dim page As PdfSharp.Pdf.PdfPage = document.Pages(0)&#xA;'page.TrimMargins.Top=20&#xA;Dim gfx As PdfSharp.Drawing.XGraphics = PdfSharp.Drawing.XGraphics.FromPdfPage(page,PdfSharp.Drawing.XGraphicsPdfPageOptions.Prepend)&#xA;Dim size As PdfSharp.Drawing.XSize = gfx.MeasureString(watermark, font)&#xA;Dim format As PdfSharp.Drawing.XStringFormat = New PdfSharp.Drawing.XStringFormat()&#xA;format.Alignment=PdfSharp.Drawing.XStringAlignment.Near&#xA;format.LineAlignment=PdfSharp.Drawing.XLineAlignment.Near&#xA;Dim pen As PdfSharp.Drawing.XPen= New PdfSharp.Drawing.XPen(PdfSharp.Drawing.XColors.Tomato)&#xA;Dim brush As PdfSharp.Drawing.XBrush= New PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(255,255,0,0))&#xA;'gfx.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Tomato, 226, 2, 305, 22, 20, 23)&#xA;gfx.DrawString(watermarkC,font,brush,New PdfSharp.Drawing.XPoint(231,3),format)&#xA;gfx.DrawString(watermarkP,font,brush,New PdfSharp.Drawing.XPoint(266,3),format)&#xA;gfx.DrawString(watermarkE,font,brush,New PdfSharp.Drawing.XPoint(302,3),format)&#xA;gfx.DrawString(watermarkM,font,brush,New PdfSharp.Drawing.XPoint(340,3),format)&#xA;gfx.DrawString(watermarkpub,font,brush,New PdfSharp.Drawing.XPoint(390,3),format)&#xA;gfx.DrawString(Watermarkmos,font,brush,New PdfSharp.Drawing.XPoint(485,3),format)&#xA;Dim fs As System.IO.FileStream = New FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite)&#xA;document.Save(Destinationfolder)&#xA;Catch&#xA;&#x9;arg_failtostamp = True&#xA;&#x9;'Dim strFile As String = &quot;C:\Users\skore\Desktop\Stamping\Exception log file\ErrorLog_&quot; &amp; DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;) &amp; &quot;.txt&quot;&#xA;&#x9;'Dim sw As StreamWriter&#xA;&#x9;'Dim fs As FileStream = Nothing&#xA;&#xA;'If (Not File.Exists(strFile)) Then&#xA; '   Try&#xA;      ' fs = File.Create(strFile)&#xA;       'sw = File.AppendText(strFile)&#xA;       'sw.WriteLine(&quot;Start Error Log for today&quot;)&#xA;&#xA;    'Catch ex As Exception&#xA;     '   MsgBox(&quot;Error Creating Log File&quot;)&#xA;    'End Try&#xA;'Else&#xA;    'sw = File.AppendText(strFile)&#xA;&#x9;'sw.WriteLine(Environment.NewLine)&#xA;    'sw.WriteLine(tempfaname &amp; &quot;;&quot; &amp; tempinvnum &amp; &quot;;&quot; &amp; tempamount &amp; &quot;;&quot; &amp; temppdfpath &amp; &quot;;&quot; &amp; DateTime.Now &amp; &quot;;&quot; &amp;&quot;Can not stamp the PDF&quot;)&#xA;&#xA;    'sw.Close()&#xA;'End If&#xA;End Try" DisplayName="Invoke code - Add Text Watermark to PDF" sap:VirtualizedContainerService.HintSize="663,153" sap2010:WorkflowViewState.IdRef="InvokeCode_12">
                               <ui:InvokeCode.Arguments>
                                 <InArgument x:TypeArguments="x:String" x:Key="InputPdfFilePath">[var_Stampfilelocation]</InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="OutputPdfFilePath">[in_StampPDFFolder+currentdate+"\NETPAK_BOT\"+var_pdfname]</InArgument>
@@ -874,9 +875,9 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:InvokeCode>
-                            <If Condition="[var_isscan.Equals(&quot;True&quot;)]" sap:VirtualizedContainerService.HintSize="621,430" sap2010:WorkflowViewState.IdRef="If_31">
+                            <If Condition="[var_isscan.Equals(&quot;True&quot;)]" sap:VirtualizedContainerService.HintSize="663,208" sap2010:WorkflowViewState.IdRef="If_31">
                               <If.Then>
-                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,282" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_11">
                                   <ui:CommentOut.Body>
                                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,204" sap2010:WorkflowViewState.IdRef="Sequence_54">
                                       <sap:WorkflowViewStateService.ViewState>
@@ -899,14 +900,14 @@
                                   </ui:CommentOut.Body>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CommentOut>
                               </If.Then>
                             </If>
-                            <If Condition="[var_failtostamp = True]" sap:VirtualizedContainerService.HintSize="621,702" sap2010:WorkflowViewState.IdRef="If_27">
+                            <If Condition="[var_failtostamp = True]" sap:VirtualizedContainerService.HintSize="663,702" sap2010:WorkflowViewState.IdRef="If_27">
                               <If.Then>
                                 <Sequence sap:VirtualizedContainerService.HintSize="476,554" sap2010:WorkflowViewState.IdRef="Sequence_43">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -1160,8 +1161,9 @@
           </If.Else>
         </If>
       </Sequence>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="3326,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="PDF is stamped" />
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3326,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="3410,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="PDF is stamped" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="3410,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;PDF is stamped&quot;]" />
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3410,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="2829,1731" sap2010:WorkflowViewState.IdRef="Sequence_35">
             <sap:WorkflowViewStateService.ViewState>
@@ -1535,15 +1537,15 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3326,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="3410,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="330,158" sap2010:WorkflowViewState.IdRef="Sequence_36">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="1128,158" sap2010:WorkflowViewState.IdRef="Sequence_36">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Send email to FA if process is not able to stamp any of the pdf" sap:VirtualizedContainerService.HintSize="1086,775" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence DisplayName="Send email to FA if process is not able to stamp any of the pdf" sap:VirtualizedContainerService.HintSize="287,66" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="strpagecount" />
               </Sequence.Variables>

@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1397,1367</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1577,1367</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -131,23 +131,57 @@
     </Sequence>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This flow will validate the important fields in table, If bad data found will send an aleart email to FA." DisplayName="Invoke Validate All Mandatory Fields" sap:VirtualizedContainerService.HintSize="341,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Process Files\Validate Mandatory Fields.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="io_pdf_file_name">[in_TransactionItem("Log_Invoice_FileName").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">[str_SpPassword]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">[str_SpUsername]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">[in_TransactionItem("Log_Invoice_Number").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_C">[in_TransactionItem("Log_Validated_C").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_P">[in_TransactionItem("Log_Validated_P").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_E">[in_TransactionItem("Log_Validated_E").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">[in_TransactionItem("Log_Invoice_MOS").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">[in_TransactionItem("Log_Invoice_Amount").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">[in_TransactionItem("Log_Publication_Code").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db">[in_dbc]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_DB_Connection">[in_Config("DB_Connection").ToString]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_ClientName">[var_ClientName]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_doc_link">[in_TransactionItem("Log_SP_FilePath").ToString.Trim]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_ProductName">[var_ProductName]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FaEmailAddress">[str_FaEmail]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="io_pdf_Date">2020-03-31</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_pdf_file_name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_FileName&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_SpPassword" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_SpUsername" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Number&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_C">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_C&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_P">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_P&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_E">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_E&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_MOS&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Amount&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Code&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db">
+          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_dbc" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DB_Connection">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DB_Connection&quot;).ToString" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ClientName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_ClientName" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_doc_link">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_SP_FilePath&quot;).ToString.Trim" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_ProductName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_ProductName" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FaEmailAddress">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_FaEmail" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_pdf_Date">
+          <Literal x:TypeArguments="x:String">2020-03-31</Literal>
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -159,49 +193,23 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TestDownload workflow" sap:VirtualizedContainerService.HintSize="341,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Download attachement from SP  New.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_transnumber">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_processtrans" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_downloadfilepath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PDF_Download_Path&quot;).ToString.Trim" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_downloadpdfpath">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_outpdffilepath" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spfilelocation">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_SP_FilePath&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spurl">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SPURL&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spPass">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_SpPassword" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spUser">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_SpUsername" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_transnumber">[in_processtrans]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_downloadfilepath">[in_Config("PDF_Download_Path").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_downloadpdfpath">[var_outpdffilepath]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spfilelocation">[in_TransactionItem("Log_SP_FilePath").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spurl">[in_Config("SPURL").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spPass">[str_SpPassword]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spUser">[str_SpUsername]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process Checks Filename character length and with updated filename move all pdfs to process folder" DisplayName="Invoke Compile pdf workflow" sap:VirtualizedContainerService.HintSize="341,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Compile pdf.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_folderpath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_outpdffilepath" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PDF_Download_Path&quot;).ToString.Trim" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_compilefilepath" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="varonlyfilename" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_strExactFileName">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strExactFileNameForQueue" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_trans">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_processtrans" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_folderpath">[var_outpdffilepath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">[in_Config("PDF_Download_Path").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">[var_compilefilepath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">[varonlyfilename]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strExactFileName">[strExactFileNameForQueue]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_trans">[in_processtrans]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -211,33 +219,79 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will validate, transform and add data into queue for performer and DB update S9 TXN table" DisplayName="Invoke Add data to queue workflow" sap:VirtualizedContainerService.HintSize="341,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Tests\Add data to queue.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_c">[in_TransactionItem("Log_Validated_C").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_p">[in_TransactionItem("Log_Validated_P").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pname">[var_ProductName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_c">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_C&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_p">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_P&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pname">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_ProductName" />
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_batch" />
         <InArgument x:TypeArguments="x:String" x:Key="in_mediacode" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_invoicedate">[in_TransactionItem("Log_Invoice_Date").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_invoicenumber">[in_TransactionItem("Log_Invoice_Number").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_est">[in_TransactionItem("Log_Validated_E").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_cname">[var_ClientName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_amount">[in_TransactionItem("Log_Invoice_Amount").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_invoicedate">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Date&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_invoicenumber">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Number&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_est">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_E&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_cname">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_ClientName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_amount">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Amount&quot;).ToString.Trim" />
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_repcode" />
         <InArgument x:TypeArguments="x:String" x:Key="in_month" />
         <InArgument x:TypeArguments="x:String" x:Key="in_year" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">[in_TransactionItem("Log_Publication_Code").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pubname">[in_TransactionItem("Log_Publication_Name").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Code&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubname">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Name&quot;).ToString.Trim" />
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_filepath" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_compilefilepath">[var_compilefilepath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_onlyfilename">[varonlyfilename]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_queuename">[in_Config("QUEUE").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbcon">[in_dbc]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ID">[in_TransactionItem("Log_ID").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">[in_TransactionItem("Log_Invoice_MOS").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_compilefilepath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_compilefilepath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_onlyfilename">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varonlyfilename" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queuename">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;QUEUE&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbcon">
+          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_dbc" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ID">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_ID&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_MOS&quot;).ToString.Trim" />
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_stamp" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_SpUsername">[str_SpUsername]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SpPassword">[str_SpPassword]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FaEmailAddress">[str_FaEmail]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_StampComment">[in_TransactionItem("PBT_Stamp_Comment").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SpUsername">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_SpUsername" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SpPassword">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_SpPassword" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FaEmailAddress">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_FaEmail" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StampComment">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;PBT_Stamp_Comment&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Split_s9_comment">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_FA_Interface_Comment&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Fa_Action">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_FA_Action_Status&quot;).ToString.Trim" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

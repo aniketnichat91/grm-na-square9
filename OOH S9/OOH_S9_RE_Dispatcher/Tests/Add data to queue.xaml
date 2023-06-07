@@ -27,6 +27,8 @@
     <x:Property Name="in_SpPassword" Type="InArgument(x:String)" />
     <x:Property Name="in_FaEmailAddress" Type="InArgument(x:String)" />
     <x:Property Name="in_StampComment" Type="InArgument(x:String)" />
+    <x:Property Name="in_Split_s9_comment" Type="InArgument(x:String)" />
+    <x:Property Name="in_Fa_Action" Type="InArgument(x:String)" />
   </x:Members>
   <this:Add_data_to_queue.in_dbcon>
     <InArgument x:TypeArguments="ui:DatabaseConnection" />
@@ -40,7 +42,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1058,2989</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1577,3069</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Add_data_to_queue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -911,6 +913,12 @@
           </InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="STAMPCOMMENT">
             <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StampComment.Trim" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="FA_ACTION">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Fa_Action" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="SPLIT_S9_COMMENT">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Split_s9_comment" />
           </InArgument>
         </ui:AddQueueItem.ItemInformation>
       </ui:AddQueueItem>

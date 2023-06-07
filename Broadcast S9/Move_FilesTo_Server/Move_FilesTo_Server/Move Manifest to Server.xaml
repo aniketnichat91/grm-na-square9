@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>922,5359</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2590,6463</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Move_Manifest_to_Server_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -72,7 +72,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Move_Manifest_to_Server " sap:VirtualizedContainerService.HintSize="932,5294" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Move_Manifest_to_Server " sap:VirtualizedContainerService.HintSize="2600,6398" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arrmanifestfile" />
       <Variable x:TypeArguments="x:String" Name="currentdate" />
@@ -83,7 +83,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Sequence - Broadcast" sap:VirtualizedContainerService.HintSize="890,1636" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence DisplayName="Sequence - Broadcast" sap:VirtualizedContainerService.HintSize="2558,2740" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="isExists" />
       </Sequence.Variables>
@@ -92,7 +92,8 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="848,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2516,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Move_Manifest_to_Server  workflow start&quot;]" />
+      <Assign sap:VirtualizedContainerService.HintSize="2516,60" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[currentdate]</OutArgument>
         </Assign.To>
@@ -100,16 +101,16 @@
           <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:PathExists DisplayName="Path Exists" Exists="[isExists]" sap:VirtualizedContainerService.HintSize="848,89" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[argBroadcastPath+currentdate]" PathType="Folder" />
-      <If Condition="[isExists]" sap:VirtualizedContainerService.HintSize="848,1315" sap2010:WorkflowViewState.IdRef="If_14">
+      <ui:PathExists DisplayName="Path Exists" Exists="[isExists]" sap:VirtualizedContainerService.HintSize="2516,89" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[argBroadcastPath+currentdate]" PathType="Folder" />
+      <If Condition="[isExists]" sap:VirtualizedContainerService.HintSize="2516,2288" sap2010:WorkflowViewState.IdRef="If_14">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="703,1167" sap2010:WorkflowViewState.IdRef="Sequence_32">
+          <Sequence sap:VirtualizedContainerService.HintSize="2371,2140" sap2010:WorkflowViewState.IdRef="Sequence_32">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="661,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap:VirtualizedContainerService.HintSize="2329,60" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[arrmanifestfile]</OutArgument>
               </Assign.To>
@@ -117,7 +118,7 @@
                 <InArgument x:TypeArguments="s:String[]">[directory.GetFiles(argBroadcastPath+currentdate+"\","*.zip")]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[arrmanifestfile.Count&gt;0]" sap:VirtualizedContainerService.HintSize="661,975" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[arrmanifestfile.Count&gt;0]" sap:VirtualizedContainerService.HintSize="2329,1948" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -125,13 +126,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="516,827" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrmanifestfile]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="2184,1800" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arrmanifestfile]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480,693" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="2148,1666" sap2010:WorkflowViewState.IdRef="Sequence_2">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="filename" />
                         </Sequence.Variables>
@@ -140,7 +141,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign sap:VirtualizedContainerService.HintSize="2106,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[filename]</OutArgument>
                           </Assign.To>
@@ -148,18 +149,18 @@
                             <InArgument x:TypeArguments="x:String">[path.GetFileName(item)]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,501" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2106,1474" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                           <TryCatch.Try>
-                            <Sequence sap:VirtualizedContainerService.HintSize="376,274" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                            <Sequence sap:VirtualizedContainerService.HintSize="2068,1247" sap2010:WorkflowViewState.IdRef="Sequence_33">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <If Condition="[item.Contains(&quot;NETPAK&quot;)]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If Condition="[item.Contains(&quot;NETPAK&quot;)]" sap:VirtualizedContainerService.HintSize="2026,1024" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -295,11 +296,11 @@
                                   </Sequence>
                                 </If.Else>
                               </If>
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Moved broadcast Files&quot;]" />
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2026,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Moved broadcast Files&quot;]" />
                             </Sequence>
                           </TryCatch.Try>
                           <TryCatch.Catches>
-                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="2072,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -330,7 +331,7 @@
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Sequence - Vendor" sap:VirtualizedContainerService.HintSize="890,849" sap2010:WorkflowViewState.IdRef="Sequence_25">
+    <Sequence DisplayName="Sequence - Vendor" sap:VirtualizedContainerService.HintSize="2558,849" sap2010:WorkflowViewState.IdRef="Sequence_25">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="isExists" />
       </Sequence.Variables>
@@ -369,7 +370,7 @@
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Sequence - Print" sap:VirtualizedContainerService.HintSize="890,1748" sap2010:WorkflowViewState.IdRef="Sequence_29">
+    <Sequence DisplayName="Sequence - Print" sap:VirtualizedContainerService.HintSize="2558,1748" sap2010:WorkflowViewState.IdRef="Sequence_29">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="isExists" />
       </Sequence.Variables>
@@ -430,7 +431,7 @@
         </If.Then>
       </If>
     </Sequence>
-    <Sequence DisplayName="Sequence - OOH" sap:VirtualizedContainerService.HintSize="890,849" sap2010:WorkflowViewState.IdRef="Sequence_31">
+    <Sequence DisplayName="Sequence - OOH" sap:VirtualizedContainerService.HintSize="2558,849" sap2010:WorkflowViewState.IdRef="Sequence_31">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="isExists" />
       </Sequence.Variables>

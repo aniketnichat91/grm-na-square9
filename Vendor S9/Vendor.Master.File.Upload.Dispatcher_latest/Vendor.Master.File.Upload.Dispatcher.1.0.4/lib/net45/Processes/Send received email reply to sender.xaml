@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>689,1313</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1577,1313</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_received_email_reply_to_sender_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -157,7 +157,7 @@
             </ui:CommentOut>
             <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,401" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,143" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -207,13 +207,13 @@
     </uma:Office365ApplicationScope>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,240" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="sandip.kore@groupm.com" Body="[&quot;Received &quot;+String.Join(&quot;,&quot;,arr_vendorcode)+&quot; for processing.&quot;]" Cc="[arrcclist(0)+&quot;;&quot;+arrcclist(1)]" DisplayName="Send Exchange Mail Message" Domain="AD" ExchangeVersion="Exchange2013" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendExchangeMail_1" IsBodyHtml="False" IsDraft="False" SaveCopy="False" SecurePassword="[var_pass]" Server="https://outlook.office365.com" Subject="[&quot;We have received your Vendor Master File changes and there were &quot; +in_vendorcount.ToString+ &quot; vendor codes to be processed.&quot;]" To="[in_mail.Sender.Address.ToString]" User="[var_user]" />
+          <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="sandip.kore@groupm.com" Body="[&quot;Received &quot;+String.Join(&quot;,&quot;,arr_vendorcode)+&quot; for processing.&quot;]" Cc="[arrcclist(0)+&quot;;&quot;+arrcclist(1)]" DisplayName="Send Exchange Mail Message old" Domain="AD" ExchangeVersion="Exchange2013" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendExchangeMail_1" IsBodyHtml="False" IsDraft="False" SaveCopy="False" SecurePassword="[var_pass]" Server="https://outlook.office365.com" Subject="[&quot;We have received your Vendor Master File changes and there were &quot; +in_vendorcount.ToString+ &quot; vendor codes to be processed.&quot;]" To="[in_mail.Sender.Address.ToString]" User="[var_user]" />
         </Sequence>
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
@@ -231,7 +231,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[&quot;Received &quot;+String.Join(&quot;,&quot;,arr_vendorcode)+&quot; for processing.&quot;]" DisplayName="Send Exchange Mail Message" Domain="AD" ExchangeVersion="Exchange2013" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendExchangeMail_2" IsBodyHtml="False" IsDraft="False" SaveCopy="False" SecurePassword="[var_pass]" Server="https://outlook.office365.com" Subject="[&quot;We have received your Vendor Master File changes and there were &quot; +in_vendorcount.ToString+ &quot; vendor codes to be processed.&quot;]" To="sandip.kore@groupm.com" User="[var_user]" />
+          <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Body="[&quot;Received &quot;+String.Join(&quot;,&quot;,arr_vendorcode)+&quot; for processing.&quot;]" DisplayName="Send Exchange Mail Message old" Domain="AD" ExchangeVersion="Exchange2013" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendExchangeMail_2" IsBodyHtml="False" IsDraft="False" SaveCopy="False" SecurePassword="[var_pass]" Server="https://outlook.office365.com" Subject="[&quot;We have received your Vendor Master File changes and there were &quot; +in_vendorcount.ToString+ &quot; vendor codes to be processed.&quot;]" To="sandip.kore@groupm.com" User="[var_user]" />
         </Sequence>
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>

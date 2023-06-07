@@ -18,7 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2145,2307</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2217,2700</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>manifestcsv_rules_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -91,7 +91,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="manifestcsv_rules" sap:VirtualizedContainerService.HintSize="2155,2242" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="manifestcsv_rules" sap:VirtualizedContainerService.HintSize="2227,2635" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="varmediadir" />
     </Sequence.Variables>
@@ -100,8 +100,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2113,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Applying Manifest Rules" />
-    <Sequence sap2010:Annotation.AnnotationText="This seq. will get sourcepak from agency_finance_mapping table which will be used for manfest file rule" DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="2113,696" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2185,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Applying Manifest Rules&quot;]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2185,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Applying Manifest Rules" />
+    <Sequence sap2010:Annotation.AnnotationText="This seq. will get sourcepak from agency_finance_mapping table which will be used for manfest file rule" DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="2185,696" sap2010:WorkflowViewState.IdRef="Sequence_12">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="clientquery" />
         <Variable x:TypeArguments="sd:DataTable" Name="dtdir" />
@@ -152,7 +153,7 @@
         </ui:ForEachRow.Body>
       </ui:ForEachRow>
     </Sequence>
-    <If Condition="[in_medialookup.Equals(&quot;N&quot;) or in_medialookup.Equals(&quot;O&quot;)]" sap:VirtualizedContainerService.HintSize="2113,1121" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_medialookup.Equals(&quot;N&quot;) or in_medialookup.Equals(&quot;O&quot;)]" sap:VirtualizedContainerService.HintSize="2185,1252" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,13 +178,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="1764,973" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="1836,1104" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[varmediadir.Contains(&quot;CORE&quot;)]" sap:VirtualizedContainerService.HintSize="1722,881" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[varmediadir.Contains(&quot;CORE&quot;)]" sap:VirtualizedContainerService.HintSize="1794,1012" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
@@ -202,21 +203,21 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="1373,733" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence sap:VirtualizedContainerService.HintSize="1445,864" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[varmediadir.Contains(&quot;FORD&quot;)]" sap:VirtualizedContainerService.HintSize="1331,641" sap2010:WorkflowViewState.IdRef="If_3">
+                <If Condition="[varmediadir.Contains(&quot;FORD&quot;)]" sap:VirtualizedContainerService.HintSize="1403,772" sap2010:WorkflowViewState.IdRef="If_3">
                   <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="695,493" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence sap:VirtualizedContainerService.HintSize="767,624" sap2010:WorkflowViewState.IdRef="Sequence_6">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[in_medialookup.Equals(&quot;N&quot;) or in_medialookup.Equals(&quot;O&quot;)]" sap:VirtualizedContainerService.HintSize="653,401" sap2010:WorkflowViewState.IdRef="If_4">
+                      <If Condition="[in_medialookup.Equals(&quot;N&quot;) or in_medialookup.Equals(&quot;O&quot;)]" sap:VirtualizedContainerService.HintSize="725,532" sap2010:WorkflowViewState.IdRef="If_4">
                         <If.Then>
                           <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_8">
                             <sap:WorkflowViewStateService.ViewState>
@@ -235,14 +236,15 @@
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence sap:VirtualizedContainerService.HintSize="304,253" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,384" sap2010:WorkflowViewState.IdRef="Sequence_9">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;** insideTDS&quot;+in_clientcode+in_attachmentname]" />
-                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;** insideTDS&quot;+in_clientcode+in_attachmentname]" />
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;** insideTDS&quot;+in_clientcode+in_attachmentname]" />
+                            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[out_manifestfolder]</OutArgument>
                               </Assign.To>
@@ -299,7 +301,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="2113,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="2185,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,371" sap2010:WorkflowViewState.IdRef="Sequence_15">
           <sap:WorkflowViewStateService.ViewState>
@@ -340,6 +342,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2113,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="Manifest Rules Applied" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2185,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="Manifest Rules Applied" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2185,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Manifest Rules Applied&quot;]" />
   </Sequence>
 </Activity>

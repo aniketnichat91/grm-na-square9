@@ -6750,9 +6750,9 @@
     "restore": {
       "projectUniqueName": "Vendor Master Fle Performer",
       "projectName": "Vendor Master Fle Performer",
-      "projectPath": "C:\\Users\\NTMGRM.RPA1\\Downloads\\OneDrive_2023-04-25\\S9 code from 4Tap\\Vendor S9\\Vendor.Master.Fle.Performer.1.0.2\\lib\\net45\\.local",
+      "projectPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Vendor S9\\Vendor.Master.Fle.Performer.1.0.2\\lib\\net45\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTMGRM.RPA1\\Downloads\\OneDrive_2023-04-25\\S9 code from 4Tap\\Vendor S9\\Vendor.Master.Fle.Performer.1.0.2\\lib\\net45\\.local"
+      "outputPath": "C:\\Users\\NTMGRM.RPA1\\Documents\\UPProjects\\Vendor S9\\Vendor.Master.Fle.Performer.1.0.2\\lib\\net45\\.local"
     },
     "frameworks": {
       "net461": {
@@ -6800,5 +6800,14 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'UiPath.Database.Activities 1.6.1' from source 'https://www.myget.org/F/workflow/': This package is signed but not by a trusted signer.",
+      "libraryId": "UiPath.Database.Activities"
+    }
+  ]
 }

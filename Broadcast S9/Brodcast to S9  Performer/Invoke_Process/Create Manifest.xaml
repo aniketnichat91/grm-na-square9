@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2210,2301</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2210,2332</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Create_Manifest_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -80,9 +80,10 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Create_Manifest" sap:VirtualizedContainerService.HintSize="2220,2136" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Create_Manifest" sap:VirtualizedContainerService.HintSize="2220,2267" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_MediaLookUp" />
       <Variable x:TypeArguments="x:String" Name="var_C" />
@@ -126,7 +127,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Stamp_PDF" sap:VirtualizedContainerService.HintSize="2178,2044" sap2010:WorkflowViewState.IdRef="Sequence_27">
+    <Sequence DisplayName="Stamp_PDF" sap:VirtualizedContainerService.HintSize="2178,2175" sap2010:WorkflowViewState.IdRef="Sequence_27">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -134,7 +135,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2136,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding data into manifest file&quot;]" />
-      <Sequence sap:VirtualizedContainerService.HintSize="2136,1821" sap2010:WorkflowViewState.IdRef="Sequence_26">
+      <Sequence sap:VirtualizedContainerService.HintSize="2136,1952" sap2010:WorkflowViewState.IdRef="Sequence_26">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="var_Status" />
           <Variable x:TypeArguments="x:String" Name="var_" />
@@ -478,6 +479,7 @@
           </If>
         </Sequence>
         <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2094,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Data added to manifest file" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2094,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Data added to manifest file&quot;]" />
       </Sequence>
     </Sequence>
   </Sequence>

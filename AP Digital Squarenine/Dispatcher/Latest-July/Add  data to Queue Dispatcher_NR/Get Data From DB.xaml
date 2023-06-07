@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1546,3679</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,3679</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -215,7 +215,7 @@
               <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["select * from master_log where FA_Status like '%NR%' and UpdatedDate like '%"+filedate+"%' and record_status is null and UpdatedBy is not null and doc_link is not null and from_name not like '%GPC Process%_EDI' "]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["select * from master_log where FA_Status like '%NR%' and UpdatedDate like '%"+filedate+"%' and record_status is null and UpdatedBy is not null and doc_link is not null  "]</InArgument>
             </Assign.Value>
           </Assign>
           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[getdatafromdbquery]" />
