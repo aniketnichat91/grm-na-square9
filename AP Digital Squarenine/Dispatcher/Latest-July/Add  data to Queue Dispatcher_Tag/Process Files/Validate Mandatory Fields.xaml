@@ -30,7 +30,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1766,16471</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,16471</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Validate_Mandatory_Fields_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -81,7 +81,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="84">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -124,6 +124,7 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Validate_Mandatory_Fields" sap:VirtualizedContainerService.HintSize="1776,16406" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -303,12 +304,27 @@
                           </Assign>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="argBotName">S9 Paid Dispatcher</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                              <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">
+                                <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_db" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argsubject" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argbody" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="argBotName">
+                                <Literal x:TypeArguments="x:String">S9 Paid Dispatcher</Literal>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="argFAName">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_name" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_email" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="argLog_ID">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_Log_ID" />
+                              </InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                           <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_47">
@@ -514,7 +530,7 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
               </ActivityAction.Argument>
-              <Sequence sap:VirtualizedContainerService.HintSize="478,464" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <Sequence sap:VirtualizedContainerService.HintSize="478,240" sap2010:WorkflowViewState.IdRef="Sequence_21">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -625,12 +641,27 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">S9 Paid Dispatcher</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">
+                          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_db" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argsubject" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argbody" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">
+                          <Literal x:TypeArguments="x:String">S9 Paid Dispatcher</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_name" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_email" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argLog_ID">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_Log_ID" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_48">
@@ -909,12 +940,27 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">S9 Paid Dispatcher</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">
+                          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_db" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argsubject" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argbody" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">
+                          <Literal x:TypeArguments="x:String">S9 Paid Dispatcher</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_name" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_email" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argLog_ID">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_Log_ID" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_54">
@@ -1033,12 +1079,27 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">S9 Paid Dispatcher</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">
+                          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_db" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argsubject" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argbody" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">
+                          <Literal x:TypeArguments="x:String">S9 Paid Dispatcher</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_name" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_email" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argLog_ID">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_Log_ID" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_49">
@@ -1157,12 +1218,27 @@
                     </Assign>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">S9 Paid Dispatcher</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">
+                          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_db" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argsubject" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argbody" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argBotName">
+                          <Literal x:TypeArguments="x:String">S9 Paid Dispatcher</Literal>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAName">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_name" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_email" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="argLog_ID">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_Log_ID" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_50">
@@ -1505,12 +1581,27 @@
                   </Assign>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add_Mail_Details_to_Notification_Table workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Add_Mail_Details_to_Notification_Table.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">[in_db]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">[argsubject]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="argMailBody">[argbody]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="argBotName">S9 Paid Dispatcher</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="argFAName">[argfa_name]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">[argfa_email]</InArgument>
+                      <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="argDBConnection">
+                        <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_db" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="argMailSubject">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argsubject" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="argMailBody">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argbody" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="argBotName">
+                        <Literal x:TypeArguments="x:String">S9 Paid Dispatcher</Literal>
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="argFAName">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_name" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="argFAEmail">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="argfa_email" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="argLog_ID">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="arg_Log_ID" />
+                      </InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                   <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_46">

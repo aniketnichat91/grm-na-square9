@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>396,1003</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1240,1008</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DBTest_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -40,7 +40,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="17">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -58,6 +58,20 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Add Mail to Notification Table" sap:VirtualizedContainerService.HintSize="376,943" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -102,7 +116,7 @@
         <OutArgument x:TypeArguments="x:String">[varQuery]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["INSERT Into [dbo].[Digital_FAI_Notification_Txn] ([Notification_Subject], [Notification_Body], [Notification_BotProcess_Name], [Notification_FA_Name], [Notification_FA_Email], [Notification_Is_Checked], [Notification_Insertion_Date]) VALUES ('"+argMailSubject+"', '"+argMailBody+"', '"+argBotName+"', '"+argFAName+"', '"+argFAEmail+"', 0, GETDATE())"]</InArgument>
+        <InArgument x:TypeArguments="x:String">["INSERT Into [dbo].[Digital_FAI_Notification_Txn] ([Notification_Log_ID],[Notification_Subject], [Notification_Body], [Notification_BotProcess_Name], [Notification_FA_Name], [Notification_FA_Email], [Notification_Is_Checked], [Notification_Insertion_Date]) VALUES (NULL,'"+argMailSubject+"', '"+argMailBody+"', '"+argBotName+"', '"+argFAName+"', '"+argFAEmail+"', 0, GETDATE())"]</InArgument>
       </Assign.Value>
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[varQuery]" />

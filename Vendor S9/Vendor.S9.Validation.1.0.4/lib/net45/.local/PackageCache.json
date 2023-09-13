@@ -2,6 +2,17 @@
   "Packages": [
     {
       "Package": {
+        "Id": "GSSQ9WebAPI_Pacakge.Activities",
+        "Version": "1.0.3"
+      },
+      "Assemblies": [
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\gssq9webapi_pacakge.activities/1.0.3\\lib/net461/GSSQ9WebAPI_Package.dll",
+        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\newtonsoft.json/13.0.1\\lib/net45/Newtonsoft.Json.dll"
+      ],
+      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\gssq9webapi_pacakge.activities\\1.0.3"
+    },
+    {
+      "Package": {
         "Id": "UiPath.Database.Activities",
         "Version": "1.4.0"
       },
@@ -217,17 +228,6 @@
         "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.webapi.activities/1.7.0\\lib/net461/UiPath.Web.dll"
       ],
       "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\uipath.webapi.activities\\1.7.0"
-    },
-    {
-      "Package": {
-        "Id": "GSSQ9WebAPI_Pacakge.Activities",
-        "Version": "1.0.3"
-      },
-      "Assemblies": [
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\gssq9webapi_pacakge.activities/1.0.3\\lib/net461/GSSQ9WebAPI_Package.dll",
-        "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\newtonsoft.json/13.0.1\\lib/net45/Newtonsoft.Json.dll"
-      ],
-      "Path": "C:\\Users\\NTMGRM.RPA1\\.nuget\\packages\\gssq9webapi_pacakge.activities\\1.0.3"
     }
   ],
   "Conflicts": [],

@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2333,10704</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2333,10833</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_File_Attach_S9_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
@@ -126,7 +126,7 @@
       <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Compile_File_Attach_S9" sap:VirtualizedContainerService.HintSize="2343,10639" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Compile_File_Attach_S9" sap:VirtualizedContainerService.HintSize="2343,10768" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtOut" />
       <Variable x:TypeArguments="x:String" Name="in_Doc_Link1" />
@@ -414,7 +414,7 @@
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                       </ActivityAction.Argument>
-                                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="673,829" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="673,872" sap2010:WorkflowViewState.IdRef="TryCatch_7">
                                         <TryCatch.Try>
                                           <Sequence sap:VirtualizedContainerService.HintSize="633,645" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                             <sap:WorkflowViewStateService.ViewState>
@@ -571,7 +571,7 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="633,639" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                  <Sequence sap:VirtualizedContainerService.HintSize="633,642" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -657,7 +657,7 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="633,645" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                  <Sequence sap:VirtualizedContainerService.HintSize="633,642" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -742,22 +742,22 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2387,1673" sap2010:WorkflowViewState.IdRef="TryCatch_24">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2387,1821" sap2010:WorkflowViewState.IdRef="TryCatch_24">
               <TryCatch.Try>
-                <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope - For GPC Invoices same flow" sap:VirtualizedContainerService.HintSize="2026,1594" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_6" Password="[in_sppass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPURL_GPC]" UserName="[in_spuser]">
+                <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope - For GPC Invoices same flow" sap:VirtualizedContainerService.HintSize="2026,1554" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_6" Password="[in_sppass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPURL_GPC]" UserName="[in_spuser]">
                   <usa:SharepointApplicationScope.Body>
                     <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1992,1453" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1992,1450" sap2010:WorkflowViewState.IdRef="Sequence_60">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1950,61" sap2010:WorkflowViewState.IdRef="WriteLine_29" Text="[&quot;Before link**&quot; +in_Doc_Link]" />
-                        <If Condition="[in_Doc_Link.tolower.Contains(&quot;rebecca&quot;)]" sap:VirtualizedContainerService.HintSize="1950,1260" sap2010:WorkflowViewState.IdRef="If_26">
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2032,61" sap2010:WorkflowViewState.IdRef="WriteLine_29" Text="[&quot;Before link**&quot; +in_Doc_Link]" />
+                        <If Condition="[in_Doc_Link.tolower.Contains(&quot;rebecca&quot;)]" sap:VirtualizedContainerService.HintSize="2032,1260" sap2010:WorkflowViewState.IdRef="If_26">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -827,7 +827,7 @@
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                       </ActivityAction.Argument>
-                                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="713,869" sap2010:WorkflowViewState.IdRef="TryCatch_20">
+                                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="713,872" sap2010:WorkflowViewState.IdRef="TryCatch_20">
                                         <TryCatch.Try>
                                           <Sequence sap:VirtualizedContainerService.HintSize="633,645" sap2010:WorkflowViewState.IdRef="Sequence_51">
                                             <sap:WorkflowViewStateService.ViewState>
@@ -874,7 +874,7 @@
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                               </ActivityAction.Argument>
-                                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="673,869" sap2010:WorkflowViewState.IdRef="TryCatch_19">
+                                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="673,872" sap2010:WorkflowViewState.IdRef="TryCatch_19">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1024,7 +1024,7 @@
                                       </Sequence>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_22">
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="637,21" sap2010:WorkflowViewState.IdRef="Catch`1_22">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1199,40 +1199,40 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="2301,928" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" Password="[in_SPPass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPUrl]" UserName="[in_SPuser]">
+    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="2301,889" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" Password="[in_SPPass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPUrl]" UserName="[in_SPuser]">
       <usa:SharepointApplicationScope.Body>
         <ActivityAction x:TypeArguments="us:SharePointContextInfo">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Download all attachments uploaded by FA" sap:VirtualizedContainerService.HintSize="556,787" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do - Download all attachments uploaded by FA" sap:VirtualizedContainerService.HintSize="552,748" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtOut]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="514,695" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtOut]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,656" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480,522" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,483" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:Matches sap:VirtualizedContainerService.HintSize="438,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[Currentrow(&quot;Doc_Url&quot;).ToString]" IsBuilderTabModified="False" Pattern="(?=sites).*" RegexOption="IgnoreCase, Compiled" Result="[arRegExResult]" />
-                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,331" sap2010:WorkflowViewState.IdRef="TryCatch_26">
+                    <ui:Matches sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[Currentrow(&quot;Doc_Url&quot;).ToString]" IsBuilderTabModified="False" Pattern="(?=sites).*" RegexOption="IgnoreCase, Compiled" Result="[arRegExResult]" />
+                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,292" sap2010:WorkflowViewState.IdRef="TryCatch_26">
                       <TryCatch.Try>
                         <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="273,104" sap2010:WorkflowViewState.IdRef="GetFile_6" LocalPath="[io_local_pdffilepath+&quot;\&quot;+CurrentRow(&quot;DocFilename&quot;).ToString]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[arRegExResult(0).tostring]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
                       </TryCatch.Try>
                       <TryCatch.Catches>
-                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_27">
+                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,130" sap2010:WorkflowViewState.IdRef="Catch`1_27">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
@@ -1240,7 +1240,7 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="231,61" sap2010:WorkflowViewState.IdRef="WriteLine_41" Text="Attachment not found" />
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_41" Text="Attachment not found" />
                           </ActivityAction>
                         </Catch>
                       </TryCatch.Catches>
@@ -1491,13 +1491,13 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                       <ui:CommentOut.Body>
-                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,455" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,453" sap2010:WorkflowViewState.IdRef="Sequence_22">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <If Condition="[filename.Contains(&quot;0_&quot;)and filename.StartsWith(&quot;0_&quot;)]" sap:VirtualizedContainerService.HintSize="484,363" sap2010:WorkflowViewState.IdRef="If_19">
+                          <If Condition="[filename.Contains(&quot;0_&quot;)and filename.StartsWith(&quot;0_&quot;)]" sap:VirtualizedContainerService.HintSize="484,361" sap2010:WorkflowViewState.IdRef="If_19">
                             <If.Then>
                               <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                 <Sequence.Variables>
@@ -1537,12 +1537,12 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2301,1245" sap2010:WorkflowViewState.IdRef="TryCatch_28">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2301,1413" sap2010:WorkflowViewState.IdRef="TryCatch_28">
       <TryCatch.Try>
-        <If Condition="[arrPDFFiles.Count&gt;1]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_7">
+        <If Condition="[arrPDFFiles.Count&gt;1]" sap:VirtualizedContainerService.HintSize="1498,984" sap2010:WorkflowViewState.IdRef="If_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1654,7 +1654,7 @@
         </If>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="558,1083" sap2010:WorkflowViewState.IdRef="Catch`1_29">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="560,1251" sap2010:WorkflowViewState.IdRef="Catch`1_29">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1665,19 +1665,19 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="552,1014" sap2010:WorkflowViewState.IdRef="Sequence_69">
+            <Sequence sap:VirtualizedContainerService.HintSize="554,1182" sap2010:WorkflowViewState.IdRef="Sequence_69">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,860" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="512,1028" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Password="[in_SPPass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[in_SPUser]">
                 <uma:Office365ApplicationScope.Body>
                   <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,774" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="478,942" sap2010:WorkflowViewState.IdRef="Sequence_68">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="s:String[]" Default="[{in_fa_name+&quot;@groupm.com&quot;}]" Name="arrfaname" />
                         <Variable x:TypeArguments="x:String" Name="varquery" />
@@ -1687,25 +1687,36 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as Attached Documents is not in valid format.  Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,354" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  Invoice_Number is blank or not valid &quot;]" To="[arrfaname]">
+                      <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+io_pdf_file_name+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as Attached Documents is not in valid format.  Please process it manually (Tag and Scan via StatusData).&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="436,352" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[io_pdf_file_name+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  Invoice_Number is blank or not valid &quot;]" To="[arrfaname]">
                         <umam:SendMail.Attachments>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                         </umam:SendMail.Attachments>
                       </umam:SendMail>
-                      <Assign DisplayName="Assign - delete all the files from the table so that next time bot does not pick error files again" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_71">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[varquery]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">["delete from fa_interface_attach_S9 where reportid = '"+RecordID+"'"]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="434,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[varquery]">
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,230" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign - delete all the files from the table so that next time bot does not pick error files again" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_71">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[varquery]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">["delete from fa_interface_attach_S9 where reportid = '"+RecordID+"'"]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </ui:CommentOut.Body>
+                      </ui:CommentOut>
+                      <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[dbConnection]" sap:VirtualizedContainerService.HintSize="436,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[varquery]">
                         <ui:ExecuteQuery.Parameters>
                           <scg:Dictionary x:TypeArguments="x:String, Argument" />
                         </ui:ExecuteQuery.Parameters>
                       </ui:ExecuteQuery>
-                      <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_70">
+                      <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_70">
                         <Assign.To>
                           <OutArgument x:TypeArguments="s:String[]">[arrfaname]</OutArgument>
                         </Assign.To>
@@ -1723,7 +1734,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uma:Office365ApplicationScope>
-              <Throw Exception="[new BusinessRuleException (&quot;Attached Files contains error&quot;)]" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <Throw Exception="[new BusinessRuleException (&quot;Attached Files contains error&quot;)]" sap:VirtualizedContainerService.HintSize="512,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
@@ -1776,7 +1787,7 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
               </ActivityAction.Argument>
-              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="434,641" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_7" Password="[in_SPPass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPURL_GPC]" UserName="[in_SPuser]">
+              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="434,640" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_7" Password="[in_SPPass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPURL_GPC]" UserName="[in_SPuser]">
                 <usa:SharepointApplicationScope.Body>
                   <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                     <ActivityAction.Argument>

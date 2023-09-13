@@ -17,11 +17,12 @@
     <x:Property Name="in_pdffile_link" Type="InArgument(x:String)" />
     <x:Property Name="in_Filename" Type="InArgument(x:String)" />
     <x:Property Name="out_ID" Type="OutArgument(x:String)" />
+    <x:Property Name="in_Subject" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1066,2770</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1238,2733</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Insert_DIG_data_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -63,7 +64,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="41">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="82">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -104,10 +105,12 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Insert_DIG_data" sap:VirtualizedContainerService.HintSize="611,2705" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Insert_DIG_data" sap:VirtualizedContainerService.HintSize="755,2668" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="finance_associates" />
       <Variable x:TypeArguments="x:String" Name="pdf_cpe" />
@@ -127,7 +130,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[vendor]</OutArgument>
       </Assign.To>
@@ -135,7 +138,7 @@
         <InArgument x:TypeArguments="x:String">[in_Pub_Name+" ("+in_pubcode+")"]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[pdf_cpe]</OutArgument>
       </Assign.To>
@@ -143,36 +146,57 @@
         <InArgument x:TypeArguments="x:String">[in_C+"_"+in_P+"_"+in_E]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:Matches sap:VirtualizedContainerService.HintSize="569,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_fa_name]" IsBuilderTabModified="False" Pattern="(?&lt;=&lt;).*(?=&gt;)" RegexOption="IgnoreCase, Compiled" Result="[emailid]" />
-    <ui:Matches sap:VirtualizedContainerService.HintSize="569,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[emailid(0).tostring]" IsBuilderTabModified="False" Pattern="[emailid(0).tostring.Split(&quot;@&quot;c).First]" RegexOption="IgnoreCase, Compiled" Result="[finance_associates]" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_agency]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="569,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;select distinct AgencyName from [dbo].[AgencyNameLookup] where Office_Codes='&quot;+in_Agency.ToString.Trim+&quot;'&quot;]">
-      <ui:ExecuteQuery.Parameters>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
-      </ui:ExecuteQuery.Parameters>
-    </ui:ExecuteQuery>
-    <If Condition="[dt_agency.RowCount&gt;0]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_1">
-      <If.Then>
-        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[str_Agency]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">[dt_agency.Rows(0)(0).ToString]</InArgument>
-          </Assign.Value>
-        </Assign>
-      </If.Then>
-      <If.Else>
-        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[str_Agency]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">Mindshare</InArgument>
-          </Assign.Value>
-        </Assign>
-      </If.Else>
-    </If>
-    <If Condition="[in_PDF_Amount.Contains(&quot;$&quot;)]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_3">
+    <ui:Matches sap:VirtualizedContainerService.HintSize="713,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_fa_name]" IsBuilderTabModified="False" Pattern="(?&lt;=&lt;).*(?=&gt;)" RegexOption="IgnoreCase, Compiled" Result="[emailid]" />
+    <ui:Matches sap:VirtualizedContainerService.HintSize="713,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[emailid(0).tostring]" IsBuilderTabModified="False" Pattern="[emailid(0).tostring.Split(&quot;@&quot;c).First]" RegexOption="IgnoreCase, Compiled" Result="[finance_associates]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="713,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,271" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_agency]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;select distinct AgencyName from [dbo].[AgencyNameLookup] where Office_Codes='&quot;+in_Agency.ToString.Trim+&quot;'&quot;]">
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+          </ui:ExecuteQuery>
+          <If Condition="[dt_agency.RowCount&gt;0]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Else>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[str_Agency]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">Mindshare</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Else>
+          </If>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[str_Agency]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Agency]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[in_PDF_Amount.Contains(&quot;$&quot;)]" sap:VirtualizedContainerService.HintSize="713,208" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
           <Assign.To>
@@ -194,12 +218,12 @@
         </Assign>
       </If.Else>
     </If>
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_isDuplicate]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="569,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[&quot;select * from master_log where Invoice_Num='&quot;+in_inv_num+&quot;' and Agency ='&quot;+str_Agency+&quot;' and TRY_CAST( REPLACE(pdf_amount, ',', '')  AS float)= TRY_CAST( REPLACE('&quot;+str_Amount+&quot;', ',', '')  AS float)  and Vendor='&quot;+vendor+&quot;' and Log_Date Not like &quot;+&quot;'%&quot;+System.DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)+&quot;%'&quot;]">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_isDuplicate]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="713,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[&quot;select * from master_log where Invoice_Num='&quot;+in_inv_num+&quot;' and Agency ='&quot;+str_Agency+&quot;' and TRY_CAST( REPLACE(pdf_amount, ',', '')  AS float)= TRY_CAST( REPLACE('&quot;+str_Amount+&quot;', ',', '')  AS float)  and Vendor='&quot;+vendor+&quot;' and Log_Date Not like &quot;+&quot;'%&quot;+System.DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)+&quot;%'&quot;]">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <If Condition="[dt_isDuplicate.RowCount&gt;0]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[dt_isDuplicate.RowCount&gt;0]" sap:VirtualizedContainerService.HintSize="713,208" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
           <Assign.To>
@@ -221,7 +245,7 @@
         </Assign>
       </If.Else>
     </If>
-    <If Condition="[in_FileName.Contains(&quot;#&quot;)]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[in_FileName.Contains(&quot;#&quot;)]" sap:VirtualizedContainerService.HintSize="713,208" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
           <Assign.To>
@@ -243,7 +267,7 @@
         </Assign>
       </If.Else>
     </If>
-    <If Condition="[in_FileName1.Contains(&quot;'&quot;)]" sap:VirtualizedContainerService.HintSize="569,208" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[in_FileName1.Contains(&quot;'&quot;)]" sap:VirtualizedContainerService.HintSize="713,208" sap2010:WorkflowViewState.IdRef="If_5">
       <If.Then>
         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_14">
           <Assign.To>
@@ -265,7 +289,7 @@
         </Assign>
       </If.Else>
     </If>
-    <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[InboundDate]</OutArgument>
       </Assign.To>
@@ -273,20 +297,31 @@
         <InArgument x:TypeArguments="x:String">[logdate.Replace("-","")]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="569,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date)values ('New','Not Avaliable','&quot;+logdate+&quot;','&quot;+logdate+&quot;','&quot;+vendor+&quot;','&quot;+in_FileName1+&quot;','&quot;+in_inv_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+in_M+&quot;','&quot;+in_C+&quot;','&quot;+in_P+&quot;','&quot;+in_E+&quot;','&quot;+in_MOS+&quot;','MANUAL - S9','','&quot;+in_PDF_Amount+&quot;','','','','','','&quot;+in_Client_Name+&quot;','&quot;+in_Pub_Name+&quot;','&quot;+in_pubcode+&quot;','','Mail to S9','Mail to S9','&quot;+logdate+&quot;','&quot;+str_Agency+&quot;','&quot;+finance_associates(0).ToString+&quot;','&quot;+in_pdffile_link+&quot;','&quot;+in_FileName1+&quot;','','','','','','&quot;+logdate+&quot;','&quot;+emailid(0).tostring+&quot;','Mail to S9',Null,'No',Null,'Invoice',Null,Null,Null,'','','','','','','&quot;+InboundDate+&quot;','100','Yes','','','','','','','','','','&quot;+logdate+&quot;','&quot;+logdate+&quot;')&quot;]" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="569,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date)values ('&quot;+str_Pdf_Info+&quot;','Not Avaliable','&quot;+logdate+&quot;','&quot;+logdate+&quot;','&quot;+vendor+&quot;','&quot;+in_FileName1+&quot;','&quot;+in_inv_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+in_M+&quot;','&quot;+in_C+&quot;','&quot;+in_P+&quot;','&quot;+in_E+&quot;','&quot;+in_MOS+&quot;','MANUAL - S9','','&quot;+str_Amount+&quot;','','','','','','&quot;+in_Client_Name+&quot;','&quot;+in_Pub_Name+&quot;','&quot;+in_pubcode+&quot;','','Mail to S9','Mail to S9','&quot;+logdate+&quot;','&quot;+str_Agency+&quot;','&quot;+finance_associates(0).ToString+&quot;','&quot;+in_pdffile_link+&quot;','&quot;+in_FileName1+&quot;','','','','','','&quot;+logdate+&quot;','&quot;+emailid(0).tostring+&quot;','Mail to S9',Null,'No',Null,'Invoice',Null,Null,Null,'','','','','','','&quot;+InboundDate+&quot;','100','Yes','','','','','','','','','','&quot;+logdate+&quot;','&quot;+logdate+&quot;')&quot;]">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="713,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date)values ('New','Not Avaliable','&quot;+logdate+&quot;','&quot;+logdate+&quot;','&quot;+vendor+&quot;','&quot;+in_FileName1+&quot;','&quot;+in_inv_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+in_M+&quot;','&quot;+in_C+&quot;','&quot;+in_P+&quot;','&quot;+in_E+&quot;','&quot;+in_MOS+&quot;','MANUAL - S9','','&quot;+in_PDF_Amount+&quot;','','','','','','&quot;+in_Client_Name+&quot;','&quot;+in_Pub_Name+&quot;','&quot;+in_pubcode+&quot;','','Mail to S9','Mail to S9','&quot;+logdate+&quot;','&quot;+str_Agency+&quot;','&quot;+finance_associates(0).ToString+&quot;','&quot;+in_pdffile_link+&quot;','&quot;+in_FileName1+&quot;','','','','','','&quot;+logdate+&quot;','&quot;+emailid(0).tostring+&quot;','Mail to S9',Null,'No',Null,'Invoice',Null,Null,Null,'','','','','','','&quot;+InboundDate+&quot;','100','Yes','','','','','','','','','','&quot;+logdate+&quot;','&quot;+logdate+&quot;')&quot;]" />
+    <If Condition="[in_Subject.ToLower.Contains(&quot;pending&quot;)]" sap:VirtualizedContainerService.HintSize="713,236" sap2010:WorkflowViewState.IdRef="If_6">
+      <If.Then>
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date)values ('&quot;+str_Pdf_Info+&quot;','Not Avaliable','&quot;+logdate+&quot;','&quot;+logdate+&quot;','&quot;+vendor+&quot;','&quot;+in_FileName1+&quot;','&quot;+in_inv_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+in_M+&quot;','&quot;+in_C+&quot;','&quot;+in_P+&quot;','&quot;+in_E+&quot;','&quot;+in_MOS+&quot;','NR','','&quot;+str_Amount+&quot;','','','','','','&quot;+in_Client_Name+&quot;','&quot;+in_Pub_Name+&quot;','&quot;+in_pubcode+&quot;','','Mail to S9','Mail to S9','&quot;+logdate+&quot;','&quot;+str_Agency+&quot;','&quot;+finance_associates(0).ToString+&quot;','&quot;+in_pdffile_link+&quot;','&quot;+in_FileName1+&quot;','','','','','','&quot;+logdate+&quot;','&quot;+emailid(0).tostring+&quot;','Mail to S9',Null,'No',Null,'Invoice',Null,Null,Null,'','','','','','','&quot;+InboundDate+&quot;','100','Yes','','','','','','','','','','&quot;+logdate+&quot;','&quot;+logdate+&quot;')&quot;]">
+          <ui:ExecuteQuery.Parameters>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:ExecuteQuery.Parameters>
+        </ui:ExecuteQuery>
+      </If.Then>
+      <If.Else>
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;insert into master_log (pdf_info,paid_unpaid,pdf_invoice_date,log_date,vendor,inv_filename,invoice_num,pdf_cpe,medialookup,c,p,e,pdf_mos,fa_status,insertion_month,pdf_amount,buy_amount,pdf_tax_amount,campaign_id,insertion_order,uuid,client_name,publication_name,publication_code,product_name,from_email,from_name,email_send_date,agency,finance_associate,doc_link,invoice_name_link,vm_doc_link,iszipped,compilation_status,in_folder,emailguid,updateddate,updatedby,createdby,pagecount,is_matched,record_status,label,tag_status,tag_date,invoice_comment,extracted_tax,extracted_subtotal,multiinvoice_status,stamp_comment,remittance_pdf,remittance_pass,inbounddateasint,confidence_score,fa_interface_ready,extracted_total,buy_tax,pbt_bot_screenshot_link,record_status_updated,p_desc_nr,fa_interface_log_status,is_duplicate,embargo_record,stamp_comment_s9,created_date,modifed_date)values ('&quot;+str_Pdf_Info+&quot;','Not Avaliable','&quot;+logdate+&quot;','&quot;+logdate+&quot;','&quot;+vendor+&quot;','&quot;+in_FileName1+&quot;','&quot;+in_inv_num+&quot;','&quot;+pdf_cpe+&quot;','&quot;+in_M+&quot;','&quot;+in_C+&quot;','&quot;+in_P+&quot;','&quot;+in_E+&quot;','&quot;+in_MOS+&quot;','MANUAL - S9','','&quot;+str_Amount+&quot;','','','','','','&quot;+in_Client_Name+&quot;','&quot;+in_Pub_Name+&quot;','&quot;+in_pubcode+&quot;','','Mail to S9','Mail to S9','&quot;+logdate+&quot;','&quot;+str_Agency+&quot;','&quot;+finance_associates(0).ToString+&quot;','&quot;+in_pdffile_link+&quot;','&quot;+in_FileName1+&quot;','','','','','','&quot;+logdate+&quot;','&quot;+emailid(0).tostring+&quot;','Mail to S9',Null,'No',Null,'Invoice',Null,Null,Null,'','','','','','','&quot;+InboundDate+&quot;','100','Yes','','','','','','','','','','&quot;+logdate+&quot;','&quot;+logdate+&quot;')&quot;]">
+          <ui:ExecuteQuery.Parameters>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:ExecuteQuery.Parameters>
+        </ui:ExecuteQuery>
+      </If.Else>
+    </If>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="713,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Select top 1 id From master_log Where fa_status Like 'MANUAL%-%s9' and vendor like '&quot;+vendor.trim+&quot;' and invoice_num like '&quot;+in_inv_num+&quot;' And agency Like '&quot;+str_Agency+&quot;' and inv_filename like '&quot;+in_FileName1+&quot;' and log_date like '&quot;+logdate+&quot;'&quot;]" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dtOut]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="713,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;Select top 1 id From master_log Where fa_status Like 'MANUAL%-%s9' and vendor like '&quot;+vendor.trim+&quot;' and invoice_num like '&quot;+in_inv_num+&quot;' And agency Like '&quot;+str_Agency+&quot;' and inv_filename like '&quot;+in_FileName1+&quot;' and log_date like '&quot;+logdate+&quot;'&quot;]">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="569,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Select top 1 id From master_log Where fa_status Like 'MANUAL%-%s9' and vendor like '&quot;+vendor.trim+&quot;' and invoice_num like '&quot;+in_inv_num+&quot;' And agency Like '&quot;+str_Agency+&quot;' and inv_filename like '&quot;+in_FileName1+&quot;' and log_date like '&quot;+logdate+&quot;'&quot;]" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dtOut]" DisplayName="Run query" ExistingDbConnection="[in_db]" sap:VirtualizedContainerService.HintSize="569,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;Select top 1 id From master_log Where fa_status Like 'MANUAL%-%s9' and vendor like '&quot;+vendor.trim+&quot;' and invoice_num like '&quot;+in_inv_num+&quot;' And agency Like '&quot;+str_Agency+&quot;' and inv_filename like '&quot;+in_FileName1+&quot;' and log_date like '&quot;+logdate+&quot;'&quot;]">
-      <ui:ExecuteQuery.Parameters>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
-      </ui:ExecuteQuery.Parameters>
-    </ui:ExecuteQuery>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="569,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[dtOut(0)(0).tostring]" />
-    <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="713,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[dtOut(0)(0).tostring]" />
+    <Assign sap:VirtualizedContainerService.HintSize="713,60" sap2010:WorkflowViewState.IdRef="Assign_16">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_ID]</OutArgument>
       </Assign.To>

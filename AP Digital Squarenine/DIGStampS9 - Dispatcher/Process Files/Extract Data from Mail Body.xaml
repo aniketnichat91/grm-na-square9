@@ -22,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1118,7258</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1238,3095</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Extract_Data_from_Mail_Body_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -73,7 +73,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="90">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -122,7 +122,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Extract_Data_from_Mail_Body" sap:VirtualizedContainerService.HintSize="695,2555" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Extract_Data_from_Mail_Body" sap:VirtualizedContainerService.HintSize="695,3030" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailList" />
       <Variable x:TypeArguments="umm:Office365Message[]" Name="MAIL" />
@@ -141,7 +141,7 @@
         <InArgument x:TypeArguments="x:String">[argMailBody]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence sap:VirtualizedContainerService.HintSize="653,2363" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="653,2838" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="arrOutput" />
         <Variable x:TypeArguments="s:String[]" Name="arrMailBody" />
@@ -153,8 +153,8 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:Matches DisplayName="Matches - Extract MOS" sap:VirtualizedContainerService.HintSize="526,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[argMailBody]" IsBuilderTabModified="False" Pattern="(?&lt;=MOS).*" RegexOption="IgnoreCase, Compiled" Result="[arrOutput]" />
-      <If Condition="[arrOutput.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="526,51" sap2010:WorkflowViewState.IdRef="If_1">
+      <ui:Matches DisplayName="Matches - Extract MOS" sap:VirtualizedContainerService.HintSize="611,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[argMailBody]" IsBuilderTabModified="False" Pattern="(?&lt;=MOS).*" RegexOption="IgnoreCase, Compiled" Result="[arrOutput]" />
+      <If Condition="[arrOutput.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="611,51" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1045,99 +1045,137 @@
           </If.Else>
         </If>
       </Sequence>
-      <Sequence DisplayName="Sequence - AgencyName" sap:VirtualizedContainerService.HintSize="611,66" sap2010:WorkflowViewState.IdRef="Sequence_27">
+      <Sequence DisplayName="Sequence - AgencyName" sap:VirtualizedContainerService.HintSize="611,541" sap2010:WorkflowViewState.IdRef="Sequence_27">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Name="dt_pubName" />
           <Variable x:TypeArguments="sd:DataTable" Name="dtAgencyName" />
+          <Variable x:TypeArguments="sd:DataTable" Name="Org_DT" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[outC.tolower.trim.Equals(&quot;vcs&quot;) or outC.tolower.trim.Equals(&quot;vfd&quot;)]" DisplayName="If - VCS,VFD is mapped to Mindshare in Unpaid but should be uploaded on FORD" sap:VirtualizedContainerService.HintSize="1002,869" sap2010:WorkflowViewState.IdRef="If_13">
-          <If.Then>
-            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_64">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[outAgency]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">FD</InArgument>
-              </Assign.Value>
-            </Assign>
-          </If.Then>
-          <If.Else>
-            <Sequence sap:VirtualizedContainerService.HintSize="695,721" sap2010:WorkflowViewState.IdRef="Sequence_28">
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,221" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_32">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="653,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;select distinct agencycode from agency_finance_mapping where CLIENT_CODE like '&quot;+outC+&quot;' and PRODUCT_CODE like '&quot;+outP+&quot;' and agencycode not like ''&quot;]" />
-              <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dtAgencyName]" DisplayName="Execute Query" ExistingDbConnection="[argDBConnect]" sap:VirtualizedContainerService.HintSize="653,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[&quot;Select Distinct agencycode From usa_apdigital_paid Where Client_Code Like '&quot;+outC+&quot;' and agencycode not like '' and agencycode not like 'Unknown' union Select Distinct agencycode From usa_apdigital_unpaid Where Client_Code Like '&quot;+outC+&quot;' and agencycode not like '' and agencycode not like 'Unknown'&quot;]">
-                <ui:ExecuteQuery.Parameters>
-                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
-                </ui:ExecuteQuery.Parameters>
-              </ui:ExecuteQuery>
-              <If Condition="[dtAgencyName.RowCount &gt;0]" sap:VirtualizedContainerService.HintSize="653,400" sap2010:WorkflowViewState.IdRef="If_11">
+              <If Condition="[outC.tolower.trim.Equals(&quot;vcs&quot;) or outC.tolower.trim.Equals(&quot;vfd&quot;)]" DisplayName="If - VCS,VFD is mapped to Mindshare in Unpaid but should be uploaded on FORD" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_13">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="pub_code" />
-                      <Variable x:TypeArguments="x:String" Name="pub_name" />
-                      <Variable x:TypeArguments="x:String" Name="agency_code" />
-                    </Sequence.Variables>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_48">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[agency_code]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[dtAgencyName(0)("agencycode").ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_52">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[outAgency]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[agency_code]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </Sequence>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_64">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[outAgency]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">FD</InArgument>
+                    </Assign.Value>
+                  </Assign>
                 </If.Then>
                 <If.Else>
-                  <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <Sequence sap:VirtualizedContainerService.HintSize="695,720" sap2010:WorkflowViewState.IdRef="Sequence_28">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_58">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[outAgency]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                      </Assign.Value>
-                    </Assign>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="653,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;select distinct agencycode from agency_finance_mapping where CLIENT_CODE like '&quot;+outC+&quot;' and PRODUCT_CODE like '&quot;+outP+&quot;' and agencycode not like ''&quot;]" />
+                    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dtAgencyName]" DisplayName="Execute Query" ExistingDbConnection="[argDBConnect]" sap:VirtualizedContainerService.HintSize="653,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[&quot;Select Distinct agencycode From usa_apdigital_paid Where Client_Code Like '&quot;+outC+&quot;' and agencycode not like '' and agencycode not like 'Unknown' union Select Distinct agencycode From usa_apdigital_unpaid Where Client_Code Like '&quot;+outC+&quot;' and agencycode not like '' and agencycode not like 'Unknown'&quot;]">
+                      <ui:ExecuteQuery.Parameters>
+                        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                      </ui:ExecuteQuery.Parameters>
+                    </ui:ExecuteQuery>
+                    <If Condition="[dtAgencyName.RowCount &gt;0]" sap:VirtualizedContainerService.HintSize="653,399" sap2010:WorkflowViewState.IdRef="If_11">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="pub_code" />
+                            <Variable x:TypeArguments="x:String" Name="pub_name" />
+                            <Variable x:TypeArguments="x:String" Name="agency_code" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_48">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[agency_code]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[dtAgencyName(0)("agencycode").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_52">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[outAgency]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[agency_code]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_58">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[outAgency]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Else>
+                    </If>
                   </Sequence>
                 </If.Else>
               </If>
             </Sequence>
-          </If.Else>
-        </If>
+          </ui:CommentOut.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:CommentOut>
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[Org_DT]" DisplayName="Run query" ExistingDbConnection="[argDBConnect]" sap:VirtualizedContainerService.HintSize="436,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_7" Sql="[&quot;select * from AP_DigitalOrganizer_VW_Ext where ORG_Client_Code ='&quot;+outC.tolower.trim+&quot;'&quot;]">
+          <ui:ExecuteQuery.Parameters>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:ExecuteQuery.Parameters>
+        </ui:ExecuteQuery>
+        <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_69">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[outAgency]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[Org_DT(0)("Agency_Map_Agency_Name").tostring]</InArgument>
+          </Assign.Value>
+        </Assign>
       </Sequence>
     </Sequence>
   </Sequence>

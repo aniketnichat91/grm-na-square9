@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>929,1728</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1154,1759</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -83,7 +83,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="705,1563" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="570,1694" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="var_isfailtostamp" />
       <Variable x:TypeArguments="x:String" Name="var_sppass" />
@@ -94,15 +94,15 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="663,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="663,717" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="528,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="528,660" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="486,625" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="486,568" sap2010:WorkflowViewState.IdRef="Sequence_5">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -119,7 +119,7 @@
             <OutArgument x:TypeArguments="x:String">[out_SPURL]</OutArgument>
           </ui:GetRobotAsset.Value>
         </ui:GetRobotAsset>
-        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" DisplayName="Get SharePoint Credential" sap:VirtualizedContainerService.HintSize="444,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_sppass]" Username="[out_spuser]" />
+        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" DisplayName="Get SharePoint Credential" sap:VirtualizedContainerService.HintSize="444,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_sppass]" Username="[out_spuser]" />
         <Assign sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_1">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[var_sppass]</OutArgument>
@@ -130,38 +130,18 @@
         </Assign>
       </Sequence>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This prcess will stamp pdfs" DisplayName="Invoke teamp_Stamp_PDF_Reusable workflow" sap:VirtualizedContainerService.HintSize="663,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Stamp PDF.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This prcess will stamp pdfs" DisplayName="Invoke teamp_Stamp_PDF_Reusable workflow" sap:VirtualizedContainerService.HintSize="528,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Stamp PDF.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transitem">
-          <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="var_failtostamp">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="var_isfailtostamp" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-        </InArgument>
-        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbexistigconnnection">
-          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_dbconnect" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_sppass" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_spuser" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_tablename">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TableName&quot;).ToString.Trim" />
-        </InArgument>
+        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transitem">[in_TransactionItem]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="var_failtostamp">[var_isfailtostamp]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbexistigconnnection">[in_dbconnect]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">[var_sppass]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">[out_spuser]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_tablename">[in_Config("TableName").ToString.Trim]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -169,7 +149,24 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If Condition="[var_isfailtostamp]" sap:VirtualizedContainerService.HintSize="663,364" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will create manifest file" DisplayName="Invoke temp_Create_Manifest workflow" sap:VirtualizedContainerService.HintSize="528,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Create Manifest.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transitem">[in_TransactionItem]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queuename">[in_Config("OrchestratorQueueName").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_tablename">[in_Config("TableName").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbexistigconnnection">[in_dbconnect]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[var_isfailtostamp]" sap:VirtualizedContainerService.HintSize="528,354" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -193,41 +190,6 @@
           </Sequence>
         </Sequence>
       </If.Then>
-      <If.Else>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will create manifest file" DisplayName="Invoke temp_Create_Manifest workflow" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Create Manifest.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transitem">
-              <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_queuename">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OrchestratorQueueName&quot;).ToString.Trim" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_localfolderpath" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_tablename">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TableName&quot;).ToString.Trim" />
-            </InArgument>
-            <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbexistigconnnection">
-              <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="in_dbconnect" />
-            </InArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-      </If.Else>
     </If>
   </Sequence>
 </Activity>

@@ -78,7 +78,6 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="656,3614" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -191,9 +190,9 @@
               <InArgument x:TypeArguments="x:String">[counterDate.ToString("M/d/yyyy")]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,230" sap2010:WorkflowViewState.IdRef="CommentOut_15">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,230" sap2010:WorkflowViewState.IdRef="CommentOut_19">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_19">
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_23">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -204,7 +203,7 @@
                     <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From master_log Where FA_Status Like '%NR%' and updatedDate like '%"+filedate+"%'  And record_status Is null And pdf_info Not Like 'duplicate' and id in (351916)"]</InArgument>
+                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From master_log Where FA_Status Like '%NR%' and updatedDate like '%"+filedate+"%'  And record_status Is null And id in (574160)"]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>

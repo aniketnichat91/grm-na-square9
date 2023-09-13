@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1008,1561</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1154,1759</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -83,7 +83,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="705,1496" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="570,1694" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="var_isfailtostamp" />
       <Variable x:TypeArguments="x:String" Name="var_sppass" />
@@ -94,8 +94,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="663,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="663,660" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="528,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="528,660" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -130,7 +130,7 @@
         </Assign>
       </Sequence>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This prcess will stamp pdfs" DisplayName="Invoke teamp_Stamp_PDF_Reusable workflow" sap:VirtualizedContainerService.HintSize="663,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Stamp PDF.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This prcess will stamp pdfs" DisplayName="Invoke teamp_Stamp_PDF_Reusable workflow" sap:VirtualizedContainerService.HintSize="528,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Stamp PDF.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transitem">[in_TransactionItem]</InArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="var_failtostamp">[var_isfailtostamp]</OutArgument>
@@ -149,7 +149,24 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If Condition="[var_isfailtostamp]" sap:VirtualizedContainerService.HintSize="663,354" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will create manifest file" DisplayName="Invoke temp_Create_Manifest workflow" sap:VirtualizedContainerService.HintSize="528,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Create Manifest.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transitem">[in_TransactionItem]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queuename">[in_Config("OrchestratorQueueName").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">[out_localfolderpath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_tablename">[in_Config("TableName").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbexistigconnnection">[in_dbconnect]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[var_isfailtostamp]" sap:VirtualizedContainerService.HintSize="528,354" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -173,25 +190,6 @@
           </Sequence>
         </Sequence>
       </If.Then>
-      <If.Else>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will create manifest file" DisplayName="Invoke temp_Create_Manifest workflow" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Create Manifest.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_transitem">[in_TransactionItem]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_queuename">[in_Config("OrchestratorQueueName").ToString.Trim]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">[out_localfolderpath]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">[out_localfolderpath]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">[out_localfolderpath]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">[out_localfolderpath]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_tablename">[in_Config("TableName").ToString.Trim]</InArgument>
-            <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbexistigconnnection">[in_dbconnect]</InArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:InvokeWorkflowFile>
-      </If.Else>
     </If>
   </Sequence>
 </Activity>

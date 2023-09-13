@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794,4941</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,4501</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -79,7 +79,6 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="656,4436" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -223,9 +222,9 @@
               <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From master_log Where (FA_Status Like 'split - s9' or FA_Status like 'Restamp-S9' or FA_Status Like 'attach-s9'  or FA_Status Like 'Append-s9' or (FA_Status like '%tag%' and tag_status like '%Yes%') or fa_status Like '%Manual - S9%') and UpdatedDate like '%"+filedate+"%' And record_status Is null And UpdatedBy Is Not null and Doc_Link is not null "]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,230" sap2010:WorkflowViewState.IdRef="CommentOut_73">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,230" sap2010:WorkflowViewState.IdRef="CommentOut_75">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_78">
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_80">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -236,7 +235,7 @@
                     <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">["Select * From master_log Where doc_link Not Like '' and Doc_Link is not null and UpdatedDate like '%"+filedate+"%' and id in (555188)"]</InArgument>
+                    <InArgument x:TypeArguments="x:String">["Select * From master_log Where doc_link Not Like '' and Doc_Link is not null and UpdatedDate like '%"+filedate+"%' and id in (399190)"]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
