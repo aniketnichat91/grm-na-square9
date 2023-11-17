@@ -1,0 +1,279 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_processtrans" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_dbc" Type="InArgument(ui:DatabaseConnection)" />
+    <x:Property Name="out_pass" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="out_user" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process.in_processtrans>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Process.in_processtrans>
+  <this:Process.out_pass>
+    <InArgument x:TypeArguments="ss:SecureString" />
+  </this:Process.out_pass>
+  <this:Process.out_user>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.out_user>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1577,1259</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="33">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>Microsoft.Graph</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Models</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Mail</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="39">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph.Core</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="376,1194" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="var_outpdffilepath" />
+      <Variable x:TypeArguments="x:String" Name="strExactFileNameForQueue" />
+      <Variable x:TypeArguments="x:String" Name="varonlyfilename" />
+      <Variable x:TypeArguments="x:String" Name="var_compilefilepath" />
+      <Variable x:TypeArguments="umm:Office365Message" Name="EmailMailMessage" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="334,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="USA Print S9 Credentials" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_pass]" Username="[out_user]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="umm:Office365Message">[EmailMailMessage]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="umm:Office365Message">[CType(in_TransactionItem("ps_mailsendername"), UiPath.MicrosoftOffice365.Models.Office365Message)]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="697,767" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[not string.IsNullOrEmpty(in_TransactionItem(&quot;ps_errordescription&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="655,675" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" Timeout="{x:Null}" ApplicationId="eae21b34-e570-40b5-9512-7c5849823282" ApplicationSecret="ZOg7Q~Qezzsl3WgHPJ3AtEHg4K_C2C3Xavk5N" AuthenticationType="UsernameAndPassword" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,528" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" SecurePassword="[out_pass]" Services="Files, Mail, Calendar, Groups, Shared" Tenant="86cbe1bb-213f-4271-b174-bd59d03c87a3" Username="[out_user]">
+                <uma:Office365ApplicationScope.Body>
+                  <ActivityAction x:TypeArguments="mg:GraphServiceClient">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,442" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <umam:ReplyToMail Account="{x:Null}" AddBCC="{x:Null}" AddCC="{x:Null}" AttachmentsCollection="{x:Null}" Message="{x:Null}" AddTo="[{&quot;aniketni@cybage.com&quot;}]" Body="[&quot;Hi,&quot;+Environment.NewLine+&quot; &quot;+Environment.NewLine+&quot; &quot;+&quot;Mail having wrong data like &quot;+in_TransactionItem(&quot;ps_errordescription&quot;).ToString+Environment.NewLine+&quot;Please resend a fresh mail With screenshot and attachment having correct Data and format.&quot;+Environment.NewLine+&quot; &quot;+Environment.NewLine+&quot;Regards,&quot;+Environment.NewLine+&quot;Bot&quot;]" DisplayName="Reply to Mail live" sap:VirtualizedContainerService.HintSize="434,350" sap2010:WorkflowViewState.IdRef="ReplyToMail_1" Importance="Normal" IsDraft="False" NewSubject="[&quot;Invoice Number : &quot;+in_TransactionItem(&quot;ps_invoice_number&quot;).ToString+&quot; having Incorrect data&quot;]" ReplyToAll="False">
+                        <umam:ReplyToMail.Attachments>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                        </umam:ReplyToMail.Attachments>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </umam:ReplyToMail>
+                    </Sequence>
+                  </ActivityAction>
+                </uma:Office365ApplicationScope.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uma:Office365ApplicationScope>
+            </If.Then>
+          </If>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will download pdf attachments from SP" DisplayName="Invoke Download attachment from SP workflow" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Download attachment from SP.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtdb" />
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_transnumber">[in_processtrans]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_downloadfilepath">[in_Config("PDF_Download_Path").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_downloadpdfpath">[var_outpdffilepath]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spfilelocation">[in_TransactionItem("PS_Fol_FilePath").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spurl">[in_Config("SPURL").ToString.Trim]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will compile all pdf attachments into one file " DisplayName="Invoke Compile pdf workflow" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Compile pdf.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_folderpath">[var_outpdffilepath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">[in_Config("PDF_Download_Path").ToString.Trim]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_compilepath">[var_compilefilepath]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_onlyfilename">[varonlyfilename]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strExactFileName">[strExactFileNameForQueue]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_ID">[in_TransactionItem("PS_ID").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbcon">[in_dbc]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This process will validate, transform and add data into queue and DB" DisplayName="Invoke Add data to queue workflow" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Tests\Add data to queue.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_c">[in_TransactionItem("PS_Client_ID").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_p">[in_TransactionItem("PS_Product").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pname">[in_TransactionItem("PS_ProductName").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_batch" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_mediacode">[in_TransactionItem("PS_Media").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_invoicedate">[in_TransactionItem("PS_Invoice_Date").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_invoicenumber">[in_TransactionItem("PS_Invoice_Number").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_est" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_cname">[in_TransactionItem("PS_Client_Name").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_amount">[in_TransactionItem("PS_Invoice_Amount").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_repcode">[in_TransactionItem("PS_Payee").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_month">[in_TransactionItem("PS_Invoice_Date").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_year">[in_TransactionItem("PS_Invoice_Date").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">[in_TransactionItem("PS_Publication_ID").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubname">[in_TransactionItem("PS_Publication_Name").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_filepath" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_compilefilepath">[var_compilefilepath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_onlyfilename">[varonlyfilename]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queuename">[in_Config("QUEUE").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbcon">[in_dbc]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ID">[in_TransactionItem("PS_ID").ToString.Trim]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Process 1 row" />
+  </Sequence>
+</Activity>

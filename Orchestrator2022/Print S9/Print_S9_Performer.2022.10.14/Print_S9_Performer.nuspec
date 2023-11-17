@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Print_S9_Performer</id>
+    <version>2022.10.14</version>
+    <title>Print_S9_Performer</title>
+    <authors>NTMGRM.RPA1</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Robotic Enterprise Framework</description>
+    <tags>VisualBasic VB UiPathStudioProcess</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="UiPath.Database.Activities" version="[1.5.0]" />
+        <dependency id="UiPath.Excel.Activities" version="[2.20.3]" />
+        <dependency id="UiPath.MicrosoftOffice365.Activities" version="[2.1.1]" />
+        <dependency id="UiPath.System.Activities" version="[23.4.5]" />
+        <dependency id="UiPath.Testing.Activities" version="[1.4.6]" />
+        <dependency id="UiPath.UIAutomation.Activities" version="[22.4.5]" />
+        <dependency id="UiPathTeam.PDF.Extensions.Activities" version="[2.4.0]" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

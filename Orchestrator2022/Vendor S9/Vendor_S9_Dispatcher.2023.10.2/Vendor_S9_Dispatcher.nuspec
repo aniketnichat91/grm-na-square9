@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Vendor_S9_Dispatcher</id>
+    <version>2023.10.2</version>
+    <title>Vendor_S9_Dispatcher</title>
+    <authors>ntmgrm.rpa1</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Robotic Enterprise Framework</description>
+    <tags>VisualBasic VB UiPathStudioProcess</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="System.Text.Json" version="[5.0.2]" />
+        <dependency id="UiPath.Database.Activities" version="[1.5.0]" />
+        <dependency id="UiPath.Excel.Activities" version="[2.11.4]" />
+        <dependency id="UiPath.Mail.Activities" version="[1.12.2]" />
+        <dependency id="UiPath.MicrosoftOffice365.Activities" version="[1.14.1]" />
+        <dependency id="UiPath.PDF.Activities" version="[3.4.1]" />
+        <dependency id="UiPath.System.Activities" version="[21.10.4]" />
+        <dependency id="UiPath.Testing.Activities" version="[1.4.6]" />
+        <dependency id="UiPath.UIAutomation.Activities" version="[21.10.5]" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,206 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TestDownload" this:TestDownload.in_downloadfilepath="https://insidemedia.sharepoint.com/:b:/r/sites/GMUSA-KineticFinanceAutomation/Shared%20Documents/KineticAP/PDF/ManualInsert/10Feb/clearchannel_171903_20221202_24644663_9997274657_518737_2.pdf?csf=1&amp;web=1&amp;e=rDV4Hw" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:us="clr-namespace:UiPathTeam.SharePoint;assembly=UiPathTeam.SharePoint" xmlns:usa="clr-namespace:UiPathTeam.SharePoint.Activities;assembly=UiPathTeam.SharePoint.Activities" xmlns:usal="clr-namespace:UiPathTeam.SharePoint.Activities.Libraries;assembly=UiPathTeam.SharePoint.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_transnumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_downloadfilepath" Type="InArgument(x:String)" />
+    <x:Property Name="out_downloadpdfpath" Type="OutArgument(x:String)" />
+    <x:Property Name="in_spfilelocation" Type="InArgument(x:String)" />
+    <x:Property Name="in_spurl" Type="InArgument(x:String)" />
+    <x:Property Name="in_spPass" Type="InArgument(x:String)" />
+    <x:Property Name="in_spUser" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>654,2595</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>TestDownload_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPathTeam.SharePoint</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>Microsoft.SharePoint.Client</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPathTeam.SharePoint.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPathTeam.SharePoint.Activities.Libraries</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.Client.Runtime</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.Client</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="TestDownload" sap:VirtualizedContainerService.HintSize="647,2530" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="FileName" />
+      <Variable x:TypeArguments="x:Boolean" Name="booldownloadfolderexist" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[in_downloadfilepath.ToString.Contains(&quot;NTMGRM.RPA1&quot;)]" sap:VirtualizedContainerService.HintSize="605,570" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,383" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="str_UserName" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[str_UserName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Environment.UserName]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[in_downloadfilepath]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_downloadfilepath.ToString.Replace("NTMGRM.RPA1",str_UserName)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[in_downloadfilepath]" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <ui:PathExists DisplayName="Path Exists" Exists="[booldownloadfolderexist]" sap:VirtualizedContainerService.HintSize="605,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_downloadfilepath+System.DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)+&quot;\&quot;+in_transnumber.ToString+&quot;\&quot;]" PathType="Folder" />
+    <If Condition="[booldownloadfolderexist]" sap:VirtualizedContainerService.HintSize="605,237" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_downloadfilepath+System.DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)+&quot;\&quot;+in_transnumber.ToString+&quot;\&quot;]" />
+      </If.Else>
+    </If>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="605,230" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[in_spfilelocation]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_spfilelocation.Replace("https://insidemedia.sharepoint.com/:b:/r/sites/GMUSA-KineticFinanceAutomation/","")]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <Assign sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_spfilelocation]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match( in_spfilelocation,"(?&lt;=KineticFinanceAutomation\/).*").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[path.GetFileName(System.Text.RegularExpressions.Regex.Replace(in_spfilelocation,"\?(.*)" , ""))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="605,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_downloadpdfpath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_downloadfilepath+System.DateTime.Now.ToString("yyyy-MM-dd")+"\"+in_transnumber.ToString+"\"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="605,852" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" Password="TELEGRAM2detoxify-tally" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="https://insidemedia.sharepoint.com/sites/GMUSA-KineticFinanceAutomation" UserName="nycgrm.invoicebot@service.groupm.com">
+      <usa:SharepointApplicationScope.Body>
+        <ActivityAction x:TypeArguments="us:SharePointContextInfo">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="571,711" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <usal:GetFile AttachmentsAction="{x:Null}" RelativeUrlHintText="{x:Null}" ChooseFile="False" DisplayName="Get file" sap:VirtualizedContainerService.HintSize="529,104" sap2010:WorkflowViewState.IdRef="GetFile_1" LocalPath="[in_downloadfilepath+System.DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)+&quot;\&quot;+in_transnumber.ToString+&quot;\&quot;]" LocalPathHintText="Local path where the file will be saved" RelativeUrl="[in_spfilelocation]" ShowAttachFiles="False" ShowCAMLQuery="False" ShowCAMLWarning="False" ShowGroupDescription="False" ShowGroupName="False" ShowLibraryName="False" ShowListName="False" ShowLocalPath="True" ShowMove="False" ShowPermissionDropdown="False" ShowPropertiesDictionary="False" ShowRelativeUrl="True" ShowRename="False" ShowUserName="False" />
+            <If Condition="[not FileName.ToLower.Contains(&quot;.pdf&quot;)]" sap:VirtualizedContainerService.HintSize="529,344" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <ui:MoveFile ContinueOnError="{x:Null}" Destination="[in_downloadfilepath+System.DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)+&quot;\&quot;+in_transnumber.ToString+&quot;\&quot;+FileName+&quot;.pdf&quot;]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_downloadfilepath+System.DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;)+&quot;\&quot;+in_transnumber.ToString+&quot;\&quot;+FileName]" />
+              </If.Then>
+            </If>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="529,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Download Successful: &quot;+FileName]" />
+          </Sequence>
+        </ActivityAction>
+      </usa:SharepointApplicationScope.Body>
+    </usa:SharepointApplicationScope>
+  </Sequence>
+</Activity>

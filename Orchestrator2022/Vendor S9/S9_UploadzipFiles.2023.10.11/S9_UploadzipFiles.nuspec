@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>S9_UploadzipFiles</id>
+    <version>2023.10.11</version>
+    <title>S9_UploadzipFiles</title>
+    <authors>NTMGRM.RPA1</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Moves all the manifest file to Alex's server</description>
+    <tags>VisualBasic VB UiPathStudioProcess</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="UiPath.Excel.Activities" version="[2.10.4]" />
+        <dependency id="UiPath.Mail.Activities" version="[1.10.5]" />
+        <dependency id="UiPath.System.Activities" version="[21.4.1]" />
+        <dependency id="UiPath.UIAutomation.Activities" version="[21.4.4]" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
