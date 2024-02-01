@@ -7,6 +7,7 @@
     <x:Property Name="var_folderpath" Type="OutArgument(x:String)" />
     <x:Property Name="var_SPURL" Type="OutArgument(x:String)" />
     <x:Property Name="var_sppass" Type="OutArgument(x:String)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Get_Assets.in_varcompilefilepath>
     <InArgument x:TypeArguments="x:String" />
@@ -23,7 +24,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1034,883</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Assets_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -51,6 +52,9 @@
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Security</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -71,9 +75,16 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Assets" sap:VirtualizedContainerService.HintSize="528,717" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Assets" sap:VirtualizedContainerService.HintSize="418,818" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="in_SPPass" />
     </Sequence.Variables>
@@ -82,24 +93,24 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="486,625" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="376,726" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_varcompilefilepath]" DisplayName="Get Logfile Folder Name" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_varcompilefilepath]" CacheStrategy="None" DisplayName="Get Logfile Folder Name" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
         <ui:GetRobotAsset.Value>
           <OutArgument x:TypeArguments="x:String">[var_folderpath]</OutArgument>
         </ui:GetRobotAsset.Value>
       </ui:GetRobotAsset>
-      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_SPURL]" DisplayName="Get SharePoint URL" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_SPURL]" CacheStrategy="None" DisplayName="Get SharePoint URL" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
         <ui:GetRobotAsset.Value>
           <OutArgument x:TypeArguments="x:String">[var_SPURL]</OutArgument>
         </ui:GetRobotAsset.Value>
       </ui:GetRobotAsset>
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" DisplayName="Get SharePoint Credential" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[in_SPPass]" Username="[in_SPUser]" />
-      <Assign sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" CacheStrategy="None" DisplayName="Get SharePoint Credential" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[in_SPPass]" Username="[in_SPUser]" />
+      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[var_sppass]</OutArgument>
         </Assign.To>

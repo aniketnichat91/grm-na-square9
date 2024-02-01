@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>966,875</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1034,875</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -443,9 +443,9 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="690,3320" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="644,2942" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="644,2902" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -542,12 +542,12 @@
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;SharePointURL&quot;).ToString]" DisplayName="Get SharePoint URL" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;SharePointURL&quot;).ToString]" DisplayName="Get SharePoint URL" FolderPath="[Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
                                         <ui:GetRobotAsset.Value>
                                           <OutArgument x:TypeArguments="x:String">[var_SPURL]</OutArgument>
                                         </ui:GetRobotAsset.Value>
                                       </ui:GetRobotAsset>
-                                      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;SharePointLogin&quot;).ToString]" DisplayName="Get SharePoint Credential" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[in_SPPass]" Username="[var_spUser]" />
+                                      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;SharePointLogin&quot;).ToString]" DisplayName="Get SharePoint Credential" FolderPath="[Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="444,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[in_SPPass]" Username="[var_spUser]" />
                                       <Assign sap:VirtualizedContainerService.HintSize="444,60" sap2010:WorkflowViewState.IdRef="Assign_31">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="x:String">[var_sppass]</OutArgument>
@@ -556,12 +556,12 @@
                                           <InArgument x:TypeArguments="x:String">[new System.Net.NetworkCredential(string.Empty, in_SPPass).Password]</InArgument>
                                         </Assign.Value>
                                       </Assign>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;OutputFALogFilePath&quot;).ToString]" DisplayName="Get Asset Folder Path" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;OutputFALogFilePath&quot;).ToString]" DisplayName="Get Asset Folder Path" FolderPath="[Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
                                         <ui:GetRobotAsset.Value>
                                           <OutArgument x:TypeArguments="x:String">[var_assetfolderpath]</OutArgument>
                                         </ui:GetRobotAsset.Value>
                                       </ui:GetRobotAsset>
-                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;SharePointURL_GPC&quot;).ToString]" DisplayName="Get Asset Sharepoint URL GPC" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+                                      <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;SharePointURL_GPC&quot;).ToString]" DisplayName="Get Asset Sharepoint URL GPC" FolderPath="[Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
                                         <ui:GetRobotAsset.Value>
                                           <OutArgument x:TypeArguments="x:String">[var_SPURL_GPC]</OutArgument>
                                         </ui:GetRobotAsset.Value>

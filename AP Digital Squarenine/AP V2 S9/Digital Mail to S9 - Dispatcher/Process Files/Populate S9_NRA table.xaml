@@ -5,6 +5,7 @@
     <x:Property Name="in_SPURL" Type="InArgument(x:String)" />
     <x:Property Name="in_SPuser" Type="InArgument(x:String)" />
     <x:Property Name="in_sppass" Type="InArgument(x:String)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:test_download_FA_log.in_fa_log_filepath>
     <InArgument x:TypeArguments="x:String" />
@@ -12,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>830,4079</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1034,4079</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>test_download_FA_log_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -58,7 +59,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -92,6 +93,7 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Download_FA_log" sap:VirtualizedContainerService.HintSize="840,4014" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -107,7 +109,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="SharePointLogin" DisplayName="Get Credential" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="798,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[in_spuser]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="SharePointLogin" DisplayName="Get Credential" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="798,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[var_pass]" Username="[in_spuser]" />
     <Assign sap:VirtualizedContainerService.HintSize="798,60" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strpass]</OutArgument>

@@ -5,11 +5,12 @@
     <x:Property Name="in_OutputPendingPdfFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_OutputPaidPdfFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_Compile" Type="InArgument(x:String)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,4847</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1054,4948</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>temp_Create_Zip_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
@@ -52,7 +53,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -90,9 +91,10 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="temp_Create_Zip" sap:VirtualizedContainerService.HintSize="1064,4782" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="temp_Create_Zip" sap:VirtualizedContainerService.HintSize="1064,4883" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="currentdate" />
       <Variable x:TypeArguments="x:Boolean" Name="boolfordpendingfolderexist" />
@@ -116,7 +118,7 @@
         <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Nycgrm_botCred" DisplayName="Get Credential" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="1022,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[Password]" Username="[strUsername]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Nycgrm_botCred" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="1022,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[Password]" Username="[strUsername]" />
     <Sequence sap:VirtualizedContainerService.HintSize="1022,487" sap2010:WorkflowViewState.IdRef="Sequence_16">
       <Sequence.Variables>
         <Variable x:TypeArguments="s:String[]" Name="arrZipFiles" />
@@ -146,7 +148,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[item.ToString]" />
+              <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[item.ToString]" />
             </Sequence>
           </ActivityAction>
         </ui:ForEach.Body>
@@ -160,7 +162,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists" Exists="[boolfordpendingfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_FordPendingpdffilepath+currentdate+&quot;\for Ford\PENDING\&quot;]" PathType="Folder" />
+      <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[boolfordpendingfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_FordPendingpdffilepath+currentdate+&quot;\for Ford\PENDING\&quot;]" PathType="Folder" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="980,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_FordPendingpdffilepath+currentdate+&quot;\for Ford\PENDING\&quot;]" />
       <If Condition="[boolfordpendingfolderexist]" sap:VirtualizedContainerService.HintSize="980,1703" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
@@ -222,7 +224,7 @@
                 <InArgument x:TypeArguments="x:String">[in_FordPendingpdffilepath+currentdate+"\for Ford\PENDING\"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_FordPendingpdffilepath+currentdate+&quot;\for Ford\PENDING\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IncludeColumnNames="False" />
+            <ui:ReadCsvFile DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_FordPendingpdffilepath+currentdate+&quot;\for Ford\PENDING\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IncludeColumnNames="False" />
             <Assign sap:VirtualizedContainerService.HintSize="793,60" sap2010:WorkflowViewState.IdRef="Assign_12">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[arrpdffile]</OutArgument>
@@ -283,7 +285,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists" Exists="[boolfordpaidfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_FordPaidpdffilepath+currentdate+&quot;\for Ford\PAID\&quot;]" PathType="Folder" />
+      <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[boolfordpaidfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_FordPaidpdffilepath+currentdate+&quot;\for Ford\PAID\&quot;]" PathType="Folder" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="980,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[in_FordPaidpdffilepath+currentdate+&quot;\for Ford\PAID\&quot;]" />
       <If Condition="[boolfordpaidfolderexist]" sap:VirtualizedContainerService.HintSize="980,1703" sap2010:WorkflowViewState.IdRef="If_2">
         <sap:WorkflowViewStateService.ViewState>
@@ -345,7 +347,7 @@
                 <InArgument x:TypeArguments="x:String">[in_FordPaidpdffilepath+currentdate+"\for Ford\PAID\"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_FordPaidpdffilepath+currentdate+&quot;\for Ford\PAID\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" IncludeColumnNames="False" />
+            <ui:ReadCsvFile DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_FordPaidpdffilepath+currentdate+&quot;\for Ford\PAID\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" IncludeColumnNames="False" />
             <Assign sap:VirtualizedContainerService.HintSize="793,60" sap2010:WorkflowViewState.IdRef="Assign_14">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[arrpdffile]</OutArgument>
@@ -407,7 +409,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists" Exists="[boolallpaidfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[in_OutputPaidPdfFilePath+currentdate+&quot;\For all\PAID\&quot;]" PathType="Folder" />
+      <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[boolallpaidfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[in_OutputPaidPdfFilePath+currentdate+&quot;\For all\PAID\&quot;]" PathType="Folder" />
       <If Condition="[boolallpaidfolderexist]" sap:VirtualizedContainerService.HintSize="980,1501" sap2010:WorkflowViewState.IdRef="If_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -466,7 +468,7 @@
                 <InArgument x:TypeArguments="x:String">[in_OutputPaidPdfFilePath+currentdate+"\For all\PAID\"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_OutputPaidPdfFilePath+currentdate+&quot;\For all\PAID\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_3" IncludeColumnNames="False" />
+            <ui:ReadCsvFile DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_OutputPaidPdfFilePath+currentdate+&quot;\For all\PAID\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_3" IncludeColumnNames="False" />
             <Assign sap:VirtualizedContainerService.HintSize="793,60" sap2010:WorkflowViewState.IdRef="Assign_16">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[arrpdffile]</OutArgument>
@@ -529,7 +531,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists" Exists="[boolallpendingfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[in_OutputPendingPdfFilePath+currentdate+&quot;\For all\PENDING\&quot;]" PathType="Folder" />
+      <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[boolallpendingfolderexist]" sap:VirtualizedContainerService.HintSize="980,89" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[in_OutputPendingPdfFilePath+currentdate+&quot;\For all\PENDING\&quot;]" PathType="Folder" />
       <If Condition="[boolallpendingfolderexist]" sap:VirtualizedContainerService.HintSize="980,1501" sap2010:WorkflowViewState.IdRef="If_4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -588,7 +590,7 @@
                 <InArgument x:TypeArguments="x:String">[in_OutputPendingPdfFilePath+currentdate+"\For all\PENDING\"]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_OutputPendingPdfFilePath+currentdate+&quot;\For all\PENDING\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_4" IncludeColumnNames="False" />
+            <ui:ReadCsvFile DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_OutputPendingPdfFilePath+currentdate+&quot;\For all\PENDING\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="793,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_4" IncludeColumnNames="False" />
             <Assign sap:VirtualizedContainerService.HintSize="793,60" sap2010:WorkflowViewState.IdRef="Assign_18">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[arrpdffile]</OutArgument>

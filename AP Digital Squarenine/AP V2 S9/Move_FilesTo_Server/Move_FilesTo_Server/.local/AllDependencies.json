@@ -5020,15 +5020,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ntmgrm.rpa1\\.nuget\\packages\\": {}
+    "C:\\Users\\NTMGRM.OOHPBTDIGS9\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Move_FilesTo_Server",
       "projectName": "Move_FilesTo_Server",
-      "projectPath": "C:\\Users\\ntmgrm.rpa1\\Documents\\UPProjects\\DIgital S9\\Move_FilesTo_Server\\Move_FilesTo_Server\\.local",
-      "packagesPath": "C:\\Users\\ntmgrm.rpa1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ntmgrm.rpa1\\Documents\\UPProjects\\DIgital S9\\Move_FilesTo_Server\\Move_FilesTo_Server\\.local"
+      "projectPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\DIgital S9_latest\\ORC Folder RE\\Move_FilesTo_Server\\Move_FilesTo_Server\\.local",
+      "packagesPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\DIgital S9_latest\\ORC Folder RE\\Move_FilesTo_Server\\Move_FilesTo_Server\\.local"
     },
     "frameworks": {
       "net461": {

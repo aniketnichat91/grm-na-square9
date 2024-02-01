@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,875</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1034,875</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="38">
@@ -89,6 +89,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Squarnine Performer]&#xA;[This process will get the transacion data from Queue, process it and create manifest zip which will be uploaded to global search server]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="700,810" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -360,7 +364,7 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="797,2807" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="751,2389" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
@@ -454,13 +458,30 @@
                               </If>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Assets workflow" sap:VirtualizedContainerService.HintSize="671,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Tests\Get_Assets.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_varcompilefilepath">[Config("OutputFALogFilePath").ToString.Trim]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[Config("SharePointURL").ToString.Trim]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_SPCredentials">[Config("SharePointLogin").ToString.Trim]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">[var_assetspuser]</InArgument>
-                                  <OutArgument x:TypeArguments="x:String" x:Key="var_folderpath">[var_assetfolderpath]</OutArgument>
-                                  <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL">[var_assetSPURL]</OutArgument>
-                                  <OutArgument x:TypeArguments="x:String" x:Key="var_sppass">[var_assetsppass]</OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_varcompilefilepath">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutputFALogFilePath&quot;).ToString.Trim" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointURL&quot;).ToString.Trim" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_SPCredentials">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointLogin&quot;).ToString.Trim" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_assetspuser" />
+                                  </InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="var_folderpath">
+                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetfolderpath" />
+                                  </OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL">
+                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetSPURL" />
+                                  </OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="var_sppass">
+                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetsppass" />
+                                  </OutArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">
+                                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                               <Sequence DisplayName="Create DB Connection" sap:VirtualizedContainerService.HintSize="671,151" sap2010:WorkflowViewState.IdRef="Sequence_31">
@@ -496,7 +517,7 @@
                                           </InArgument>
                                         </ui:ReadRange.Range>
                                       </ui:ReadRange>
-                                      <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[tempdt1]" QueueName="S9Queue" />
+                                      <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[tempdt1]" QueueName="S9Queue" />
                                     </Sequence>
                                   </Sequence>
                                 </ui:CommentOut.Body>
@@ -578,7 +599,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,119" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="484,818" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
                                 <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="438,674" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <TryCatch.Try>
@@ -590,11 +611,24 @@
                                       </sap:WorkflowViewStateService.ViewState>
                                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke temp_Create Zip workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="temp_Create Zip.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">[Config("FordPendingpdffilepath").ToString.Trim]</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">[Config("FordPaidpdffilepath").ToString.Trim]</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">[Config("OutputPendingPdfFilePath").ToString.Trim]</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">[Config("OutputPaidPdfFilePath").ToString.Trim]</InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_Compile">[Config("Compile").ToString.Trim]</InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_FordPendingpdffilepath">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;FordPendingpdffilepath&quot;).ToString.Trim" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_FordPaidpdffilepath">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;FordPaidpdffilepath&quot;).ToString.Trim" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_OutputPendingPdfFilePath">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutputPendingPdfFilePath&quot;).ToString.Trim" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_OutputPaidPdfFilePath">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutputPaidPdfFilePath&quot;).ToString.Trim" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_Compile">
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;Compile&quot;).ToString.Trim" />
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">
+                                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                          </InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                       <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">

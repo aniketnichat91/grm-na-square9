@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992,1125</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1314,1125</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Multiinvoicebuydata_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -126,15 +126,15 @@
               <InArgument x:TypeArguments="x:String">[in_buystatus]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:Matches DisplayName="Matches - extract total amount to add this in manifest" sap:VirtualizedContainerService.HintSize="569,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_invcomment]" IsBuilderTabModified="False" Pattern="(?&lt;=Total : )[0-9,.]+" RegexOption="IgnoreCase, Compiled" Result="[arrTotalamount]" />
-          <If Condition="[arrTotalamount.Count &gt; 1]" sap:VirtualizedContainerService.HintSize="569,218" sap2010:WorkflowViewState.IdRef="If_2">
+          <ui:Matches DisplayName="Matches - extract total amount to add this in manifest" sap:VirtualizedContainerService.HintSize="569,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_invcomment]" IsBuilderTabModified="False" Pattern="(?&lt;=Total : ).*[0-9.]" RegexOption="IgnoreCase, Compiled" Result="[arrTotalamount]" />
+          <If Condition="[arrTotalamount.Count &gt;= 1]" sap:VirtualizedContainerService.HintSize="569,218" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
               <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[out_TotalAmount]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[arrTotalamount(0).Tostring]</InArgument>
+                  <InArgument x:TypeArguments="x:String">[arrTotalamount(0).Tostring.Trim]</InArgument>
                 </Assign.Value>
               </Assign>
             </If.Then>

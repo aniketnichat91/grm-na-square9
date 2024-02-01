@@ -3,6 +3,7 @@
     <x:Property Name="in_varcompilefilepath" Type="InArgument(x:String)" />
     <x:Property Name="in_SPURL" Type="InArgument(x:String)" />
     <x:Property Name="in_SPCredentials" Type="InArgument(x:String)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -48,7 +49,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="62">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -80,6 +81,12 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Filter_data_from_Log_File" sap:VirtualizedContainerService.HintSize="1123,4422" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -126,17 +133,17 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_varcompilefilepath]" DisplayName="Get Logfile Folder Name" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_varcompilefilepath]" DisplayName="Get Logfile Folder Name" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
           <ui:GetRobotAsset.Value>
             <OutArgument x:TypeArguments="x:String">[var_folderpath]</OutArgument>
           </ui:GetRobotAsset.Value>
         </ui:GetRobotAsset>
-        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_SPURL]" DisplayName="Get SharePoint URL" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_SPURL]" DisplayName="Get SharePoint URL" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
           <ui:GetRobotAsset.Value>
             <OutArgument x:TypeArguments="x:String">[var_SPURL]</OutArgument>
           </ui:GetRobotAsset.Value>
         </ui:GetRobotAsset>
-        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" DisplayName="Get SharePoint Credential" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[in_SPPass]" Username="[in_SPUser]" />
+        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" DisplayName="Get SharePoint Credential" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[in_SPPass]" Username="[in_SPUser]" />
         <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_9">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[var_sppass]</OutArgument>

@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1957,4817</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1957,4926</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_pdf_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
@@ -100,7 +100,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1967,4712" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1967,4861" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="containscover" />
       <Variable x:TypeArguments="x:Int32" Name="var_coverindex" />
@@ -126,7 +126,7 @@
       </Assign.Value>
     </Assign>
     <ui:PathExists DisplayName="Path Exists" Exists="[boolcompilefolderexist]" sap:VirtualizedContainerService.HintSize="1925,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_localfolderpath+&quot;Compilefile\&quot;+System.DateTime.now.ToString(&quot;yyyy-MM-dd&quot;)]" PathType="File" />
-    <If Condition="[boolcompilefolderexist]" sap:VirtualizedContainerService.HintSize="1925,319" sap2010:WorkflowViewState.IdRef="If_9">
+    <If Condition="[boolcompilefolderexist]" sap:VirtualizedContainerService.HintSize="1925,329" sap2010:WorkflowViewState.IdRef="If_9">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_29">
           <sap:WorkflowViewStateService.ViewState>
@@ -147,13 +147,13 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1925,1738" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[arr_downloadfolders]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1925,1877" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[arr_downloadfolders]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="fileitem" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1269,1604" sap2010:WorkflowViewState.IdRef="Sequence_19">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1269,1743" sap2010:WorkflowViewState.IdRef="Sequence_19">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="pdftext" />
             </Sequence.Variables>
@@ -162,14 +162,14 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[new System.IO.FileInfo(fileitem).Length &gt; 10]" sap:VirtualizedContainerService.HintSize="1227,208" sap2010:WorkflowViewState.IdRef="If_12">
+            <If Condition="[new System.IO.FileInfo(fileitem).Length &gt; 10]" sap:VirtualizedContainerService.HintSize="1227,237" sap2010:WorkflowViewState.IdRef="If_12">
               <If.Else>
-                <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[fileitem]" />
+                <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[fileitem]" />
               </If.Else>
             </If>
-            <If Condition="[fileitem.ToLower.ToString.Contains(&quot;inv&quot;)]" sap:VirtualizedContainerService.HintSize="1227,1264" sap2010:WorkflowViewState.IdRef="If_5">
+            <If Condition="[fileitem.ToLower.ToString.Contains(&quot;inv&quot;)]" sap:VirtualizedContainerService.HintSize="1227,1374" sap2010:WorkflowViewState.IdRef="If_5">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="591,1116" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence sap:VirtualizedContainerService.HintSize="591,1216" sap2010:WorkflowViewState.IdRef="Sequence_17">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -181,6 +181,14 @@
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">[path.GetFileNameWithoutExtension(fileitem)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="549,60" sap2010:WorkflowViewState.IdRef="Assign_57">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[tempcompilefilename]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(tempcompilefilename, “[_ - a-z A-Z 0-9]”,"")]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <Assign sap:VirtualizedContainerService.HintSize="549,60" sap2010:WorkflowViewState.IdRef="Assign_51">
@@ -300,7 +308,7 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="591,916" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <Sequence sap:VirtualizedContainerService.HintSize="591,1016" sap2010:WorkflowViewState.IdRef="Sequence_18">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -312,6 +320,14 @@
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">[path.GetFileNameWithoutExtension(fileitem)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="549,60" sap2010:WorkflowViewState.IdRef="Assign_58">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[tempcompilefilename]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(tempcompilefilename, “[_ - a-z A-Z 0-9]”,"")]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <Assign sap:VirtualizedContainerService.HintSize="549,60" sap2010:WorkflowViewState.IdRef="Assign_52">

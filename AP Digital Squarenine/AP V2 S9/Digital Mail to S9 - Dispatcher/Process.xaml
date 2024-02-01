@@ -23,7 +23,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>803,1028</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1588,1028</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -91,6 +91,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
@@ -169,7 +170,7 @@
         </Sequence>
         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="304,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
           <ui:CommentOut.Body>
-            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,143" sap2010:WorkflowViewState.IdRef="Sequence_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -197,7 +198,7 @@
         </ui:CommentOut>
         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="304,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
           <ui:CommentOut.Body>
-            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,143" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -223,7 +224,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:CommentOut>
-        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="304,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,350" sap2010:WorkflowViewState.IdRef="CommentOut_3">
           <ui:CommentOut.Body>
             <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,272" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <sap:WorkflowViewStateService.ViewState>
@@ -231,7 +232,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" DisplayName="Get SharePoint Credential" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_sppass]" Username="[out_spuser]" />
+              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SPCredentials]" DisplayName="Get SharePoint Credential" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_sppass]" Username="[out_spuser]" />
             </Sequence>
           </ui:CommentOut.Body>
           <sap:WorkflowViewStateService.ViewState>
@@ -270,43 +271,21 @@
     </Sequence>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Validate Mandatory Fields workflow" sap:VirtualizedContainerService.HintSize="341,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Validate Mandatory Fields.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Invoice_Num&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_C">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;C&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_P">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;P&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_E">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;E&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FA_Status">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;FA_Status&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;PDF_MOS&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;PDF_Amount&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Finance_Associate&quot;).ToString.Trim" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;PUBLICATION_CODE&quot;).ToString.Trim" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">[in_TransactionItem("Invoice_Num").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_C">[in_TransactionItem("C").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_P">[in_TransactionItem("P").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_E">[in_TransactionItem("E").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FA_Status">[in_TransactionItem("FA_Status").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MOS">[in_TransactionItem("PDF_MOS").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">[in_TransactionItem("PDF_Amount").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_fa_name">[in_TransactionItem("Finance_Associate").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubcode">[in_TransactionItem("PUBLICATION_CODE").ToString.Trim]</InArgument>
         <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db" />
         <InArgument x:TypeArguments="x:String" x:Key="in_Client_Name" />
         <InArgument x:TypeArguments="x:String" x:Key="in_Pub_Name" />
         <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_TransactionItem" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_spuser" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_sppass" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPUser">[out_spuser]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">[var_sppass]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Agency" />
         <InArgument x:TypeArguments="x:String" x:Key="mailBody" />
         <InArgument x:TypeArguments="x:String" x:Key="in_M" />
@@ -320,6 +299,7 @@
         <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db1" />
         <OutArgument x:TypeArguments="x:String" x:Key="out_ID" />
         <InArgument x:TypeArguments="x:String" x:Key="out_Subject" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Download PDF workflow" sap:VirtualizedContainerService.HintSize="341,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Download PDF.xaml">
@@ -335,15 +315,9 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Set NRA Status workflow" sap:VirtualizedContainerService.HintSize="341,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Set NRA Status.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="io_pubcode_nra">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;PUBLICATION_CODE&quot;).ToString.Trim" />
-        </InArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_nrastatus">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_isnra" />
-        </InOutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="tempinvnum">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Invoice_Num&quot;).ToString.Trim" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="io_pubcode_nra">[in_TransactionItem("PUBLICATION_CODE").ToString.Trim]</InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_nrastatus">[var_isnra]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="tempinvnum">[in_TransactionItem("Invoice_Num").ToString.Trim]</InArgument>
         <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_DB_Connect" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
@@ -429,6 +403,9 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_queue_name_paid" />
         <InArgument x:TypeArguments="x:String" x:Key="in_client_Name" />
         <InArgument x:TypeArguments="x:String" x:Key="argID" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

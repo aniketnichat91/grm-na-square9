@@ -3,6 +3,7 @@
     <x:Property Name="in_varcompilefilepath" Type="InArgument(x:String)" />
     <x:Property Name="io_datafilename" Type="InOutArgument(x:String)" />
     <x:Property Name="dt1" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Compile_all_log_file.dt1>
     <InArgument x:TypeArguments="sd:DataTable" />
@@ -10,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1034,822</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Compile_all_log_file_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -74,6 +75,8 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Merge all  log files" sap:VirtualizedContainerService.HintSize="486,757" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -97,7 +100,7 @@
         <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_varcompilefilepath]" DisplayName="Get Logfile Folder Name" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_varcompilefilepath]" DisplayName="Get Logfile Folder Name" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="444,137" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
       <ui:GetRobotAsset.Value>
         <OutArgument x:TypeArguments="x:String">[var_folderpath]</OutArgument>
       </ui:GetRobotAsset.Value>

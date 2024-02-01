@@ -29,6 +29,7 @@
     <x:Property Name="in_StampComment" Type="InArgument(x:String)" />
     <x:Property Name="in_Split_s9_comment" Type="InArgument(x:String)" />
     <x:Property Name="in_Fa_Action" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Add_data_to_queue.in_dbcon>
     <InArgument x:TypeArguments="ui:DatabaseConnection" />
@@ -92,7 +93,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="76">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -131,6 +132,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Add_data_to_queue" sap:VirtualizedContainerService.HintSize="1068,2924" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -852,7 +854,7 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:MultipleAssign>
       </Sequence>
-      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="GMUSA_OOHS9" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_queuename]">
+      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_queuename]">
         <ui:AddQueueItem.ItemInformation>
           <InArgument x:TypeArguments="x:String" x:Key="PUBCODE">[in_pubcode]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="INVOICEDATE">[in_invoicedate]</InArgument>

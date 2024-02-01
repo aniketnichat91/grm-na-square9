@@ -3,6 +3,7 @@
     <x:Property Name="in_zippath" Type="InArgument(x:String)" />
     <x:Property Name="in_filepath" Type="InArgument(x:String)" />
     <x:Property Name="in_magmanifest" Type="InArgument(x:String)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -92,6 +93,7 @@
       <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Create_manifest_zip" sap:VirtualizedContainerService.HintSize="1203,3257" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -250,7 +252,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="OOH Credentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="GMUSA_OOHS9" sap:VirtualizedContainerService.HintSize="1161,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[strUsername]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="OOH Credentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[In_Config(&quot;Cloud_FolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="1161,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[strUsername]" />
     <Assign sap:VirtualizedContainerService.HintSize="1161,60" sap2010:WorkflowViewState.IdRef="Assign_8">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[currentdate]</OutArgument>

@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1183,875</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1034,875</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -112,6 +112,7 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Square9 Dispacher&#xA;This proces will fetch the data from sharepoint and add it into a orchestrator queue, which will be used by square9 performer process to create manifest file.&#xA;Application Involved: Excel, SharePoint, Orchestrator Queue" DisplayName="Square9 Dispatcher" sap:VirtualizedContainerService.HintSize="687,810" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -453,7 +454,7 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="688,2631" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="642,2213" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
@@ -541,15 +542,36 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Assets workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Tests\Get_Assets.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_varcompilefilepath">[Config("OutputFALogFilePath").ToString.Trim]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[Config("SharePointURL").ToString.Trim]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPCredentials">[Config("SharePointLogin").ToString.Trim]</InArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="in_SPUser">[var_assetspuser]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_folderpath">[var_assetfolderpath]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL">[var_assetSPURL]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_sppass">[var_assetsppass]</OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[Config("SharepointURL_GPC").ToString.Trim]</InArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL_GPC">[var_assetSPURL_GPC]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_varcompilefilepath">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutputFALogFilePath&quot;).ToString.Trim" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointURL&quot;).ToString.Trim" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPCredentials">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointLogin&quot;).ToString.Trim" />
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="in_SPUser">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetspuser" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_folderpath">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetfolderpath" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetSPURL" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_sppass">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetsppass" />
+                                        </OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharepointURL_GPC&quot;).ToString.Trim" />
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL_GPC">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetSPURL_GPC" />
+                                        </OutArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">
+                                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                        </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get Data From DB workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Get Data From DB.xaml">

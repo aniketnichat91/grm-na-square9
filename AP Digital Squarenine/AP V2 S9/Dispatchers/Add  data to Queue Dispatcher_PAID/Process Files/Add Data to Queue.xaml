@@ -30,6 +30,7 @@
     <x:Property Name="in_ClientName" Type="InArgument(x:String)" />
     <x:Property Name="in_Vendor" Type="InArgument(x:String)" />
     <x:Property Name="in_Log_ID" Type="InArgument(x:String)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Get_FA_Status.in_MediaLookup>
     <InArgument x:TypeArguments="x:String" />
@@ -110,7 +111,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -144,6 +145,7 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Add Data to Queue" sap:VirtualizedContainerService.HintSize="1852,7527" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -635,7 +637,7 @@
                             </Sequence>
                           </If.Then>
                         </If>
-                        <If Condition="[in_fa_status.ToLower.ToString.Trim.Contains(&quot;tag&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - multi&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - split&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - tax&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - vendor revision&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - s9&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual&quot;) or  in_fa_status.ToLower.ToString.Trim.Contains(&quot;split - s9&quot;) or  in_fa_status.ToLower.ToString.Trim.Contains(&quot;attach-s9&quot;) or  in_fa_status.ToLower.ToString.Trim.Contains(&quot;restamp-s9&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;append-s9&quot;)]" sap:VirtualizedContainerService.HintSize="569,218" sap2010:WorkflowViewState.IdRef="If_14">
+                        <If Condition="[in_fa_status.ToLower.ToString.Trim.Contains(&quot;tag&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - multi&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - split&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - tax&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - vendor revision&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual - s9&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;manual&quot;) or  in_fa_status.ToLower.ToString.Trim.Contains(&quot;split - s9&quot;) or  in_fa_status.ToLower.ToString.Trim.Contains(&quot;attach-s9&quot;) or  in_fa_status.ToLower.ToString.Trim.Contains(&quot;restamp-s9&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;append-s9&quot;) or in_fa_status.ToLower.ToString.Trim.Contains(&quot;edi-s9&quot;)]" sap:VirtualizedContainerService.HintSize="569,218" sap2010:WorkflowViewState.IdRef="If_14">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -997,7 +999,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queue_name]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queue_name]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
                       <ui:AddQueueItem.ItemInformation>
                         <InArgument x:TypeArguments="x:String" x:Key="ID">[in_Log_ID]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="PDF_Invoice_Date">[in_pdf_invoice_date]</InArgument>

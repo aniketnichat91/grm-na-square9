@@ -32,6 +32,7 @@
     <x:Property Name="in_queue_name_paid" Type="InArgument(x:String)" />
     <x:Property Name="in_client_Name" Type="InArgument(x:String)" />
     <x:Property Name="argID" Type="InArgument(x:String)" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Get_FA_Status.in_MediaLookup>
     <InArgument x:TypeArguments="x:String" />
@@ -72,7 +73,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>803,742</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1034,742</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_FA_Status_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -112,7 +113,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -147,6 +148,8 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Add Data to Queue" sap:VirtualizedContainerService.HintSize="480,677" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -203,7 +206,7 @@
               <InArgument x:TypeArguments="x:String">[system.DateTime.Now.ToString("yyyy-MM-dd")]</InArgument>
             </Assign.Value>
           </Assign>
-          <Sequence sap:VirtualizedContainerService.HintSize="262,66" sap2010:WorkflowViewState.IdRef="Sequence_70">
+          <Sequence sap:VirtualizedContainerService.HintSize="1044,4163" sap2010:WorkflowViewState.IdRef="Sequence_70">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="insertquery" />
             </Sequence.Variables>
@@ -761,7 +764,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <If Condition="[in_mailSubject.tolower.Contains(&quot;pending&quot;)]" sap:VirtualizedContainerService.HintSize="771,497" sap2010:WorkflowViewState.IdRef="If_34">
                     <If.Then>
-                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_queue_name_pending]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
+                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_queue_name_pending]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
                         <ui:AddQueueItem.ItemInformation>
                           <InArgument x:TypeArguments="x:String" x:Key="ID">[argID]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="PDF_Invoice_Date">[in_pdf_invoice_date]</InArgument>
@@ -807,7 +810,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <If Condition="[in_mailSubject.tolower.Contains(&quot;paid&quot;)]" sap:VirtualizedContainerService.HintSize="484,247" sap2010:WorkflowViewState.IdRef="If_33">
                           <If.Then>
-                            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_queue_name_paid]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
+                            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).Tostring]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_queue_name_paid]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
                               <ui:AddQueueItem.ItemInformation>
                                 <InArgument x:TypeArguments="x:String" x:Key="ID">[argID]</InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="PDF_Invoice_Date">[in_pdf_invoice_date]</InArgument>

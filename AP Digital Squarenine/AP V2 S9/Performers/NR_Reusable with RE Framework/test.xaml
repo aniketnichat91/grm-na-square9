@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1208,1740" sap2010:WorkflowViewState.IdRef="test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1034,1851" sap2010:WorkflowViewState.IdRef="test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="39">
       <x:String>System.Activities</x:String>
@@ -84,7 +84,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="test" sap:VirtualizedContainerService.HintSize="869,1675" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="test" sap:VirtualizedContainerService.HintSize="869,1786" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="currentdate" />
       <Variable x:TypeArguments="x:String" Name="filepath" />
@@ -117,7 +117,7 @@
         <InArgument x:TypeArguments="x:String">["C:\Users\NTMGRM.RPA1\Documents\S9\Compile\"+currentdate+"\for Ford\PAID\"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[&quot;C:\Users\NTMGRM.RPA1\Documents\S9\Compile\&quot;+currentdate+&quot;\for Ford\PAID\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="827,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IncludeColumnNames="False" />
+    <ui:ReadCsvFile DataTable="[dt_paidUnpaidcount]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[&quot;C:\Users\NTMGRM.RPA1\Documents\S9\Compile\&quot;+currentdate+&quot;\for Ford\PAID\&quot;+&quot;index.TXT\&quot;+&quot;newindex.csv&quot;]" sap:VirtualizedContainerService.HintSize="827,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" IncludeColumnNames="False" />
     <Assign sap:VirtualizedContainerService.HintSize="827,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[arrpdffile]</OutArgument>
@@ -128,8 +128,14 @@
     </Assign>
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="827,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[arrpdffile.Count.ToString]" />
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="827,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[dt_paidUnpaidcount.Rows.Count.ToString]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Nycgrm_botCred" DisplayName="Get Credential" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="827,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[Password]" Username="[strUsername]" />
-    <If Condition="[arrpdffile.Count=0 and arrpdffile.Count = dt_paidUnpaidcount.Rows.Count]" sap:VirtualizedContainerService.HintSize="827,770" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Nycgrm_botCred" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="827,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[Password]" Username="[strUsername]">
+      <ui:GetRobotCredential.FolderPath>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:GetRobotCredential.FolderPath>
+    </ui:GetRobotCredential>
+    <If Condition="[arrpdffile.Count=0 and arrpdffile.Count = dt_paidUnpaidcount.Rows.Count]" sap:VirtualizedContainerService.HintSize="827,780" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Successful" />
       </If.Then>

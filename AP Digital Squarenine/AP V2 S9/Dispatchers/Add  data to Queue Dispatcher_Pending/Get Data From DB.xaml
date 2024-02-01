@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>605,771</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1588,706</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -78,6 +78,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Get_Data_From_DB" sap:VirtualizedContainerService.HintSize="376,641" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -103,7 +104,7 @@
         <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["SELECT * FROM Digital_Log_TXN_VIEW WHERE Log_ID NOT IN (SELECT S9_Log_ID FROM Digital_S9_Txn where S9_Status IN ('Confirmed','On Server','In Queue')) and Convert(date, Log_FA_Update_Date) &gt;= '2023-10-19' and Log_FA_Update_By_ID is not null and Log_FA_Action_Status = 'NR' Order BY Log_ID"]</InArgument>
+        <InArgument x:TypeArguments="x:String">["SELECT * FROM Digital_Log_TXN_VIEW WHERE Log_ID NOT IN (SELECT S9_Log_ID FROM Digital_S9_Txn where S9_Status IN ('Confirmed','On Server')) and Convert(date, Log_FA_Update_Date) &gt;= '2023-10-19' and Log_FA_Update_By_ID is not null and Log_FA_Action_Status = 'NR' and Log_SP_Filepath is not null Order BY Log_ID"]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[getdatafromdbquery]" />

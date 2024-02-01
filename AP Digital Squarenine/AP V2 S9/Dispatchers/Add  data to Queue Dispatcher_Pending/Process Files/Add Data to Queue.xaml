@@ -29,6 +29,7 @@
     <x:Property Name="in_ClientName" Type="InArgument(x:String)" />
     <x:Property Name="in_Vendor" Type="InArgument(x:String)" />
     <x:Property Name="in_Log_ID" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Get_FA_Status.in_MediaLookup>
     <InArgument x:TypeArguments="x:String" />
@@ -143,6 +144,7 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Add Data to Queue" sap:VirtualizedContainerService.HintSize="1809,5046" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -960,7 +962,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="GMUSA_DigitalS9" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queue_name]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queue_name]" Reference="[in_inv_num+&quot;-&quot;+in_pub_code+&quot;-&quot;+in_C+&quot;-&quot;+in_pdf_amount+&quot;-&quot;+in_tag_status+&quot;-&quot;+in_fa_status+in_PDF_MOS+&quot;-&quot;+currendate]">
                       <ui:AddQueueItem.ItemInformation>
                         <InArgument x:TypeArguments="x:String" x:Key="PDF_Invoice_Date">[in_pdf_invoice_date]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="Invoice_Num">[in_inv_num]</InArgument>
