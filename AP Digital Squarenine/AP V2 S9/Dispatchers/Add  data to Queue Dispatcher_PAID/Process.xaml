@@ -24,7 +24,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1693,5794</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1693,7750</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -115,7 +115,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1703,5729" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1703,7645" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_isnra" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="var_dbconnect" />
@@ -130,6 +130,8 @@
       <Variable x:TypeArguments="x:String" Name="var_ClientName" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_PBT_Record" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="DB_CONN" />
+      <Variable x:TypeArguments="x:String" Default="No" Name="isMultiInvMultiBuy" />
+      <Variable x:TypeArguments="x:String" Name="strFileName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -138,20 +140,20 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="1661,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="1661,158" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Get Assets" sap:VirtualizedContainerService.HintSize="1661,644" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <Sequence sap:VirtualizedContainerService.HintSize="304,552" sap2010:WorkflowViewState.IdRef="Sequence_5">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="var_SPURL_GPC" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -263,9 +265,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If Condition="[dt_PBT_Record.RowCount &gt; 0]" DisplayName="If - fa action is TAG" sap:VirtualizedContainerService.HintSize="1661,3139" sap2010:WorkflowViewState.IdRef="If_6">
+    <If Condition="[dt_PBT_Record.RowCount &gt; 0]" DisplayName="If - fa action is TAG" sap:VirtualizedContainerService.HintSize="1661,4569" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="1312,2981" sap2010:WorkflowViewState.IdRef="Sequence_19">
+        <Sequence sap:VirtualizedContainerService.HintSize="1312,4411" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="str_BatchDetails" />
             <Variable x:TypeArguments="x:String" Name="in_C" />
@@ -364,6 +366,7 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <Sequence sap:VirtualizedContainerService.HintSize="879,1156" sap2010:WorkflowViewState.IdRef="Sequence_11">
@@ -400,7 +403,7 @@
                       <scg:Dictionary x:TypeArguments="x:String, Argument" />
                     </ui:ExecuteQuery.Parameters>
                   </ui:ExecuteQuery>
-                  <If Condition="[in_TransactionItem(&quot;Log_Invoice_number&quot;).ToString.Equals(dt_LeadingInvoice_LogTxn(0)(0).ToString)]" DisplayName="If - if invoice number is leading invoci number then combine, ekse do not combine pdfs" sap:VirtualizedContainerService.HintSize="837,605" sap2010:WorkflowViewState.IdRef="If_7">
+                  <If Condition="[in_TransactionItem(&quot;Log_Invoice_number&quot;).ToString.Equals(dt_LeadingInvoice_LogTxn(0)(0).ToString)]" DisplayName="If - if invoice number is leading invoice number then download all the invoices, and then combine, else do not combine pdfs" sap:VirtualizedContainerService.HintSize="837,605" sap2010:WorkflowViewState.IdRef="If_7">
                     <If.Then>
                       <Sequence sap:VirtualizedContainerService.HintSize="416,447" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <sap:WorkflowViewStateService.ViewState>
@@ -450,7 +453,7 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="376,304" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                      <Sequence DisplayName="Sequence - flow to download all the invoices and stamp without combining the files" sap:VirtualizedContainerService.HintSize="376,304" sap2010:WorkflowViewState.IdRef="Sequence_23">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -467,6 +470,7 @@
                             <InOutArgument x:TypeArguments="x:String" x:Key="io_local_pdffilepath">[var_local_pdffilepath]</InOutArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[in_SPURL_GPC]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_buyStatus">false</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MultiInvMultiBuy">[isMultiInvMultiBuy]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                         <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_23">
@@ -510,7 +514,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[in_TransactionItem(&quot;Log_FA_Action_Status&quot;).ToString.ToLower.Contains(&quot;tag&quot;) and dt_PBT_Record(0)(&quot;PBT_Tag_Status&quot;).ToString.ToLower.Contains(&quot;yes&quot;) and dt_PBT_Record(0)(&quot;PBT_Is_Segment&quot;).ToString.ToLower.Contains(&quot;true&quot;)]" DisplayName="If - Segment Buy tagged by FA" sap:VirtualizedContainerService.HintSize="1270,591" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[in_TransactionItem(&quot;Log_FA_Action_Status&quot;).ToString.ToLower.Contains(&quot;tag&quot;) and dt_PBT_Record(0)(&quot;PBT_Tag_Status&quot;).ToString.ToLower.Contains(&quot;yes&quot;) and dt_PBT_Record(0)(&quot;PBT_Is_Segment&quot;).ToString.ToLower.Contains(&quot;true&quot;)]" DisplayName="If - Segment Buy tagged by FA" sap:VirtualizedContainerService.HintSize="1270,2021" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -518,24 +522,162 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="421,404" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <Sequence sap:VirtualizedContainerService.HintSize="1086,1834" sap2010:WorkflowViewState.IdRef="Sequence_10">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="strSegmentComment" />
+                  <Variable x:TypeArguments="x:String" Name="str_QueryLeadingInvoice" />
+                  <Variable x:TypeArguments="sd:DataTable" Name="dt_LeadingInvoice_LogTxn" />
+                  <Variable x:TypeArguments="sd:DataTable" Name="dt_TagSegmentInvCount" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Set Segment Buy Invoice Comment workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Set Segment Buy Invoice Comment.xaml">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1044,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;In Segment-Tag Flow&quot;]" />
+                <Assign DisplayName="Assign- Get Invoice Count details" sap:VirtualizedContainerService.HintSize="1044,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[str_QueryLeadingInvoice]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">["Select log_invoice_number, log_invoice_amount From Digital_Log_Txn Where log_id In (Select Distinct Log_ID From Digital_PBT_Txn_vw Where Log_Validated_C = '"+in_C.Trim+"' and Log_Validated_P = '"+in_P.Trim+"' and Log_Validated_E = '"+in_E.Trim+"' and Log_Publication_Code = '"+in_PubCode.Trim+"' And Log_Invoice_MOS = '"+in_MOS+"') Order By Log_Invoice_Amount desc"]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_TagSegmentInvCount]" DisplayName="Execute Query" ExistingDbConnection="[DB_CONN]" sap:VirtualizedContainerService.HintSize="1044,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[str_QueryLeadingInvoice]">
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                </ui:ExecuteQuery>
+                <Assign DisplayName="Assign- Get Leading Invoice Details" sap:VirtualizedContainerService.HintSize="1044,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[str_QueryLeadingInvoice]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">["Select top 1 log_invoice_number, log_invoice_amount From Digital_Log_Txn Where log_id In (Select Distinct Log_ID From Digital_PBT_Txn_vw Where Log_Validated_C = '"+in_C.Trim+"' and Log_Validated_P = '"+in_P.Trim+"' and Log_Validated_E = '"+in_E.Trim+"' and Log_Publication_Code = '"+in_PubCode.Trim+"' And Log_Invoice_MOS = '"+in_MOS+"') Order By Log_Invoice_Amount desc"]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[dt_LeadingInvoice_LogTxn]" DisplayName="Execute Query" ExistingDbConnection="[DB_CONN]" sap:VirtualizedContainerService.HintSize="1044,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[str_QueryLeadingInvoice]">
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                </ui:ExecuteQuery>
+                <If Condition="[in_TransactionItem(&quot;Log_Invoice_number&quot;).ToString.Equals(dt_LeadingInvoice_LogTxn(0)(0).ToString)]" DisplayName="If - if invoice number is leading invoice number then download all the invoices, and then combine, else do not combine pdfs" sap:VirtualizedContainerService.HintSize="1044,803" sap2010:WorkflowViewState.IdRef="If_9">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="695,645" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="653,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,204" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Multiinvoicebuydata workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Tests\Multiinvoicebuydata.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_invcomment">[dt_PBT_Record(0)("PBT_Stamp_Comment").ToString.Trim]</InArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_invcomment">[varinv_comment]</OutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_buystatus">[var_buystatus]</InArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_buystatus">[var_buystatus]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_TotalAmount">[strTotalAmount]</OutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </ui:CommentOut.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:CommentOut>
+                      <If Condition="[dt_TagSegmentInvCount.Rows.Count&gt; 1]" sap:VirtualizedContainerService.HintSize="653,310" sap2010:WorkflowViewState.IdRef="If_11">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[isMultiInvMultiBuy]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">yes</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_31">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[isMultiInvMultiBuy]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">no</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="653,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Tests\Combine Invoices for Tag Segment.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="DBConnectionString">[in_Config("DBConnection_String").tostring]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_SPuser">[in_spuser]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_SPPass">[in_sppass]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[in_SPURL]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_local_PdfFilePath">[in_Config("FA_Log_File").ToString+"Compile\Combine MultiInvoice1Buy\"]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[in_SPURL_GPC]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_DowloadedPdfPath">[in_Config("FA_Log_File").ToString+"Compile\"]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Sequence - flow to download all the invoices and stamp without combining the files" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[varinv_comment]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Set Segment Buy Invoice Comment workflow" sap:VirtualizedContainerService.HintSize="1044,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Set Segment Buy Invoice Comment.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="dbConnectionString">[in_Config("DBConnection_String").tostring]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="dbConnectionString_Dev">[in_Config("DBConnection_String_Dev").tostring]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="ID">[in_TransactionItem("Log_ID").ToString.Trim]</InArgument>
                     <OutArgument x:TypeArguments="x:String" x:Key="outSegmentComment">[strSegmentComment]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_MultiInvoiceMultiBuy">[isMultiInvMultiBuy]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_C">[in_C]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_P">[in_P]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_E">[in_E]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_MOS">[in_MOS]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_PubCode">[in_PubCode]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <Assign sap:VirtualizedContainerService.HintSize="379,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign sap:VirtualizedContainerService.HintSize="1044,60" sap2010:WorkflowViewState.IdRef="Assign_7">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Object">[in_TransactionItem("Log_FA_Interface_Comment")]</OutArgument>
                   </Assign.To>
@@ -543,7 +685,7 @@
                     <InArgument x:TypeArguments="x:Object">[strSegmentComment]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="379,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign sap:VirtualizedContainerService.HintSize="1044,60" sap2010:WorkflowViewState.IdRef="Assign_8">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Object">[in_TransactionItem("Log_FA_Action_Status")]</OutArgument>
                   </Assign.To>
@@ -627,6 +769,12 @@
       </If.Then>
     </If>
     <If Condition="[in_TransactionItem(&quot;Log_FA_Action_Status&quot;).ToString.ToLower.Contains(&quot;attach-s9&quot;)]" sap:VirtualizedContainerService.HintSize="1661,299" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Compile_File_Attach_S9 workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Compile_File_Attach_S9.xaml">
           <ui:InvokeWorkflowFile.Arguments>
@@ -648,15 +796,39 @@
     </If>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Download PDF workflow" sap:VirtualizedContainerService.HintSize="1661,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Download PDF.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[var_SPURL]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spuser">[out_spuser]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sppass">[var_sppass]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilename">[in_TransactionItem("Log_Invoice_FileName").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilepath">[var_localfolderpath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Doc_Link">[in_TransactionItem("Log_SP_FilePath").ToString.Trim]</InArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_local_pdffilepath">[var_local_pdffilepath]</InOutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[in_SPURL_GPC]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_buyStatus">[var_buystatus]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_SPURL" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spuser">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_spuser" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sppass">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_sppass" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilename">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_FileName&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilepath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_localfolderpath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Doc_Link">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_SP_FilePath&quot;).ToString.Trim" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_local_pdffilepath">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_local_pdffilepath" />
+        </InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SPURL_GPC" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_buyStatus">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_buystatus" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MultiInvMultiBuy">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="isMultiInvMultiBuy" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strFileName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strFileName" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Set NRA Status workflow" sap:VirtualizedContainerService.HintSize="1661,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Set NRA Status.xaml">
@@ -671,37 +843,97 @@
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="1661,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[in_TransactionItem(&quot;Log_ID&quot;).ToString.Trim]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Add Data to Queue workflow" sap:VirtualizedContainerService.HintSize="1661,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Add Data to Queue.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pdf_invoice_date">[var_pdfinsdate]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_queue_name">[in_Config("OrchestratorQueueName").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">[in_TransactionItem("Log_Invoice_Number").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pub_code">[in_TransactionItem("Log_Publication_Code").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_C">[in_TransactionItem("Log_Validated_C").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_MediaLookup">[in_TransactionItem("Log_Invoice_Media_Code").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_P">[in_TransactionItem("Log_Validated_P").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_E">[in_TransactionItem("Log_Validated_E").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_MOS">[in_TransactionItem("Log_Invoice_MOS").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">[in_TransactionItem("Log_Invoice_Amount").ToString.Trim]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdf_invoice_date">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_pdfinsdate" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queue_name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OrchestratorQueueName&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_inv_num">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Number&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pub_code">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Code&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_C">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_C&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MediaLookup">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Media_Code&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_P">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_P&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_E">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Validated_E&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_MOS">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_MOS&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PDF_Amount">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_Amount&quot;).ToString.Trim" />
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_bucketstatus" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_inv_name_link">[in_TransactionItem("Log_Invoice_FileName").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Agency">[in_TransactionItem("Agency_name").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_IS_NRA">[var_isnra]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Doc_Link">[in_TransactionItem("Log_SP_FilePath").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_fa_status">[in_TransactionItem("Log_FA_Action_Status").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Local_File_Path">[var_local_pdffilepath]</InArgument>
-        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbconnect">[var_dbconnect]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FA_Name">[in_TransactionItem("FA_NAME").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pubname">[in_TransactionItem("Log_Publication_Name").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_queuebatchtime">[in_localbatchtime]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_tag_status">[String.Empty]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_table_name">[in_Config("TableName").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_invcomment">[varinv_comment]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_buystatus">[var_buystatus]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_splitS9">[in_TransactionItem("Log_FA_Interface_Comment").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pub_code2">[in_TransactionItem("Log_Publication_Code").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ClientName">[var_ClientName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Vendor">[in_TransactionItem("Vendor_Name").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Log_ID">[in_TransactionItem("Log_ID").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_inv_name_link">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFileName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Agency">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Agency_name&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_IS_NRA">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_isnra" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Doc_Link">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_SP_FilePath&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_fa_status">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_FA_Action_Status&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Local_File_Path">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_local_pdffilepath" />
+        </InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_dbconnect">
+          <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="var_dbconnect" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FA_Name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;FA_NAME&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pubname">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Name&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queuebatchtime">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_localbatchtime" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_tag_status">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Empty" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_table_name">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TableName&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_invcomment">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="varinv_comment" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_buystatus">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_buystatus" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_splitS9">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_FA_Interface_Comment&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pub_code2">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Publication_Code&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ClientName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_ClientName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Vendor">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Vendor_Name&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Log_ID">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_ID&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

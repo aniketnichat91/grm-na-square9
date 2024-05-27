@@ -24,7 +24,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1034,1791</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1291,1791</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -99,8 +99,8 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="460,1726" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -119,6 +119,8 @@
       <Variable x:TypeArguments="x:String" Name="var_ClientName" />
       <Variable x:TypeArguments="x:String" Name="strQuery" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtOut" />
+      <Variable x:TypeArguments="x:String" Name="strFileName" />
+      <Variable x:TypeArguments="x:String" Name="variable1" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -217,14 +219,33 @@
     <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="418,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[in_spuser + &quot; &quot;+ in_sppass + &quot; &quot;+ in_SPURL_GPC + &quot; &quot;+ in_SPURL_GPC]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Download PDF workflow" sap:VirtualizedContainerService.HintSize="418,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Download PDF.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[var_SPURL]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spuser">[out_spuser]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sppass">[var_sppass]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilename">[in_TransactionItem("Log_Invoice_FIleName").ToString.Trim]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilepath">[var_localfolderpath]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Doc_Link">[in_TransactionItem("Log_SP_FilePath").ToString.Trim]</InArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_local_pdffilepath">[var_local_pdffilepath]</InOutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[var_SPURL_GPC]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_SPURL" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spuser">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_spuser" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sppass">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_sppass" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilename">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_FIleName&quot;).ToString.Trim" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pdffilepath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_localfolderpath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Doc_Link">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_SP_FilePath&quot;).ToString.Trim" />
+        </InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_local_pdffilepath">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_local_pdffilepath" />
+        </InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="var_SPURL_GPC" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strFileName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strFileName" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Set NRA Status workflow" sap:VirtualizedContainerService.HintSize="418,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Process Files\Set NRA Status.xaml">
@@ -269,7 +290,7 @@
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_bucketstatus" />
         <InArgument x:TypeArguments="x:String" x:Key="in_inv_name_link">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Log_Invoice_FileName&quot;).ToString.Trim" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFileName" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Agency">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Agency_name&quot;).ToString.Trim" />

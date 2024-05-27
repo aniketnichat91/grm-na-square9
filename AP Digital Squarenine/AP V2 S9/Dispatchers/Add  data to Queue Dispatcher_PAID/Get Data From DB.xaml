@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1588,1352</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>857,1392</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Data_From_DB_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -109,12 +109,12 @@
         <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["Select * From Digital_Log_TXN_VIEW A LEFT Join Digital_PBT_Txn B On A.Log_ID= B.PBT_Log_ID Where (Convert(Date, A.Log_Insertion_date) &gt;= '2023-10-19' Or Convert(Date, A.Log_FA_Update_Date) &gt;= '2023-10-19' ) And A.Log_ID Not In (Select S9_Log_ID From Digital_S9_Txn Where S9_Status In ('Confirmed','On Server')) And (A.Log_FA_Action_Status Like '%TAG%' AND B.PBT_Tagged=1 OR A.Log_FA_Action_Status like '%SPLIT - S9%' or A.Log_FA_Action_Status like '%ATTACH-S9%' Or A.Log_FA_Action_Status Like '%Manual - S9%' or A.Log_FA_Action_Status like '%APPEND-S9%' or A.Log_FA_Action_Status like '%EDI%-%S9%')"]</InArgument>
+        <InArgument x:TypeArguments="x:String">Select * From Digital_Log_TXN_VIEW A LEFT Join Digital_PBT_Txn B On A.Log_ID= B.PBT_Log_ID Where (Convert(Date, A.Log_Insertion_date) &gt;= '2023-10-19' Or Convert(Date, A.Log_FA_Update_Date) &gt;= '2023-10-19' ) And A.Log_ID Not In (Select S9_Log_ID From Digital_S9_Txn Where S9_Status In ('Confirmed','On Server')) And (A.Log_FA_Action_Status Like '%TAG%' AND B.PBT_Tagged=1 OR A.Log_FA_Action_Status like '%SPLIT - S9%' or A.Log_FA_Action_Status like '%ATTACH-S9%' Or A.Log_FA_Action_Status Like '%Manual - S9%' or A.Log_FA_Action_Status like '%APPEND-S9%' or A.Log_FA_Action_Status like '%EDI%-%S9%')</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,230" sap2010:WorkflowViewState.IdRef="CommentOut_22">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,230" sap2010:WorkflowViewState.IdRef="CommentOut_54">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_104">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_136">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -125,7 +125,7 @@
               <OutArgument x:TypeArguments="x:String">[getdatafromdbquery]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["SELECT * FROM Digital_Log_TXN_VIEW Where Log_ID IN (745978)"]</InArgument>
+              <InArgument x:TypeArguments="x:String">["Select * From Digital_Log_TXN_VIEW where Log_ID = 859272"]</InArgument>
             </Assign.Value>
           </Assign>
         </Sequence>

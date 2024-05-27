@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BXNigCasnru6gWCFibYPnprIZX+cIkHsSxs4Q6H6etgrumw2Xe/2THSkR6NX0cE0egr71/Zgjrg7477d+SmPBg==",
+  "dgSpecHash": "rMcbXmSc+L0FZZVn+lToaFo7Bu6dvd8VVquOSJH5ZA+tXqIa04/HLGWMqHb6XR7qKWGASYaNEK31Tlh1cq2FYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\DIgital S9_latest\\ORC Folder RE\\Performers\\NR_Reusable with RE Framework\\.local\\",
+  "projectFilePath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\DIgital S9\\Performers\\NR_Reusable with RE Framework\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\NTMGRM.OOHPBTDIGS9\\.nuget\\packages\\anglesharp\\0.9.9\\anglesharp.0.9.9.nupkg.sha512",
     "C:\\Users\\NTMGRM.OOHPBTDIGS9\\.nuget\\packages\\azure.core\\1.18.0\\azure.core.1.18.0.nupkg.sha512",

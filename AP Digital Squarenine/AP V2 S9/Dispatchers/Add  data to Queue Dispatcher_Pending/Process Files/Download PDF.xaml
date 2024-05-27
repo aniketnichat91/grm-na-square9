@@ -8,6 +8,7 @@
     <x:Property Name="in_Doc_Link" Type="InArgument(x:String)" />
     <x:Property Name="io_local_pdffilepath" Type="InOutArgument(x:String)" />
     <x:Property Name="in_SPURL_GPC" Type="InArgument(x:String)" />
+    <x:Property Name="out_strFileName" Type="OutArgument(x:String)" />
   </x:Members>
   <this:Download_PDF.in_SPURL>
     <InArgument x:TypeArguments="x:String" />
@@ -21,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>646,1322</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1396,3132</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Download_PDF_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
@@ -68,7 +69,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="76">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="39">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -110,7 +111,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Download_PDF" sap:VirtualizedContainerService.HintSize="1406,2667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Download_PDF" sap:VirtualizedContainerService.HintSize="1406,3067" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolpdffolderexist" />
       <Variable x:TypeArguments="x:String" Name="currentdate" />
@@ -122,6 +123,7 @@
       <Variable x:TypeArguments="x:String" Name="in_Doc_Link6" />
       <Variable x:TypeArguments="x:String" Name="in_Doc_Link7" />
       <Variable x:TypeArguments="x:String" Name="in_Doc_Link8" />
+      <Variable x:TypeArguments="x:String" Name="strFileName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -142,6 +144,38 @@
         <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_pdffilepath+currentdate+&quot;\downloadedpdf\&quot;]" />
       </If.Else>
     </If>
+    <Assign DisplayName="Assign - remove .pdf" sap:VirtualizedContainerService.HintSize="1364,60" sap2010:WorkflowViewState.IdRef="Assign_25">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strFileName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_pdffilename.Substring(0, in_pdffilename.Length-4)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - replace . character" sap:VirtualizedContainerService.HintSize="1364,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strFileName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(strFileName, “[^a-z A-Z 0-9]”, “”)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - append .pdf back" sap:VirtualizedContainerService.HintSize="1364,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_pdffilename]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[strFileName+".pdf"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="1364,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_strFileName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_pdffilename]</InArgument>
+      </Assign.Value>
+    </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="1364,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[io_local_pdffilepath]</OutArgument>
@@ -430,7 +464,7 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="315,388" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                  <Sequence sap:VirtualizedContainerService.HintSize="315,397" sap2010:WorkflowViewState.IdRef="Sequence_15">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

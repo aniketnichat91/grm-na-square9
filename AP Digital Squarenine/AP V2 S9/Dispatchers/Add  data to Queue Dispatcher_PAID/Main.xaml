@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1034,875</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1015,875</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -239,9 +239,9 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="638,1446" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="484,1138" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
-                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="592,975" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="438,652" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -282,7 +282,7 @@
                     </Sequence>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="558,21" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_9">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -331,10 +331,10 @@
                         </Sequence>
                       </ActivityAction>
                     </Catch>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="558,791" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -368,7 +368,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+TransactionItem(&quot;Log_Invoice_FileName&quot;).ToString+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9. Error - &quot; +Exception.ToString]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[TransactionItem(&quot;Log_Invoice_FileName&quot;).ToString+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid &quot;]" To="[{&quot;souravra@cybage.com&quot;}]">
+                                  <umam:SendMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Body="[&quot;Record associated with the invoice &quot;+TransactionItem(&quot;Log_Invoice_FileName&quot;).ToString+&quot; cannot be automatically Tagged or Uploaded to mDocs/Square9. Error - &quot; +Exception.ToString]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,352" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="[TransactionItem(&quot;Log_Invoice_FileName&quot;).ToString+ &quot; cannot be automatically Tagged or Uploaded to mDocs/Square9 as value of  MOS is blank or not valid &quot;]" To="[{&quot;souravra@cybage.com&quot;,&quot;aniketni@cybage.com&quot;}]">
                                     <umam:SendMail.Attachments>
                                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                     </umam:SendMail.Attachments>
@@ -454,7 +454,7 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="688,2631" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="642,2213" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
@@ -542,36 +542,16 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Assets workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Tests\Get_Assets.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_varcompilefilepath">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutputFALogFilePath&quot;).ToString.Trim" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointURL&quot;).ToString.Trim" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPCredentials">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharePointLogin&quot;).ToString.Trim" />
-                                        </InArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="in_SPUser">
-                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetspuser" />
-                                        </OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_folderpath">
-                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetfolderpath" />
-                                        </OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL">
-                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetSPURL" />
-                                        </OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_sppass">
-                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetsppass" />
-                                        </OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SharepointURL_GPC&quot;).ToString.Trim" />
-                                        </InArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL_GPC">
-                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="var_assetSPURL_GPC" />
-                                        </OutArgument>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">
-                                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_varcompilefilepath">[Config("OutputFALogFilePath").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL">[Config("SharePointURL").ToString.Trim]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPCredentials">[Config("SharePointLogin").ToString.Trim]</InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="in_SPUser">[var_assetspuser]</OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_folderpath">[var_assetfolderpath]</OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL">[var_assetSPURL]</OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_sppass">[var_assetsppass]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_SPURL_GPC">[Config("SharepointURL_GPC").ToString.Trim]</InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="var_SPURL_GPC">[var_assetSPURL_GPC]</OutArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="In_Config">[Config]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get Data From DB workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Get Data From DB.xaml">

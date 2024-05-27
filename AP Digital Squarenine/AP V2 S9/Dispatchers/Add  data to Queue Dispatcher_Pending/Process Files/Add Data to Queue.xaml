@@ -1023,7 +1023,7 @@
                     </Catch>
                   </TryCatch.Catches>
                 </TryCatch>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="438,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1224,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_26">
                       <sap:WorkflowViewStateService.ViewState>
@@ -1048,7 +1048,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <Assign sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_42">
+                <Assign sap:VirtualizedContainerService.HintSize="1224,60" sap2010:WorkflowViewState.IdRef="Assign_42">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[in_Doc_Link]</OutArgument>
                   </Assign.To>
@@ -1056,7 +1056,7 @@
                     <InArgument x:TypeArguments="x:String">[in_Doc_Link.Replace("'","")]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_43">
+                <Assign sap:VirtualizedContainerService.HintSize="1224,60" sap2010:WorkflowViewState.IdRef="Assign_43">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[in_inv_name_link]</OutArgument>
                   </Assign.To>
@@ -1064,7 +1064,7 @@
                     <InArgument x:TypeArguments="x:String">[in_inv_name_link.Replace("'","")]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+                <Assign sap:VirtualizedContainerService.HintSize="1224,60" sap2010:WorkflowViewState.IdRef="Assign_30">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[insertquery]</OutArgument>
                   </Assign.To>
@@ -1072,7 +1072,7 @@
                     <InArgument x:TypeArguments="x:String">["insert into " +in_table_name+ " (S9_Log_ID, S9_HasRun, S9_Stamp_Comment, S9_Status, S9_Run_Date,S9_ReProcessed,S9_RetryCounter) values ('"+in_Log_ID+"', NULL, NULL ,'In Queue', '"+DateTime.Now.ToString+"',NULL , NULL )"]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[in_dbconnect]" sap:VirtualizedContainerService.HintSize="438,88" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_2" Sql="[insertquery]">
+                <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" ExistingDbConnection="[in_dbconnect]" sap:VirtualizedContainerService.HintSize="1224,88" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_2" Sql="[insertquery]">
                   <ui:ExecuteNonQuery.Parameters>
                     <scg:Dictionary x:TypeArguments="x:String, Argument" />
                   </ui:ExecuteNonQuery.Parameters>
@@ -1083,7 +1083,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="771,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="1733,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

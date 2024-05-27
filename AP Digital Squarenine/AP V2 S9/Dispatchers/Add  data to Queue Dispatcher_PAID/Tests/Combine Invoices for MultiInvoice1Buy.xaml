@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1034,5594</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1074,6694</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Combine_Invoices_for_MultiInvoice1Buy_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="39">
@@ -58,7 +58,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="41">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Combine_Invoices_for_MultiInvoice1Buy" sap:VirtualizedContainerService.HintSize="632,5529" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Combine_Invoices_for_MultiInvoice1Buy" sap:VirtualizedContainerService.HintSize="632,6589" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConnection" />
       <Variable x:TypeArguments="x:String" Name="in_fa_name" />
@@ -123,6 +123,8 @@
       <Variable x:TypeArguments="s:String[]" Name="arrAllFiles" />
       <Variable x:TypeArguments="x:Boolean" Name="isExists" />
       <Variable x:TypeArguments="x:Boolean" Name="boolpdffolderexist" />
+      <Variable x:TypeArguments="x:String" Name="Invoice_Name" />
+      <Variable x:TypeArguments="x:String" Name="strFilename" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -300,7 +302,7 @@
         <OutArgument x:TypeArguments="x:String">[str_QueryLeadingInvoice]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From Digital_Log_Txn Where Log_Publication_Code Like '"+in_PubCode+"' and Log_Validated_C like '"+in_C+"' and Log_FA_Action_Status is not null and Log_Invoice_Number In ( Select PBT_MultiInv_Leading_InvoiceNumber From  Digital_PBT_Txn Where PBT_MultiInv_Batch_Details Like '%"+str_BatchDetails+"%' )"]</InArgument>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">["Select * From Digital_Log_Txn Where Log_Publication_Code Like '"+in_PubCode+"' and Log_Validated_C like '"+in_C+"' and Log_FA_Action_Status is not null and Log_Invoice_Number In ( Select PBT_MultiInv_Leading_InvoiceNumber From  Digital_PBT_Txn Where PBT_MultiInv_Batch_Details Like '%"+str_BatchDetails+"%' ) and log_fa_action_status = 'tag'"]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="590,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[str_QueryLeadingInvoice]" />
@@ -309,6 +311,38 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
+    <Assign sap:VirtualizedContainerService.HintSize="590,60" sap2010:WorkflowViewState.IdRef="Assign_48">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strFilename]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[dt_LeadingInvoice_LogTxn(0)("Log_Invoice_Filename").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - remove .pdf" sap:VirtualizedContainerService.HintSize="590,60" sap2010:WorkflowViewState.IdRef="Assign_49">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strFilename]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[strFilename.Substring(0, strFilename.Length-4)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - replace . character" sap:VirtualizedContainerService.HintSize="590,60" sap2010:WorkflowViewState.IdRef="Assign_50">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strFilename]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(strFilename, “[^a-z A-Z 0-9]”, “”)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign - append .pdf back" sap:VirtualizedContainerService.HintSize="590,60" sap2010:WorkflowViewState.IdRef="Assign_51">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strFilename]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[strFilename+".pdf"]</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="590,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[str_QuertToGetLogIDFromPBTtbl+ &quot; =Count: &quot;+ dt_PBT_Txn_tbl.RowCount.ToString]" />
     <Assign sap:VirtualizedContainerService.HintSize="590,60" sap2010:WorkflowViewState.IdRef="Assign_41">
       <Assign.To>
@@ -318,29 +352,28 @@
         <InArgument x:TypeArguments="x:Int32">1</InArgument>
       </Assign.Value>
     </Assign>
-    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope- Download all attachments MultiInvoice1Buy" sap:VirtualizedContainerService.HintSize="590,1356" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_4" Password="[in_SPPass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPUrl]" UserName="[in_SPuser]">
+    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" SecurePassword="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope- Download all attachments MultiInvoice1Buy" sap:VirtualizedContainerService.HintSize="590,1656" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_4" Password="[in_SPPass]" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SharePointInstanceType="Online" URL="[in_SPUrl]" UserName="[in_SPuser]">
       <usa:SharepointApplicationScope.Body>
         <ActivityAction x:TypeArguments="us:SharePointContextInfo">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do - Download all attachments MultiInvoice1Buy" sap:VirtualizedContainerService.HintSize="556,1215" sap2010:WorkflowViewState.IdRef="Sequence_31">
+          <Sequence DisplayName="Do - Download all attachments MultiInvoice1Buy" sap:VirtualizedContainerService.HintSize="556,1515" sap2010:WorkflowViewState.IdRef="Sequence_31">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_PBT_Txn_tbl]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="514,1123" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_PBT_Txn_tbl]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="514,1423" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480,950" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="480,1250" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="in_Doc_Link" />
                       <Variable x:TypeArguments="sd:DataTable" Name="dt_DocLink" />
-                      <Variable x:TypeArguments="x:String" Name="Invoice_Name" />
                       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="arRegExResult" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
@@ -367,6 +400,30 @@
                       </Assign.To>
                       <Assign.Value>
                         <InArgument x:TypeArguments="x:String">[dt_DocLink.Rows(0).Item("Log_Invoice_FileName").ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Assign - remove .pdf" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_45">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[Invoice_Name]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Invoice_Name.Substring(0, Invoice_Name.Length-4)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Assign - replace . character" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_46">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[Invoice_Name]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(Invoice_Name, “[^a-z A-Z 0-9]”, “”)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Assign - append .pdf back" sap:VirtualizedContainerService.HintSize="438,60" sap2010:WorkflowViewState.IdRef="Assign_47">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[Invoice_Name]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Invoice_Name+".pdf"]</InArgument>
                       </Assign.Value>
                     </Assign>
                     <ui:Matches sap:VirtualizedContainerService.HintSize="438,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[in_Doc_Link]" IsBuilderTabModified="False" Pattern="(?=sites).*" RegexOption="IgnoreCase, Compiled" Result="[arRegExResult]" />
@@ -440,7 +497,7 @@
         <InArgument x:TypeArguments="s:String[]">[System.IO.Directory.GetFiles(in_local_pdffilepath,"*.pdf")]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[arrPDFFiles.Count &gt; 1]" sap:VirtualizedContainerService.HintSize="590,626" sap2010:WorkflowViewState.IdRef="If_22">
+    <If Condition="[arrPDFFiles.Count &gt; 1]" sap:VirtualizedContainerService.HintSize="590,986" sap2010:WorkflowViewState.IdRef="If_22">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -448,23 +505,53 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="426,439" sap2010:WorkflowViewState.IdRef="Sequence_33">
+        <Sequence sap:VirtualizedContainerService.HintSize="478,799" sap2010:WorkflowViewState.IdRef="Sequence_33">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <upap:JoinPDF DisplayName="Join PDF Files" FileList="[arrPDFFiles]" sap:VirtualizedContainerService.HintSize="384,59" sap2010:WorkflowViewState.IdRef="JoinPDF_1" OutputFileName="[in_local_PdfFilePath+dt_LeadingInvoice_LogTxn.Rows(0).Item(&quot;Log_Invoice_FileName&quot;).ToString]" />
-          <ui:MoveFile ContinueOnError="{x:Null}" Destination="[in_DowloadedPdfPath+currentdate+&quot;\downloadedpdf\&quot;]" DisplayName="Move File - do not upload back on sharepoint" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="False" Path="[in_local_PdfFilePath+dt_LeadingInvoice_LogTxn.Rows(0).Item(&quot;Log_Invoice_FileName&quot;).ToString]" />
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="384,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,229" sap2010:WorkflowViewState.IdRef="CommentOut_2">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="556,471" sap2010:WorkflowViewState.IdRef="Sequence_38">
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_39">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Sequence- Upload on SP To Leading Invoice" sap:VirtualizedContainerService.HintSize="514,379" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                <upap:JoinPDF DisplayName="Join PDF Files" FileList="[arrPDFFiles]" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="JoinPDF_1" OutputFileName="[in_local_PdfFilePath+dt_LeadingInvoice_LogTxn.Rows(0).Item(&quot;Log_Invoice_FileName&quot;).ToString]" />
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <upap:JoinPDF DisplayName="Join PDF Files" FileList="[arrPDFFiles]" sap:VirtualizedContainerService.HintSize="436,59" sap2010:WorkflowViewState.IdRef="JoinPDF_2" OutputFileName="[in_local_PdfFilePath+strFilename.ToString]" />
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="426,249" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:MoveFile ContinueOnError="{x:Null}" Destination="[in_DowloadedPdfPath+currentdate+&quot;\downloadedpdf\&quot;]" DisplayName="Move File - do not upload back on sharepoint" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[in_local_PdfFilePath+dt_LeadingInvoice_LogTxn.Rows(0).Item(&quot;Log_Invoice_FileName&quot;).ToString]" />
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <ui:MoveFile ContinueOnError="{x:Null}" Destination="[in_DowloadedPdfPath+currentdate+&quot;\downloadedpdf\&quot;]" DisplayName="Move File - do not upload back on sharepoint" sap:VirtualizedContainerService.HintSize="436,157" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[in_local_PdfFilePath+strFilename]" />
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="522,471" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Sequence- Upload on SP To Leading Invoice" sap:VirtualizedContainerService.HintSize="480,379" sap2010:WorkflowViewState.IdRef="Sequence_35">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -505,7 +592,7 @@
                       </usa:SharepointApplicationScope>
                     </TryCatch.Try>
                     <TryCatch.Catches>
-                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_15">
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_15">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
