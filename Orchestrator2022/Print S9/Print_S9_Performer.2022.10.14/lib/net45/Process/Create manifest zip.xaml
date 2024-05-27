@@ -3,6 +3,7 @@
     <x:Property Name="in_zippath" Type="InArgument(x:String)" />
     <x:Property Name="in_filepath" Type="InArgument(x:String)" />
     <x:Property Name="in_magmanifest" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -89,8 +90,8 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Create_manifest_zip" sap:VirtualizedContainerService.HintSize="1093,3406" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -222,7 +223,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="USA Print S9 Credentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="GMUSA_PrintS9" sap:VirtualizedContainerService.HintSize="1051,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[strUsername]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="USA Print S9 Credentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="1051,180" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[strUsername]" />
     <Assign sap:VirtualizedContainerService.HintSize="1051,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[currentdate]</OutArgument>

@@ -89,6 +89,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Process title]&#xA;[Process description]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687,798" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -552,7 +553,7 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:AddLogFields>
-                                    <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="All attachments will get stored in this folder" AssetName="[Config(&quot;USA Print S9 File Folder&quot;).ToString.Trim]" CacheStrategy="None" DisplayName="Get Asset" FolderPath="GMUSA_PrintS9" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+                                    <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="All attachments will get stored in this folder" AssetName="[Config(&quot;USA Print S9 File Folder&quot;).ToString.Trim]" CacheStrategy="None" DisplayName="Get Asset" FolderPath="[Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
                                       <ui:GetRobotAsset.Value>
                                         <OutArgument x:TypeArguments="x:String">[out_downloadfolderpath]</OutArgument>
                                       </ui:GetRobotAsset.Value>
@@ -687,6 +688,9 @@
                                           </InArgument>
                                           <InArgument x:TypeArguments="x:String" x:Key="in_magmanifest">
                                             <Literal x:TypeArguments="x:String">C:\Users\NTMGRM.RPA1\Documents\UPProjects\Print S9\magzinemanifest\</Literal>
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
                                           </InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>

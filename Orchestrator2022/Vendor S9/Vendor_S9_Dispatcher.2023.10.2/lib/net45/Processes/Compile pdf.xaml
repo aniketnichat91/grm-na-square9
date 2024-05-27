@@ -8,6 +8,7 @@
     <x:Property Name="in_mail_date" Type="InArgument(x:String)" />
     <x:Property Name="in_connection" Type="InArgument(ui:DatabaseConnection)" />
     <x:Property Name="in_mailid" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Compile_pdf.in_connection>
     <InArgument x:TypeArguments="ui:DatabaseConnection" />
@@ -60,7 +61,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -93,6 +94,7 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Compile_pdf" sap:VirtualizedContainerService.HintSize="1628,5511" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -587,7 +589,7 @@
                   <InArgument x:TypeArguments="x:String">["C:\PWATCH\PRODVE_BOT\"+compilefilename]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="GMUSA_VendorS9" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queuename]">
+              <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_queuename]">
                 <ui:AddQueueItem.ItemInformation>
                   <InArgument x:TypeArguments="x:String" x:Key="BATCH">[batch]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="INVOICE">[invoice]</InArgument>

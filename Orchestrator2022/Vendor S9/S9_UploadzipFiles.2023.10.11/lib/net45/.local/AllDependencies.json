@@ -5019,15 +5019,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NTMGRM.OOH9BRS9PS9\\.nuget\\packages\\": {}
+    "C:\\Users\\NTMGRM.OOHPBTDIGS9\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Move_Manifest_FilesTo_Server",
       "projectName": "Move_Manifest_FilesTo_Server",
-      "projectPath": "C:\\Users\\NTMGRM.OOH9BRS9PS9\\Documents\\NA-Automation\\UiPath\\Vendor S9\\S9_UploadzipFiles.2023.10.11\\lib\\net45\\.local",
-      "packagesPath": "C:\\Users\\NTMGRM.OOH9BRS9PS9\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTMGRM.OOH9BRS9PS9\\Documents\\NA-Automation\\UiPath\\Vendor S9\\S9_UploadzipFiles.2023.10.11\\lib\\net45\\.local"
+      "projectPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\Vendor S9\\ORC Folder RE\\S9_UploadzipFiles.2023.10.11\\lib\\net45\\.local",
+      "packagesPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\Vendor S9\\ORC Folder RE\\S9_UploadzipFiles.2023.10.11\\lib\\net45\\.local"
     },
     "frameworks": {
       "net461": {

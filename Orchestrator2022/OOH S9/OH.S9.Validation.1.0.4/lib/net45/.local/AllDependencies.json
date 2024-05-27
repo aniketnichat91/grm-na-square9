@@ -7083,9 +7083,9 @@
     "restore": {
       "projectUniqueName": "OOH S9 Validation",
       "projectName": "OOH S9 Validation",
-      "projectPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\OOH S9\\ORC Folder RE\\Latest OOH.S9.Validation.1.0.4\\lib\\net45\\.local",
+      "projectPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\OOH S9\\OH.S9.Validation.1.0.4\\lib\\net45\\.local",
       "packagesPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\OOH S9\\ORC Folder RE\\Latest OOH.S9.Validation.1.0.4\\lib\\net45\\.local"
+      "outputPath": "C:\\Users\\NTMGRM.OOHPBTDIGS9\\Documents\\NA-Automation\\OOH S9\\OH.S9.Validation.1.0.4\\lib\\net45\\.local"
     },
     "frameworks": {
       "net461": {

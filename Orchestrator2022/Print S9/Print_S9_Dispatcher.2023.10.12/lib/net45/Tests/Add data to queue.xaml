@@ -21,6 +21,7 @@
     <x:Property Name="in_queuename" Type="InArgument(x:String)" />
     <x:Property Name="in_dbcon" Type="InArgument(ui:DatabaseConnection)" />
     <x:Property Name="in_ID" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <this:Add_data_to_queue.in_dbcon>
     <InArgument x:TypeArguments="ui:DatabaseConnection" />
@@ -1320,7 +1321,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:AppendLine DisplayName="Append Line" FileName="C:\Users\NTMGRM.RPA1\Desktop\Dispatcher data.txt" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[in_compilefilepath+&quot;,&quot;+in_filepath+Environment.NewLine]" UseDefaultEncoding="False" />
-        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="GMUSA_PrintS9" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_queuename]">
+        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" FolderPath="[in_Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_queuename]">
           <ui:AddQueueItem.ItemInformation>
             <InArgument x:TypeArguments="x:String" x:Key="PUBCODE">[in_pubcode]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="INVOICEDATE">[in_invoicedate]</InArgument>

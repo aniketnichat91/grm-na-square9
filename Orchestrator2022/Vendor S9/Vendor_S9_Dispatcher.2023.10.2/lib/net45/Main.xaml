@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1182,878</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1588,878</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -101,6 +101,8 @@
       <AssemblyReference>System.Text.Json</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Vendor Master File Upload]&#xA;[This is a disatcher process. This process will fetch emails from nycgrm.mdocsbot@groupm.com inbox, download the attachmet from it, compile the attachments and add required data into Queue]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687,813" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -229,7 +231,7 @@
           <Transition.To>
             <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231,187" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
-                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="518,972" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="518,932" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -253,11 +255,21 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">[out_downloadfolderpath]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_batchstamp">[out_batchtime]</InArgument>
-                          <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db">[out_dbcon]</InArgument>
+                          <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_TransactionItem">
+                            <mva:VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="TransactionItem" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_localfolderpath">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_downloadfolderpath" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_batchstamp">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_batchtime" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_db">
+                            <mva:VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="out_dbcon" />
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438,339" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -505,8 +517,8 @@
                                         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
-                                    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;Email Account Details&quot;).ToString.Trim]" DisplayName="Get Email account Credential" FolderPath="GMUSA_VendorS9" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_pass]" Username="[out_username]" />
-                                    <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="All attachments will get stored in this folder" AssetName="[Config(&quot;Vendor File Folder&quot;).ToString.Trim]" DisplayName="Get Asset" FolderPath="GMUSA_VendorS9" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+                                    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;Email Account Details&quot;).ToString.Trim]" DisplayName="Get Email account Credential" FolderPath="[Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_pass]" Username="[out_username]" />
+                                    <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="All attachments will get stored in this folder" AssetName="[Config(&quot;Vendor File Folder&quot;).ToString.Trim]" DisplayName="Get Asset" FolderPath="[Config(&quot;Cloud_FolderPath&quot;).tostring]" sap:VirtualizedContainerService.HintSize="334,168" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
                                       <ui:GetRobotAsset.Value>
                                         <OutArgument x:TypeArguments="x:String">[out_downloadfolderpath]</OutArgument>
                                       </ui:GetRobotAsset.Value>
